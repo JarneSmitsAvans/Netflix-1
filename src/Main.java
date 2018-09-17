@@ -1,5 +1,3 @@
-package domain;
-
 import presentation.GUI;
 
 public class Main {
@@ -7,6 +5,6 @@ public class Main {
 
     public static void main(String[] args) {
         // Create a new GUI object
-        GUI myGUI = new GUI(750, 750);
+        GUI myGUI = new GUI(1000, 1000);
     }
 }
