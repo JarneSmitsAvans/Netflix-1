@@ -10,7 +10,7 @@ public class GUI {
     // Labels
     private JLabel lblMadeBy;
     private JLabel lblAppName;
-    private JLabel lblO6SeenMovie;
+    private JLabel lblOv6SeenMovie;
     private JLabel lblOv1Serie;
     private JLabel lblOv2Account;
     private JLabel lblOv2Serie;
@@ -45,7 +45,7 @@ public class GUI {
     private JButton btnOv2Refresh;
     private JButton btnOv3Refresh;
     private JButton btnOv5Refresh;
-    private JButton btnO6Refresh;
+    private JButton btnOv6Refresh;
 
     public GUI(int width, int height) {
         // New JFrame
@@ -62,7 +62,6 @@ public class GUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Make the frame visible
         frame.setVisible(true);
-
         // Make the tab appear on the left hand side of the window
         tabMain.setTabPlacement(SwingConstants.LEFT);
         tabCRUD.setTabPlacement(SwingConstants.LEFT);
