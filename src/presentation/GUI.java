@@ -10,7 +10,7 @@ public class GUI {
     // Labels
     private JLabel lblMadeBy;
     private JLabel lblAppName;
-    private JLabel lblO6SeenMovie;
+    private JLabel lblOv6SeenMovie;
     private JLabel lblOv1Serie;
     private JLabel lblOv2Account;
     private JLabel lblOv2Serie;
@@ -33,7 +33,7 @@ public class GUI {
     private JComboBox cbxOv2Serie;
     private JComboBox cbxOv6SeenMovie;
     // Tables
-    private JTable tblOvSingleProfile;
+    private JTable tblOv5SingleProfile;
     private JTable tblOv1;
     private JTable tblOv2;
     // Lists
@@ -45,9 +45,26 @@ public class GUI {
     private JButton btnOv2Refresh;
     private JButton btnOv3Refresh;
     private JButton btnOv5Refresh;
-    private JButton btnO6Refresh;
+    private JButton btnOv6Refresh;
 
     public GUI(int width, int height) {
+        // Setting text of labels
+        lblMadeBy.setText("Informatica 2018 | Klas 23IVK1 | Gemaakt door: Marc Verwijmeren, Kim van den Berg, Dylan ten Böhmer");
+        lblAppName.setText("Netflix Statistix");
+        lblOv2Serie.setText("Serie");
+        lblOv1Serie.setText("Serie");
+        lblOv2Account.setText("Account");
+        lblOv3Account.setText("Account");
+        lblOv6SeenMovie.setText("Movie");
+
+        // Setting text of buttons
+        String btnRefreshText = "Refresh";
+        btnOv1Refresh.setText(btnRefreshText);
+        btnOv2Refresh.setText(btnRefreshText);
+        btnOv3Refresh.setText(btnRefreshText);
+        btnOv5Refresh.setText(btnRefreshText);
+        btnOv6Refresh.setText(btnRefreshText);
+
         // New JFrame
         JFrame frame = new JFrame("Netflix Statistix");
         // Set the content pane to the mainPanel
