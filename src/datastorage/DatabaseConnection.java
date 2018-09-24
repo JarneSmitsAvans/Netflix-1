@@ -1,5 +1,5 @@
 package datastorage;
-import javax.xml.transform.Result;
+
 import java.sql.*;
 
 public class DatabaseConnection
@@ -49,19 +49,63 @@ public class DatabaseConnection
             statement = conn.createStatement();
             // Execute the query
             rs = statement.executeQuery(query);
+            // Return the ResultSet of the query.
+            return rs;
         } catch (SQLException e) {
             e.printStackTrace();
+            return rs = null;
         }
-        // Return the ResultSet of the query. It can be empty.
-        return rs;
     }
     public boolean ExecuteInsertStatement(String query) {
-        return true;
+        try {
+            // Create a new statement
+            statement = conn.createStatement();
+            // Execute the query
+            boolean inserted = statement.execute(query);
+
+            // Return true if succeeded, false if failed.
+            if (inserted) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
     public boolean ExecuteDeleteStatement(String query) {
-        return true;
+        try {
+            // Create a new statement
+            statement = conn.createStatement();
+            // Execute the query
+            boolean deleted = statement.execute(query);
+            // Return true if succeeded, false if failed.
+            if (deleted) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
     public boolean ExecuteUpdateStatement(String query) {
-        return true;
+        try {
+            // Create a new statement
+            statement = conn.createStatement();
+            // Execute the query
+            boolean updated = statement.execute(query);
+            // Return true if succeeded, false if failed.
+            if (updated) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
