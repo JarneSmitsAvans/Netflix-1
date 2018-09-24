@@ -80,7 +80,7 @@ public class GUI {
         // Make the frame visible
         frame.setVisible(true);
         // Make the tab appear on the left hand side of the window
-        tabMain.setTabPlacement(SwingConstants.LEFT);
-        tabCRUD.setTabPlacement(SwingConstants.LEFT);
+//        tabMain.setTabPlacement(SwingConstants.LEFT);
+//        tabCRUD.setTabPlacement(SwingConstants.LEFT);
     }
 }
