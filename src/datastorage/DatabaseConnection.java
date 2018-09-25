@@ -8,7 +8,6 @@ public class DatabaseConnection
     private Connection conn = null;
     private ResultSet rs = null;
     public boolean OpenConnection() throws ClassNotFoundException, SQLException {
-        // Created a temporary test in Main.java
         // Connection string. Replace if needed.
         String connectionUrl = "jdbc:sqlserver://localhost\\MSSQLSERVER;databaseName=Netflix;integratedSecurity=true;";
         // 'Import' the driver.
@@ -43,7 +42,7 @@ public class DatabaseConnection
     }
     public ResultSet ExecuteSelectStatement(String query) throws SQLException {
         try {
-            // Empty any existing resultsets.
+            // Empty any existing ResultSets.
             rs = null;
             // Create a new statement
             statement = conn.createStatement();

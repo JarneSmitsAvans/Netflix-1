@@ -4,7 +4,7 @@ import domain.Account;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
+import java.util.ArrayList;
 
 public class AccountDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -22,9 +22,9 @@ public class AccountDAO {
     }
 
     public boolean update(int id, Account account) throws SQLException, ClassNotFoundException {
-        // revision required. note: only update complete account objects!
+        //note: only update complete account objects!
         databaseConnection.OpenConnection();
-        boolean updated = databaseConnection.ExecuteUpdateStatement("UPDATE Account WHERE " +
+        boolean updated = databaseConnection.ExecuteUpdateStatement("UPDATE Account " +
                 "SET name = " + account.getName() + ",address = " + account.getAddress() + ",residence = " + account.getResidence() + "WHERE id = " + id);
         if (updated) {
             return true;
@@ -44,19 +44,18 @@ public class AccountDAO {
         }
     }
 
-    public HashSet<Account> singleProfile() throws SQLException, ClassNotFoundException {
-        // Needs revision - Dylan
+    public ArrayList<Account> singleProfile() throws SQLException, ClassNotFoundException {
         Account account = new Account();
-        HashSet<Account> hs = new HashSet<Account>();
+        ArrayList<Account> arrayList = new ArrayList<Account>();
         databaseConnection.OpenConnection();
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement("To DO: SQL Geef de accounts met slechts 1 profiel");
         while (resultSet.next()) {
             account.setName(resultSet.getString("name"));
             account.setAddress(resultSet.getString("address"));
             account.setResidence(resultSet.getString("residence"));
-            hs.add(account);
+            arrayList.add(account);
         }
         databaseConnection.CloseConnection();
-        return hs;
+        return arrayList;
     }
 }
