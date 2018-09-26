@@ -36,7 +36,14 @@ public class AccountManagerImpl {
     }
 
     public ArrayList<Account> singleProfile() throws SQLException, ClassNotFoundException {
+        // Returns an ArrayList filled with all accounts that only have one profile assigned to them.
         ArrayList<Account> arrayList = accountDAO.singleProfile();
+        return arrayList;
+    }
+
+    public ArrayList<Account> getAccounts() throws SQLException, ClassNotFoundException {
+        // Returns an ArrayList filled with all accounts in the database.
+        ArrayList<Account> arrayList = accountDAO.getAccounts();
         return arrayList;
     }
 }

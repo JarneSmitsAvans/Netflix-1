@@ -56,7 +56,6 @@ public class GUI {
         lblOv2Account.setText("Account");
         lblOv3Account.setText("Account");
         lblOv6SeenMovie.setText("Movie");
-
         // Setting text of buttons
         String btnRefreshText = "Refresh";
         btnOv1Refresh.setText(btnRefreshText);
@@ -64,7 +63,6 @@ public class GUI {
         btnOv3Refresh.setText(btnRefreshText);
         btnOv5Refresh.setText(btnRefreshText);
         btnOv6Refresh.setText(btnRefreshText);
-
         // New JFrame
         JFrame frame = new JFrame("Netflix Statistix");
         // Set the content pane to the mainPanel
@@ -79,8 +77,5 @@ public class GUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Make the frame visible
         frame.setVisible(true);
-        // Make the tab appear on the left hand side of the window
-//        tabMain.setTabPlacement(SwingConstants.LEFT);
-//        tabCRUD.setTabPlacement(SwingConstants.LEFT);
     }
 }

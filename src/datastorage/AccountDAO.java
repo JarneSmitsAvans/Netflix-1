@@ -22,7 +22,7 @@ public class AccountDAO {
     }
 
     public boolean update(int id, Account account) throws SQLException, ClassNotFoundException {
-        //note: only update complete account objects!
+        // Note: Account parameter here HAS to have
         databaseConnection.OpenConnection();
         boolean updated = databaseConnection.ExecuteUpdateStatement("UPDATE Account " +
                 "SET name = " + account.getName() + ",address = " + account.getAddress() + ",residence = " + account.getResidence() + "WHERE id = " + id);
@@ -45,6 +45,7 @@ public class AccountDAO {
     }
 
     public ArrayList<Account> singleProfile() throws SQLException, ClassNotFoundException {
+        // Returns an ArrayList filled with all accounts that only have one profile assigned to them.
         Account account = new Account();
         ArrayList<Account> arrayList = new ArrayList<Account>();
         databaseConnection.OpenConnection();
@@ -58,4 +59,21 @@ public class AccountDAO {
         databaseConnection.CloseConnection();
         return arrayList;
     }
+
+    public ArrayList<Account> getAccounts() throws SQLException, ClassNotFoundException {
+        // Returns an ArrayList filled with all accounts in the database.
+        Account account = new Account();
+        ArrayList<Account> arrayList = new ArrayList<Account>();
+        databaseConnection.OpenConnection();
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement("SELECT * FROM Account");
+        while (resultSet.next()) {
+            account.setName(resultSet.getString("name"));
+            account.setAddress(resultSet.getString("address"));
+            account.setResidence(resultSet.getString("residence"));
+            arrayList.add(account);
+        }
+        databaseConnection.CloseConnection();
+        return arrayList;
+    }
+
 }
