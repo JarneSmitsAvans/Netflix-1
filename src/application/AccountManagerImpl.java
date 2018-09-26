@@ -4,8 +4,7 @@ import datastorage.AccountDAO;
 import domain.Account;
 
 import java.sql.SQLException;
-import java.util.HashSet;
-
+import java.util.ArrayList;
 public class AccountManagerImpl {
     private AccountDAO accountDAO = new AccountDAO();
 
@@ -36,9 +35,8 @@ public class AccountManagerImpl {
         }
     }
 
-    public HashSet<Account> singleProfile() throws SQLException, ClassNotFoundException {
-        // needs revision
-        HashSet<Account> hs = accountDAO.singleProfile();
-        return hs;
+    public ArrayList<Account> singleProfile() throws SQLException, ClassNotFoundException {
+        ArrayList<Account> arrayList = accountDAO.singleProfile();
+        return arrayList;
     }
 }
