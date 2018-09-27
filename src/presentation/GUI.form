@@ -1,325 +1,389 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="presentation.GUI">
-  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="2" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="982" height="929"/>
+      <xy x="20" y="20" width="1500" height="900"/>
     </constraints>
     <properties>
-      <background color="-1"/>
+      <maximumSize width="1500" height="900"/>
+      <minimumSize width="1000" height="500"/>
     </properties>
     <border type="none"/>
     <children>
-      <tabbedpane id="17eb3" binding="tabMain">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="2" hsize-policy="2" anchor="0" fill="3" indent="2" use-parent-layout="false">
-            <preferred-size width="200" height="200"/>
-          </grid>
-        </constraints>
+      <tabbedpane id="a030c" binding="tabbedPane">
+        <constraints border-constraint="Center"/>
         <properties>
-          <background color="-784878"/>
-          <enabled value="true"/>
-          <foreground color="-1"/>
+          <font size="18" style="0"/>
+          <requestFocusEnabled value="false"/>
+          <tabLayoutPolicy value="0"/>
           <tabPlacement value="2"/>
           <toolTipText value=""/>
         </properties>
-        <border type="none"/>
+        <border type="none">
+          <font/>
+          <title-color color="-16777216"/>
+          <color color="-63982"/>
+        </border>
         <children>
-          <grid id="33f8" binding="ov1" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="d59a" binding="Home" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <tabbedpane title="1e overzicht, naam verzinnen"/>
+              <tabbedpane title="&lt;html&gt;&lt;br&gt;Netflix Statistix&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
             </constraints>
             <properties>
               <background color="-16777216"/>
+              <font size="20"/>
+              <foreground color="-1"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="b92b4" class="javax.swing.JComboBox" binding="cbxOv1AveragceOnSerie">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-              </component>
-              <vspacer id="50dc9">
-                <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </vspacer>
-              <component id="618a0" class="javax.swing.JLabel" binding="lblOv1Serie">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
+              <component id="3cb5b" class="javax.swing.JLabel" binding="NetflixStatistixLogo">
+                <constraints border-constraint="North"/>
                 <properties>
                   <foreground color="-1"/>
-                  <text value="lblOv1Serie"/>
+                  <horizontalAlignment value="0"/>
+                  <icon value="presentation/images/Netflix_statistics.png"/>
+                  <maximumSize width="602" height="186"/>
+                  <minimumSize width="602" height="186"/>
+                  <preferredSize width="602" height="186"/>
+                  <text value=""/>
                 </properties>
               </component>
-              <component id="6cf57" class="javax.swing.JTable" binding="tblOv1">
-                <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="559e1" class="javax.swing.JButton" binding="btnOv1Refresh">
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
+              <component id="92862" class="javax.swing.JLabel" binding="lblDesignerInfo">
+                <constraints border-constraint="South"/>
                 <properties>
-                  <text value="btnOv1Refresh"/>
+                  <font size="16"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="4"/>
+                  <text value="hoi"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <grid id="50793" binding="ov2" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="7359c" binding="tijdsduurSeriePerAfleveringPanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
-              <tabbedpane title="2e overzicht, naam verzinnen"/>
+              <tabbedpane title="&lt;html&gt;&lt;br&gt;Gemiddeld bekeken tijdsduur&lt;br&gt; aflevering per serie (%)&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-16777216"/>
+              <foreground color="-1"/>
+            </properties>
             <border type="none"/>
             <children>
-              <component id="e37b9" class="javax.swing.JLabel" binding="lblOv2Account">
+              <component id="20ee8" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="lblOv2Account"/>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="Serie"/>
                 </properties>
               </component>
-              <component id="81289" class="javax.swing.JComboBox" binding="cbxOv2Account">
+              <vspacer id="f2ac5">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
-              </component>
-              <component id="5cc02" class="javax.swing.JComboBox" binding="cbxOv2Serie">
-                <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="ffd2d" class="javax.swing.JLabel" binding="lblOv2Serie">
+              </vspacer>
+              <component id="649d0" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="lblOv2Serie"/>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="Aflevering"/>
                 </properties>
               </component>
-              <component id="e0260" class="javax.swing.JTable" binding="tblOv2">
+              <component id="da871" class="javax.swing.JComboBox" default-binding="true">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                </properties>
+              </component>
+              <component id="16117" class="javax.swing.JTextPane" default-binding="true">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
+                    <minimum-size width="-1" height="500"/>
+                    <preferred-size width="150" height="500"/>
+                    <maximum-size width="-1" height="500"/>
                   </grid>
                 </constraints>
                 <properties/>
               </component>
-              <component id="36b7f" class="javax.swing.JButton" binding="btnOv2Refresh">
+              <component id="1532e" class="javax.swing.JLabel" binding="lblDesignerInfo2">
                 <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="btnOv2Refresh"/>
+                  <font size="16"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="4"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+              <component id="5c79d" class="javax.swing.JComboBox">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <grid id="20722" binding="ov3" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="1ecbc" binding="tijdsduurAfleveringPerAccountSerie" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
-              <tabbedpane title="Watched movies"/>
+              <tabbedpane title="&lt;html&gt;&lt;br&gt;Gemiddeld bekeken tijdsduur&lt;br&gt; aflevering per account &amp; serie&lt;br&gt;&lt;br&gt;&lt;/html"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-16777216"/>
+              <foreground color="-1"/>
+            </properties>
             <border type="none"/>
             <children>
-              <component id="5f6cc" class="javax.swing.JLabel" binding="lblOv3Account">
+              <component id="74d6b" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="lblOv3Account"/>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="Account"/>
                 </properties>
               </component>
-              <vspacer id="9d5a3">
+              <vspacer id="6c20c">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <component id="fdf14" class="javax.swing.JComboBox" binding="cbxOv3Account">
+              <component id="925d9" class="javax.swing.JComboBox" default-binding="true">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
-              </component>
-              <component id="86782" class="javax.swing.JButton" binding="btnOv3Refresh">
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
                 <properties>
-                  <text value="btnOv3Refresh"/>
+                  <font size="20"/>
                 </properties>
               </component>
-              <component id="25a0" class="javax.swing.JList" binding="listOv3">
+              <component id="11e89" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
-            </children>
-          </grid>
-          <grid id="87e91" binding="ov4" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <tabbedpane title="Longest movie duration for younger than 16 "/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <component id="eb68" class="javax.swing.JList" binding="listOv4">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
-            </children>
-          </grid>
-          <grid id="82b7" binding="ov5" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <tabbedpane title="Accounts with only one profile"/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <component id="5f9e2" class="javax.swing.JTable" binding="tblOv5SingleProfile">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="fccaa" class="javax.swing.JButton" binding="btnOv5Refresh">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="btnOv5Refresh"/>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="Aflevering"/>
+                </properties>
+              </component>
+              <component id="2fb47" class="javax.swing.JComboBox" default-binding="true">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                </properties>
+              </component>
+              <component id="9e00b" class="javax.swing.JTextPane" binding="txtAvgWatchedSeries">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="500"/>
+                    <preferred-size width="150" height="500"/>
+                    <maximum-size width="-1" height="500"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="1568d" class="javax.swing.JLabel" binding="lblDesignerInfo3">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="16"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="4"/>
+                  <text value="Label"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <grid id="c2ae3" binding="ov6" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="e2ee7" binding="bekekenFilmsDoorAccount" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
-              <tabbedpane title="All viewers who have seen a specific movie"/>
+              <tabbedpane title="&lt;html&gt;&lt;br&gt;Bekeken films door Account&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-16777216"/>
+              <foreground color="-1"/>
+            </properties>
             <border type="none"/>
             <children>
-              <vspacer id="c1f0e">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </vspacer>
-              <component id="5f58b" class="javax.swing.JList" binding="listOv6SeenMovies">
-                <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="ee0c4" class="javax.swing.JLabel" binding="lblOv6SeenMovie">
+              <component id="28952" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="lblOv6SeenMovie"/>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="Account   "/>
                 </properties>
               </component>
-              <component id="a986d" class="javax.swing.JComboBox" binding="cbxOv6SeenMovie">
+              <vspacer id="f5dfb">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="a4ba7" class="javax.swing.JComboBox" default-binding="true">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
+                <properties>
+                  <font size="20"/>
+                </properties>
+              </component>
+              <component id="a8768" class="javax.swing.JTextPane">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="500"/>
+                    <preferred-size width="150" height="500"/>
+                    <maximum-size width="-1" height="500"/>
+                  </grid>
+                </constraints>
                 <properties/>
               </component>
-              <component id="c7a74" class="javax.swing.JButton" binding="btnOv6Refresh">
+              <component id="77c13" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="btnOv6Refresh"/>
+                  <font size="16"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="4"/>
+                  <text value="Label"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <tabbedpane id="56d91" binding="tabCRUD">
+          <grid id="aace6" binding="filmMetLangsteTijdsduurOnder16" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
-              <tabbedpane title="CRUD operations"/>
+              <tabbedpane title="&lt;html&gt;&lt;br&gt;Film met langste tijdsduur&lt;br&gt; voor kijkers onder de 16 jaar&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-16777216"/>
+              <foreground color="-1"/>
+            </properties>
             <border type="none"/>
             <children>
-              <grid id="898f7" binding="AccountCrudPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
+              <component id="8dc58" class="javax.swing.JLabel">
                 <constraints>
-                  <tabbedpane title="Account"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="                "/>
+                </properties>
+              </component>
+              <vspacer id="f2df6">
+                <constraints>
+                  <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="3e18a" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="16"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="4"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+              <component id="6d09f" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="Film met langste tijdsduur voor kijkers onder de 16 jaar"/>
+                </properties>
+              </component>
+              <component id="46509" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="500"/>
+                    <preferred-size width="150" height="500"/>
+                    <maximum-size width="-1" height="500"/>
+                  </grid>
                 </constraints>
                 <properties/>
-                <border type="none"/>
-                <children/>
-              </grid>
-              <grid id="52ac" binding="ProfileCrudPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <tabbedpane title="Profile"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children/>
-              </grid>
-              <grid id="f9a5d" binding="ProgramCrudPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <tabbedpane title="Watched programs"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children/>
-              </grid>
+              </component>
             </children>
-          </tabbedpane>
+          </grid>
+          <grid id="80822" binding="accountsMet1Profiel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="100" left="100" bottom="0" right="100"/>
+            <constraints>
+              <tabbedpane title="&lt;html&gt;&lt;br&gt;Accounts met 1 profiel&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+            </constraints>
+            <properties>
+              <background color="-16777216"/>
+              <foreground color="-1"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="e3952" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="Account   "/>
+                </properties>
+              </component>
+              <vspacer id="43f5e">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="3f020" class="javax.swing.JComboBox" default-binding="true">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                </properties>
+              </component>
+              <component id="cc064" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="16"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="4"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+              <component id="de655" class="javax.swing.JList" binding="listSingleProfile">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="500"/>
+                    <preferred-size width="150" height="500"/>
+                    <maximum-size width="-1" height="500"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+            </children>
+          </grid>
         </children>
       </tabbedpane>
-      <component id="aeac6" class="javax.swing.JLabel" binding="lblAppName">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="lblAppName"/>
-        </properties>
-      </component>
-      <component id="d656e" class="javax.swing.JLabel" binding="lblMadeBy">
-        <constraints>
-          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="lblMadeBy"/>
-        </properties>
-      </component>
-      <hspacer id="4d7b3">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
     </children>
   </grid>
 </form>

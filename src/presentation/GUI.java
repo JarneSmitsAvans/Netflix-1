@@ -3,79 +3,61 @@ package presentation;
 import javax.swing.*;
 import java.awt.*;
 
-public class GUI {
-    // Tab Panes
-    private JTabbedPane tabMain;
-    private JTabbedPane tabCRUD;
-    // Labels
-    private JLabel lblMadeBy;
-    private JLabel lblAppName;
-    private JLabel lblOv6SeenMovie;
-    private JLabel lblOv1Serie;
-    private JLabel lblOv2Account;
-    private JLabel lblOv2Serie;
-    private JLabel lblOv3Account;
-    // Panels
+public class GUI implements Runnable {
+    // Class variables
+    private int width;
+    private int height;
+    // JFrame
+    private JFrame frame;
+    // JTabbedPanes
+    private JTabbedPane tabbedPane;
+    // JPanels
     private JPanel mainPanel;
-    private JPanel ov1;
-    private JPanel ov2;
-    private JPanel ov3;
-    private JPanel ov4;
-    private JPanel ov5;
-    private JPanel ov6;
-    private JPanel AccountCrudPanel;
-    private JPanel ProfileCrudPanel;
-    private JPanel ProgramCrudPanel;
-    // ComboBoxes
-    private JComboBox cbxOv3Account;
-    private JComboBox cbxOv1AveragceOnSerie;
-    private JComboBox cbxOv2Account;
-    private JComboBox cbxOv2Serie;
-    private JComboBox cbxOv6SeenMovie;
-    // Tables
-    private JTable tblOv5SingleProfile;
-    private JTable tblOv1;
-    private JTable tblOv2;
-    // Lists
-    private JList listOv6SeenMovies;
-    private JList listOv3;
-    private JList listOv4;
-    // Buttons
-    private JButton btnOv1Refresh;
-    private JButton btnOv2Refresh;
-    private JButton btnOv3Refresh;
-    private JButton btnOv5Refresh;
-    private JButton btnOv6Refresh;
+    //     Labels
+    private JLabel NetflixStatistixLogo;
+    private JLabel lblDesignerInfo;
+    private JLabel lblDesignerInfo2;
+    private JLabel lblDesignerInfo3;
+    private JPanel Home;
+    private JPanel tijdsduurAfleveringPerAccountSerie;
+    private JTextPane txtAvgWatchedSeries;
+    private JPanel tijdsduurSeriePerAfleveringPanel;
+    private JPanel bekekenFilmsDoorAccount;
+    private JPanel filmMetLangsteTijdsduurOnder16;
+    private JTextPane textPane1;
+    private JPanel accountsMet1Profiel;
+    private JList listSingleProfile;
 
     public GUI(int width, int height) {
-        // Setting text of labels
-        lblMadeBy.setText("Informatica 2018 | Klas 23IVK1 | Gemaakt door: Marc Verwijmeren, Kim van den Berg, Dylan ten Böhmer");
-        lblAppName.setText("Netflix Statistix");
-        lblOv2Serie.setText("Serie");
-        lblOv1Serie.setText("Serie");
-        lblOv2Account.setText("Account");
-        lblOv3Account.setText("Account");
-        lblOv6SeenMovie.setText("Movie");
-        // Setting text of buttons
-        String btnRefreshText = "Refresh";
-        btnOv1Refresh.setText(btnRefreshText);
-        btnOv2Refresh.setText(btnRefreshText);
-        btnOv3Refresh.setText(btnRefreshText);
-        btnOv5Refresh.setText(btnRefreshText);
-        btnOv6Refresh.setText(btnRefreshText);
-        // New JFrame
-        JFrame frame = new JFrame("Netflix Statistix");
-        // Set the content pane to the mainPanel
+        this.width = width;
+        this.height = height;
+    }
+
+    private void createComponents(Container container) {
+        String designInfo = "Informatica | 2018-2019 | 23IVK1 | Dylan ten Böhmer (2137867), Marc Verwijmeren (2139166) en Kim van den Berg (2137853)";
+        lblDesignerInfo.setText(designInfo);
+        lblDesignerInfo2.setText(designInfo);
+        lblDesignerInfo3.setText(designInfo);
+//        lblDesignerInfo4.setText(designInfo);
+//        lblSingleAccount.setText("Account");
+    }
+
+    @Override
+    public void run() {
+        frame = new JFrame("Netflix Statistix");
         frame.setContentPane(mainPanel);
-        // Set the preferred window size
+        ImageIcon icon = new ImageIcon(getClass().getResource("/presentation/images/Netflix.png"));
+        frame.setIconImage(icon.getImage());
         frame.setPreferredSize(new Dimension(width, height));
-        // Set the minimum size
-        frame.setMinimumSize(new Dimension(width, height));
-        // Make the frame appear in the center of the screen.
-        frame.setLocationRelativeTo(null);
-        // Set the default close operation
+        frame.setMinimumSize(new Dimension(700, 500));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Make the frame visible
+        createComponents(frame.getContentPane());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
