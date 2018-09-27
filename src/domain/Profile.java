@@ -5,12 +5,13 @@ import java.time.LocalDate;
 public class Profile {
     private String profileName;
     private LocalDate dateOfBirth;
-    private Profile profile;
+    private int accountNumber;
+    public int getAccountNumber() {
+        return accountNumber;
+    }
 
-    public Profile(String profileName, LocalDate dateOfBirth, Profile profile) {
-        this.profileName = profileName;
-        this.dateOfBirth = dateOfBirth;
-        this.profile = profile;
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public String getProfileName() {
@@ -25,15 +26,9 @@ public class Profile {
         return dateOfBirth;
     }
 
-    public void setDateOfBith(LocalDate dateOfBith) {
-        this.dateOfBirth = dateOfBith;
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public Profile getProfile() {
-        return profile;
-    }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
 }

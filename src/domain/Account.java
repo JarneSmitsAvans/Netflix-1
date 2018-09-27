@@ -39,6 +39,15 @@ public class Account {
     public void setProfiles(List<Profile> profiles) {
         this.profiles = profiles;
     }
+    @Override
+    public String toString() {
+        return "Account{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", residence='" + residence + '\'' +
+                ", profiles=" + profiles +
+                '}';
+    }
 }
 
 

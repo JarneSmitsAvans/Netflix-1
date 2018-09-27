@@ -1,10 +1,12 @@
 package datastorage;
 
 import domain.Account;
+import domain.Profile;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AccountDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -43,37 +45,31 @@ public class AccountDAO {
             return false;
         }
     }
-
-    public ArrayList<Account> singleProfile() throws SQLException, ClassNotFoundException {
-        // Returns an ArrayList filled with all accounts that only have one profile assigned to them.
-        Account account = new Account();
-        ArrayList<Account> arrayList = new ArrayList<Account>();
-        databaseConnection.OpenConnection();
-        ResultSet resultSet = databaseConnection.ExecuteSelectStatement("To DO: SQL Geef de accounts met slechts 1 profiel");
-        while (resultSet.next()) {
-            account.setName(resultSet.getString("name"));
-            account.setAddress(resultSet.getString("address"));
-            account.setResidence(resultSet.getString("residence"));
-            arrayList.add(account);
-        }
-        databaseConnection.CloseConnection();
-        return arrayList;
-    }
-
     public ArrayList<Account> getAccounts() throws SQLException, ClassNotFoundException {
         // Returns an ArrayList filled with all accounts in the database.
-        Account account = new Account();
-        ArrayList<Account> arrayList = new ArrayList<Account>();
+        ArrayList<Account> accountArrayList = new ArrayList<Account>();
         databaseConnection.OpenConnection();
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement("SELECT * FROM Account");
         while (resultSet.next()) {
+            Account account = new Account();
             account.setName(resultSet.getString("name"));
             account.setAddress(resultSet.getString("address"));
             account.setResidence(resultSet.getString("residence"));
-            arrayList.add(account);
+            accountArrayList.add(account);
         }
         databaseConnection.CloseConnection();
-        return arrayList;
+        return accountArrayList;
     }
-
+    public ArrayList<String> getSingleAccounts() throws SQLException, ClassNotFoundException
+    {
+        ArrayList<String> accountArrayList = new ArrayList<String>();
+        databaseConnection.OpenConnection();
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement("SELECT Account.name FROM ACCOUNT JOIN Profile ON Profile.fk_profile = Account.id GROUP BY Account.name HAVING COUNT(*) = 1");
+        while (resultSet.next()){
+            String account = (resultSet.getString("name"));
+            accountArrayList.add(account);
+        }
+        databaseConnection.CloseConnection();
+        return accountArrayList;
+    }
 }

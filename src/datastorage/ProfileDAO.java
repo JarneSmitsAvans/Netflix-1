@@ -1,10 +1,15 @@
 package datastorage;
 
 import application.ProfileManagerImpl;
+import domain.Account;
 import domain.Profile;
+import sun.plugin.perf.PluginRollup;
 
+import javax.xml.transform.Result;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ProfileDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -41,5 +46,21 @@ public class ProfileDAO {
         } else {
             return false;
         }
+    }
+    public ArrayList<Profile> getProfiles() throws SQLException, ClassNotFoundException
+    {
+        // Returns an ArrayList filled with all profiles in the database.
+        ArrayList<Profile> profileArrayList = new ArrayList<>();
+        databaseConnection.OpenConnection();
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement("SELECT * FROM Profile");
+        while (resultSet.next()) {
+            Profile profile = new Profile();
+            profile.setProfileName(resultSet.getString("profilename"));
+            profile.setDateOfBirth((resultSet.getDate("age")).toLocalDate());
+            profile.setAccountNumber(resultSet.getInt("fk_profile"));
+            profileArrayList.add(profile);
+        }
+        databaseConnection.CloseConnection();
+        return profileArrayList;
     }
 }
