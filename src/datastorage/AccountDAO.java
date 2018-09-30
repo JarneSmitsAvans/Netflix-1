@@ -1,12 +1,11 @@
 package datastorage;
 
 import domain.Account;
-import domain.Profile;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class AccountDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -24,7 +23,6 @@ public class AccountDAO {
     }
 
     public boolean update(int id, Account account) throws SQLException, ClassNotFoundException {
-        // Note: Account parameter here HAS to have
         databaseConnection.OpenConnection();
         boolean updated = databaseConnection.ExecuteUpdateStatement("UPDATE Account " +
                 "SET name = " + account.getName() + ",address = " + account.getAddress() + ",residence = " + account.getResidence() + "WHERE id = " + id);

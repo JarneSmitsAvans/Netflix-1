@@ -1,7 +1,11 @@
 package presentation;
 
+import application.AccountManagerImpl;
+
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class GUI implements Runnable {
     // Class variables
@@ -11,27 +15,31 @@ public class GUI implements Runnable {
     private JFrame frame;
     // JTabbedPanes
     private JTabbedPane tabbedPane;
-    // JPanels
-    private JPanel mainPanel;
-    //     Labels
+    //  Labels
     private JLabel NetflixStatistixLogo;
     private JLabel lblDesignerInfo;
     private JLabel lblDesignerInfo2;
     private JLabel lblDesignerInfo3;
+    // JPanels
     private JPanel Home;
+    private JPanel mainPanel;
     private JPanel tijdsduurAfleveringPerAccountSerie;
-    private JTextPane txtAvgWatchedSeries;
     private JPanel tijdsduurSeriePerAfleveringPanel;
     private JPanel bekekenFilmsDoorAccount;
     private JPanel filmMetLangsteTijdsduurOnder16;
-    private JTextPane textPane1;
-    private JPanel accountsMet1Profiel;
-    private JTextPane txtAccountsWithOneProfile;
     private JPanel aantalKijkersPerFilm;
+    private JPanel accountsMet1Profiel;
+    // JTextPanes
+    private JTextPane textPane1;
+    private JTextPane txtAccountsWithOneProfile;
+    private JTextPane txtAvgWatchedSeries;
+    // Managers
+    private AccountManagerImpl accountManager;
 
     public GUI(int width, int height) {
         this.width = width;
         this.height = height;
+        this.accountManager = new AccountManagerImpl();
     }
 
     private void createComponents(Container container) {
@@ -56,8 +64,24 @@ public class GUI implements Runnable {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        // Setting txtAccountsWithOneProfile read only.
+        txtAccountsWithOneProfile.setEditable(false);
+        initializeComponents();
     }
 
+    // initialize the value for components in the GUI
+    private void initializeComponents() {
+        try {
+            //Fill txtAccountsWithOneProfile with Accounts that have one and only one profile.
+            ArrayList<String> singleProfileAccounts = accountManager.singleProfile();
+            accountManager.addToTextPane(txtAccountsWithOneProfile, singleProfileAccounts);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }

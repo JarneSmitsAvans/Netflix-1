@@ -2,16 +2,12 @@ package application;
 
 import datastorage.AccountDAO;
 import domain.Account;
-import domain.Profile;
-import javafx.scene.control.ComboBox;
 
 import javax.swing.*;
-import java.sql.Array;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.StyledDocument;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class AccountManagerImpl {
     private AccountDAO accountDAO = new AccountDAO();
@@ -41,7 +37,7 @@ public class AccountManagerImpl {
         }
     }
     public ArrayList<String> singleProfile() throws SQLException, ClassNotFoundException {
-        // Filters an ArrayList filled with all accounts that only have one profile assigned to them.
+        // Returns an ArrayList filled with all accounts that only have one profile assigned to them.
         ArrayList<String> arrayList = accountDAO.getSingleAccounts();
         return arrayList;
     }
@@ -57,4 +53,16 @@ public class AccountManagerImpl {
             comboBox.addItem(account.getName());
         }
     }
+
+    public void addToTextPane(JTextPane textPane, ArrayList<String> arrayList) {
+        StyledDocument styledDocument = textPane.getStyledDocument();
+        for (String account : arrayList) {
+            try {
+                styledDocument.insertString(0, account + "\n", null);
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
