@@ -26,7 +26,8 @@ public class GUI implements Runnable {
     private JPanel filmMetLangsteTijdsduurOnder16;
     private JTextPane textPane1;
     private JPanel accountsMet1Profiel;
-    private JList listSingleProfile;
+    private JTextPane txtAccountsWithOneProfile;
+    private JPanel aantalKijkersPerFilm;
 
     public GUI(int width, int height) {
         this.width = width;
