@@ -253,7 +253,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="77c13" class="javax.swing.JLabel">
+              <component id="77c13" class="javax.swing.JLabel" binding="lblDesignerInfo4">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                 </constraints>
@@ -292,9 +292,9 @@
                   <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <component id="3e18a" class="javax.swing.JLabel">
+              <component id="3e18a" class="javax.swing.JLabel" binding="lblDesignerInfo5">
                 <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="2" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -351,9 +351,9 @@
                   <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <component id="57466" class="javax.swing.JLabel">
+              <component id="57466" class="javax.swing.JLabel" binding="lblDesignerInfo6">
                 <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="2" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -402,7 +402,7 @@
                 <properties>
                   <font size="20"/>
                   <foreground color="-1"/>
-                  <text value="Film          "/>
+                  <text value="Film         "/>
                 </properties>
               </component>
               <vspacer id="60d9f">
@@ -428,7 +428,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="2815c" class="javax.swing.JLabel">
+              <component id="2815c" class="javax.swing.JLabel" binding="lblDesignerInfo7">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                 </constraints>

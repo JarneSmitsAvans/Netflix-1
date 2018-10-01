@@ -13,13 +13,20 @@ public class GUI implements Runnable {
     private int height;
     // JFrame
     private JFrame frame;
+
     // JTabbedPanes
     private JTabbedPane tabbedPane;
+
     //  Labels
     private JLabel NetflixStatistixLogo;
     private JLabel lblDesignerInfo;
     private JLabel lblDesignerInfo2;
     private JLabel lblDesignerInfo3;
+    private JLabel lblDesignerInfo4;
+    private JLabel lblDesignerInfo5;
+    private JLabel lblDesignerInfo6;
+    private JLabel lblDesignerInfo7;
+
     // JPanels
     private JPanel Home;
     private JPanel mainPanel;
@@ -29,10 +36,12 @@ public class GUI implements Runnable {
     private JPanel filmMetLangsteTijdsduurOnder16;
     private JPanel aantalKijkersPerFilm;
     private JPanel accountsMet1Profiel;
+
     // JTextPanes
     private JTextPane textPane1;
     private JTextPane txtAccountsWithOneProfile;
     private JTextPane txtAvgWatchedSeries;
+
     // Managers
     private AccountManagerImpl accountManager;
 
@@ -47,6 +56,10 @@ public class GUI implements Runnable {
         lblDesignerInfo.setText(designInfo);
         lblDesignerInfo2.setText(designInfo);
         lblDesignerInfo3.setText(designInfo);
+        lblDesignerInfo4.setText(designInfo);
+        lblDesignerInfo5.setText(designInfo);
+        lblDesignerInfo6.setText(designInfo);
+        lblDesignerInfo7.setText(designInfo);
 //        lblDesignerInfo4.setText(designInfo);
 //        lblSingleAccount.setText("Account");
     }
