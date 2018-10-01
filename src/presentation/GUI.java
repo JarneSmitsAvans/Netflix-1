@@ -1,6 +1,7 @@
 package presentation;
 
 import application.AccountManagerImpl;
+import domain.Account;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,9 +16,11 @@ public class GUI implements Runnable {
     private JFrame frame;
 
     // JTabbedPanes
+
     private JTabbedPane tabbedPane;
 
     //  Labels
+
     private JLabel NetflixStatistixLogo;
     private JLabel lblDesignerInfo;
     private JLabel lblDesignerInfo2;
@@ -28,6 +31,7 @@ public class GUI implements Runnable {
     private JLabel lblDesignerInfo7;
 
     // JPanels
+
     private JPanel Home;
     private JPanel mainPanel;
     private JPanel tijdsduurAfleveringPerAccountSerie;
@@ -38,9 +42,19 @@ public class GUI implements Runnable {
     private JPanel accountsMet1Profiel;
 
     // JTextPanes
+
     private JTextPane textPane1;
     private JTextPane txtAccountsWithOneProfile;
     private JTextPane txtAvgWatchedSeries;
+
+    // JComboBoxes
+
+    private JComboBox cbWatchedByAccount;
+    private JComboBox cbAvgWatchedAccount;
+    private JComboBox cbAvgWatchedEpisode;
+    private JComboBox cbAvgOfWatchedSerie;
+    private JComboBox cbAvgOfWatchedEpisode;
+    private JComboBox cbAmountOfViewsOfMovie;
 
     // Managers
     private AccountManagerImpl accountManager;
@@ -89,6 +103,11 @@ public class GUI implements Runnable {
             //Fill txtAccountsWithOneProfile with Accounts that have one and only one profile.
             ArrayList<String> singleProfileAccounts = accountManager.singleProfile();
             accountManager.addToTextPane(txtAccountsWithOneProfile, singleProfileAccounts);
+
+            // Fill the following JComboBoxes with accounts.
+            ArrayList<Account> accountArrayList = accountManager.getAccounts();
+            accountManager.appendComboBox(cbWatchedByAccount, accountArrayList);
+            accountManager.appendComboBox(cbAvgWatchedAccount, accountArrayList);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

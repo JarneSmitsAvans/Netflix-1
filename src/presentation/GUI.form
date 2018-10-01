@@ -95,9 +95,28 @@
                   <text value="Aflevering"/>
                 </properties>
               </component>
-              <component id="da871" class="javax.swing.JComboBox" default-binding="true">
+              <component id="da871" class="javax.swing.JComboBox" binding="cbAvgOfWatchedEpisode">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                </properties>
+              </component>
+              <component id="1532e" class="javax.swing.JLabel" binding="lblDesignerInfo2">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="16"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="4"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+              <component id="5c79d" class="javax.swing.JComboBox" binding="cbAvgOfWatchedSerie">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -112,25 +131,6 @@
                   </grid>
                 </constraints>
                 <properties/>
-              </component>
-              <component id="1532e" class="javax.swing.JLabel" binding="lblDesignerInfo2">
-                <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <font size="16"/>
-                  <foreground color="-1"/>
-                  <horizontalAlignment value="4"/>
-                  <text value="Label"/>
-                </properties>
-              </component>
-              <component id="5c79d" class="javax.swing.JComboBox">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <font size="20"/>
-                </properties>
               </component>
             </children>
           </grid>
@@ -160,7 +160,7 @@
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <component id="925d9" class="javax.swing.JComboBox" default-binding="true">
+              <component id="925d9" class="javax.swing.JComboBox" binding="cbAvgWatchedAccount">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -178,7 +178,7 @@
                   <text value="Aflevering"/>
                 </properties>
               </component>
-              <component id="2fb47" class="javax.swing.JComboBox" default-binding="true">
+              <component id="2fb47" class="javax.swing.JComboBox" binding="cbAvgWatchedEpisode">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -235,7 +235,7 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <component id="a4ba7" class="javax.swing.JComboBox" default-binding="true">
+              <component id="a4ba7" class="javax.swing.JComboBox" binding="cbWatchedByAccount">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -410,7 +410,7 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <component id="d109a" class="javax.swing.JComboBox" default-binding="true">
+              <component id="d109a" class="javax.swing.JComboBox" binding="cbAmountOfViewsOfMovie">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
