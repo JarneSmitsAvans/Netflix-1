@@ -30,5 +30,12 @@ public class Profile {
         this.dateOfBirth = dateOfBirth;
     }
 
-
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "profileName='" + profileName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", accountNumber=" + accountNumber +
+                '}';
+    }
 }

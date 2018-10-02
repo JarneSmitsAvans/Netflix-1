@@ -4,7 +4,6 @@ import java.sql.*;
 
 public class DatabaseConnection
 {
-    private Statement statement = null;
     private Connection conn = null;
     private ResultSet rs = null;
     public boolean OpenConnection() throws ClassNotFoundException, SQLException {
@@ -26,6 +25,16 @@ public class DatabaseConnection
             return false;
         }
     }
+    public Connection getConnection() {
+        if(this.conn != null)
+        {
+            return this.conn;
+        }
+        else
+        {
+           return null;
+        }
+    }
     public boolean CloseConnection() throws SQLException {
         // Close any existing connections, return true if closed, else return false;
         conn.close();
@@ -40,14 +49,14 @@ public class DatabaseConnection
             return false;
         }
     }
-    public ResultSet ExecuteSelectStatement(String query) throws SQLException {
+    public ResultSet ExecuteSelectStatement(PreparedStatement preparedStatement) {
         try {
             // Empty any existing ResultSets.
             rs = null;
             // Create a new statement
-            statement = conn.createStatement();
+            //statement = conn.createStatement();
             // Execute the query
-            rs = statement.executeQuery(query);
+            rs = preparedStatement.executeQuery();
             // Return the ResultSet of the query.
             return rs;
         } catch (SQLException e) {
@@ -55,13 +64,12 @@ public class DatabaseConnection
             return rs = null;
         }
     }
-    public boolean ExecuteInsertStatement(String query) {
+    public boolean ExecuteInsertStatement(PreparedStatement preparedStatement) {
         try {
             // Create a new statement
-            statement = conn.createStatement();
+            //statement = conn.createStatement();
             // Execute the query
-            boolean inserted = statement.execute(query);
-
+            boolean inserted = preparedStatement.execute();
             // Return true if succeeded, false if failed.
             if (inserted) {
                 return true;
@@ -73,12 +81,9 @@ public class DatabaseConnection
             return false;
         }
     }
-    public boolean ExecuteDeleteStatement(String query) {
+    public boolean ExecuteDeleteStatement(PreparedStatement preparedStatement) {
         try {
-            // Create a new statement
-            statement = conn.createStatement();
-            // Execute the query
-            boolean deleted = statement.execute(query);
+            boolean deleted = preparedStatement.execute();
             // Return true if succeeded, false if failed.
             if (deleted) {
                 return true;
@@ -90,12 +95,10 @@ public class DatabaseConnection
             return false;
         }
     }
-    public boolean ExecuteUpdateStatement(String query) {
+    public boolean ExecuteUpdateStatement(PreparedStatement preparedStatement) {
         try {
-            // Create a new statement
-            statement = conn.createStatement();
             // Execute the query
-            boolean updated = statement.execute(query);
+            boolean updated = preparedStatement.execute();
             // Return true if succeeded, false if failed.
             if (updated) {
                 return true;

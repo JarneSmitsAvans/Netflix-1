@@ -6,6 +6,7 @@ import domain.Profile;
 import sun.plugin.perf.PluginRollup;
 
 import javax.xml.transform.Result;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -16,8 +17,11 @@ public class ProfileDAO {
 
     public boolean create(Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        boolean inserted = databaseConnection.ExecuteInsertStatement("INSERT INTO Profile " +
-                "VALUES (" + profile.getProfileName() + "," + ProfileManagerImpl.calculateAge(profile.getDateOfBirth(), LocalDate.now()));
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile VALUES (?, ?, ?)");
+        preparedStatement.setString(1, profile.getProfileName());
+        preparedStatement.setDate(2, new java.sql.Date(ProfileManagerImpl.calculateAge(profile.getDateOfBirth(), LocalDate.now())));
+        preparedStatement.setInt(3, profile.getAccountNumber());
+        boolean inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
         databaseConnection.CloseConnection();
         if (inserted) {
             return true;
@@ -28,8 +32,10 @@ public class ProfileDAO {
 
     public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        boolean updated = databaseConnection.ExecuteUpdateStatement("UPDATE Profile " +
-                "SET profileName = " + profile.getProfileName() + "WHERE id = " + id);
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profileName = ? + WHERE id = ?");
+        preparedStatement.setString(1, profile.getProfileName());
+        preparedStatement.setInt(2, id);
+        boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
         if (updated) {
             return true;
         } else {
@@ -39,7 +45,9 @@ public class ProfileDAO {
 
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        boolean deleted = databaseConnection.ExecuteDeleteStatement("DELETE FROM Profile WHERE id = " + id);
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Profile WHERE id = ?");
+        preparedStatement.setInt(1, id);
+        boolean deleted = databaseConnection.ExecuteDeleteStatement(preparedStatement);
         databaseConnection.CloseConnection();
         if (deleted) {
             return true;
@@ -52,7 +60,9 @@ public class ProfileDAO {
         // Returns an ArrayList filled with all profiles in the database.
         ArrayList<Profile> profileArrayList = new ArrayList<>();
         databaseConnection.OpenConnection();
-        ResultSet resultSet = databaseConnection.ExecuteSelectStatement("SELECT * FROM Profile");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from ?");
+        preparedStatement.setString(1, "Profile");
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
             Profile profile = new Profile();
             profile.setProfileName(resultSet.getString("profilename"));
