@@ -1,11 +1,8 @@
 package datastorage;
 
 import application.ProfileManagerImpl;
-import domain.Account;
 import domain.Profile;
-import sun.plugin.perf.PluginRollup;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +11,6 @@ import java.util.ArrayList;
 
 public class ProfileDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
-
     public boolean create(Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile VALUES (?, ?, ?)");
@@ -36,6 +32,7 @@ public class ProfileDAO {
         preparedStatement.setString(1, profile.getProfileName());
         preparedStatement.setInt(2, id);
         boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
+        databaseConnection.CloseConnection();
         if (updated) {
             return true;
         } else {
@@ -60,8 +57,7 @@ public class ProfileDAO {
         // Returns an ArrayList filled with all profiles in the database.
         ArrayList<Profile> profileArrayList = new ArrayList<>();
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from ?");
-        preparedStatement.setString(1, "Profile");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Profile");
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
             Profile profile = new Profile();

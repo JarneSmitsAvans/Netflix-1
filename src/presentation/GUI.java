@@ -4,13 +4,13 @@ import application.AccountManagerImpl;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.SQLException;
 
 public class GUI implements Runnable {
     // Class variables
     private int width;
     private int height;
     // JFrame
+
     private JFrame frame;
 
     // JTabbedPanes
@@ -41,34 +41,34 @@ public class GUI implements Runnable {
     // JTextPanes
 
     private JTextPane textPane1;
-
-    public JTextPane getTxtAccountsWithOneProfile() {
-        return txtAccountsWithOneProfile;
-    }
-
     private JTextPane txtAccountsWithOneProfile;
     private JTextPane txtAvgWatchedSeries;
+    // Setters
 
     // JComboBoxes
-
-    public JComboBox getCbWatchedByAccount() {
-        return cbWatchedByAccount;
-    }
-
-    private JComboBox cbWatchedByAccount;
-
-    public JComboBox getCbAvgWatchedAccount() {
-        return cbAvgWatchedAccount;
-    }
-
     private JComboBox cbAvgWatchedAccount;
     private JComboBox cbAvgWatchedEpisode;
     private JComboBox cbAvgOfWatchedSerie;
     private JComboBox cbAvgOfWatchedEpisode;
     private JComboBox cbAmountOfViewsOfMovie;
+    private JComboBox cbWatchedByAccount;
+
+    // Getters
+    public JComboBox getCbWatchedByAccount() {
+        return cbWatchedByAccount;
+    }
+
+    public JComboBox getCbAvgWatchedAccount() {
+        return cbAvgWatchedAccount;
+    }
+
+    public JTextPane getTxtAccountsWithOneProfile() {
+        return txtAccountsWithOneProfile;
+    }
 
     // Managers
     private AccountManagerImpl accountManager;
+
 
     public GUI(int width, int height) {
         this.width = width;
@@ -102,24 +102,22 @@ public class GUI implements Runnable {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
         // Setting txtAccountsWithOneProfile read only.
         txtAccountsWithOneProfile.setEditable(false);
         initializeComponents();
     }
 
-
     private void initializeComponents() {
         try {
-            // initialize the value for components in the GUI
+            /* Initialize the value for components in the GUI */
             accountManager.initializeAccountComponents(this);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
+
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }
 }
+
