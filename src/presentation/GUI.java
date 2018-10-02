@@ -1,12 +1,10 @@
 package presentation;
 
 import application.AccountManagerImpl;
-import domain.Account;
 
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class GUI implements Runnable {
     // Class variables
@@ -20,7 +18,6 @@ public class GUI implements Runnable {
     private JTabbedPane tabbedPane;
 
     //  Labels
-
     private JLabel NetflixStatistixLogo;
     private JLabel lblDesignerInfo;
     private JLabel lblDesignerInfo2;
@@ -44,12 +41,26 @@ public class GUI implements Runnable {
     // JTextPanes
 
     private JTextPane textPane1;
+
+    public JTextPane getTxtAccountsWithOneProfile() {
+        return txtAccountsWithOneProfile;
+    }
+
     private JTextPane txtAccountsWithOneProfile;
     private JTextPane txtAvgWatchedSeries;
 
     // JComboBoxes
 
+    public JComboBox getCbWatchedByAccount() {
+        return cbWatchedByAccount;
+    }
+
     private JComboBox cbWatchedByAccount;
+
+    public JComboBox getCbAvgWatchedAccount() {
+        return cbAvgWatchedAccount;
+    }
+
     private JComboBox cbAvgWatchedAccount;
     private JComboBox cbAvgWatchedEpisode;
     private JComboBox cbAvgOfWatchedSerie;
@@ -97,17 +108,11 @@ public class GUI implements Runnable {
         initializeComponents();
     }
 
-    // initialize the value for components in the GUI
+
     private void initializeComponents() {
         try {
-            //Fill txtAccountsWithOneProfile with Accounts that have one and only one profile.
-            ArrayList<String> singleProfileAccounts = accountManager.singleProfile();
-            accountManager.addToTextPane(txtAccountsWithOneProfile, singleProfileAccounts);
-
-            // Fill the following JComboBoxes with accounts.
-            ArrayList<Account> accountArrayList = accountManager.getAccounts();
-            accountManager.appendComboBox(cbWatchedByAccount, accountArrayList);
-            accountManager.appendComboBox(cbAvgWatchedAccount, accountArrayList);
+            // initialize the value for components in the GUI
+            accountManager.initializeAccountComponents(this);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

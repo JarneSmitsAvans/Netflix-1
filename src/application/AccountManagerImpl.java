@@ -2,6 +2,7 @@ package application;
 
 import datastorage.AccountDAO;
 import domain.Account;
+import presentation.GUI;
 
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
@@ -11,6 +12,17 @@ import java.util.ArrayList;
 
 public class AccountManagerImpl {
     private AccountDAO accountDAO = new AccountDAO();
+
+    public void initializeAccountComponents(GUI gui) throws SQLException, ClassNotFoundException {
+        //Fill txtAccountsWithOneProfile with Accounts that have one and only one profile.
+        ArrayList<String> singleProfileAccounts = this.singleProfile();
+        this.addToTextPane(gui.getTxtAccountsWithOneProfile(), singleProfileAccounts);
+
+        // Fill the following JComboBoxes with accounts.
+        ArrayList<Account> accountArrayList = this.getAccounts();
+        this.appendComboBox(gui.getCbAvgWatchedAccount(), accountArrayList);
+        this.appendComboBox(gui.getCbWatchedByAccount(), accountArrayList);
+    }
 
     public boolean create(Account account) throws SQLException, ClassNotFoundException {
         boolean created = accountDAO.create(account);
@@ -48,6 +60,7 @@ public class AccountManagerImpl {
     }
     public void appendComboBox(JComboBox comboBox, ArrayList<Account> arrayList)
     {
+        // For each Account in arraylist, get the account name and add it to the parameter combobox
         for (Account account : arrayList)
         {
             comboBox.addItem(account.getName());
