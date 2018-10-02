@@ -16,16 +16,18 @@ public class DatabaseConnection
         // If the connection was created, return true, else return false;
         if (conn != null  && conn.isValid(0))
         {
-            System.out.println("Connected to the database.");
+            System.out.println("DB : 1");
             return true;
         }
         else
         {
-            System.out.println("Could not connect to the database.");
+            System.out.println("DB : 0");
             return false;
         }
+
     }
     public Connection getConnection() {
+        // Get the open connection.
         if(this.conn != null)
         {
             return this.conn;
@@ -40,12 +42,12 @@ public class DatabaseConnection
         conn.close();
         if (conn.isClosed())
         {
-            System.out.println("Disconnected from the database.");
+            System.out.println("DB : 0");
             return true;
         }
         else
         {
-            System.out.println("Could not disconnect from the database.");
+            System.out.println("DB : 1");
             return false;
         }
     }
@@ -53,9 +55,7 @@ public class DatabaseConnection
         try {
             // Empty any existing ResultSets.
             rs = null;
-            // Create a new statement
-            //statement = conn.createStatement();
-            // Execute the query
+            /* Execute the prepared statement */
             rs = preparedStatement.executeQuery();
             // Return the ResultSet of the query.
             return rs;
@@ -66,9 +66,7 @@ public class DatabaseConnection
     }
     public boolean ExecuteInsertStatement(PreparedStatement preparedStatement) {
         try {
-            // Create a new statement
-            //statement = conn.createStatement();
-            // Execute the query
+            /* Execute the prepared statement */
             boolean inserted = preparedStatement.execute();
             // Return true if succeeded, false if failed.
             if (inserted) {
@@ -83,6 +81,7 @@ public class DatabaseConnection
     }
     public boolean ExecuteDeleteStatement(PreparedStatement preparedStatement) {
         try {
+            /* Execute the prepared statement */
             boolean deleted = preparedStatement.execute();
             // Return true if succeeded, false if failed.
             if (deleted) {
@@ -97,7 +96,7 @@ public class DatabaseConnection
     }
     public boolean ExecuteUpdateStatement(PreparedStatement preparedStatement) {
         try {
-            // Execute the query
+            /* Execute the prepared statement */
             boolean updated = preparedStatement.execute();
             // Return true if succeeded, false if failed.
             if (updated) {

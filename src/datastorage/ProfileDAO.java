@@ -13,7 +13,7 @@ public class ProfileDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
     public boolean create(Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile VALUES (?, ?, ?)");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile (profilename, age, fk_profile) VALUES (?, ?, ?)");
         preparedStatement.setString(1, profile.getProfileName());
         preparedStatement.setDate(2, new java.sql.Date(ProfileManagerImpl.calculateAge(profile.getDateOfBirth(), LocalDate.now())));
         preparedStatement.setInt(3, profile.getAccountNumber());
@@ -28,7 +28,7 @@ public class ProfileDAO {
 
     public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profileName = ? + WHERE id = ?");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profilename = ? WHERE id = ?");
         preparedStatement.setString(1, profile.getProfileName());
         preparedStatement.setInt(2, id);
         boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);

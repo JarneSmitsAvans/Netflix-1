@@ -2,23 +2,21 @@ package datastorage;
 
 import domain.Account;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 
 public class AccountDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public boolean create(Account account) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Account VALUES (?, ?, ?)");
-        boolean inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Account (name, address, residence) VALUES (?, ?, ?)");
         preparedStatement.setString(1, account.getName());
         preparedStatement.setString(2, account.getAddress());
         preparedStatement.setString(3, account.getResidence());
+        boolean inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
         databaseConnection.CloseConnection();
         if (inserted) {
             return true;
@@ -76,7 +74,7 @@ public class AccountDAO {
     {
         ArrayList<String> accountArrayList = new ArrayList<String>();
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Account.name FROM ACCOUNT JOIN Profile ON Profile.fk_profile = Account.id GROUP BY Account.name HAVING COUNT(*) = 1");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Account.name FROM Account JOIN Profile ON Profile.fk_profile = Account.id GROUP BY Account.name HAVING COUNT(*) = 1");
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()){
             String account = (resultSet.getString("name"));
