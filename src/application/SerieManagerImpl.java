@@ -1,19 +1,18 @@
 package application;
 
-import datastorage.MediaDAO;
-import domain.Account;
+import datastorage.SerieDAO;
 import domain.Serie;
 
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MediaManagerImpl {
-    private MediaDAO mediaDAO = new MediaDAO();
+public class SerieManagerImpl {
+    private SerieDAO serieDAO = new SerieDAO();
 
     public ArrayList<Serie> getSerie() throws SQLException, ClassNotFoundException {
         // Returns an ArrayList filled with all series in the database.
-        ArrayList<Serie> serieList = mediaDAO.getSeries();
+        ArrayList<Serie> serieList = serieDAO.getSeries();
         return serieList;
     }
 

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MediaDAO {
+public class SerieDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public ArrayList<Serie> getSeries() throws SQLException, ClassNotFoundException {
