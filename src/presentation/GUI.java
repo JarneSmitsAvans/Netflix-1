@@ -26,6 +26,7 @@ public class GUI implements Runnable {
     private JLabel lblDesignerInfo5;
     private JLabel lblDesignerInfo6;
     private JLabel lblDesignerInfo7;
+    private JLabel lblDesignerInfo8;
 
     // JPanels
 
@@ -52,6 +53,35 @@ public class GUI implements Runnable {
     private JComboBox cbAvgOfWatchedEpisode;
     private JComboBox cbAmountOfViewsOfMovie;
     private JComboBox cbWatchedByAccount;
+    private JPanel netflixBeheer;
+    private JTabbedPane crudPane;
+    private JTabbedPane crudAccountsAndProfiles;
+    private JPanel addAccount;
+    private JPanel accountsAndProfilesPane;
+    private JPanel seriesAndEpisodesPane;
+    private JTabbedPane crudSeriesAndEpisodes;
+    private JPanel moviesPane;
+    private JTabbedPane crudMovie;
+    private JTextField txtAccountName;
+    private JTextField txtAccountAddress;
+    private JTextField txtAccountResidence;
+    private JButton btnAddAccount;
+    private JPanel addSeries;
+    private JPanel addMovie;
+    private JComboBox comboBox1;
+    private JPanel editAccount;
+    private JPanel editSeries;
+    private JPanel editMovie;
+    private JPanel deleteAccount;
+    private JButton verwijderButton;
+    private JPanel deleteSeries;
+    private JPanel deleteMovie;
+    private JPanel addProfileToAccount;
+    private JPanel addEpisodeToSeries;
+    private JPanel editProfile;
+    private JPanel editEpisode;
+    private JPanel deleteProfile;
+    private JPanel deleteEpisode;
 
     // Getters
     public JComboBox getCbWatchedByAccount() {
@@ -85,8 +115,7 @@ public class GUI implements Runnable {
         lblDesignerInfo5.setText(designInfo);
         lblDesignerInfo6.setText(designInfo);
         lblDesignerInfo7.setText(designInfo);
-//        lblDesignerInfo4.setText(designInfo);
-//        lblSingleAccount.setText("Account");
+        lblDesignerInfo8.setText(designInfo);
     }
 
     @Override

@@ -25,6 +25,1498 @@
           <color color="-63982"/>
         </border>
         <children>
+          <grid id="34e2e" binding="netflixBeheer" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="50" left="100" bottom="0" right="100"/>
+            <constraints>
+              <tabbedpane title="&lt;html&gt;&lt;br&gt;Netflix Beheer&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+            </constraints>
+            <properties>
+              <background color="-16777216"/>
+              <foreground color="-1"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <vspacer id="718c6">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <tabbedpane id="e88c3" binding="crudPane">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="200" height="200"/>
+                  </grid>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="fecdb" binding="accountsAndProfilesPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="50" left="50" bottom="50" right="50"/>
+                    <constraints>
+                      <tabbedpane title="&lt;html&gt;&lt;br&gt;Accounts &amp; profielen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <tabbedpane id="46047" binding="crudAccountsAndProfiles">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="200" height="200"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <tabPlacement value="4"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <grid id="c81fc" binding="addAccount" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Account toevoegen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="ac924" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Accountnaam"/>
+                                </properties>
+                              </component>
+                              <vspacer id="4ab3a">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="4f70a" class="javax.swing.JTextField" binding="txtAccountName">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="1e699" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Adres"/>
+                                </properties>
+                              </component>
+                              <component id="b4f6c" class="javax.swing.JTextField" binding="txtAccountAddress">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties/>
+                              </component>
+                              <component id="6f12a" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Woonplaats"/>
+                                </properties>
+                              </component>
+                              <component id="eb5be" class="javax.swing.JTextField" binding="txtAccountResidence">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="3491c" class="javax.swing.JButton" binding="btnAddAccount">
+                                <constraints>
+                                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Toevoegen"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="9c3b4" binding="editAccount" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Account bewerken&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="56cf4" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Accountnaam"/>
+                                </properties>
+                              </component>
+                              <vspacer id="a869d">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="cacb0" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="2781c" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Woonplaats"/>
+                                </properties>
+                              </component>
+                              <component id="355ce" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties/>
+                              </component>
+                              <component id="e6651" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Bewerk"/>
+                                </properties>
+                              </component>
+                              <component id="cd811" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="9628c" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Adres"/>
+                                </properties>
+                              </component>
+                              <component id="70bb9" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="6be31" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies account"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="efa5c" binding="deleteAccount" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Account verwijderen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <vspacer id="d51ca">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="96d5b" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies account"/>
+                                </properties>
+                              </component>
+                              <component id="f6f85" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="b0c52" class="javax.swing.JButton" binding="verwijderButton" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                    <minimum-size width="100" height="-1"/>
+                                    <preferred-size width="100" height="-1"/>
+                                    <maximum-size width="100" height="-1"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <text value="Verwijder"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="f7bcf" binding="addProfileToAccount" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Profiel toevoegen &lt;br&gt; aan account&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="6b760" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Profielnaam"/>
+                                </properties>
+                              </component>
+                              <vspacer id="e66e8">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="f1c49" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="221e6" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Toevoegen"/>
+                                </properties>
+                              </component>
+                              <component id="4f929" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="a1666" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Geboortedatum"/>
+                                </properties>
+                              </component>
+                              <component id="2529f" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="fa40a" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies account"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="70954" binding="editProfile" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Profiel bewerken&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="e7b50" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Profielnaam"/>
+                                </properties>
+                              </component>
+                              <vspacer id="454c4">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="30f9a" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="c9784" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Bewerk"/>
+                                </properties>
+                              </component>
+                              <component id="9a964" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="6f75d" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Geboortedatum"/>
+                                </properties>
+                              </component>
+                              <component id="f22" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="70125" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies profiel"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="4355c" binding="deleteProfile" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Profiel verwijderen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <vspacer id="559a7">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="b6a57" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies account"/>
+                                </properties>
+                              </component>
+                              <component id="f8116" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="51c" class="javax.swing.JButton" default-binding="true">
+                                <constraints>
+                                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                    <minimum-size width="100" height="-1"/>
+                                    <preferred-size width="100" height="-1"/>
+                                    <maximum-size width="100" height="-1"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <text value="Verwijder"/>
+                                </properties>
+                              </component>
+                              <component id="4b8f0" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="44a03" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies profiel"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </tabbedpane>
+                    </children>
+                  </grid>
+                  <grid id="34ae2" binding="seriesAndEpisodesPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="50" left="50" bottom="50" right="50"/>
+                    <constraints>
+                      <tabbedpane title="Series &amp; afleveringen"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <tabbedpane id="11b6a" binding="crudSeriesAndEpisodes">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="200" height="200"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <tabPlacement value="4"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <grid id="b7cc3" binding="addSeries" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Serie toevoegen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="577ed" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value=" Titel"/>
+                                </properties>
+                              </component>
+                              <vspacer id="6391b">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="ae37d" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="7271f" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Genre"/>
+                                </properties>
+                              </component>
+                              <component id="e80d0" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties/>
+                              </component>
+                              <component id="674de" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Taal"/>
+                                </properties>
+                              </component>
+                              <component id="97d9c" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="31516" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Toevoegen"/>
+                                </properties>
+                              </component>
+                              <component id="fe782" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="599f7" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Leeftijd"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="93994" binding="editSeries" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Serie bewerken&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="cb4a0" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value=" Titel"/>
+                                </properties>
+                              </component>
+                              <vspacer id="386eb">
+                                <constraints>
+                                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="c895e" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="68219" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Genre"/>
+                                </properties>
+                              </component>
+                              <component id="b5942" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties/>
+                              </component>
+                              <component id="9cfa4" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Taal"/>
+                                </properties>
+                              </component>
+                              <component id="ba58" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="942d1" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Bewerk"/>
+                                </properties>
+                              </component>
+                              <component id="a51c5" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="7a832" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Leeftijd"/>
+                                </properties>
+                              </component>
+                              <component id="8413d" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="468df" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies serie"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="b2144" binding="deleteSeries" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Serie verwijderen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <vspacer id="eeb99">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="260eb" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies serie"/>
+                                </properties>
+                              </component>
+                              <component id="ec2d5" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="8067e" class="javax.swing.JButton" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                    <minimum-size width="100" height="-1"/>
+                                    <preferred-size width="100" height="-1"/>
+                                    <maximum-size width="100" height="-1"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <text value="Verwijder"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="87ef2" binding="addEpisodeToSeries" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Aflevering toevoegen &lt;br&gt; aan serie&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="1d718" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Titel"/>
+                                </properties>
+                              </component>
+                              <vspacer id="b9af8">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="3f156" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="73ccc" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Toevoegen"/>
+                                </properties>
+                              </component>
+                              <component id="a89f1" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="9a115" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Tijdsduur (min)"/>
+                                </properties>
+                              </component>
+                              <component id="abfe3" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="c9271" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies serie"/>
+                                </properties>
+                              </component>
+                              <component id="18479" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="977af" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Volgnummer"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="18d30" binding="editEpisode" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Aflevering bewerken&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="1fdc0" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Titel"/>
+                                </properties>
+                              </component>
+                              <vspacer id="d8812">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="45d14" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="8458f" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Bewerk"/>
+                                </properties>
+                              </component>
+                              <component id="cf395" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="6a18f" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Tijdsduur (min)"/>
+                                </properties>
+                              </component>
+                              <component id="2c6fb" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="b406f" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies aflevering"/>
+                                </properties>
+                              </component>
+                              <component id="ec0bb" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="47101" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Volgnummer"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="602c5" binding="deleteEpisode" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Aflevering verwijderen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <vspacer id="83439">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="1edd0" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies serie"/>
+                                </properties>
+                              </component>
+                              <component id="52233" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="b9d82" class="javax.swing.JButton" default-binding="true">
+                                <constraints>
+                                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                    <minimum-size width="100" height="-1"/>
+                                    <preferred-size width="100" height="-1"/>
+                                    <maximum-size width="100" height="-1"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <text value="Verwijder"/>
+                                </properties>
+                              </component>
+                              <component id="bbf72" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="1d5b1" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies aflevering"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </tabbedpane>
+                    </children>
+                  </grid>
+                  <grid id="b64ac" binding="moviesPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="50" left="50" bottom="50" right="50"/>
+                    <constraints>
+                      <tabbedpane title="Films"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <tabbedpane id="8defa" binding="crudMovie">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="200" height="200"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <tabPlacement value="4"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <grid id="2f8e4" binding="addMovie" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Film toevoegen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="a1cbf" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value=" Titel"/>
+                                </properties>
+                              </component>
+                              <vspacer id="2c8ac">
+                                <constraints>
+                                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="9cbfe" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="c0c5" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Genre"/>
+                                </properties>
+                              </component>
+                              <component id="674d" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties/>
+                              </component>
+                              <component id="6065b" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Taal"/>
+                                </properties>
+                              </component>
+                              <component id="b5ca0" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="ccd3d" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Toevoegen"/>
+                                </properties>
+                              </component>
+                              <component id="ecf7a" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="e5328" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Leeftijd"/>
+                                </properties>
+                              </component>
+                              <component id="265b4" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="26394" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Tijdsduur (min)"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="ad212" binding="editMovie" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Film bewerken&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="36f4b" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value=" Titel"/>
+                                </properties>
+                              </component>
+                              <vspacer id="af57">
+                                <constraints>
+                                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="4f857" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="9ce20" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Genre"/>
+                                </properties>
+                              </component>
+                              <component id="f4e5a" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties/>
+                              </component>
+                              <component id="36fb7" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Taal"/>
+                                </properties>
+                              </component>
+                              <component id="dbe3f" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="5e30a" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Bewerk"/>
+                                </properties>
+                              </component>
+                              <component id="8d97c" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="a6731" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Leeftijd"/>
+                                </properties>
+                              </component>
+                              <component id="633b2" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="cb0d4" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies film"/>
+                                </properties>
+                              </component>
+                              <component id="af24" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="52a6c" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Tijdsduur (min)"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="c1b65" binding="deleteMovie" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="20" left="20" bottom="20" right="20"/>
+                            <constraints>
+                              <tabbedpane title="&lt;html&gt;&lt;br&gt;Film verwijderen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+                            </constraints>
+                            <properties>
+                              <font size="16"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <vspacer id="8bc23">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </vspacer>
+                              <component id="3b425" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies film"/>
+                                </properties>
+                              </component>
+                              <component id="f90c8" class="javax.swing.JComboBox" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="8ba16" class="javax.swing.JButton" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                    <minimum-size width="100" height="-1"/>
+                                    <preferred-size width="100" height="-1"/>
+                                    <maximum-size width="100" height="-1"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <text value="Verwijder"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </tabbedpane>
+                    </children>
+                  </grid>
+                </children>
+              </tabbedpane>
+              <component id="a2af2" class="javax.swing.JLabel" binding="lblDesignerInfo8">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="2" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="16"/>
+                  <foreground color="-1"/>
+                  <horizontalAlignment value="4"/>
+                  <text value="Label"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
           <grid id="d59a" binding="Home" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Netflix Statistix&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
