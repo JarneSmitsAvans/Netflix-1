@@ -1,21 +1,29 @@
 package presentation;
 
 import application.AccountManagerImpl;
+import domain.Account;
+import domain.AccountCreateListener;
+import domain.AccountDeleteListener;
+import domain.AccountUpdateListener;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class GUI implements Runnable {
     // Class variables
+
     private int width;
     private int height;
     // JFrame
-
     private JFrame frame;
 
     // JTabbedPanes
 
     private JTabbedPane tabbedPane;
+    private JTabbedPane crudPane;
+    private JTabbedPane crudAccountsAndProfiles;
+    private JTabbedPane crudSeriesAndEpisodes;
+    private JTabbedPane crudMovie;
 
     //  Labels
     private JLabel NetflixStatistixLogo;
@@ -38,42 +46,11 @@ public class GUI implements Runnable {
     private JPanel filmMetLangsteTijdsduurOnder16;
     private JPanel aantalKijkersPerFilm;
     private JPanel accountsMet1Profiel;
-
-    // JTextPanes
-
-    private JTextPane textPane1;
-    private JTextPane txtAccountsWithOneProfile;
-    private JTextPane txtAvgWatchedSeries;
-    // Setters
-
-    // JComboBoxes
-    private JComboBox cbAvgWatchedAccount;
-    private JComboBox cbAvgWatchedEpisode;
-    private JComboBox cbAvgOfWatchedSerie;
-    private JComboBox cbAvgOfWatchedEpisode;
-    private JComboBox cbAmountOfViewsOfMovie;
-    private JComboBox cbWatchedByAccount;
-    private JPanel netflixBeheer;
-    private JTabbedPane crudPane;
-    private JTabbedPane crudAccountsAndProfiles;
-    private JPanel addAccount;
-    private JPanel accountsAndProfilesPane;
-    private JPanel seriesAndEpisodesPane;
-    private JTabbedPane crudSeriesAndEpisodes;
     private JPanel moviesPane;
-    private JTabbedPane crudMovie;
-    private JTextField txtAccountName;
-    private JTextField txtAccountAddress;
-    private JTextField txtAccountResidence;
-    private JButton btnAddAccount;
-    private JPanel addSeries;
-    private JPanel addMovie;
-    private JComboBox comboBox1;
     private JPanel editAccount;
     private JPanel editSeries;
     private JPanel editMovie;
     private JPanel deleteAccount;
-    private JButton verwijderButton;
     private JPanel deleteSeries;
     private JPanel deleteMovie;
     private JPanel addProfileToAccount;
@@ -82,18 +59,73 @@ public class GUI implements Runnable {
     private JPanel editEpisode;
     private JPanel deleteProfile;
     private JPanel deleteEpisode;
+    private JPanel addSeries;
+    private JPanel addMovie;
+    private JPanel netflixBeheer;
+    private JPanel addAccount;
+    private JPanel accountsAndProfilesPane;
+    private JPanel seriesAndEpisodesPane;
+    // JTextPanes
+
+    private JTextPane textPane1;
+    private JTextPane txtAccountsWithOneProfile;
+    private JTextPane txtAvgWatchedSeries;
+    // Setters
+
+    // JComboBoxes
+
+    private JComboBox cbAvgWatchedAccount;
+    private JComboBox cbAvgWatchedEpisode;
+    private JComboBox cbAvgOfWatchedSerie;
+    private JComboBox cbAvgOfWatchedEpisode;
+    private JComboBox cbAmountOfViewsOfMovie;
+    private JComboBox cbWatchedByAccount;
+    private JComboBox cbUpdateSelectedAccount;
+    private JComboBox cbDeleteSelectedAccount;
+    private JComboBox cbAddProfileToSelectedAccount;
+    private JComboBox cbUpdateSelectedProfile;
+    private JComboBox cbDeleteProfileFromSelectedAccount;
+    private JComboBox cbDeleteProfile;
+
+
+    // JTextFields
+
+    private JTextField txtAccountName;
+    private JTextField txtAccountAddress;
+    private JTextField txtAccountResidence;
+    private JTextField txtUpdateAccountName;
+    private JTextField txtUpdateAccountAdres;
+    private JTextField txtUpdateAccountResidence;
+    private JTextField txtProfileName;
+    private JTextField txtProfileDate;
+    private JTextField txtUpdateProfileName;
+
+    // JButtons
+    private JButton btnAddAccount;
+    private JButton btnDeleteAccount;
+    private JButton btnUpdateAccount;
 
     // Getters
     public JComboBox getCbWatchedByAccount() {
         return cbWatchedByAccount;
     }
-
     public JComboBox getCbAvgWatchedAccount() {
         return cbAvgWatchedAccount;
     }
-
     public JTextPane getTxtAccountsWithOneProfile() {
         return txtAccountsWithOneProfile;
+    }
+
+    public JTextField getTxtAccountName() {
+        return txtAccountName;
+    }
+
+    public JTextField getTxtAccountAddress() {
+        return txtAccountAddress;
+    }
+
+    public JTextField getTxtAccountResidence() {
+        return txtAccountResidence;
     }
 
     // Managers
@@ -105,19 +137,6 @@ public class GUI implements Runnable {
         this.height = height;
         this.accountManager = new AccountManagerImpl();
     }
-
-    private void createComponents(Container container) {
-        String designInfo = "Informatica | 2018-2019 | 23IVK1 | Dylan ten Böhmer (2137867), Marc Verwijmeren (2139166) en Kim van den Berg (2137853)";
-        lblDesignerInfo.setText(designInfo);
-        lblDesignerInfo2.setText(designInfo);
-        lblDesignerInfo3.setText(designInfo);
-        lblDesignerInfo4.setText(designInfo);
-        lblDesignerInfo5.setText(designInfo);
-        lblDesignerInfo6.setText(designInfo);
-        lblDesignerInfo7.setText(designInfo);
-        lblDesignerInfo8.setText(designInfo);
-    }
-
     @Override
     public void run() {
         frame = new JFrame("Netflix Statistix");
@@ -136,6 +155,23 @@ public class GUI implements Runnable {
         initializeComponents();
     }
 
+    private void createComponents(Container container) {
+        String designInfo = "Informatica | 2018-2019 | 23IVK1 | Dylan ten Böhmer (2137867), Marc Verwijmeren (2139166) en Kim van den Berg (2137853)";
+        lblDesignerInfo.setText(designInfo);
+        lblDesignerInfo2.setText(designInfo);
+        lblDesignerInfo3.setText(designInfo);
+        lblDesignerInfo4.setText(designInfo);
+        lblDesignerInfo5.setText(designInfo);
+        lblDesignerInfo6.setText(designInfo);
+        lblDesignerInfo7.setText(designInfo);
+        lblDesignerInfo8.setText(designInfo);
+
+        btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
+        btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
+        btnUpdateAccount.addActionListener(new AccountUpdateListener(this));
+    }
+
+
     private void initializeComponents() {
         try {
             /* Initialize the value for components in the GUI */
@@ -144,6 +180,7 @@ public class GUI implements Runnable {
             System.out.println(e);
         }
     }
+
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
