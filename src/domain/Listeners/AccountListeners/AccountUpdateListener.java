@@ -25,12 +25,12 @@ public class AccountUpdateListener implements ActionListener {
         try {
             if (!accountManager.empty(this.ui.getTxtUpdateAccountName().getText()) &&
                     !accountManager.empty(this.ui.getTxtUpdateAccountAdres().getText()) &&
-                    !accountManager.empty(this.ui.getTxtUpdateAccountAdres().getText()) && this.ui.getCbUpdateSelectedAccount().getSelectedItem() != null) {
+                    !accountManager.empty(this.ui.getTxtUpdateAccountResidence().getText()) && this.ui.getCbUpdateSelectedAccount().getSelectedItem() != null) {
                 String strSelectedAccount = this.ui.getCbUpdateSelectedAccount().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
                 account.setName(this.ui.getTxtUpdateAccountName().getText());
                 account.setAddress(this.ui.getTxtUpdateAccountAdres().getText());
-                account.setResidence(this.ui.getTxtUpdateAccountAdres().getText());
+                account.setResidence(this.ui.getTxtUpdateAccountResidence().getText());
                 boolean updated = accountManager.update(this.account.getId(), account);
                 if(updated)
                 {

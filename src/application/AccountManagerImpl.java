@@ -5,8 +5,6 @@ import domain.Account;
 import presentation.GUI;
 
 import javax.swing.*;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.StyledDocument;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -66,17 +64,6 @@ public class AccountManagerImpl extends GeneralManager{
         for (Account account : arrayList)
         {
             comboBox.addItem(account.getName());
-        }
-    }
-
-    public void addToTextPane(JTextPane textPane, ArrayList<String> arrayList) {
-        StyledDocument styledDocument = textPane.getStyledDocument();
-        for (String account : arrayList) {
-            try {
-                styledDocument.insertString(0, account + "\n", null);
-            } catch (BadLocationException e) {
-                e.printStackTrace();
-            }
         }
     }
     public Account getAccountByName(String name) throws SQLException, ClassNotFoundException {
