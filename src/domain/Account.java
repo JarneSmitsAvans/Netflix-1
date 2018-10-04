@@ -8,6 +8,16 @@ public class Account {
     private String residence;
     private List<Profile> profiles;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+
     public String getName() {
         return name;
     }
@@ -39,6 +49,7 @@ public class Account {
     public void setProfiles(List<Profile> profiles) {
         this.profiles = profiles;
     }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -46,6 +57,7 @@ public class Account {
                 ", address='" + address + '\'' +
                 ", residence='" + residence + '\'' +
                 ", profiles=" + profiles +
+                ", id=" + id +
                 '}';
     }
 }

@@ -1,17 +1,17 @@
 package presentation;
 
 import application.AccountManagerImpl;
-import domain.Account;
-import domain.AccountCreateListener;
-import domain.AccountDeleteListener;
-import domain.AccountUpdateListener;
+import domain.*;
+import domain.Listeners.AccountListeners.AccountCreateListener;
+import domain.Listeners.AccountListeners.AccountDeleteListener;
+import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
+import domain.Listeners.AccountListeners.AccountUpdateListener;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class GUI implements Runnable {
     // Class variables
-
     private int width;
     private int height;
     // JFrame
@@ -70,7 +70,6 @@ public class GUI implements Runnable {
     private JTextPane textPane1;
     private JTextPane txtAccountsWithOneProfile;
     private JTextPane txtAvgWatchedSeries;
-    // Setters
 
     // JComboBoxes
 
@@ -80,19 +79,24 @@ public class GUI implements Runnable {
     private JComboBox cbAvgOfWatchedEpisode;
     private JComboBox cbAmountOfViewsOfMovie;
     private JComboBox cbWatchedByAccount;
+
+
     private JComboBox cbUpdateSelectedAccount;
     private JComboBox cbDeleteSelectedAccount;
     private JComboBox cbAddProfileToSelectedAccount;
+
     private JComboBox cbUpdateSelectedProfile;
     private JComboBox cbDeleteProfileFromSelectedAccount;
     private JComboBox cbDeleteProfile;
-
 
     // JTextFields
 
     private JTextField txtAccountName;
     private JTextField txtAccountAddress;
     private JTextField txtAccountResidence;
+
+
+
     private JTextField txtUpdateAccountName;
     private JTextField txtUpdateAccountAdres;
     private JTextField txtUpdateAccountResidence;
@@ -115,22 +119,39 @@ public class GUI implements Runnable {
     public JTextPane getTxtAccountsWithOneProfile() {
         return txtAccountsWithOneProfile;
     }
-
     public JTextField getTxtAccountName() {
         return txtAccountName;
     }
-
     public JTextField getTxtAccountAddress() {
         return txtAccountAddress;
     }
-
     public JTextField getTxtAccountResidence() {
         return txtAccountResidence;
+    }
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+    public JComboBox getCbDeleteSelectedAccount() {
+        return cbDeleteSelectedAccount;
+    }
+    public JTextField getTxtUpdateAccountName() {
+        return txtUpdateAccountName;
+    }
+    public JTextField getTxtUpdateAccountAdres() {
+        return txtUpdateAccountAdres;
+    }
+    public JTextField getTxtUpdateAccountResidence() {
+        return txtUpdateAccountResidence;
+    }
+    public JComboBox getCbUpdateSelectedProfile() {
+        return cbUpdateSelectedProfile;
+    }
+    public JComboBox getCbUpdateSelectedAccount() {
+        return cbUpdateSelectedAccount;
     }
 
     // Managers
     private AccountManagerImpl accountManager;
-
 
     public GUI(int width, int height) {
         this.width = width;
@@ -152,7 +173,7 @@ public class GUI implements Runnable {
         frame.setVisible(true);
         // Setting txtAccountsWithOneProfile read only.
         txtAccountsWithOneProfile.setEditable(false);
-        initializeComponents();
+
     }
 
     private void createComponents(Container container) {
@@ -165,12 +186,17 @@ public class GUI implements Runnable {
         lblDesignerInfo6.setText(designInfo);
         lblDesignerInfo7.setText(designInfo);
         lblDesignerInfo8.setText(designInfo);
-
         btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
         btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
         btnUpdateAccount.addActionListener(new AccountUpdateListener(this));
+        initializeComponents();
+        cbUpdateSelectedAccount.setSelectedItem(null);
+        cbUpdateSelectedProfile.setSelectedItem(null);
+        cbDeleteSelectedAccount.setSelectedItem(null);
+        cbDeleteProfile.setSelectedItem(null);
+        cbDeleteProfileFromSelectedAccount.setSelectedItem(null);
+        cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
     }
-
 
     private void initializeComponents() {
         try {

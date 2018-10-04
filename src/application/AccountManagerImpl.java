@@ -10,7 +10,7 @@ import javax.swing.text.StyledDocument;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AccountManagerImpl {
+public class AccountManagerImpl extends GeneralManager{
     private AccountDAO accountDAO = new AccountDAO();
 
     public void initializeAccountComponents(GUI gui) throws SQLException, ClassNotFoundException {
@@ -22,11 +22,13 @@ public class AccountManagerImpl {
         ArrayList<Account> accountArrayList = this.getAccounts();
         this.appendComboBox(gui.getCbAvgWatchedAccount(), accountArrayList);
         this.appendComboBox(gui.getCbWatchedByAccount(), accountArrayList);
+        this.appendComboBox(gui.getCbDeleteSelectedAccount(), accountArrayList);
+        this.appendComboBox(gui.getCbUpdateSelectedAccount(), accountArrayList );
     }
 
     public boolean create(Account account) throws SQLException, ClassNotFoundException {
         boolean created = accountDAO.create(account);
-        if (created) {
+        if (created = true) {
             return true;
         } else {
             return false;
@@ -34,7 +36,7 @@ public class AccountManagerImpl {
     }
     public boolean update(int id, Account account) throws SQLException, ClassNotFoundException {
         boolean updated = accountDAO.update(id, account);
-        if (updated) {
+        if (updated = true) {
             return true;
         } else {
             return false;
@@ -42,7 +44,7 @@ public class AccountManagerImpl {
     }
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         boolean deleted = accountDAO.delete(id);
-        if (deleted) {
+        if (deleted = true) {
             return true;
         } else {
             return false;
@@ -77,5 +79,8 @@ public class AccountManagerImpl {
             }
         }
     }
-
+    public Account getAccountByName(String name) throws SQLException, ClassNotFoundException {
+        Account account = accountDAO.getAccountId(name);
+        return  account;
+    }
 }

@@ -16,15 +16,12 @@ public class DatabaseConnection
         // If the connection was created, return true, else return false;
         if (conn != null  && conn.isValid(0))
         {
-            System.out.println("DB : 1");
             return true;
         }
         else
         {
-            System.out.println("DB : 0");
             return false;
         }
-
     }
     public Connection getConnection() {
         // Get the open connection.
@@ -42,12 +39,10 @@ public class DatabaseConnection
         conn.close();
         if (conn.isClosed())
         {
-            System.out.println("DB : 0");
             return true;
         }
         else
         {
-            System.out.println("DB : 1");
             return false;
         }
     }
@@ -69,7 +64,7 @@ public class DatabaseConnection
             /* Execute the prepared statement */
             boolean inserted = preparedStatement.execute();
             // Return true if succeeded, false if failed.
-            if (inserted) {
+            if (inserted = true) {
                 return true;
             } else {
                 return false;
@@ -84,7 +79,7 @@ public class DatabaseConnection
             /* Execute the prepared statement */
             boolean deleted = preparedStatement.execute();
             // Return true if succeeded, false if failed.
-            if (deleted) {
+            if (deleted = true) {
                 return true;
             } else {
                 return false;
@@ -99,7 +94,7 @@ public class DatabaseConnection
             /* Execute the prepared statement */
             boolean updated = preparedStatement.execute();
             // Return true if succeeded, false if failed.
-            if (updated) {
+            if (updated = true) {
                 return true;
             } else {
                 return false;

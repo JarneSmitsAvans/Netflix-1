@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 
-public class ProfileManagerImpl {
+public class ProfileManagerImpl extends GeneralManager {
     private ProfileDAO profileDAO = new ProfileDAO();
     public boolean create(Profile profile) throws SQLException, ClassNotFoundException {
         boolean created = profileDAO.create(profile);
