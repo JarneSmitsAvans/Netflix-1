@@ -14,35 +14,29 @@ public class DatabaseConnection
         // Create the connection to the database
         conn = DriverManager.getConnection(connectionUrl);
         // If the connection was created, return true, else return false;
-        if (conn != null  && conn.isValid(0))
-        {
+        if (conn != null  && conn.isValid(0)) {
             return true;
         }
-        else
-        {
+        else {
             return false;
         }
     }
     public Connection getConnection() {
         // Get the open connection.
-        if(this.conn != null)
-        {
+        if(this.conn != null) {
             return this.conn;
         }
-        else
-        {
+        else {
            return null;
         }
     }
     public boolean CloseConnection() throws SQLException {
         // Close any existing connections, return true if closed, else return false;
         conn.close();
-        if (conn.isClosed())
-        {
+        if (conn.isClosed()) {
             return true;
         }
-        else
-        {
+        else {
             return false;
         }
     }
@@ -64,11 +58,7 @@ public class DatabaseConnection
             /* Execute the prepared statement */
             boolean inserted = preparedStatement.execute();
             // Return true if succeeded, false if failed.
-            if (inserted = true) {
-                return true;
-            } else {
-                return false;
-            }
+            return inserted;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -79,11 +69,7 @@ public class DatabaseConnection
             /* Execute the prepared statement */
             boolean deleted = preparedStatement.execute();
             // Return true if succeeded, false if failed.
-            if (deleted = true) {
-                return true;
-            } else {
-                return false;
-            }
+            return deleted;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -94,11 +80,7 @@ public class DatabaseConnection
             /* Execute the prepared statement */
             boolean updated = preparedStatement.execute();
             // Return true if succeeded, false if failed.
-            if (updated = true) {
-                return true;
-            } else {
-                return false;
-            }
+            return updated;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

@@ -23,10 +23,10 @@ public class Episode extends Program {
         this.referenceNumber = referenceNumber;
     }
 
-    @Override
-    public void setDuration(Time duration) {
-        this.duration = duration;
-    }
+//    @Override
+//    public void setDuration(Time duration) {
+//        this.duration = duration;
+//    }
 
 
 }

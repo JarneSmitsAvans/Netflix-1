@@ -15,10 +15,10 @@ public class Serie extends Program {
         episodes.add(episode);
     }
 
-    @Override
-    public void setDuration(Time duration) {
-
-    }
+//    @Override
+//    public void setDuration(Time duration) {
+//
+//    }
     @Override
     public String toString() {
         String Buffer = this.getTitle() + "\n";

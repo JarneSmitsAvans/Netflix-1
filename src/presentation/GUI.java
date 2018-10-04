@@ -6,6 +6,7 @@ import domain.Listeners.AccountListeners.AccountCreateListener;
 import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
+import domain.Listeners.MovieListeners.MovieCreateListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +15,10 @@ public class GUI implements Runnable {
     // Class variables
     private int width;
     private int height;
+
+//    ------------------------------------------------------------------------------------------------------------------
+
+    // Components
     // JFrame
     private JFrame frame;
 
@@ -91,12 +96,19 @@ public class GUI implements Runnable {
 
     // JTextFields
 
+    // Add account
     private JTextField txtAccountName;
     private JTextField txtAccountAddress;
     private JTextField txtAccountResidence;
 
+    // Add movie
+    private JTextField txtMovieTitle;
+    private JTextField txtMovieDuration;
+    private JTextField txtMovieGenre;
+    private JTextField txtMovieLanguage;
+    private JTextField txtMovieMinAge;
 
-
+    // Edit account
     private JTextField txtUpdateAccountName;
     private JTextField txtUpdateAccountAdres;
     private JTextField txtUpdateAccountResidence;
@@ -108,8 +120,16 @@ public class GUI implements Runnable {
     private JButton btnAddAccount;
     private JButton btnDeleteAccount;
     private JButton btnUpdateAccount;
+    private JButton btnAddMovie;
+
+//    ------------------------------------------------------------------------------------------------------------------
 
     // Getters
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    // Account
     public JComboBox getCbWatchedByAccount() {
         return cbWatchedByAccount;
     }
@@ -127,9 +147,6 @@ public class GUI implements Runnable {
     }
     public JTextField getTxtAccountResidence() {
         return txtAccountResidence;
-    }
-    public JPanel getMainPanel() {
-        return mainPanel;
     }
     public JComboBox getCbDeleteSelectedAccount() {
         return cbDeleteSelectedAccount;
@@ -150,7 +167,28 @@ public class GUI implements Runnable {
         return cbUpdateSelectedAccount;
     }
 
+    // Movie
+    // Add movie
+    public JTextField getTxtMovieTitle() {
+        return txtMovieTitle;
+    }
+    public JTextField getTxtMovieDuration() {
+        return txtMovieDuration;
+    }
+    public JTextField getTxtMovieGenre() {
+        return txtMovieGenre;
+    }
+    public JTextField getTxtMovieLanguage() {
+        return txtMovieLanguage;
+    }
+    public JTextField getTxtMovieMinAge() {
+        return txtMovieMinAge;
+    }
+
+//    ------------------------------------------------------------------------------------------------------------------
+
     // Managers
+    // Account
     private AccountManagerImpl accountManager;
 
     public GUI(int width, int height) {
@@ -186,16 +224,22 @@ public class GUI implements Runnable {
         lblDesignerInfo6.setText(designInfo);
         lblDesignerInfo7.setText(designInfo);
         lblDesignerInfo8.setText(designInfo);
+
+        initializeComponents();
+
+        // Account
         btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
         btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
         btnUpdateAccount.addActionListener(new AccountUpdateListener(this));
-        initializeComponents();
         cbUpdateSelectedAccount.setSelectedItem(null);
         cbUpdateSelectedProfile.setSelectedItem(null);
         cbDeleteSelectedAccount.setSelectedItem(null);
         cbDeleteProfile.setSelectedItem(null);
         cbDeleteProfileFromSelectedAccount.setSelectedItem(null);
         cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
+
+        // Movie
+        btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
     }
 
     private void initializeComponents() {
