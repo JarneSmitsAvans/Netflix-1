@@ -71,9 +71,13 @@ public class DatabaseConnection
     public boolean ExecuteDeleteStatement(PreparedStatement preparedStatement) {
         try {
             /* Execute the prepared statement */
-            boolean deleted = preparedStatement.execute();
+            int deleted = preparedStatement.executeUpdate();
             // Return true if succeeded, false if failed.
-            return deleted;
+            if (deleted > 0) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -82,9 +86,13 @@ public class DatabaseConnection
     public boolean ExecuteUpdateStatement(PreparedStatement preparedStatement) {
         try {
             /* Execute the prepared statement */
-            boolean updated = preparedStatement.execute();
+            int updated = preparedStatement.executeUpdate();
             // Return true if succeeded, false if failed.
-            return updated;
+            if (updated > 0) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

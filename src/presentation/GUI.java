@@ -8,7 +8,9 @@ import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.MovieListeners.MovieCreateListener;
+import domain.Listeners.ProfileListeners.ProfileCreateListener;
 import domain.Movie;
+import domain.Profile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -113,6 +115,11 @@ public class GUI implements Runnable {
     private JPanel watchedProgramsByProfile;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
+
+
+    private JButton btnCreateProfile;
+    private JButton btnEditProfile;
+    private JButton btnDeleteProfile;
 //    ------------------------------------------------------------------------------------------------------------------
 
     // Getters
@@ -246,19 +253,20 @@ public class GUI implements Runnable {
         lblDesignerInfo6.setText(designInfo);
         lblDesignerInfo7.setText(designInfo);
         lblDesignerInfo8.setText(designInfo);
-
         initializeComponents();
-
         // Account
         btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
         btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
         btnUpdateAccount.addActionListener(new AccountUpdateListener(this));
         cbUpdateSelectedAccount.setSelectedItem(null);
-        cbUpdateSelectedProfile.setSelectedItem(null);
+
         cbDeleteSelectedAccount.setSelectedItem(null);
+        cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
+        // Profile
+        cbUpdateSelectedProfile.setSelectedItem(null);
         cbDeleteProfile.setSelectedItem(null);
         cbDeleteProfileFromSelectedAccount.setSelectedItem(null);
-        cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
+        btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
 
         // Movie
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
@@ -268,6 +276,7 @@ public class GUI implements Runnable {
         try {
             /* Initialize the value for components in the GUI */
             accountManager.initializeAccountComponents(this);
+            accountManager.initializeAccountComboBoxes(this);
         } catch (Exception e) {
             System.out.println(e);
         }

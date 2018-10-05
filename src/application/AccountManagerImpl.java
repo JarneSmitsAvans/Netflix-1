@@ -16,12 +16,25 @@ public class AccountManagerImpl extends GeneralManager{
         ArrayList<String> singleProfileAccounts = this.singleProfile();
         this.addToTextPane(gui.getTxtAccountsWithOneProfile(), singleProfileAccounts);
 
+    }
+
+    public void initializeAccountComboBoxes(GUI gui) throws SQLException, ClassNotFoundException {
+        // Empty All ComboBoxes should there be any data inside of them.
+        gui.getCbAvgWatchedAccount().removeAllItems();
+        gui.getCbWatchedByAccount().removeAllItems();
+        gui.getCbDeleteSelectedAccount().removeAllItems();
+        gui.getCbUpdateSelectedAccount().removeAllItems();
+        gui.getCbAddProfileToSelectedAccount().removeAllItems();
+        gui.getCbDeleteProfileFromSelectedAccount().removeAllItems();
+
         // Fill the following JComboBoxes with accounts.
         ArrayList<Account> accountArrayList = this.getAccounts();
         this.appendComboBox(gui.getCbAvgWatchedAccount(), accountArrayList);
         this.appendComboBox(gui.getCbWatchedByAccount(), accountArrayList);
         this.appendComboBox(gui.getCbDeleteSelectedAccount(), accountArrayList);
         this.appendComboBox(gui.getCbUpdateSelectedAccount(), accountArrayList );
+        this.appendComboBox(gui.getCbAddProfileToSelectedAccount(), accountArrayList);
+        this.appendComboBox(gui.getCbDeleteProfileFromSelectedAccount(), accountArrayList);
     }
 
     public boolean create(Account account) throws SQLException, ClassNotFoundException {

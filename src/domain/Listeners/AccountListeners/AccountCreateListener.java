@@ -29,6 +29,10 @@ public class AccountCreateListener implements ActionListener {
                 boolean created = this.accountManager.create(account);
                 if (created)
                 {
+                    this.ui.getTxtAccountName().setText(null);
+                    this.ui.getTxtAccountAddress().setText(null);
+                    this.ui.getTxtAccountResidence().setText(null);
+                    this.accountManager.initializeAccountComboBoxes(ui);
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account has been created.", "Account created", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else

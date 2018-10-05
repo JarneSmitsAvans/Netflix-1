@@ -22,11 +22,15 @@ public class AccountUpdateComboBoxListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            String strSelectedAccount = this.ui.getCbUpdateSelectedAccount().getSelectedItem().toString();
-            account = accountManager.getAccountByName(strSelectedAccount);
-            this.ui.getTxtUpdateAccountName().setText(this.account.getName());
-            this.ui.getTxtUpdateAccountAdres().setText(this.account.getAddress());
-            this.ui.getTxtUpdateAccountResidence().setText(this.account.getResidence());
+            if (this.ui.getCbUpdateSelectedAccount().getSelectedItem() != null) {
+                String strSelectedAccount = this.ui.getCbUpdateSelectedAccount().getSelectedItem().toString();
+                account = accountManager.getAccountByName(strSelectedAccount);
+                this.ui.getTxtUpdateAccountName().setText(this.account.getName());
+                this.ui.getTxtUpdateAccountAdres().setText(this.account.getAddress());
+                this.ui.getTxtUpdateAccountResidence().setText(this.account.getResidence());
+            } else {
+                return;
+            }
         } catch (SQLException e1) {
             e1.printStackTrace();
         } catch (ClassNotFoundException e1) {

@@ -25,7 +25,9 @@ public class AccountDeleteListener implements ActionListener  {
                 if (!accountManager.empty(strSelectedAccount)) {
                     Account account = accountManager.getAccountByName(strSelectedAccount);
                     boolean deleted = accountManager.delete(account.getId());
-                    if (deleted = true) {
+                    if (deleted) {
+                        this.accountManager.initializeAccountComboBoxes(ui);
+                        this.ui.getCbDeleteSelectedAccount().setSelectedItem(null);
                         JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account has been deleted.", "Account deleted", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account has not been deleted due to an unexpected error.", "Account not deleted", JOptionPane.ERROR_MESSAGE);

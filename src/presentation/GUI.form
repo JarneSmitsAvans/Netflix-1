@@ -822,7 +822,7 @@
                                   <font size="16"/>
                                 </properties>
                               </component>
-                              <component id="221e6" class="javax.swing.JButton">
+                              <component id="221e6" class="javax.swing.JButton" binding="btnCreateProfile">
                                 <constraints>
                                   <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -906,7 +906,7 @@
                                   <font size="16"/>
                                 </properties>
                               </component>
-                              <component id="c9784" class="javax.swing.JButton">
+                              <component id="c9784" class="javax.swing.JButton" binding="btnEditProfile">
                                 <constraints>
                                   <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -986,7 +986,7 @@
                                   <font size="16"/>
                                 </properties>
                               </component>
-                              <component id="51c" class="javax.swing.JButton" default-binding="true">
+                              <component id="51c" class="javax.swing.JButton" binding="btnDeleteProfile">
                                 <constraints>
                                   <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
                                     <minimum-size width="100" height="-1"/>

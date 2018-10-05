@@ -34,6 +34,11 @@ public class AccountUpdateListener implements ActionListener {
                 boolean updated = accountManager.update(this.account.getId(), account);
                 if(updated)
                 {
+                    this.accountManager.initializeAccountComboBoxes(ui);
+                    this.ui.getCbUpdateSelectedAccount().setSelectedItem(null);
+                    this.ui.getTxtUpdateAccountName().setText(null);
+                    this.ui.getTxtUpdateAccountAdres().setText(null);
+                    this.ui.getTxtUpdateAccountResidence().setText(null);
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account has been updated.", "Account updated", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
