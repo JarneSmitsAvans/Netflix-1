@@ -26,7 +26,7 @@ public class AccountManagerImpl extends GeneralManager{
 
     public boolean create(Account account) throws SQLException, ClassNotFoundException {
         boolean created = accountDAO.create(account);
-        if (created = true) {
+        if (created) {
             return true;
         } else {
             return false;
@@ -34,7 +34,7 @@ public class AccountManagerImpl extends GeneralManager{
     }
     public boolean update(int id, Account account) throws SQLException, ClassNotFoundException {
         boolean updated = accountDAO.update(id, account);
-        if (updated = true) {
+        if (updated) {
             return true;
         } else {
             return false;
@@ -42,7 +42,7 @@ public class AccountManagerImpl extends GeneralManager{
     }
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         boolean deleted = accountDAO.delete(id);
-        if (deleted = true) {
+        if (deleted) {
             return true;
         } else {
             return false;

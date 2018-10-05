@@ -1,12 +1,14 @@
 package presentation;
 
 import application.AccountManagerImpl;
-import domain.*;
+import com.toedter.calendar.JDateChooser;
+import domain.Account;
 import domain.Listeners.AccountListeners.AccountCreateListener;
 import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.MovieListeners.MovieCreateListener;
+import domain.Movie;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,15 +23,12 @@ public class GUI implements Runnable {
     // Components
     // JFrame
     private JFrame frame;
-
     // JTabbedPanes
-
     private JTabbedPane tabbedPane;
     private JTabbedPane crudPane;
     private JTabbedPane crudAccountsAndProfiles;
     private JTabbedPane crudSeriesAndEpisodes;
     private JTabbedPane crudMovie;
-
     //  Labels
     private JLabel NetflixStatistixLogo;
     private JLabel lblDesignerInfo;
@@ -40,9 +39,7 @@ public class GUI implements Runnable {
     private JLabel lblDesignerInfo6;
     private JLabel lblDesignerInfo7;
     private JLabel lblDesignerInfo8;
-
     // JPanels
-
     private JPanel Home;
     private JPanel mainPanel;
     private JPanel tijdsduurAfleveringPerAccountSerie;
@@ -71,51 +68,43 @@ public class GUI implements Runnable {
     private JPanel accountsAndProfilesPane;
     private JPanel seriesAndEpisodesPane;
     // JTextPanes
-
     private JTextPane textPane1;
     private JTextPane txtAccountsWithOneProfile;
     private JTextPane txtAvgWatchedSeries;
-
     // JComboBoxes
-
     private JComboBox cbAvgWatchedAccount;
     private JComboBox cbAvgWatchedEpisode;
     private JComboBox cbAvgOfWatchedSerie;
     private JComboBox cbAvgOfWatchedEpisode;
     private JComboBox cbAmountOfViewsOfMovie;
     private JComboBox cbWatchedByAccount;
-
-
     private JComboBox cbUpdateSelectedAccount;
     private JComboBox cbDeleteSelectedAccount;
     private JComboBox cbAddProfileToSelectedAccount;
-
     private JComboBox cbUpdateSelectedProfile;
     private JComboBox cbDeleteProfileFromSelectedAccount;
     private JComboBox cbDeleteProfile;
-
     // JTextFields
-
     // Add account
     private JTextField txtAccountName;
     private JTextField txtAccountAddress;
     private JTextField txtAccountResidence;
-
     // Add movie
     private JTextField txtMovieTitle;
     private JTextField txtMovieDuration;
     private JTextField txtMovieGenre;
     private JTextField txtMovieLanguage;
     private JTextField txtMovieMinAge;
-
     // Edit account
     private JTextField txtUpdateAccountName;
     private JTextField txtUpdateAccountAdres;
     private JTextField txtUpdateAccountResidence;
+    // Profile
     private JTextField txtProfileName;
-    private JTextField txtProfileDate;
     private JTextField txtUpdateProfileName;
-
+    // JDateChoosers
+    private JDateChooser jDPdateOfBirth;
+    private JDateChooser jDPnewDateOfBirth;
     // JButtons
     private JButton btnAddAccount;
     private JButton btnDeleteAccount;
@@ -124,14 +113,12 @@ public class GUI implements Runnable {
     private JPanel watchedProgramsByProfile;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
-
 //    ------------------------------------------------------------------------------------------------------------------
 
     // Getters
     public JPanel getMainPanel() {
         return mainPanel;
     }
-
     // Account
     public JComboBox getCbWatchedByAccount() {
         return cbWatchedByAccount;
@@ -163,9 +150,6 @@ public class GUI implements Runnable {
     public JTextField getTxtUpdateAccountResidence() {
         return txtUpdateAccountResidence;
     }
-    public JComboBox getCbUpdateSelectedProfile() {
-        return cbUpdateSelectedProfile;
-    }
     public JComboBox getCbUpdateSelectedAccount() {
         return cbUpdateSelectedAccount;
     }
@@ -186,6 +170,41 @@ public class GUI implements Runnable {
     }
     public JTextField getTxtMovieMinAge() {
         return txtMovieMinAge;
+    }
+
+    // Profiles Create
+    public JComboBox getCbAddProfileToSelectedAccount() {
+        return cbAddProfileToSelectedAccount;
+    }
+
+    public JTextField getTxtProfileName() {
+        return txtProfileName;
+    }
+
+    public JDateChooser getjDPdateOfBirth() {
+        return jDPdateOfBirth;
+    }
+
+    // Profile Edit
+    public JComboBox getCbUpdateSelectedProfile() {
+        return cbUpdateSelectedProfile;
+    }
+
+    public JTextField getTxtUpdateProfileName() {
+        return txtUpdateProfileName;
+    }
+
+    public JDateChooser getjDPnewDateOfBirth() {
+        return jDPnewDateOfBirth;
+    }
+
+    // Profile Delete
+    public JComboBox getCbDeleteProfileFromSelectedAccount() {
+        return cbDeleteProfileFromSelectedAccount;
+    }
+
+    public JComboBox getCbDeleteProfile() {
+        return cbDeleteProfile;
     }
 
 //    ------------------------------------------------------------------------------------------------------------------

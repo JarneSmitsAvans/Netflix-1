@@ -830,18 +830,6 @@
                                   <text value="Toevoegen"/>
                                 </properties>
                               </component>
-                              <component id="4f929" class="javax.swing.JTextField" binding="txtProfileDate">
-                                <constraints>
-                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
-                                    <minimum-size width="-1" height="30"/>
-                                    <preferred-size width="150" height="30"/>
-                                    <maximum-size width="-1" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <font size="16"/>
-                                </properties>
-                              </component>
                               <component id="a1666" class="javax.swing.JLabel">
                                 <constraints>
                                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -869,6 +857,15 @@
                                   <font size="16"/>
                                   <text value="Kies account"/>
                                 </properties>
+                              </component>
+                              <component id="4c8fa" class="com.toedter.calendar.JDateChooser" binding="jDPdateOfBirth">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
                               </component>
                             </children>
                           </grid>
@@ -917,18 +914,6 @@
                                   <text value="Bewerk"/>
                                 </properties>
                               </component>
-                              <component id="9a964" class="javax.swing.JTextField">
-                                <constraints>
-                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
-                                    <minimum-size width="-1" height="30"/>
-                                    <preferred-size width="150" height="30"/>
-                                    <maximum-size width="-1" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <font size="16"/>
-                                </properties>
-                              </component>
                               <component id="6f75d" class="javax.swing.JLabel">
                                 <constraints>
                                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -956,6 +941,15 @@
                                   <font size="16"/>
                                   <text value="Kies profiel"/>
                                 </properties>
+                              </component>
+                              <component id="a037f" class="com.toedter.calendar.JDateChooser" binding="jDPnewDateOfBirth">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false">
+                                    <minimum-size width="-1" height="30"/>
+                                    <preferred-size width="150" height="30"/>
+                                    <maximum-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
                               </component>
                             </children>
                           </grid>
