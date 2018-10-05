@@ -26,10 +26,10 @@ public class MovieCreateListener implements ActionListener {
 //        this.account.setResidence(this.ui.getTxtAccountResidence().getText());
         // get values of create textfields
         try {
-            String title = ui.getTxtMovieTitle().toString();
+            String title = ui.getTxtMovieTitle().getText();
             int duration = Integer.parseInt(ui.getTxtMovieDuration().getText());
-            String genre = ui.getTxtMovieGenre().toString();
-            String language = ui.getTxtMovieLanguage().toString();
+            String genre = ui.getTxtMovieGenre().getText();
+            String language = ui.getTxtMovieLanguage().getText();
             int minumumAge = Integer.parseInt(ui.getTxtMovieMinAge().getText());
             if (!title.isEmpty() || duration != 0 || !genre.isEmpty() || !language.isEmpty() || minumumAge != 0) {
                 movie.setTitle(title);
@@ -38,15 +38,22 @@ public class MovieCreateListener implements ActionListener {
                 movie.setLanguage(language);
                 movie.setMinAge(minumumAge);
                 boolean movieCreated = movieManager.create(movie);
-                if(movieCreated) {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Film is toegevoegd", "Film toegevoegd", JOptionPane.INFORMATION_MESSAGE);
-                } else {
+                try {
+                    if (movieCreated) {
+                        ui.getTxtMovieTitle().setText(null);
+                        ui.getTxtMovieDuration().setText(null);
+                        ui.getTxtMovieGenre().setText(null);
+                        ui.getTxtMovieLanguage().setText(null);
+                        ui.getTxtMovieMinAge().setText(null);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Film is toegevoegd", "Film toegevoegd", JOptionPane.INFORMATION_MESSAGE);
+
+                    }
+                } catch (Exception exx) {
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan bij het toevoegen van de film", "Film niet toegevoegd", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } catch (Exception ex) {
-//            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan bij het toevoegen van de film", "Film niet toegevoegd", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan bij het toevoegen van de film", "Film niet toegevoegd", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

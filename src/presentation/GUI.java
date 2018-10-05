@@ -121,6 +121,9 @@ public class GUI implements Runnable {
     private JButton btnDeleteAccount;
     private JButton btnUpdateAccount;
     private JButton btnAddMovie;
+    private JPanel watchedProgramsByProfile;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
 
 //    ------------------------------------------------------------------------------------------------------------------
 

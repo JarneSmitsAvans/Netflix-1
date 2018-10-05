@@ -56,9 +56,13 @@ public class DatabaseConnection
     public boolean ExecuteInsertStatement(PreparedStatement preparedStatement) {
         try {
             /* Execute the prepared statement */
-            boolean inserted = preparedStatement.execute();
+            int inserted = preparedStatement.executeUpdate();
             // Return true if succeeded, false if failed.
-            return inserted;
+            if(inserted > 0) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

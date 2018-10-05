@@ -18,10 +18,6 @@ public class MovieDAO {
         preparedStatement.setInt(5, movie.getMinAge());
         boolean inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
         databaseConnection.CloseConnection();
-        if (inserted) {
-            return true;
-        } else {
-            return false;
-        }
+        return inserted;
     }
 }
