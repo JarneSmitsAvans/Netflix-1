@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ProfileManagerImpl extends GeneralManager {
     private ProfileDAO profileDAO = new ProfileDAO();

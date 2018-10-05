@@ -3,10 +3,12 @@ package datastorage;
 import application.ProfileManagerImpl;
 import domain.Profile;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class ProfileDAO {
@@ -15,7 +17,7 @@ public class ProfileDAO {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile (profilename, age, fk_profile) VALUES (?, ?, ?)");
         preparedStatement.setString(1, profile.getProfileName());
-        preparedStatement.setDate(2, new java.sql.Date(ProfileManagerImpl.calculateAge(profile.getDateOfBirth(), LocalDate.now())));
+        preparedStatement.setDate(2, (Date) profile.getDateOfBirth());
         preparedStatement.setInt(3, profile.getAccountNumber());
         boolean inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
         databaseConnection.CloseConnection();
@@ -62,7 +64,7 @@ public class ProfileDAO {
         while (resultSet.next()) {
             Profile profile = new Profile();
             profile.setProfileName(resultSet.getString("profilename"));
-            profile.setDateOfBirth((resultSet.getDate("age")).toLocalDate());
+            profile.setDateOfBirth((resultSet.getDate("age")));
             profile.setAccountNumber(resultSet.getInt("fk_profile"));
             profileArrayList.add(profile);
         }

@@ -1,10 +1,9 @@
 package domain;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Profile {
     private String profileName;
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
     private int accountNumber;
     public int getAccountNumber() {
         return accountNumber;
@@ -22,11 +21,11 @@ public class Profile {
         this.profileName = profileName;
     }
 
-    public LocalDate getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

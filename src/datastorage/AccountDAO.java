@@ -47,7 +47,7 @@ public class AccountDAO {
         preparedStatement.setInt(1, id);
         boolean deleted = databaseConnection.ExecuteDeleteStatement(preparedStatement);
         databaseConnection.CloseConnection();
-        if (deleted = true) {
+        if (deleted) {
             return true;
         } else {
             return false;
