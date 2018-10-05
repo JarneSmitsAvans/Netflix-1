@@ -29,9 +29,9 @@ public class ProfileCreateListener implements ActionListener {
                 String strSelectedAccount = this.ui.getCbAddProfileToSelectedAccount().getSelectedItem().toString();
                 Account account = accountManager.getAccountByName(strSelectedAccount);
                 profile.setProfileName(this.ui.getTxtProfileName().getText());
-                java.util.Date utilStartDate = this.ui.getjDPdateOfBirth().getDate();
-                java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
-                profile.setDateOfBirth(sqlStartDate);
+                java.util.Date oldDate = this.ui.getjDPdateOfBirth().getDate();
+                java.sql.Date convertedDate = new java.sql.Date(oldDate.getTime());
+                profile.setDateOfBirth(convertedDate);
                 profile.setAccountNumber(account.getId());
                 boolean created = this.profileManager.create(profile);
                 if (created) {
@@ -39,7 +39,7 @@ public class ProfileCreateListener implements ActionListener {
                     this.ui.getCbAddProfileToSelectedAccount().setSelectedItem(null);
                     this.ui.getTxtProfileName().setText(null);
                     this.ui.getjDPdateOfBirth().setDate(null);
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profile has been created.", "Account created", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profile has been created.", "Profile created", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occurred when trying to create a new profile.", "Profile has not been created", JOptionPane.ERROR_MESSAGE);
                 }

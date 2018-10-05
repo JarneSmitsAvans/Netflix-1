@@ -11,11 +11,9 @@ import java.awt.event.ActionListener;
 public class AccountDeleteListener implements ActionListener  {
     private GUI ui;
     private AccountManagerImpl accountManager;
-    private Account account;
     public AccountDeleteListener(GUI ui) {
         this.ui = ui;
         this.accountManager = new AccountManagerImpl();
-        this.account = new Account();
     }
     @Override
     public void actionPerformed(ActionEvent e) {

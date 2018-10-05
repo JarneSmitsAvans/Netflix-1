@@ -1,14 +1,12 @@
 package application;
 
 import datastorage.ProfileDAO;
-import domain.Account;
 import domain.Profile;
+import presentation.GUI;
 
+import javax.swing.*;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ProfileManagerImpl extends GeneralManager {
     private ProfileDAO profileDAO = new ProfileDAO();
@@ -20,8 +18,21 @@ public class ProfileManagerImpl extends GeneralManager {
             return false;
         }
     }
-    public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {
-        boolean updated = profileDAO.update(id, profile);
+
+    public void initializeProfileComboBoxes(GUI gui) throws SQLException, ClassNotFoundException {
+        // Empty all comboBoxes should there be any data inside of them.
+        gui.getCbDeleteProfile().removeAllItems();
+        gui.getCbUpdateSelectedProfile().removeAllItems();
+        gui.getCbWatchedProgramsBySelectedProfile().removeAllItems();
+
+        // Fill the following JComboBoxes with profiles.
+        ArrayList<Profile> profileArrayList = this.getProfiles();
+        this.addProfilesToComboBox(gui.getCbUpdateSelectedProfile(), profileArrayList);
+        this.addProfilesToComboBox(gui.getCbWatchedProgramsBySelectedProfile(), profileArrayList);
+    }
+
+    public boolean update(String name, Profile profile) throws SQLException, ClassNotFoundException {
+        boolean updated = profileDAO.update(name, profile);
         if (updated) {
             return true;
         } else {
@@ -29,8 +40,8 @@ public class ProfileManagerImpl extends GeneralManager {
         }
     }
 
-    public boolean delete(int id) throws SQLException, ClassNotFoundException {
-        boolean deleted = profileDAO.delete(id);
+    public boolean delete(String name) throws SQLException, ClassNotFoundException {
+        boolean deleted = profileDAO.delete(name);
         if (deleted) {
             return true;
         } else {
@@ -41,11 +52,21 @@ public class ProfileManagerImpl extends GeneralManager {
         ArrayList<Profile> arrayList = profileDAO.getProfiles();
         return arrayList;
     }
-    public static int calculateAge(LocalDate birthDate, LocalDate currentDate) {
-        if ((birthDate != null) && (currentDate != null)) {
-            return Period.between(birthDate, currentDate).getYears();
-        } else {
-            return 0;
+
+    public Profile getProfileByName(String name) throws SQLException, ClassNotFoundException {
+        Profile profile = profileDAO.getProfileByName(name);
+        return profile;
+    }
+
+    public void addProfilesToComboBox(JComboBox comboBox, ArrayList<Profile> arrayList) {
+        // For each Account in ArrayList, get the account name and add it to the parameter ComboBox
+        for (Profile profile : arrayList) {
+            comboBox.addItem(profile.getProfileName());
         }
+    }
+
+    public ArrayList<Profile> getMatchingProfiles(int id) throws SQLException, ClassNotFoundException {
+        ArrayList<Profile> arrayList = profileDAO.getMatchingProfiles(id);
+        return arrayList;
     }
 }

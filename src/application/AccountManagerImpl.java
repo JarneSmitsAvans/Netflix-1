@@ -15,7 +15,6 @@ public class AccountManagerImpl extends GeneralManager{
         //Fill txtAccountsWithOneProfile with Accounts that have one and only one profile.
         ArrayList<String> singleProfileAccounts = this.singleProfile();
         this.addToTextPane(gui.getTxtAccountsWithOneProfile(), singleProfileAccounts);
-
     }
 
     public void initializeAccountComboBoxes(GUI gui) throws SQLException, ClassNotFoundException {
@@ -29,12 +28,13 @@ public class AccountManagerImpl extends GeneralManager{
 
         // Fill the following JComboBoxes with accounts.
         ArrayList<Account> accountArrayList = this.getAccounts();
-        this.appendComboBox(gui.getCbAvgWatchedAccount(), accountArrayList);
-        this.appendComboBox(gui.getCbWatchedByAccount(), accountArrayList);
-        this.appendComboBox(gui.getCbDeleteSelectedAccount(), accountArrayList);
-        this.appendComboBox(gui.getCbUpdateSelectedAccount(), accountArrayList );
-        this.appendComboBox(gui.getCbAddProfileToSelectedAccount(), accountArrayList);
-        this.appendComboBox(gui.getCbDeleteProfileFromSelectedAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbAvgWatchedAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbWatchedByAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbDeleteSelectedAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbUpdateSelectedAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbAddProfileToSelectedAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbDeleteProfileFromSelectedAccount(), accountArrayList);
+
     }
 
     public boolean create(Account account) throws SQLException, ClassNotFoundException {
@@ -71,9 +71,10 @@ public class AccountManagerImpl extends GeneralManager{
         ArrayList<Account> arrayList = accountDAO.getAccounts();
         return arrayList;
     }
-    public void appendComboBox(JComboBox comboBox, ArrayList<Account> arrayList)
+
+    public void addAccountsToComboBox(JComboBox comboBox, ArrayList<Account> arrayList)
     {
-        // For each Account in arraylist, get the account name and add it to the parameter combobox
+        // For each Account in ArrayList, get the account name and add it to the parameter comboBox
         for (Account account : arrayList)
         {
             comboBox.addItem(account.getName());

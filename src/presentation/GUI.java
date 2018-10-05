@@ -1,6 +1,7 @@
 package presentation;
 
 import application.AccountManagerImpl;
+import application.ProfileManagerImpl;
 import com.toedter.calendar.JDateChooser;
 import domain.Account;
 import domain.Listeners.AccountListeners.AccountCreateListener;
@@ -8,7 +9,7 @@ import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.MovieListeners.MovieCreateListener;
-import domain.Listeners.ProfileListeners.ProfileCreateListener;
+import domain.Listeners.ProfileListeners.*;
 import domain.Movie;
 import domain.Profile;
 
@@ -86,6 +87,9 @@ public class GUI implements Runnable {
     private JComboBox cbUpdateSelectedProfile;
     private JComboBox cbDeleteProfileFromSelectedAccount;
     private JComboBox cbDeleteProfile;
+
+
+    private JComboBox cbWatchedProgramsBySelectedProfile;
     // JTextFields
     // Add account
     private JTextField txtAccountName;
@@ -115,17 +119,17 @@ public class GUI implements Runnable {
     private JPanel watchedProgramsByProfile;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
-
-
     private JButton btnCreateProfile;
     private JButton btnEditProfile;
     private JButton btnDeleteProfile;
+
 //    ------------------------------------------------------------------------------------------------------------------
 
     // Getters
     public JPanel getMainPanel() {
         return mainPanel;
     }
+
     // Account
     public JComboBox getCbWatchedByAccount() {
         return cbWatchedByAccount;
@@ -161,6 +165,10 @@ public class GUI implements Runnable {
         return cbUpdateSelectedAccount;
     }
 
+    // Profiles
+    public JComboBox getCbWatchedProgramsBySelectedProfile() {
+        return cbWatchedProgramsBySelectedProfile;
+    }
     // Movie
     // Add movie
     public JTextField getTxtMovieTitle() {
@@ -183,11 +191,9 @@ public class GUI implements Runnable {
     public JComboBox getCbAddProfileToSelectedAccount() {
         return cbAddProfileToSelectedAccount;
     }
-
     public JTextField getTxtProfileName() {
         return txtProfileName;
     }
-
     public JDateChooser getjDPdateOfBirth() {
         return jDPdateOfBirth;
     }
@@ -196,11 +202,9 @@ public class GUI implements Runnable {
     public JComboBox getCbUpdateSelectedProfile() {
         return cbUpdateSelectedProfile;
     }
-
     public JTextField getTxtUpdateProfileName() {
         return txtUpdateProfileName;
     }
-
     public JDateChooser getjDPnewDateOfBirth() {
         return jDPnewDateOfBirth;
     }
@@ -209,7 +213,6 @@ public class GUI implements Runnable {
     public JComboBox getCbDeleteProfileFromSelectedAccount() {
         return cbDeleteProfileFromSelectedAccount;
     }
-
     public JComboBox getCbDeleteProfile() {
         return cbDeleteProfile;
     }
@@ -219,11 +222,13 @@ public class GUI implements Runnable {
     // Managers
     // Account
     private AccountManagerImpl accountManager;
+    private ProfileManagerImpl profileManager;
 
     public GUI(int width, int height) {
         this.width = width;
         this.height = height;
         this.accountManager = new AccountManagerImpl();
+        this.profileManager = new ProfileManagerImpl();
     }
     @Override
     public void run() {
@@ -244,6 +249,7 @@ public class GUI implements Runnable {
     }
 
     private void createComponents(Container container) {
+        container = mainPanel;
         String designInfo = "Informatica | 2018-2019 | 23IVK1 | Dylan ten Böhmer (2137867), Marc Verwijmeren (2139166) en Kim van den Berg (2137853)";
         lblDesignerInfo.setText(designInfo);
         lblDesignerInfo2.setText(designInfo);
@@ -253,21 +259,20 @@ public class GUI implements Runnable {
         lblDesignerInfo6.setText(designInfo);
         lblDesignerInfo7.setText(designInfo);
         lblDesignerInfo8.setText(designInfo);
+
         initializeComponents();
         // Account
+        cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
         btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
         btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
         btnUpdateAccount.addActionListener(new AccountUpdateListener(this));
-        cbUpdateSelectedAccount.setSelectedItem(null);
-
-        cbDeleteSelectedAccount.setSelectedItem(null);
-        cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
         // Profile
-        cbUpdateSelectedProfile.setSelectedItem(null);
-        cbDeleteProfile.setSelectedItem(null);
-        cbDeleteProfileFromSelectedAccount.setSelectedItem(null);
+        cbDeleteProfile.setEnabled(false);
+        btnEditProfile.addActionListener(new ProfileUpdateListener(this));
         btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
-
+        cbDeleteProfileFromSelectedAccount.addActionListener(new ProfileLoadProfilesForSelectedAccountListener(this));
+        cbUpdateSelectedProfile.addActionListener(new ProfileUpdateComboBoxListener(this));
+        btnDeleteProfile.addActionListener(new ProfileDeleteListener(this));
         // Movie
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
     }
@@ -277,12 +282,12 @@ public class GUI implements Runnable {
             /* Initialize the value for components in the GUI */
             accountManager.initializeAccountComponents(this);
             accountManager.initializeAccountComboBoxes(this);
+            profileManager.initializeProfileComboBoxes(this);
+
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-
-
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }

@@ -1,14 +1,11 @@
 package datastorage;
 
-import application.ProfileManagerImpl;
 import domain.Profile;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class ProfileDAO {
@@ -28,11 +25,12 @@ public class ProfileDAO {
         }
     }
 
-    public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {
+    public boolean update(String name, Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profilename = ? WHERE id = ?");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profilename = ?, age = ? WHERE profilename = ?");
         preparedStatement.setString(1, profile.getProfileName());
-        preparedStatement.setInt(2, id);
+        preparedStatement.setDate(2, (Date) profile.getDateOfBirth());
+        preparedStatement.setString(3, name);
         boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
         databaseConnection.CloseConnection();
         if (updated) {
@@ -42,10 +40,10 @@ public class ProfileDAO {
         }
     }
 
-    public boolean delete(int id) throws SQLException, ClassNotFoundException {
+    public boolean delete(String name) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Profile WHERE id = ?");
-        preparedStatement.setInt(1, id);
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Profile WHERE profilename = ?");
+        preparedStatement.setString(1, name);
         boolean deleted = databaseConnection.ExecuteDeleteStatement(preparedStatement);
         databaseConnection.CloseConnection();
         if (deleted) {
@@ -70,5 +68,38 @@ public class ProfileDAO {
         }
         databaseConnection.CloseConnection();
         return profileArrayList;
+    }
+
+    public ArrayList<Profile> getMatchingProfiles(int id) throws SQLException, ClassNotFoundException {
+        ArrayList<Profile> profileArrayList = new ArrayList<>();
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Profile JOIN Account on Account.id = Profile.fk_profile WHERE fk_profile = ?");
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()) {
+            Profile profile = new Profile();
+            profile.setProfileName(resultSet.getString("profilename"));
+            profile.setDateOfBirth((resultSet.getDate("age")));
+            profile.setAccountNumber(resultSet.getInt("fk_profile"));
+            profileArrayList.add(profile);
+        }
+        return profileArrayList;
+    }
+
+    public Profile getProfileByName(String name) throws SQLException, ClassNotFoundException {
+        // Returns the data matching parameter id
+        Profile profile = new Profile();
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Profile WHERE profilename = ?");
+        preparedStatement.setString(1, name);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()) {
+            profile.setProfileName(resultSet.getString("profilename"));
+            profile.setDateOfBirth((resultSet.getDate("age")));
+            profile.setAccountNumber(resultSet.getInt("fk_profile"));
+            return profile;
+        }
+        databaseConnection.CloseConnection();
+        return profile;
     }
 }
