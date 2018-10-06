@@ -24,15 +24,16 @@ public class ProfileManagerImpl extends GeneralManager {
         gui.getCbDeleteProfile().removeAllItems();
         gui.getCbUpdateSelectedProfile().removeAllItems();
         gui.getCbWatchedProgramsBySelectedProfile().removeAllItems();
-
+        //gui.getComboBox2().removeAllItems();
         // Fill the following JComboBoxes with profiles.
         ArrayList<Profile> profileArrayList = this.getProfiles();
-        this.addProfilesToComboBox(gui.getCbUpdateSelectedProfile(), profileArrayList);
+        //this.addProfilesToComboBox(gui.getCbUpdateSelectedProfile(), profileArrayList);
         this.addProfilesToComboBox(gui.getCbWatchedProgramsBySelectedProfile(), profileArrayList);
+
     }
 
-    public boolean update(String name, Profile profile) throws SQLException, ClassNotFoundException {
-        boolean updated = profileDAO.update(name, profile);
+    public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {
+        boolean updated = profileDAO.update(id, profile);
         if (updated) {
             return true;
         } else {
@@ -40,8 +41,9 @@ public class ProfileManagerImpl extends GeneralManager {
         }
     }
 
-    public boolean delete(String name) throws SQLException, ClassNotFoundException {
-        boolean deleted = profileDAO.delete(name);
+
+    public boolean delete(int id) throws SQLException, ClassNotFoundException {
+        boolean deleted = profileDAO.delete(id);
         if (deleted) {
             return true;
         } else {
@@ -53,11 +55,15 @@ public class ProfileManagerImpl extends GeneralManager {
         return arrayList;
     }
 
-    public Profile getProfileByName(String name) throws SQLException, ClassNotFoundException {
-        Profile profile = profileDAO.getProfileByName(name);
+    public Profile getProfileById(int id) throws SQLException, ClassNotFoundException {
+        Profile profile = profileDAO.getProfileById(id);
         return profile;
     }
 
+    public int getIdOfProfile(String profile, String account) throws SQLException, ClassNotFoundException {
+        int idOfProfile = profileDAO.getIdOfProfile(profile, account);
+        return idOfProfile;
+    }
     public void addProfilesToComboBox(JComboBox comboBox, ArrayList<Profile> arrayList) {
         // For each Account in ArrayList, get the account name and add it to the parameter ComboBox
         for (Profile profile : arrayList) {

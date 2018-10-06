@@ -12,7 +12,7 @@ public class ProfileDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
     public boolean create(Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile (profilename, age, fk_profile) VALUES (?, ?, ?)");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile (profilename, age, fk_account) VALUES (?, ?, ?)");
         preparedStatement.setString(1, profile.getProfileName());
         preparedStatement.setDate(2, (Date) profile.getDateOfBirth());
         preparedStatement.setInt(3, profile.getAccountNumber());
@@ -25,12 +25,12 @@ public class ProfileDAO {
         }
     }
 
-    public boolean update(String name, Profile profile) throws SQLException, ClassNotFoundException {
+    public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profilename = ?, age = ? WHERE profilename = ?");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profilename = ?, age = ? WHERE id = ?");
         preparedStatement.setString(1, profile.getProfileName());
         preparedStatement.setDate(2, (Date) profile.getDateOfBirth());
-        preparedStatement.setString(3, name);
+        preparedStatement.setInt(3, id);
         boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
         databaseConnection.CloseConnection();
         if (updated) {
@@ -40,10 +40,10 @@ public class ProfileDAO {
         }
     }
 
-    public boolean delete(String name) throws SQLException, ClassNotFoundException {
+    public boolean delete(int id) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Profile WHERE profilename = ?");
-        preparedStatement.setString(1, name);
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Profile WHERE id = ?");
+        preparedStatement.setInt(1, id);
         boolean deleted = databaseConnection.ExecuteDeleteStatement(preparedStatement);
         databaseConnection.CloseConnection();
         if (deleted) {
@@ -61,9 +61,10 @@ public class ProfileDAO {
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
             Profile profile = new Profile();
+            profile.setProfileID(resultSet.getInt("id"));
             profile.setProfileName(resultSet.getString("profilename"));
             profile.setDateOfBirth((resultSet.getDate("age")));
-            profile.setAccountNumber(resultSet.getInt("fk_profile"));
+            profile.setAccountNumber(resultSet.getInt("fk_account"));
             profileArrayList.add(profile);
         }
         databaseConnection.CloseConnection();
@@ -73,30 +74,46 @@ public class ProfileDAO {
     public ArrayList<Profile> getMatchingProfiles(int id) throws SQLException, ClassNotFoundException {
         ArrayList<Profile> profileArrayList = new ArrayList<>();
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Profile JOIN Account on Account.id = Profile.fk_profile WHERE fk_profile = ?");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Profile JOIN Account on Account.id = Profile.fk_account WHERE fk_account = ?");
         preparedStatement.setInt(1, id);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
             Profile profile = new Profile();
+            profile.setProfileID(resultSet.getInt("id"));
             profile.setProfileName(resultSet.getString("profilename"));
             profile.setDateOfBirth((resultSet.getDate("age")));
-            profile.setAccountNumber(resultSet.getInt("fk_profile"));
+            profile.setAccountNumber(resultSet.getInt("fk_account"));
             profileArrayList.add(profile);
         }
         return profileArrayList;
     }
 
-    public Profile getProfileByName(String name) throws SQLException, ClassNotFoundException {
+    public int getIdOfProfile(String profile, String account) throws SQLException, ClassNotFoundException {
+        int profileId = 0;
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Profile.id FROM Profile JOIN Account ON Account.id = Profile.fk_account WHERE Profile.profilename = ? AND Account.name = ?");
+        preparedStatement.setString(1, profile);
+        preparedStatement.setString(2, account);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()) {
+            profileId = resultSet.getInt("id");
+            return profileId;
+        }
+        return profileId;
+    }
+
+    public Profile getProfileById(int id) throws SQLException, ClassNotFoundException {
         // Returns the data matching parameter id
         Profile profile = new Profile();
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Profile WHERE profilename = ?");
-        preparedStatement.setString(1, name);
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Profile WHERE id = ?");
+        preparedStatement.setInt(1, id);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
+            profile.setProfileID(resultSet.getInt("id"));
             profile.setProfileName(resultSet.getString("profilename"));
             profile.setDateOfBirth((resultSet.getDate("age")));
-            profile.setAccountNumber(resultSet.getInt("fk_profile"));
+            profile.setAccountNumber(resultSet.getInt("fk_account"));
             return profile;
         }
         databaseConnection.CloseConnection();

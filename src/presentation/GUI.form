@@ -2137,20 +2137,20 @@
                                   <text value="Hier komt de max. tijdsduur van het selected programma&#10;"/>
                                 </properties>
                               </component>
-                              <component id="de317" class="javax.swing.JRadioButton" binding="radioButton1" default-binding="true">
+                              <component id="de317" class="javax.swing.JRadioButton" binding="rbMovie">
                                 <constraints>
                                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <text value="RadioButton"/>
+                                  <text value="Film"/>
                                 </properties>
                               </component>
-                              <component id="76b51" class="javax.swing.JRadioButton" binding="radioButton2" default-binding="true">
+                              <component id="76b51" class="javax.swing.JRadioButton" binding="rbSerie">
                                 <constraints>
                                   <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <text value="RadioButton"/>
+                                  <text value="Serie"/>
                                 </properties>
                               </component>
                             </children>

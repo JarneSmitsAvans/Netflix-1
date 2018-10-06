@@ -21,7 +21,6 @@ public class ProfileCreateListener implements ActionListener {
         this.profileManager = new ProfileManagerImpl();
         this.accountManager = new AccountManagerImpl();
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!profileManager.empty(this.ui.getTxtProfileName().getText()) && this.ui.getjDPdateOfBirth().getDate() != null && this.ui.getCbAddProfileToSelectedAccount().getSelectedItem() != null) {
@@ -33,15 +32,20 @@ public class ProfileCreateListener implements ActionListener {
                 java.sql.Date convertedDate = new java.sql.Date(oldDate.getTime());
                 profile.setDateOfBirth(convertedDate);
                 profile.setAccountNumber(account.getId());
-                boolean created = this.profileManager.create(profile);
-                if (created) {
-                    this.accountManager.initializeAccountComboBoxes(ui);
-                    this.ui.getCbAddProfileToSelectedAccount().setSelectedItem(null);
-                    this.ui.getTxtProfileName().setText(null);
-                    this.ui.getjDPdateOfBirth().setDate(null);
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profile has been created.", "Profile created", JOptionPane.INFORMATION_MESSAGE);
+                int exists = profileManager.getIdOfProfile(this.profile.getProfileName(), account.getName());
+                if (exists == 0) {
+                    boolean created = this.profileManager.create(profile);
+                    if (created) {
+                        this.accountManager.initializeAccountComboBoxes(ui);
+                        this.ui.getCbAddProfileToSelectedAccount().setSelectedItem(null);
+                        this.ui.getTxtProfileName().setText(null);
+                        this.ui.getjDPdateOfBirth().setDate(null);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profile has been created.", "Profile created", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occurred when trying to create a new profile.", "Profile has not been created", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occurred when trying to create a new profile.", "Profile has not been created", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "A profile with that name already exists for that account.", "Profile has not been created", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();

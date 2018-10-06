@@ -2,6 +2,9 @@ package domain;
 import java.util.Date;
 
 public class Profile {
+
+
+    private int profileID;
     private String profileName;
     private Date dateOfBirth;
     private int accountNumber;
@@ -29,6 +32,13 @@ public class Profile {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public int getProfileID() {
+        return profileID;
+    }
+
+    public void setProfileID(int profileID) {
+        this.profileID = profileID;
+    }
     @Override
     public String toString() {
         return "Profile{" +

@@ -1,7 +1,6 @@
 package domain.Listeners.ProfileListeners;
 
 import application.ProfileManagerImpl;
-import domain.Profile;
 import presentation.GUI;
 
 import javax.swing.*;
@@ -20,11 +19,12 @@ public class ProfileDeleteListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            if (this.ui.getCbDeleteProfile().getSelectedItem() != null) {
+            if (this.ui.getCbDeleteProfile().getSelectedItem() != null && this.ui.getCbDeleteProfileFromSelectedAccount().getSelectedItem() != null) {
                 String strSelectedProfile = this.ui.getCbDeleteProfile().getSelectedItem().toString();
+                String strSelectedAccount = this.ui.getCbDeleteProfileFromSelectedAccount().getSelectedItem().toString();
                 if (!profileManager.empty(strSelectedProfile)) {
-                    Profile profile = profileManager.getProfileByName(strSelectedProfile);
-                    boolean deleted = profileManager.delete(profile.getProfileName());
+                    int id = profileManager.getIdOfProfile(strSelectedProfile, strSelectedAccount);
+                    boolean deleted = profileManager.delete(id);
                     if (deleted) {
                         this.profileManager.initializeProfileComboBoxes(ui);
                         this.ui.getCbDeleteProfileFromSelectedAccount().setSelectedItem(null);

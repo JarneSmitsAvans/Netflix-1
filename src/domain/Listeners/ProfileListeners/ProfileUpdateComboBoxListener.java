@@ -22,9 +22,11 @@ public class ProfileUpdateComboBoxListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            if (this.ui.getCbUpdateSelectedProfile().getSelectedItem() != null) {
+            if (this.ui.getCbSelectAccountForProfileEdit().getSelectedItem() != null && this.ui.getCbUpdateSelectedProfile().getSelectedItem() != null) {
+                String strSelectedAccount = this.ui.getCbSelectAccountForProfileEdit().getSelectedItem().toString();
                 String strSelectedProfile = this.ui.getCbUpdateSelectedProfile().getSelectedItem().toString();
-                this.profile = profileManager.getProfileByName(strSelectedProfile);
+                int id = profileManager.getIdOfProfile(strSelectedProfile, strSelectedAccount);
+                this.profile = profileManager.getProfileById(id);
                 this.ui.getTxtUpdateProfileName().setText(profile.getProfileName());
                 this.ui.getjDPnewDateOfBirth().setDate(profile.getDateOfBirth());
             } else {

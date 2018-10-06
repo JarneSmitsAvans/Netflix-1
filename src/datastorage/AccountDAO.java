@@ -91,7 +91,7 @@ public class AccountDAO {
     {
         ArrayList<String> accountArrayList = new ArrayList<String>();
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Account.name FROM Account JOIN Profile ON Profile.fk_profile = Account.id GROUP BY Account.name HAVING COUNT(*) = 1");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Account.name FROM Account JOIN Profile ON Profile.fk_account = Account.id GROUP BY Account.name HAVING COUNT(*) = 1");
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()){
             String account = (resultSet.getString("name"));

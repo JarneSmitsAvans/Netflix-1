@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-
 public class ProfileUpdateListener implements ActionListener {
     private GUI ui;
     private ProfileManagerImpl profileManager;
@@ -23,7 +22,8 @@ public class ProfileUpdateListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            if (this.ui.getCbUpdateSelectedProfile().getSelectedItem() != null && !profileManager.empty(this.ui.getTxtUpdateProfileName().getText()) && this.ui.getjDPnewDateOfBirth().getDate() != null) {
+            if (this.ui.getCbUpdateSelectedProfile().getSelectedItem() != null && this.ui.getCbSelectAccountForProfileEdit().getSelectedItem() != null && !profileManager.empty(this.ui.getTxtUpdateProfileName().getText()) && this.ui.getjDPnewDateOfBirth().getDate() != null) {
+                String strSelectedAccount = this.ui.getCbSelectAccountForProfileEdit().getSelectedItem().toString();
                 String strSelectedProfile = this.ui.getCbUpdateSelectedProfile().getSelectedItem().toString();
 
                 java.util.Date oldDate = this.ui.getjDPnewDateOfBirth().getDate();
@@ -31,7 +31,8 @@ public class ProfileUpdateListener implements ActionListener {
 
                 profile.setProfileName(this.ui.getTxtUpdateProfileName().getText());
                 profile.setDateOfBirth(convertedDate);
-                boolean updated = profileManager.update(strSelectedProfile, profile);
+                int id = profileManager.getIdOfProfile(strSelectedProfile, strSelectedAccount);
+                boolean updated = profileManager.update(id, profile);
                 if (updated) {
                     this.profileManager.initializeProfileComboBoxes(ui);
                     this.ui.getCbUpdateSelectedProfile().setSelectedItem(null);

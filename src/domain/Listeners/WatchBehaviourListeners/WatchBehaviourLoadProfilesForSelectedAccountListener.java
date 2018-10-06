@@ -1,4 +1,4 @@
-package domain.Listeners.ProfileListeners;
+package domain.Listeners.WatchBehaviourListeners;
 
 import application.AccountManagerImpl;
 import application.ProfileManagerImpl;
@@ -7,30 +7,30 @@ import presentation.GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
-public class ProfileLoadProfilesForSelectedAccountListener implements ActionListener {
+public class WatchBehaviourLoadProfilesForSelectedAccountListener implements ActionListener {
     private GUI ui;
     private AccountManagerImpl accountManager;
     private ProfileManagerImpl profileManager;
     private Account account;
 
-    public ProfileLoadProfilesForSelectedAccountListener(GUI ui) {
+    public WatchBehaviourLoadProfilesForSelectedAccountListener(GUI ui) {
         this.ui = ui;
-        this.accountManager = new AccountManagerImpl();
-        this.profileManager = new ProfileManagerImpl();
-        this.account = new Account();
+        accountManager = new AccountManagerImpl();
+        profileManager = new ProfileManagerImpl();
+        account = new Account();
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        try {
-            if (this.ui.getCbDeleteProfileFromSelectedAccount().getSelectedItem() != null) {
+      /* try {
+            if (this.ui.getComboBox1().getSelectedItem() != null) {
                 profileManager.initializeProfileComboBoxes(ui);
-                String strSelectedAccount = this.ui.getCbDeleteProfileFromSelectedAccount().getSelectedItem().toString();
+                String strSelectedAccount = this.ui.getComboBox1().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
                 int id = this.account.getId();
-                this.ui.getCbDeleteProfile().setEnabled(true);
-                profileManager.addProfilesToComboBox(this.ui.getCbDeleteProfile(), profileManager.getMatchingProfiles(id));
+                this.ui.getComboBox2().setEnabled(true);
+                profileManager.addProfilesToComboBox(this.ui.getComboBox2(), profileManager.getMatchingProfiles(id));
             } else {
                 return;
             }
@@ -38,6 +38,6 @@ public class ProfileLoadProfilesForSelectedAccountListener implements ActionList
             e1.printStackTrace();
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
-        }
+        }*/
     }
 }

@@ -149,8 +149,8 @@ public class GUI implements Runnable {
 
     private JComboBox cbSelectAccountForProfileEdit;
     private JTextPane txtMoviesWatchedByAccount;
-    private JRadioButton radioButton1;
-    private JRadioButton radioButton2;
+    private JRadioButton rbMovie;
+    private JRadioButton rbSerie;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
