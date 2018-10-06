@@ -14,6 +14,9 @@ import domain.Listeners.MovieListeners.MovieCreateListener;
 import domain.Listeners.MovieListeners.MovieGetCbValueWatchedByAccountListener;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.SerieListeners.SerieViewListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourLoadEpisodesForSelectedSerieListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourLoadProfilesForSelectedAccountListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourRadioButtonListener;
 import domain.Movie;
 import domain.Profile;
 
@@ -121,7 +124,11 @@ public class GUI implements Runnable {
     private JButton btnUpdateAccount;
     private JButton btnAddMovie;
     private JPanel watchedProgramsByProfile;
+
+
     private JComboBox cbAddWatchedMediaAccount;
+
+
     private JComboBox cbAddWatchedMediaProfile;
     private JButton btnCreateProfile;
     private JButton btnEditProfile;
@@ -152,9 +159,25 @@ public class GUI implements Runnable {
     private JTextPane txtMoviesWatchedByAccount;
     private JRadioButton rbMovie;
     private JRadioButton rbSerie;
+
+
     private JComboBox cbAddWatchedMediaTitle;
+
+
     private JLabel lblDurationOfSelectedProgram;
     private JTextField txtAddWatchedMediaDuration;
+
+
+    private JPanel WatchBehaviourPane;
+
+
+    private JPanel WatchBehaviourCreate;
+
+
+    private JComboBox cbAddWatchedMediaEpisode;
+
+
+    private JLabel lblWatchedEpisode;
 
 
 //    ------------------------------------------------------------------------------------------------------------------
@@ -163,6 +186,7 @@ public class GUI implements Runnable {
     public JPanel getMainPanel() {
         return mainPanel;
     }
+
 
     // Account
     public JComboBox getCbAvgWatchedAccount() {
@@ -256,10 +280,30 @@ public class GUI implements Runnable {
         return cbWatchedByAccount;
     }
 
+    // Watch Behaviour
+    public JComboBox getCbAddWatchedMediaAccount() {
+        return cbAddWatchedMediaAccount;
+    }
 
+    public JComboBox getCbAddWatchedMediaProfile() {
+        return cbAddWatchedMediaProfile;
+    }
 
+    public JComboBox getCbAddWatchedMediaEpisode() {
+        return cbAddWatchedMediaEpisode;
+    }
 
+    public JLabel getLblDurationOfSelectedProgram() {
+        return lblDurationOfSelectedProgram;
+    }
 
+    public JLabel getLblWatchedEpisode() {
+        return lblWatchedEpisode;
+    }
+
+    public JComboBox getCbAddWatchedMediaTitle() {
+        return cbAddWatchedMediaTitle;
+    }
 
     //Serie
         //View Series
@@ -306,7 +350,6 @@ public class GUI implements Runnable {
         frame.setVisible(true);
         // Setting txtAccountsWithOneProfile read only.
         txtAccountsWithOneProfile.setEditable(false);
-
     }
 
     private void createComponents(Container container) {
@@ -346,9 +389,23 @@ public class GUI implements Runnable {
         cbAvgOfWatchedSerie.addActionListener(new SerieViewListener(this));
 
         // Watch Behaviour
-        //comboBox2.setEnabled(false);
-        //cbAddWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
+        cbAddWatchedMediaProfile.setEnabled(false);
+        cbAddWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
+
+        cbAddWatchedMediaEpisode.setVisible(false);
+        lblWatchedEpisode.setVisible(false);
+        rbSerie.setActionCommand("showEpisodeCb");
+        rbMovie.setActionCommand("hideEpisodeCb");
+        cbAddWatchedMediaTitle.setActionCommand("fillWithEpisodes");
+        ButtonGroup watchBehaviourbtnGrp = new ButtonGroup();
+        watchBehaviourbtnGrp.add(rbMovie);
+        watchBehaviourbtnGrp.add(rbSerie);
+        rbSerie.addActionListener(new WatchBehaviourRadioButtonListener(this));
+        rbMovie.addActionListener(new WatchBehaviourRadioButtonListener(this));
+        cbAddWatchedMediaTitle.addActionListener(new WatchBehaviourLoadEpisodesForSelectedSerieListener(this));
+
     }
+
 
     private void initializeComponents() {
         try {

@@ -24,12 +24,10 @@ public class ProfileManagerImpl extends GeneralManager {
         gui.getCbDeleteProfile().removeAllItems();
         gui.getCbUpdateSelectedProfile().removeAllItems();
         gui.getCbWatchedProgramsBySelectedProfile().removeAllItems();
-        //gui.getComboBox2().removeAllItems();
+        gui.getCbAddWatchedMediaProfile().removeAllItems();
         // Fill the following JComboBoxes with profiles.
         ArrayList<Profile> profileArrayList = this.getProfiles();
-        //this.addProfilesToComboBox(gui.getCbUpdateSelectedProfile(), profileArrayList);
         this.addProfilesToComboBox(gui.getCbWatchedProgramsBySelectedProfile(), profileArrayList);
-
     }
 
     public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {
@@ -64,6 +62,7 @@ public class ProfileManagerImpl extends GeneralManager {
         int idOfProfile = profileDAO.getIdOfProfile(profile, account);
         return idOfProfile;
     }
+
     public void addProfilesToComboBox(JComboBox comboBox, ArrayList<Profile> arrayList) {
         // For each Account in ArrayList, get the account name and add it to the parameter ComboBox
         for (Profile profile : arrayList) {

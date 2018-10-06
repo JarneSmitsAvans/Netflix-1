@@ -23,7 +23,7 @@ public class EpisodeManagerlmpl {
         return episodeList;
     }
 
-    public void setEpisodeList(int id){
+    public ArrayList<Episode> setEpisodeList(int id) {
         // Returns an ArrayList filled with all episodes in the database.
         try {
             episodeList = episodeDAO.getEpisodes(id);
@@ -32,6 +32,7 @@ public class EpisodeManagerlmpl {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return episodeList;
     }
 
     public void fillAllEpisodesCbx(int id){

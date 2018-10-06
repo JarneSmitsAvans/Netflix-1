@@ -23,8 +23,7 @@ public class MovieDAO {
         return inserted;
     }
 
-    public ArrayList<String> getWatchedMoviesByAccount() throws SQLException, ClassNotFoundException
-    {
+    public ArrayList<String> getWatchedMoviesByAccount() throws SQLException, ClassNotFoundException {
         ArrayList<String> watchedMovieByAccountArrayList = new ArrayList<String>();
 //        databaseConnection.OpenConnection();
 //        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Account.name FROM Account JOIN Profile ON Profile.fk_account = Account.id GROUP BY Account.name HAVING COUNT(*) = 1");
@@ -35,5 +34,25 @@ public class MovieDAO {
 //        }
 //        databaseConnection.CloseConnection();
         return watchedMovieByAccountArrayList;
+    }
+
+    public ArrayList<Movie> getAllMovies() throws SQLException, ClassNotFoundException {
+        // Returns an ArrayList filled with all accounts in the database.
+        ArrayList<Movie> movieArrayList = new ArrayList<Movie>();
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Movie");
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()) {
+            Movie movie = new Movie();
+            movie.setTitle(resultSet.getString("Title"));
+            movie.setDuration(resultSet.getInt("Duration"));
+            movie.setGenre(resultSet.getString("Genre"));
+            movie.setLanguage(resultSet.getString("Language"));
+            movie.setMinAge(resultSet.getInt("Minimumage"));
+            movieArrayList.add(movie);
+        }
+        databaseConnection.CloseConnection();
+        return movieArrayList;
+
     }
 }

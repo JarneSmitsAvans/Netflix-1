@@ -23,21 +23,19 @@ public class WatchBehaviourLoadProfilesForSelectedAccountListener implements Act
 
     @Override
     public void actionPerformed(ActionEvent e) {
-      /* try {
-            if (this.ui.getComboBox1().getSelectedItem() != null) {
+        try {
+            if (this.ui.getCbAddWatchedMediaAccount().getSelectedItem() != null) {
                 profileManager.initializeProfileComboBoxes(ui);
-                String strSelectedAccount = this.ui.getComboBox1().getSelectedItem().toString();
+                String strSelectedAccount = this.ui.getCbAddWatchedMediaAccount().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
                 int id = this.account.getId();
-                this.ui.getComboBox2().setEnabled(true);
-                profileManager.addProfilesToComboBox(this.ui.getComboBox2(), profileManager.getMatchingProfiles(id));
+                this.ui.getCbAddWatchedMediaProfile().setEnabled(true);
+                profileManager.addProfilesToComboBox(this.ui.getCbAddWatchedMediaProfile(), profileManager.getMatchingProfiles(id));
             } else {
                 return;
             }
-        } catch (SQLException e1) {
+        } catch (Exception e1) {
             e1.printStackTrace();
-        } catch (ClassNotFoundException e1) {
-            e1.printStackTrace();
-        }*/
+        }
     }
 }

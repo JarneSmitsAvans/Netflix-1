@@ -2,12 +2,10 @@ package datastorage;
 
 import domain.Serie;
 
-import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SerieDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -34,5 +32,21 @@ public class SerieDAO {
             return serieList;
     }
 
-
+    public Serie getSerieByName(String name) throws SQLException, ClassNotFoundException {
+        // Returns the data matching parameter name
+        Serie serie = new Serie();
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie WHERE Title = ?");
+        preparedStatement.setString(1, name);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()) {
+            serie.setId(resultSet.getInt("id"));
+            serie.setTitle(resultSet.getString("title"));
+            serie.setGenre(resultSet.getString("genre"));
+            serie.setLanguage(resultSet.getString("language"));
+            serie.setMinAge(resultSet.getInt("minimumage"));
+        }
+        databaseConnection.CloseConnection();
+        return serie;
+    }
 }

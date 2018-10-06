@@ -25,7 +25,8 @@ public class AccountManagerImpl extends GeneralManager{
         gui.getCbUpdateSelectedAccount().removeAllItems();
         gui.getCbAddProfileToSelectedAccount().removeAllItems();
         gui.getCbDeleteProfileFromSelectedAccount().removeAllItems();
-        //gui.getComboBox1().removeAllItems();
+
+        gui.getCbSelectAccountForProfileEdit().removeAllItems();
         gui.getCbSelectAccountForProfileEdit().removeAllItems();
         gui.getCbUpdateSelectedProfile().removeAllItems();
 
@@ -37,7 +38,7 @@ public class AccountManagerImpl extends GeneralManager{
         this.addAccountsToComboBox(gui.getCbUpdateSelectedAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbAddProfileToSelectedAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbDeleteProfileFromSelectedAccount(), accountArrayList);
-        //this.addAccountsToComboBox(gui.getComboBox1(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbAddWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbSelectAccountForProfileEdit(), accountArrayList);
 
     }
@@ -75,7 +76,6 @@ public class AccountManagerImpl extends GeneralManager{
         ArrayList<Account> arrayList = accountDAO.getAccounts();
         return arrayList;
     }
-
     public void addAccountsToComboBox(JComboBox comboBox, ArrayList<Account> arrayList)
     {
         // For each Account in ArrayList, get the account name and add it to the parameter comboBox
