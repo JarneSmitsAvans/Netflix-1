@@ -244,7 +244,7 @@
                   <font size="20"/>
                 </properties>
               </component>
-              <component id="a8768" class="javax.swing.JTextPane">
+              <component id="a8768" class="javax.swing.JTextPane" binding="txtMoviesWatchedByAccount">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="500"/>
@@ -314,7 +314,7 @@
                   <text value="Film met langste tijdsduur voor kijkers onder de 16 jaar"/>
                 </properties>
               </component>
-              <component id="46509" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
+              <component id="46509" class="javax.swing.JTextPane" binding="txtLongestDurationOfMovieBelow16">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="500"/>
@@ -870,7 +870,7 @@
                               </component>
                             </children>
                           </grid>
-                          <grid id="70954" binding="editProfile" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                          <grid id="70954" binding="editProfile" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="20" left="20" bottom="20" right="20"/>
                             <constraints>
                               <tabbedpane title="&lt;html&gt;&lt;br&gt;Profiel bewerken&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -882,7 +882,7 @@
                             <children>
                               <component id="e7b50" class="javax.swing.JLabel">
                                 <constraints>
-                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <enabled value="false"/>
@@ -892,12 +892,12 @@
                               </component>
                               <vspacer id="454c4">
                                 <constraints>
-                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </vspacer>
                               <component id="30f9a" class="javax.swing.JTextField" binding="txtUpdateProfileName">
                                 <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>
                                     <preferred-size width="150" height="30"/>
                                     <maximum-size width="-1" height="30"/>
@@ -909,7 +909,7 @@
                               </component>
                               <component id="c9784" class="javax.swing.JButton" binding="btnEditProfile">
                                 <constraints>
-                                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <text value="Bewerk"/>
@@ -917,7 +917,7 @@
                               </component>
                               <component id="6f75d" class="javax.swing.JLabel">
                                 <constraints>
-                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <enabled value="false"/>
@@ -927,7 +927,7 @@
                               </component>
                               <component id="f22" class="javax.swing.JComboBox" binding="cbUpdateSelectedProfile">
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -935,7 +935,7 @@
                               </component>
                               <component id="70125" class="javax.swing.JLabel">
                                 <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <enabled value="false"/>
@@ -945,12 +945,30 @@
                               </component>
                               <component id="a037f" class="com.toedter.calendar.JDateChooser" binding="jDPnewDateOfBirth">
                                 <constraints>
-                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false">
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>
                                     <preferred-size width="150" height="30"/>
                                     <maximum-size width="-1" height="30"/>
                                   </grid>
                                 </constraints>
+                              </component>
+                              <component id="1afe5" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies account"/>
+                                </properties>
+                              </component>
+                              <component id="442a0" class="javax.swing.JComboBox" binding="cbSelectAccountForProfileEdit">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
                               </component>
                             </children>
                           </grid>
@@ -1991,7 +2009,7 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <grid id="ef3d0" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                          <grid id="ef3d0" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="20" left="20" bottom="20" right="20"/>
                             <constraints>
                               <tabbedpane title="&lt;html&gt;&lt;br&gt;Kijkgedrag toevoegen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -2038,7 +2056,7 @@
                               </component>
                               <component id="4cc5f" class="javax.swing.JTextField">
                                 <constraints>
-                                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                  <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>
                                     <preferred-size width="150" height="30"/>
                                     <maximum-size width="-1" height="30"/>
@@ -2050,7 +2068,7 @@
                               </component>
                               <component id="a191a" class="javax.swing.JButton">
                                 <constraints>
-                                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <text value="Toevoegen"/>
@@ -2058,7 +2076,7 @@
                               </component>
                               <component id="48ab9" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -2066,15 +2084,7 @@
                               </component>
                               <component id="618bd" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
                                 <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
-                                </constraints>
-                                <properties>
-                                  <font size="16"/>
-                                </properties>
-                              </component>
-                              <component id="99e06" class="javax.swing.JComboBox" default-binding="true">
-                                <constraints>
-                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -2092,7 +2102,7 @@
                               </component>
                               <component id="6e4a" class="javax.swing.JComboBox" default-binding="true">
                                 <constraints>
-                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -2120,11 +2130,27 @@
                               </component>
                               <component id="6c636" class="javax.swing.JLabel">
                                 <constraints>
-                                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                                  <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
                                   <text value="Hier komt de max. tijdsduur van het selected programma&#10;"/>
+                                </properties>
+                              </component>
+                              <component id="de317" class="javax.swing.JRadioButton" binding="radioButton1" default-binding="true">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="RadioButton"/>
+                                </properties>
+                              </component>
+                              <component id="76b51" class="javax.swing.JRadioButton" binding="radioButton2" default-binding="true">
+                                <constraints>
+                                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="RadioButton"/>
                                 </properties>
                               </component>
                             </children>

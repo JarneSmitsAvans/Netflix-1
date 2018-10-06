@@ -12,9 +12,9 @@ import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.MovieListeners.MovieCreateListener;
 import domain.Listeners.ProfileListeners.*;
+import domain.Listeners.SerieListeners.SerieViewListener;
 import domain.Movie;
 import domain.Profile;
-import domain.Listeners.SerieListeners.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -74,7 +74,7 @@ public class GUI implements Runnable {
     private JPanel accountsAndProfilesPane;
     private JPanel seriesAndEpisodesPane;
     // JTextPanes
-    private JTextPane textPane1;
+    private JTextPane txtLongestDurationOfMovieBelow16;
     private JTextPane txtAccountsWithOneProfile;
     private JTextPane txtAvgWatchedSeries;
     // JComboBoxes
@@ -146,6 +146,12 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteEpisodeReferencenumber;
     private JComboBox cbdeleteEditEpisode;
 
+
+    private JComboBox cbSelectAccountForProfileEdit;
+    private JTextPane txtMoviesWatchedByAccount;
+    private JRadioButton radioButton1;
+    private JRadioButton radioButton2;
+
 //    ------------------------------------------------------------------------------------------------------------------
 
     // Getters
@@ -191,6 +197,10 @@ public class GUI implements Runnable {
     // Profiles
     public JComboBox getCbWatchedProgramsBySelectedProfile() {
         return cbWatchedProgramsBySelectedProfile;
+    }
+
+    public JComboBox getCbSelectAccountForProfileEdit() {
+        return cbSelectAccountForProfileEdit;
     }
     // Movie
     // Add movie
@@ -315,11 +325,19 @@ public class GUI implements Runnable {
         cbDeleteProfileFromSelectedAccount.addActionListener(new ProfileLoadProfilesForSelectedAccountListener(this));
         cbUpdateSelectedProfile.addActionListener(new ProfileUpdateComboBoxListener(this));
         btnDeleteProfile.addActionListener(new ProfileDeleteListener(this));
+
+        cbSelectAccountForProfileEdit.addActionListener(new ProfilesLoadProfilesForSelectedAccountUpdate(this));
+        cbUpdateSelectedProfile.setEnabled(false);
+
         // Movie
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
 
         //Serie
         cbAvgOfWatchedSerie.addActionListener(new SerieViewListener(this));
+
+        // Watch Behaviour
+        //comboBox2.setEnabled(false);
+        //comboBox1.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
     }
 
     private void initializeComponents() {
