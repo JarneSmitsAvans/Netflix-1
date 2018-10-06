@@ -1,7 +1,9 @@
 package presentation;
 
 import application.AccountManagerImpl;
+import application.EpisodeManagerlmpl;
 import application.ProfileManagerImpl;
+import application.SerieManagerImpl;
 import com.toedter.calendar.JDateChooser;
 import domain.Account;
 import domain.Listeners.AccountListeners.AccountCreateListener;
@@ -12,6 +14,7 @@ import domain.Listeners.MovieListeners.MovieCreateListener;
 import domain.Listeners.ProfileListeners.*;
 import domain.Movie;
 import domain.Profile;
+import domain.Listeners.SerieListeners.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -76,7 +79,7 @@ public class GUI implements Runnable {
     private JTextPane txtAvgWatchedSeries;
     // JComboBoxes
     private JComboBox cbAvgWatchedAccount;
-    private JComboBox cbAvgWatchedEpisode;
+    private JComboBox cbAvgWatchedSerie;
     private JComboBox cbAvgOfWatchedSerie;
     private JComboBox cbAvgOfWatchedEpisode;
     private JComboBox cbAmountOfViewsOfMovie;
@@ -122,6 +125,26 @@ public class GUI implements Runnable {
     private JButton btnCreateProfile;
     private JButton btnEditProfile;
     private JButton btnDeleteProfile;
+    private JTextField txtCreateSerieTitle;
+    private JTextField TxtCreateSerieGenre;
+    private JTextField txtCreateSerieLanguage;
+    private JTextField txtCreatSerieAge;
+    private JComboBox cbxGetUpdateSerie;
+    private JTextField txtUpdateSerieTitle;
+    private JTextField txtUpdateSerieGenre;
+    private JTextField txtUpdateSerieAge;
+    private JTextField txtUpdateSerieLanguage;
+    private JComboBox cbxGetdeleteSerie;
+    private JComboBox cbCreateEpisodeForSerie;
+    private JTextField cbCreateEpisodeTitle;
+    private JTextField cbCreateEpisodeDuration;
+    private JTextField cbCreateEpisodeReferencenumber;
+    private JTextField cbEditEpisodeReferencenumber;
+    private JTextField cbEditEpisodeDuration;
+    private JTextField cbEditEpisodeTitle;
+    private JComboBox cbEditEpisodeForSerie;
+    private JComboBox cbDeleteEpisodeReferencenumber;
+    private JComboBox cbdeleteEditEpisode;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -217,6 +240,25 @@ public class GUI implements Runnable {
         return cbDeleteProfile;
     }
 
+
+
+    //Serie
+        //View Series
+            //ComoBox
+            public JComboBox getCbAvgOfWatchedSerie(){
+                return cbAvgOfWatchedSerie;
+            }
+            public JComboBox getcbAvgWatchedSerie(){
+                return cbAvgWatchedSerie;
+            }
+
+   //Episode
+       //View Episodes
+            //ComoBox
+           public JComboBox getcbAvgOfWatchedEpisode(){
+               return cbAvgOfWatchedEpisode;
+           }
+
 //    ------------------------------------------------------------------------------------------------------------------
 
     // Managers
@@ -275,14 +317,29 @@ public class GUI implements Runnable {
         btnDeleteProfile.addActionListener(new ProfileDeleteListener(this));
         // Movie
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
+
+        //Serie
+        cbAvgOfWatchedSerie.addActionListener(new SerieViewListener(this));
     }
 
     private void initializeComponents() {
         try {
             /* Initialize the value for components in the GUI */
+            //Account
             accountManager.initializeAccountComponents(this);
             accountManager.initializeAccountComboBoxes(this);
+
+            //Profile
             profileManager.initializeProfileComboBoxes(this);
+
+            //Serie
+            SerieManagerImpl serieManager = new SerieManagerImpl(this);
+            serieManager.fillAllSerieCbx();
+
+            //Episodes
+            EpisodeManagerlmpl episodeManagerlmpl = new EpisodeManagerlmpl(this);
+
+
 
         } catch (Exception e) {
             System.out.println(e);

@@ -11,22 +11,28 @@ import java.util.List;
 
 public class SerieDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
+
     public ArrayList<Serie> getSeries() throws SQLException, ClassNotFoundException {
             // Returns an ArrayList filled with all series in the database.
-            ArrayList<Serie> accountArrayList = new ArrayList<Serie>();
+            ArrayList<Serie> serieList = new ArrayList<Serie>();
             databaseConnection.OpenConnection();
             PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie");
-           ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+            ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+
             while (resultSet.next()) {
                 Serie newserie = new Serie();
+                newserie.setId(resultSet.getInt("id"));
                 newserie.setTitle(resultSet.getString("title"));
                 newserie.setGenre(resultSet.getString("genre"));
                 newserie.setLanguage(resultSet.getString("language"));
                 newserie.setMinAge(resultSet.getInt("minimumage"));
-                accountArrayList.add(newserie);
-
+                serieList.add(newserie);
             }
-           databaseConnection.CloseConnection();
-            return accountArrayList;
+
+            databaseConnection.CloseConnection();
+
+            return serieList;
     }
+
+
 }

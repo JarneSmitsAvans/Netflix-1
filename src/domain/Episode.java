@@ -3,8 +3,18 @@ package domain;
 import java.sql.Time;
 
 public class Episode extends Program {
+    private int id;
     private int episodeNumber;
     private int referenceNumber;
+    private int serieNumber;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
      public int getEpisodenumber(){
@@ -23,10 +33,13 @@ public class Episode extends Program {
         this.referenceNumber = referenceNumber;
     }
 
-//    @Override
-//    public void setDuration(Time duration) {
-//        this.duration = duration;
-//    }
+    public int getSerieNumber(){
+        return this.serieNumber;
+    }
+
+    public void setSerieNumber(int serieNumber) {
+        this.serieNumber = serieNumber;
+    }
 
 
 }

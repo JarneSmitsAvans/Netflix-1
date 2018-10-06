@@ -5,29 +5,19 @@ import java.sql.Time;
 import java.util.*;
 
 public class Serie extends Program {
-    private ArrayList<Episode> episodes = new ArrayList<Episode>();
+    private int id;
 
-//    public Serie(Episode episode){
-//        this.episodes.add(episode);
-//    }
-
-    public void addEpisode(Episode episode){
-        episodes.add(episode);
+    public int getId() {
+        return id;
     }
 
-//    @Override
-//    public void setDuration(Time duration) {
-//
-//    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        String Buffer = this.getTitle() + "\n";
-        Buffer += "Afleveringen: \n";
-        for(Program ep : episodes){
-            Buffer +=  "Aflevering: " + ep.getTitle() + "\n" ;
-        }
-
-        return Buffer;
+        return getTitle();
     }
 
 
