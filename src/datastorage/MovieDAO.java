@@ -3,7 +3,9 @@ package datastorage;
 import domain.Movie;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MovieDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -19,5 +21,19 @@ public class MovieDAO {
         boolean inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
         databaseConnection.CloseConnection();
         return inserted;
+    }
+
+    public ArrayList<String> getWatchedMoviesByAccount() throws SQLException, ClassNotFoundException
+    {
+        ArrayList<String> watchedMovieByAccountArrayList = new ArrayList<String>();
+//        databaseConnection.OpenConnection();
+//        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Account.name FROM Account JOIN Profile ON Profile.fk_account = Account.id GROUP BY Account.name HAVING COUNT(*) = 1");
+//        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+//        while (resultSet.next()){
+//            String account = (resultSet.getString("name"));
+//            accountArrayList.add(account);
+//        }
+//        databaseConnection.CloseConnection();
+        return watchedMovieByAccountArrayList;
     }
 }
