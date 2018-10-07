@@ -1,7 +1,9 @@
 package application;
 
 import datastorage.MovieDAO;
+import datastorage.ProfileDAO;
 import domain.Movie;
+import domain.Profile;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 
 public class MovieManagerImpl {
     private MovieDAO movieDAO = new MovieDAO();
+    private ProfileDAO profileDAO = new ProfileDAO();
 
     public boolean create(Movie movie) throws SQLException, ClassNotFoundException {
         boolean movieCreated = movieDAO.create(movie);
@@ -21,16 +24,20 @@ public class MovieManagerImpl {
     }
 
     public void addMoviesToComboBox(JComboBox comboBox, ArrayList<Movie> arrayList) {
-        // For each Account in ArrayList, get the account name and add it to the parameter comboBox
+        // For each Movie in ArrayList, get the title and add it to the parameter comboBox
         for (Movie movie : arrayList) {
             comboBox.addItem(movie.getTitle());
         }
     }
 
-//    getMatchingProfiles(int id) throws SQLException, ClassNotFoundException {
-//        ArrayList<Profile> arrayList = profileDAO.getMatchingProfiles(id);
-
-//    public ArrayList<String> watchedMovieByAccountArrayList() throws SQLException, ClassNotFoundException {
-//        ArrayList<String> = movieDAO.getWatchedMoviesByAccount(account);
-//    }
+    public ArrayList<String> watchedMovieByAccountArrayList(int id) throws SQLException, ClassNotFoundException {
+        int accountId = id;
+        ArrayList<Profile> profileList = profileDAO.getMatchingProfiles(accountId);
+        ArrayList<String> movieList = new ArrayList<String>();
+        for(Profile p : profileList) {
+            String movie = movieDAO.getWatchedMoviesByAccount(p.getProfileID());
+            movieList.add(movie);
+        }
+        return movieList;
+    }
 }

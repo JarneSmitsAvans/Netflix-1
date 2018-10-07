@@ -25,11 +25,13 @@ public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             if(ui.getCbWatchedByAccount().getSelectedItem() != null) {
+
+                // TODO Hij pakt hier het verkeerde item?!
                 String strSelectedAccount = this.ui.getCbUpdateSelectedAccount().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
                 int id = account.getId();
-//                ArrayList<String> list = movieManager.
-//                this.ui.getTxtUpdateAccountName().setText(this.account.getName());
+                ArrayList<String> watchedMoviesList = movieManager.watchedMovieByAccountArrayList(id);
+                this.ui.getTxtMoviesWatchedByAccount().setText(watchedMoviesList.toString());
 
             } else {
                 return;
