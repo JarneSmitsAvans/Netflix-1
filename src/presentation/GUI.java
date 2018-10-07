@@ -352,11 +352,13 @@ public class GUI implements Runnable {
         lblDesignerInfo8.setText(designInfo);
         initializeComponents();
         // Account
+        cbUpdateSelectedAccount.setSelectedItem(null);
         cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
         btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
         btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
         btnUpdateAccount.addActionListener(new AccountUpdateListener(this));
         // Profile
+        cbSelectAccountForProfileEdit.setSelectedItem(null);
         cbDeleteProfile.setEnabled(false);
         btnEditProfile.addActionListener(new ProfileUpdateListener(this));
         btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
@@ -372,6 +374,7 @@ public class GUI implements Runnable {
         //Serie
         cbAvgOfWatchedSerie.addActionListener(new SerieViewListener(this));
         // Watch Behaviour
+        cbAddWatchedMediaProfile.setEnabled(false);
         cbAddWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
         cbAddWatchedMediaEpisode.setVisible(false);
         lblWatchedEpisode.setVisible(false);

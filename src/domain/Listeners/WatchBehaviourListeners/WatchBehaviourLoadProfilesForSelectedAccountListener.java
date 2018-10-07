@@ -25,6 +25,7 @@ public class WatchBehaviourLoadProfilesForSelectedAccountListener implements Act
     public void actionPerformed(ActionEvent e) {
         try {
             if (this.ui.getCbAddWatchedMediaAccount().getSelectedItem() != null) {
+                ui.getCbAddWatchedMediaProfile().setEnabled(true);
                 profileManager.initializeProfileComboBoxes(ui);
                 String strSelectedAccount = this.ui.getCbAddWatchedMediaAccount().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
