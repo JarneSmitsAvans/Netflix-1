@@ -1,6 +1,7 @@
 package datastorage;
 
 import domain.Movie;
+import domain.Profile;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,21 +24,25 @@ public class MovieDAO {
         return inserted;
     }
 
-    public ArrayList<String> getWatchedMoviesByAccount() throws SQLException, ClassNotFoundException {
-        ArrayList<String> watchedMovieByAccountArrayList = new ArrayList<String>();
-//        databaseConnection.OpenConnection();
-//        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Account.name FROM Account JOIN Profile ON Profile.fk_account = Account.id GROUP BY Account.name HAVING COUNT(*) = 1");
-//        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
-//        while (resultSet.next()){
-//            String account = (resultSet.getString("name"));
-//            accountArrayList.add(account);
-//        }
-//        databaseConnection.CloseConnection();
-        return watchedMovieByAccountArrayList;
+    public ArrayList<String> getWatchedMoviesByAccount(int profileId) throws SQLException, ClassNotFoundException {
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Watched_Media.Movie_Title FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id WHERE Watched_Media.Profile_Id = ?");
+        preparedStatement.setInt(1, profileId);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        ArrayList<String> movieTitles = new ArrayList<String>();
+        try {
+            while (resultSet.next()) {
+                movieTitles.add(resultSet.getString("Movie_Title"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        databaseConnection.CloseConnection();
+        return movieTitles;
     }
 
     public ArrayList<Movie> getAllMovies() throws SQLException, ClassNotFoundException {
-        // Returns an ArrayList filled with all accounts in the database.
+        // Returns an ArrayList filled with all movies in the database.
         ArrayList<Movie> movieArrayList = new ArrayList<Movie>();
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Movie");

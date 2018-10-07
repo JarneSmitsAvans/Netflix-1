@@ -8,6 +8,9 @@ import presentation.GUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
     private GUI ui;
@@ -18,6 +21,7 @@ public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
     public MovieGetCbValueWatchedByAccountListener(GUI ui) {
         this.ui = ui;
         this.accountManager = new AccountManagerImpl();
+        this.movieManager = new MovieManagerImpl();
         this.account = new Account();
     }
 
@@ -25,12 +29,21 @@ public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             if(ui.getCbWatchedByAccount().getSelectedItem() != null) {
-                String strSelectedAccount = this.ui.getCbUpdateSelectedAccount().getSelectedItem().toString();
+                String strSelectedAccount = ui.getCbWatchedByAccount().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
                 int id = account.getId();
-//                ArrayList<String> list = movieManager.
-//                this.ui.getTxtUpdateAccountName().setText(this.account.getName());
-
+                ArrayList<String> watchedMoviesList = movieManager.watchedMovieByAccountArrayList(id);
+                String watchedMovies = "";
+                if(!watchedMoviesList.isEmpty()) {
+                    Set<String> uniqueMovies = new HashSet<String>(watchedMoviesList);
+                    for (String movie : uniqueMovies) {
+                        int howManyTimes = Collections.frequency(watchedMoviesList, movie);
+                        watchedMovies += howManyTimes + "x " + movie + "\n";
+                    }
+                } else {
+                    watchedMovies += "Er zijn nog geen films bekeken door dit account";
+                }
+                this.ui.getTxtMoviesWatchedByAccount().setText(watchedMovies);
             } else {
                 return;
             }

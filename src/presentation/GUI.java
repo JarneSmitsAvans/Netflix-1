@@ -258,6 +258,7 @@ public class GUI implements Runnable {
     public JComboBox getCbWatchedByAccount() {
         return cbWatchedByAccount;
     }
+    public JTextPane getTxtMoviesWatchedByAccount() { return txtMoviesWatchedByAccount; }
 
     // Watch Behaviour
     public JComboBox getCbAddWatchedMediaAccount() {
