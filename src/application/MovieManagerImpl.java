@@ -35,8 +35,10 @@ public class MovieManagerImpl {
         ArrayList<Profile> profileList = profileDAO.getMatchingProfiles(accountId);
         ArrayList<String> movieList = new ArrayList<String>();
         for(Profile p : profileList) {
-            String movie = movieDAO.getWatchedMoviesByAccount(p.getProfileID());
-            movieList.add(movie);
+            ArrayList<String> watchedMoviesByProfileList = movieDAO.getWatchedMoviesByAccount(p.getProfileID());
+            for(String movie : watchedMoviesByProfileList) {
+                movieList.add(movie);
+            }
         }
         return movieList;
     }

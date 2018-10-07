@@ -24,17 +24,21 @@ public class MovieDAO {
         return inserted;
     }
 
-    public String getWatchedMoviesByAccount(int profileId) throws SQLException, ClassNotFoundException {
+    public ArrayList<String> getWatchedMoviesByAccount(int profileId) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Watched_Media.Movie_Title FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id WHERE Watched_Media.Profile_Id = ?");
         preparedStatement.setInt(1, profileId);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
-        String movie = "";
-        while (resultSet.next()){
-            movie = (resultSet.getString("name"));
+        ArrayList<String> movieTitles = new ArrayList<String>();
+        try {
+            while (resultSet.next()) {
+                movieTitles.add(resultSet.getString("Movie_Title"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         databaseConnection.CloseConnection();
-        return movie;
+        return movieTitles;
     }
 
     public ArrayList<Movie> getAllMovies() throws SQLException, ClassNotFoundException {
