@@ -14,9 +14,7 @@ import domain.Listeners.MovieListeners.MovieCreateListener;
 import domain.Listeners.MovieListeners.MovieGetCbValueWatchedByAccountListener;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.SerieListeners.SerieViewListener;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourLoadEpisodesForSelectedSerieListener;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourLoadProfilesForSelectedAccountListener;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourRadioButtonListener;
+import domain.Listeners.WatchBehaviourListeners.*;
 import domain.Movie;
 import domain.Profile;
 
@@ -94,8 +92,6 @@ public class GUI implements Runnable {
     private JComboBox cbUpdateSelectedProfile;
     private JComboBox cbDeleteProfileFromSelectedAccount;
     private JComboBox cbDeleteProfile;
-
-
     private JComboBox cbWatchedProgramsBySelectedProfile;
     // JTextFields
     // Add account
@@ -124,11 +120,7 @@ public class GUI implements Runnable {
     private JButton btnUpdateAccount;
     private JButton btnAddMovie;
     private JPanel watchedProgramsByProfile;
-
-
     private JComboBox cbAddWatchedMediaAccount;
-
-
     private JComboBox cbAddWatchedMediaProfile;
     private JButton btnCreateProfile;
     private JButton btnEditProfile;
@@ -153,32 +145,21 @@ public class GUI implements Runnable {
     private JComboBox cbEditEpisodeForSerie;
     private JComboBox cbDeleteEpisodeReferencenumber;
     private JComboBox cbdeleteEditEpisode;
-
-
     private JComboBox cbSelectAccountForProfileEdit;
     private JTextPane txtMoviesWatchedByAccount;
     private JRadioButton rbMovie;
     private JRadioButton rbSerie;
-
-
-    private JComboBox cbAddWatchedMediaTitle;
-
-
+    private JComboBox cbAddWatchedMediaMovieTitle;
     private JLabel lblDurationOfSelectedProgram;
     private JTextField txtAddWatchedMediaDuration;
-
-
     private JPanel WatchBehaviourPane;
-
-
     private JPanel WatchBehaviourCreate;
-
-
     private JComboBox cbAddWatchedMediaEpisode;
-
-
     private JLabel lblWatchedEpisode;
-
+    private JComboBox cbAddWatchedMediaSerieTitle;
+    private JLabel lblMovieTitle;
+    private JLabel lblSerieTitle;
+    private JButton btnAddWatchBehaviour;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -186,8 +167,6 @@ public class GUI implements Runnable {
     public JPanel getMainPanel() {
         return mainPanel;
     }
-
-
     // Account
     public JComboBox getCbAvgWatchedAccount() {
         return cbAvgWatchedAccount;
@@ -284,27 +263,34 @@ public class GUI implements Runnable {
     public JComboBox getCbAddWatchedMediaAccount() {
         return cbAddWatchedMediaAccount;
     }
-
     public JComboBox getCbAddWatchedMediaProfile() {
         return cbAddWatchedMediaProfile;
     }
-
     public JComboBox getCbAddWatchedMediaEpisode() {
         return cbAddWatchedMediaEpisode;
     }
-
     public JLabel getLblDurationOfSelectedProgram() {
         return lblDurationOfSelectedProgram;
     }
-
     public JLabel getLblWatchedEpisode() {
         return lblWatchedEpisode;
     }
 
-    public JComboBox getCbAddWatchedMediaTitle() {
-        return cbAddWatchedMediaTitle;
+    public JComboBox getCbAddWatchedMediaMovieTitle() {
+        return cbAddWatchedMediaMovieTitle;
     }
 
+    public JComboBox getCbAddWatchedMediaSerieTitle() {
+        return cbAddWatchedMediaSerieTitle;
+    }
+
+    public JLabel getLblMovieTitle() {
+        return lblMovieTitle;
+    }
+
+    public JLabel getLblSerieTitle() {
+        return lblSerieTitle;
+    }
     //Serie
         //View Series
             //ComoBox
@@ -363,7 +349,6 @@ public class GUI implements Runnable {
         lblDesignerInfo6.setText(designInfo);
         lblDesignerInfo7.setText(designInfo);
         lblDesignerInfo8.setText(designInfo);
-
         initializeComponents();
         // Account
         cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
@@ -380,33 +365,30 @@ public class GUI implements Runnable {
 
         cbSelectAccountForProfileEdit.addActionListener(new ProfilesLoadProfilesForSelectedAccountUpdate(this));
         cbUpdateSelectedProfile.setEnabled(false);
-
         // Movie
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
         cbWatchedByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
-
         //Serie
         cbAvgOfWatchedSerie.addActionListener(new SerieViewListener(this));
-
         // Watch Behaviour
-        cbAddWatchedMediaProfile.setEnabled(false);
         cbAddWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
-
         cbAddWatchedMediaEpisode.setVisible(false);
         lblWatchedEpisode.setVisible(false);
-        rbSerie.setActionCommand("showEpisodeCb");
-        rbMovie.setActionCommand("hideEpisodeCb");
-        cbAddWatchedMediaTitle.setActionCommand("fillWithEpisodes");
         ButtonGroup watchBehaviourbtnGrp = new ButtonGroup();
         watchBehaviourbtnGrp.add(rbMovie);
         watchBehaviourbtnGrp.add(rbSerie);
-        rbSerie.addActionListener(new WatchBehaviourRadioButtonListener(this));
-        rbMovie.addActionListener(new WatchBehaviourRadioButtonListener(this));
-        cbAddWatchedMediaTitle.addActionListener(new WatchBehaviourLoadEpisodesForSelectedSerieListener(this));
-
+        cbAddWatchedMediaMovieTitle.setVisible(false);
+        cbAddWatchedMediaSerieTitle.setVisible(false);
+        cbAddWatchedMediaEpisode.setVisible(false);
+        lblMovieTitle.setVisible(false);
+        lblSerieTitle.setVisible(false);
+        lblWatchedEpisode.setVisible(false);
+        rbSerie.addActionListener(new WatchBehaviourSerieListener(this));
+        rbMovie.addActionListener(new WatchBehaviourMovieListener(this));
+        cbAddWatchedMediaMovieTitle.addActionListener(new WatchBehaviourSelectedMovieListener(this));
+        cbAddWatchedMediaSerieTitle.addActionListener(new WatchBehaviourLoadEpisodesForSelectedSerieListener(this));
+        cbAddWatchedMediaEpisode.addActionListener(new WatchBehaviourSelectedEpisodeListener(this));
     }
-
-
     private void initializeComponents() {
         try {
             /* Initialize the value for components in the GUI */

@@ -12,7 +12,7 @@ public class ProfileDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
     public boolean create(Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile (profilename, age, fk_account) VALUES (?, ?, ?)");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile (profilename, DateOfBirth, fk_account) VALUES (?, ?, ?)");
         preparedStatement.setString(1, profile.getProfileName());
         preparedStatement.setDate(2, (Date) profile.getDateOfBirth());
         preparedStatement.setInt(3, profile.getAccountNumber());
@@ -27,7 +27,7 @@ public class ProfileDAO {
 
     public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profilename = ?, age = ? WHERE id = ?");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profilename = ?, DateOfBirth = ? WHERE id = ?");
         preparedStatement.setString(1, profile.getProfileName());
         preparedStatement.setDate(2, (Date) profile.getDateOfBirth());
         preparedStatement.setInt(3, id);
@@ -63,7 +63,7 @@ public class ProfileDAO {
             Profile profile = new Profile();
             profile.setProfileID(resultSet.getInt("id"));
             profile.setProfileName(resultSet.getString("profilename"));
-            profile.setDateOfBirth((resultSet.getDate("age")));
+            profile.setDateOfBirth((resultSet.getDate("DateOfBirth")));
             profile.setAccountNumber(resultSet.getInt("fk_account"));
             profileArrayList.add(profile);
         }
@@ -81,7 +81,7 @@ public class ProfileDAO {
             Profile profile = new Profile();
             profile.setProfileID(resultSet.getInt("id"));
             profile.setProfileName(resultSet.getString("profilename"));
-            profile.setDateOfBirth((resultSet.getDate("age")));
+            profile.setDateOfBirth((resultSet.getDate("DateOfBirth")));
             profile.setAccountNumber(resultSet.getInt("fk_account"));
             profileArrayList.add(profile);
         }
@@ -112,7 +112,7 @@ public class ProfileDAO {
         while (resultSet.next()) {
             profile.setProfileID(resultSet.getInt("id"));
             profile.setProfileName(resultSet.getString("profilename"));
-            profile.setDateOfBirth((resultSet.getDate("age")));
+            profile.setDateOfBirth((resultSet.getDate("DateOfBirth")));
             profile.setAccountNumber(resultSet.getInt("fk_account"));
             return profile;
         }

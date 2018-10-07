@@ -2010,7 +2010,7 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <grid id="ef3d0" binding="WatchBehaviourCreate" layout-manager="GridLayoutManager" row-count="8" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                          <grid id="ef3d0" binding="WatchBehaviourCreate" layout-manager="GridLayoutManager" row-count="9" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="20" left="20" bottom="20" right="20"/>
                             <constraints>
                               <tabbedpane title="&lt;html&gt;&lt;br&gt;Kijkgedrag toevoegen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -2032,7 +2032,7 @@
                               </component>
                               <vspacer id="8683">
                                 <constraints>
-                                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </vspacer>
                               <component id="2b462" class="javax.swing.JLabel">
@@ -2047,7 +2047,7 @@
                               </component>
                               <component id="6f4cc" class="javax.swing.JLabel">
                                 <constraints>
-                                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <enabled value="false"/>
@@ -2057,7 +2057,7 @@
                               </component>
                               <component id="4cc5f" class="javax.swing.JTextField" binding="txtAddWatchedMediaDuration">
                                 <constraints>
-                                  <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                  <grid row="7" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>
                                     <preferred-size width="150" height="30"/>
                                     <maximum-size width="-1" height="30"/>
@@ -2067,9 +2067,9 @@
                                   <font size="16"/>
                                 </properties>
                               </component>
-                              <component id="a191a" class="javax.swing.JButton">
+                              <component id="a191a" class="javax.swing.JButton" binding="btnAddWatchBehaviour">
                                 <constraints>
-                                  <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <text value="Toevoegen"/>
@@ -2101,7 +2101,7 @@
                                   <text value="Soort programma"/>
                                 </properties>
                               </component>
-                              <component id="6e4a" class="javax.swing.JComboBox" binding="cbAddWatchedMediaTitle">
+                              <component id="6e4a" class="javax.swing.JComboBox" binding="cbAddWatchedMediaMovieTitle">
                                 <constraints>
                                   <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
@@ -2109,19 +2109,19 @@
                                   <font size="16"/>
                                 </properties>
                               </component>
-                              <component id="bdc26" class="javax.swing.JLabel">
+                              <component id="bdc26" class="javax.swing.JLabel" binding="lblMovieTitle">
                                 <constraints>
                                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <enabled value="false"/>
                                   <font size="16"/>
-                                  <text value="Kies titel"/>
+                                  <text value="Kies filmtitel"/>
                                 </properties>
                               </component>
                               <component id="46bdf" class="javax.swing.JLabel">
                                 <constraints>
-                                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <enabled value="false"/>
@@ -2131,7 +2131,7 @@
                               </component>
                               <component id="6c636" class="javax.swing.JLabel" binding="lblDurationOfSelectedProgram">
                                 <constraints>
-                                  <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                                  <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -2156,7 +2156,7 @@
                               </component>
                               <component id="eb85f" class="javax.swing.JComboBox" binding="cbAddWatchedMediaEpisode">
                                 <constraints>
-                                  <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <enabled value="true"/>
@@ -2165,12 +2165,30 @@
                               </component>
                               <component id="43e0c" class="javax.swing.JLabel" binding="lblWatchedEpisode">
                                 <constraints>
-                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <enabled value="false"/>
                                   <font size="16"/>
                                   <text value="Kies aflevering"/>
+                                </properties>
+                              </component>
+                              <component id="fb46e" class="javax.swing.JComboBox" binding="cbAddWatchedMediaSerieTitle">
+                                <constraints>
+                                  <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
+                              </component>
+                              <component id="8e81d" class="javax.swing.JLabel" binding="lblSerieTitle">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="16"/>
+                                  <text value="Kies serietitel"/>
                                 </properties>
                               </component>
                             </children>
