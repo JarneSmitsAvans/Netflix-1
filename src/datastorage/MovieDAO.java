@@ -32,7 +32,9 @@ public class MovieDAO {
         ArrayList<String> movieTitles = new ArrayList<String>();
         try {
             while (resultSet.next()) {
-                movieTitles.add(resultSet.getString("Movie_Title"));
+                if(resultSet.getString("Movie_Title") != null) {
+                    movieTitles.add(resultSet.getString("Movie_Title"));
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -59,5 +61,22 @@ public class MovieDAO {
         databaseConnection.CloseConnection();
         return movieArrayList;
 
+    }
+
+    public Movie getMovieByTitle(String title) throws SQLException, ClassNotFoundException {
+        Movie movie = new Movie();
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Movie where Title = ?");
+        preparedStatement.setString(1, title);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()) {
+            movie.setTitle(resultSet.getString("Title"));
+            movie.setDuration(resultSet.getInt("Duration"));
+            movie.setGenre(resultSet.getString("Genre"));
+            movie.setLanguage(resultSet.getString("Language"));
+            movie.setMinAge(resultSet.getInt("Minimumage"));
+        }
+        databaseConnection.CloseConnection();
+        return movie;
     }
 }
