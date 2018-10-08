@@ -27,16 +27,18 @@ public class WatchBehaviourLoadEpisodesForSelectedSerieListener implements Actio
     public void actionPerformed(ActionEvent e) {
         if (ui.getCbAddWatchedMediaSerieTitle().getSelectedItem() != null) {
             this.duration = 0;
-                this.ui.getCbAddWatchedMediaEpisode().removeAllItems();
+            this.ui.getCbAddWatchedMediaEpisode().removeAllItems();
             String strSelectedSerie = this.ui.getCbAddWatchedMediaSerieTitle().getSelectedItem().toString();
                 Serie serie = serieManager.getSerieByName(strSelectedSerie);
                 int id = serie.getId();
                 episodeManager.setEpisodeList(id);
             ArrayList<Episode> episodes = episodeManager.setEpisodeList(id);
             episodeManager.appendComboBox(this.ui.getCbAddWatchedMediaEpisode(), episodes);
-            for (Episode episode : episodes) {
+
+            // get time duration of selected episode
+            /*for (Episode episode : episodes) {
                 duration = duration + episode.getDuration();
-            }
+            }*/
             ui.getLblDurationOfSelectedProgram().setText(Integer.toString(duration));
         }
     }
