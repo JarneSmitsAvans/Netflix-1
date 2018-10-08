@@ -16,8 +16,7 @@ public class Episode extends Program {
         this.id = id;
     }
 
-
-     public int getEpisodenumber(){
+    public int getEpisodenumber(){
         return this.episodeNumber;
     }
 
@@ -41,5 +40,9 @@ public class Episode extends Program {
         this.serieNumber = serieNumber;
     }
 
+    @Override
+    public String toString() {
+        return getTitle();
+    }
 
 }
