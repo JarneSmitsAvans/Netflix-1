@@ -63,7 +63,42 @@ public class MovieDAO {
 
     }
 
-    public Movie getMovieByTitle(String title) throws SQLException, ClassNotFoundException {
+    public ArrayList<Movie> getMovieWithLongestDurationAndAgeUnder16() throws SQLException, ClassNotFoundException {
+        ArrayList<Movie> movieWithLongestDurationAndUnder16 = new ArrayList<Movie>();
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Movie WHERE Duration = (SELECT MAX(Duration) FROM Movie WHERE MinimumAge < 16)");
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()){
+            Movie movie = new Movie();
+            movie.setTitle(resultSet.getString("Title"));
+            movie.setDuration(resultSet.getInt("Duration"));
+            movie.setGenre(resultSet.getString("Genre"));
+            movie.setLanguage(resultSet.getString("Language"));
+            movie.setMinAge(resultSet.getInt("Minimumage"));
+            movieWithLongestDurationAndUnder16.add(movie);
+        }
+        databaseConnection.CloseConnection();
+        return movieWithLongestDurationAndUnder16;
+    }
+
+    public String getAmountOfViewers(Movie movie) throws SQLException, ClassNotFoundException {
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT count(*) AS viewers from Watched_Media where Movie_Title = ?");
+        preparedStatement.setString(1, movie.getTitle());
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        int amount = 0;
+        while (resultSet.next()) {
+            amount = resultSet.getInt("viewers");
+        }
+        String strAmount = Integer.toString(amount);
+        databaseConnection.CloseConnection();
+        return strAmount;
+    }
+
+    // Get viewer of movie
+    //    public JComboBox getCbAmountOfViewsOfMovie() { return cbAmountOfViewsOfMovie; }
+
+    public Movie getMovieId(String title) throws SQLException, ClassNotFoundException {
         Movie movie = new Movie();
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Movie where Title = ?");
@@ -78,22 +113,5 @@ public class MovieDAO {
         }
         databaseConnection.CloseConnection();
         return movie;
-    }
-
-    public String getMovieWithLongestDurationAndAgeUnder16() throws SQLException, ClassNotFoundException {
-//    public ArrayList<Movie> getMovieWithLongestDurationAndAgeUnder16() throws SQLException, ClassNotFoundException {
-        String movieWithLongestDurationAndUnder16 = "";
-//        ArrayList<Movie> movieWithLongestDurationAndUnder16 = new ArrayList<Movie>();
-        databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Movie WHERE Duration = (SELECT MAX(Duration) FROM Movie WHERE MinimumAge < 16)");
-        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
-        while (resultSet.next()){
-            movieWithLongestDurationAndUnder16 = (resultSet.getString("Title"));
-//            Movie movie = new Movie();
-//            movie.s
-//            movieWithLongestDurationAndUnder16.add(resultSet.next());
-        }
-        databaseConnection.CloseConnection();
-        return movieWithLongestDurationAndUnder16;
     }
 }

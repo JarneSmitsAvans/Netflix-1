@@ -9,6 +9,7 @@ import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.MovieListeners.MovieCreateListener;
 import domain.Listeners.MovieListeners.MovieGetCbValueWatchedByAccountListener;
+import domain.Listeners.MovieListeners.MovieLoadAmountOfViewsListener;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.SerieListeners.*;
 import domain.Listeners.WatchBehaviourListeners.*;
@@ -264,6 +265,10 @@ public class GUI implements Runnable {
     // Get movie with longest duration
     public JTextPane getTxtLongestDurationOfMovieBelow16() { return txtLongestDurationOfMovieBelow16; }
 
+    // Get viewer of movie
+    public JComboBox getCbAmountOfViewsOfMovie() { return cbAmountOfViewsOfMovie; }
+    public JTextPane getTxtAmountOfViewersForMovie() { return txtAmountOfViewersForMovie; }
+
     // Watch Behaviour
     public JComboBox getCbAddWatchedMediaAccount() {
         return cbAddWatchedMediaAccount;
@@ -414,6 +419,8 @@ public class GUI implements Runnable {
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
         cbWatchedByAccount.setSelectedIndex(-1);
         cbWatchedByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
+        cbAmountOfViewsOfMovie.setSelectedIndex(-1);
+        cbAmountOfViewsOfMovie.addActionListener(new MovieLoadAmountOfViewsListener(this));
 
         //Serie
         cbAvgOfWatchedSerie.addActionListener(new SerieViewListener(this));
@@ -457,7 +464,7 @@ public class GUI implements Runnable {
 
             //Serie
             SerieManagerImpl serieManager = new SerieManagerImpl(this);
-            serieManager.fillAllSerieCbx();
+//            serieManager.fillAllSerieCbx();
 
             //Episodes
             EpisodeManagerlmpl episodeManagerlmpl = new EpisodeManagerlmpl(this);

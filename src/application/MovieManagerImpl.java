@@ -7,6 +7,8 @@ import domain.Profile;
 import presentation.GUI;
 
 import javax.swing.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,7 +17,15 @@ public class MovieManagerImpl {
     private ProfileDAO profileDAO = new ProfileDAO();
 
     public void initializeMovieComponents(GUI gui) throws SQLException, ClassNotFoundException {
-        gui.getTxtLongestDurationOfMovieBelow16().setText(this.MovieWithLongestDurationAndAgeUnder16());
+        ArrayList<Movie> moviesWithLongestDurationAndAgeIsBelow16 = this.MovieWithLongestDurationAndAgeUnder16();
+        String longestMovie = "";
+        for(Movie m : moviesWithLongestDurationAndAgeIsBelow16) {
+            longestMovie += m;
+        }
+        gui.getTxtLongestDurationOfMovieBelow16().setText(longestMovie);
+
+        ArrayList<Movie> movieArraylist = this.getMovies();
+        this.addMoviesToComboBox(gui.getCbAmountOfViewsOfMovie(), movieArraylist);
     }
 
     public boolean create(Movie movie) throws SQLException, ClassNotFoundException {
@@ -48,8 +58,18 @@ public class MovieManagerImpl {
         return movieList;
     }
 
-    public String MovieWithLongestDurationAndAgeUnder16() throws SQLException, ClassNotFoundException {
-        String movieWithLongestDurationAndUnder16 = movieDAO.getMovieWithLongestDurationAndAgeUnder16();
+    public ArrayList<Movie> MovieWithLongestDurationAndAgeUnder16() throws SQLException, ClassNotFoundException {
+        ArrayList<Movie> movieWithLongestDurationAndUnder16 = movieDAO.getMovieWithLongestDurationAndAgeUnder16();
         return movieWithLongestDurationAndUnder16;
+    }
+
+    public String amountOfViewers(Movie movie) throws SQLException, ClassNotFoundException {
+        String amountOfViewers = movieDAO.getAmountOfViewers(movie);
+        return amountOfViewers;
+    }
+
+    public Movie getMovieByTitle(String title) throws SQLException, ClassNotFoundException {
+        Movie movie = movieDAO.getMovieId(title);
+        return movie;
     }
 }
