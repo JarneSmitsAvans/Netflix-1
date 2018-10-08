@@ -1,9 +1,6 @@
 package presentation;
 
-import application.AccountManagerImpl;
-import application.EpisodeManagerlmpl;
-import application.ProfileManagerImpl;
-import application.SerieManagerImpl;
+import application.*;
 import com.toedter.calendar.JDateChooser;
 import domain.Account;
 import domain.Listeners.AccountListeners.AccountCreateListener;
@@ -160,6 +157,7 @@ public class GUI implements Runnable {
     private JLabel lblMovieTitle;
     private JLabel lblSerieTitle;
     private JButton btnAddWatchBehaviour;
+    private JTextPane txtAmountOfViewersForMovie;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -260,6 +258,9 @@ public class GUI implements Runnable {
     }
     public JTextPane getTxtMoviesWatchedByAccount() { return txtMoviesWatchedByAccount; }
 
+    // Get movie with longest duration
+    public JTextPane getTxtLongestDurationOfMovieBelow16() { return txtLongestDurationOfMovieBelow16; }
+
     // Watch Behaviour
     public JComboBox getCbAddWatchedMediaAccount() {
         return cbAddWatchedMediaAccount;
@@ -269,6 +270,12 @@ public class GUI implements Runnable {
     }
     public JComboBox getCbAddWatchedMediaEpisode() {
         return cbAddWatchedMediaEpisode;
+    }
+    public JButton getBtnAddWatchBehaviour() {
+        return btnAddWatchBehaviour;
+    }
+    public JTextField getTxtAddWatchedMediaDuration() {
+        return txtAddWatchedMediaDuration;
     }
     public JLabel getLblDurationOfSelectedProgram() {
         return lblDurationOfSelectedProgram;
@@ -315,12 +322,14 @@ public class GUI implements Runnable {
     // Account
     private AccountManagerImpl accountManager;
     private ProfileManagerImpl profileManager;
+    private MovieManagerImpl movieManager;
 
     public GUI(int width, int height) {
         this.width = width;
         this.height = height;
         this.accountManager = new AccountManagerImpl();
         this.profileManager = new ProfileManagerImpl();
+        this.movieManager = new MovieManagerImpl();
     }
     @Override
     public void run() {
@@ -370,6 +379,7 @@ public class GUI implements Runnable {
         cbUpdateSelectedProfile.setEnabled(false);
         // Movie
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
+        cbWatchedByAccount.setSelectedIndex(-1);
         cbWatchedByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
         //Serie
         cbAvgOfWatchedSerie.addActionListener(new SerieViewListener(this));
@@ -392,6 +402,7 @@ public class GUI implements Runnable {
         cbAddWatchedMediaMovieTitle.addActionListener(new WatchBehaviourSelectedMovieListener(this));
         cbAddWatchedMediaSerieTitle.addActionListener(new WatchBehaviourLoadEpisodesForSelectedSerieListener(this));
         cbAddWatchedMediaEpisode.addActionListener(new WatchBehaviourSelectedEpisodeListener(this));
+        btnAddWatchBehaviour.addActionListener(new WatchBehaviourCreateListener(this));
     }
     private void initializeComponents() {
         try {
@@ -402,6 +413,9 @@ public class GUI implements Runnable {
 
             //Profile
             profileManager.initializeProfileComboBoxes(this);
+
+            // Movie
+            movieManager.initializeMovieComponents(this);
 
             //Serie
             SerieManagerImpl serieManager = new SerieManagerImpl(this);

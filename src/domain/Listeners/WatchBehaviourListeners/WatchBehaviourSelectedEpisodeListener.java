@@ -36,6 +36,7 @@ public class WatchBehaviourSelectedEpisodeListener implements ActionListener {
                     if (episode.getSerieNumber() == serie.getId()) {
                         duration = episode.getDuration();
                         ui.getLblDurationOfSelectedProgram().setText(Integer.toString(duration));
+                        ui.getBtnAddWatchBehaviour().setActionCommand("insertEpisode");
                     }
                 }
             }
