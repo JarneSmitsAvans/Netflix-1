@@ -24,7 +24,7 @@ public class EpisodeDAO {
             newEpisode.setTitle(resultSet.getString("title"));
             newEpisode.setDuration(resultSet.getInt("duration"));
             newEpisode.setEpisodeNumber(resultSet.getInt("episodenumber"));
-            newEpisode.setReferenceNumber(resultSet.getInt("referencenumber"));
+           //newEpisode.setReferenceNumber(resultSet.getInt("referencenumber"));
             newEpisode.setSerieNumber(resultSet.getInt("fk_serie"));
             EpisodeList.add(newEpisode);
         }
