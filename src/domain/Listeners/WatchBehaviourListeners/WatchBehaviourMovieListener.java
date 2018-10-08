@@ -38,6 +38,8 @@ public class WatchBehaviourMovieListener implements ActionListener {
 
             movieManager.addMoviesToComboBox(ui.getCbAddWatchedMediaMovieTitle(), movieArrayList);
             ui.getLblDurationOfSelectedProgram().setText(Integer.toString(duration));
+            ui.getCbAddWatchedMediaMovieTitle().setSelectedItem(null);
+
 
         } catch (Exception el) {
             el.printStackTrace();

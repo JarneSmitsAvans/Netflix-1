@@ -5,6 +5,7 @@ import domain.Episode;
 import presentation.GUI;
 
 import javax.swing.*;
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -33,6 +34,18 @@ public class EpisodeManagerlmpl {
             e.printStackTrace();
         }
         return episodeList;
+    }
+    public ArrayList<Episode> getAllEpisodes(){
+        ArrayList<Episode> episodes = null;
+        try {
+            episodes = episodeDAO.getAllEpisodes();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return episodes;
+
     }
 
     public void fillAllEpisodesCbx(int id){

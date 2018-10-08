@@ -40,6 +40,7 @@ public class WatchBehaviourLoadEpisodesForSelectedSerieListener implements Actio
                 duration = duration + episode.getDuration();
             }*/
             ui.getLblDurationOfSelectedProgram().setText(Integer.toString(duration));
+            ui.getCbAddWatchedMediaEpisode().setSelectedItem(null);
         }
     }
 }

@@ -16,7 +16,6 @@ public class WatchBehaviourSerieListener implements ActionListener {
 
     private GUI ui;
     private SerieManagerImpl serieManager;
-
     @Override
     public void actionPerformed(ActionEvent e) {
         // Make movie components invisible
@@ -35,8 +34,9 @@ public class WatchBehaviourSerieListener implements ActionListener {
         ArrayList<Serie> serieArrayList = this.serieManager.setSerieList();
         serieManager.appendComboBox(ui.getCbAddWatchedMediaSerieTitle(), serieArrayList);
 
+
+        }
         //this.ui.getCbAddWatchedMediaMovieTitle().setSelectedItem(null);
         //ui.getCbAddWatchedMediaEpisode().removeAllItems();
 
     }
-}
