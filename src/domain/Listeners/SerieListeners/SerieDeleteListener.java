@@ -23,6 +23,7 @@ public class SerieDeleteListener implements ActionListener {
                 Serie serie = (Serie)ui.getCbAvgOfWatchedSerie().getSelectedItem();
                 boolean deleted = serieManager.delete(serie.getId());
                 message = (deleted) ? "De serie " + serie.getTitle() + " is succesvol verwijderd." : "Er is iets fout gegaan tijdens het verwijderen van de serie" + serie.getTitle() + ". Probeer het nog eens.";
+                serieManager.fillAllSerieCbx();
             }
             else{
                 message = "U heeft nog geen serie geselecteerd. Selecteer eerst een serie en probeer het dan opnieuw.";
