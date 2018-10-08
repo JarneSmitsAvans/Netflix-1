@@ -30,8 +30,9 @@ public class WatchBehaviourSelectedMovieListener implements ActionListener {
                for (Movie movie : movies){
                    if (movie.getTitle().equals(ui.getCbAddWatchedMediaMovieTitle().getSelectedItem())){
                       duration =  movie.getDuration();
+                      ui.getLblDurationOfSelectedProgram().setText(Integer.toString(duration));
+                      ui.getBtnAddWatchBehaviour().setActionCommand("insertMovie");
                    }
-                   ui.getLblDurationOfSelectedProgram().setText(Integer.toString(duration));
                }
             } catch (SQLException e1) {
                 e1.printStackTrace();

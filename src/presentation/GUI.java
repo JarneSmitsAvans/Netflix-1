@@ -270,6 +270,12 @@ public class GUI implements Runnable {
     public JComboBox getCbAddWatchedMediaEpisode() {
         return cbAddWatchedMediaEpisode;
     }
+    public JButton getBtnAddWatchBehaviour() {
+        return btnAddWatchBehaviour;
+    }
+    public JTextField getTxtAddWatchedMediaDuration() {
+        return txtAddWatchedMediaDuration;
+    }
     public JLabel getLblDurationOfSelectedProgram() {
         return lblDurationOfSelectedProgram;
     }
@@ -395,6 +401,7 @@ public class GUI implements Runnable {
         cbAddWatchedMediaMovieTitle.addActionListener(new WatchBehaviourSelectedMovieListener(this));
         cbAddWatchedMediaSerieTitle.addActionListener(new WatchBehaviourLoadEpisodesForSelectedSerieListener(this));
         cbAddWatchedMediaEpisode.addActionListener(new WatchBehaviourSelectedEpisodeListener(this));
+        btnAddWatchBehaviour.addActionListener(new WatchBehaviourCreateListener(this));
     }
     private void initializeComponents() {
         try {
