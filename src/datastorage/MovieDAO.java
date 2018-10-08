@@ -81,13 +81,17 @@ public class MovieDAO {
     }
 
     public String getMovieWithLongestDurationAndAgeUnder16() throws SQLException, ClassNotFoundException {
+//    public ArrayList<Movie> getMovieWithLongestDurationAndAgeUnder16() throws SQLException, ClassNotFoundException {
         String movieWithLongestDurationAndUnder16 = "";
+//        ArrayList<Movie> movieWithLongestDurationAndUnder16 = new ArrayList<Movie>();
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement
-                ("SELECT * FROM Movie INNER JOIN (SELECT Movie.Title, MAX(Duration) FROM Movie GROUP BY Movie.Title) movie2 ON Movie.Title = movie2.Title WHERE Movie.MinimumAge < 16");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Movie WHERE Duration = (SELECT MAX(Duration) FROM Movie WHERE MinimumAge < 16)");
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()){
             movieWithLongestDurationAndUnder16 = (resultSet.getString("Title"));
+//            Movie movie = new Movie();
+//            movie.s
+//            movieWithLongestDurationAndUnder16.add(resultSet.next());
         }
         databaseConnection.CloseConnection();
         return movieWithLongestDurationAndUnder16;
