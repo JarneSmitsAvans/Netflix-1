@@ -17,8 +17,8 @@ public class SerieManagerImpl {
         this.gui = gui;
     }
 
-    public ArrayList<Serie> setSerieList() {
-        // Returns an ArrayList filled with all series in the database.
+    //Creates a arraylist with all the series
+    public void setSerieList() {
         try {
             serieList = serieDAO.getSeries();
         } catch (SQLException e) {
@@ -26,12 +26,6 @@ public class SerieManagerImpl {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return serieList;
-    }
-
-    public int getSerie(int id) {
-
-        return id;
     }
 
     public Serie getSerieByName(String name) {
@@ -46,21 +40,38 @@ public class SerieManagerImpl {
         return serie;
     }
 
-    public ArrayList<Serie> getSerie()  {
+    //Returns a list with all the series
+    public ArrayList<Serie> getSerie()
+    {
         return serieList;
     }
 
-    public void fillAllSerieCbx(){
+    //Creates a arraylist with all the comboboxes that need to be filed with series and starts filling them
+    public void fillAllSerieCbx() {
         setSerieList();
-        appendComboBox(gui.getCbAvgOfWatchedSerie(),serieList);
-        appendComboBox(gui.getcbAvgWatchedSerie(),serieList);
+        JComboBox[] allSerieCb = {gui.getCbAvgOfWatchedSerie(),gui.getcbAvgWatchedSerie()};
+
+        for(int i=0; i < allSerieCb.length; i++){
+            allSerieCb[i].removeAllItems();
+            appendComboBox(allSerieCb[i],serieList);
+        }
     }
 
-    public void appendComboBox(JComboBox comboBox, ArrayList<Serie> series)
+    //Fill al the comboboxes With series
+    public void appendComboBox(JComboBox seriecb, ArrayList<Serie> series)
     {
         for (Serie serie : series)
         {
-            comboBox.addItem(serie);
+            seriecb.addItem(serie);
+        }
+    }
+
+    public boolean delete(int id) throws SQLException, ClassNotFoundException {
+        boolean updated = serieDAO.delete(id);
+        if (updated) {
+            return true;
+        } else {
+            return false;
         }
     }
 

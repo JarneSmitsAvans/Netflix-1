@@ -10,12 +10,13 @@ import java.util.ArrayList;
 
 public class EpisodeDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
-    public ArrayList<Episode> getEpisodes(int id) throws SQLException, ClassNotFoundException {
-        // Returns an ArrayList filled with all episodes in the database.
+
+    // Returns an ArrayList with all episodes out of the database from the selected serie.
+    public ArrayList<Episode> getEpisodes(int serie_id) throws SQLException, ClassNotFoundException {
         ArrayList<Episode> EpisodeList = new ArrayList<Episode>();
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Episode WHERE fk_serie = ?");
-        preparedStatement.setInt(1, id);
+        preparedStatement.setInt(1, serie_id);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
 
         while (resultSet.next()) {
@@ -32,8 +33,9 @@ public class EpisodeDAO {
         databaseConnection.CloseConnection();
         return EpisodeList;
     }
+
+    // Returns an ArrayList with all episodes out of the database
     public ArrayList<Episode> getAllEpisodes() throws SQLException, ClassNotFoundException {
-        // Returns all episodes out of the db
         ArrayList<Episode> EpisodeList = new ArrayList<Episode>();
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Episode");
@@ -49,6 +51,7 @@ public class EpisodeDAO {
             newEpisode.setSerieNumber(resultSet.getInt("fk_serie"));
             EpisodeList.add(newEpisode);
         }
+
         databaseConnection.CloseConnection();
         return EpisodeList;
     }

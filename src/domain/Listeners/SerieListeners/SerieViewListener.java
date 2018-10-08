@@ -10,19 +10,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SerieViewListener implements ActionListener {
-    private GUI gui;
+    private GUI ui;
 
-    public SerieViewListener(GUI gui){
-        this.gui = gui;
+    public SerieViewListener(GUI ui){
+        this.ui = ui;
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        //get the selected serie
-        Serie serie =  (Serie)gui.getCbAvgOfWatchedSerie().getSelectedItem();
+        //Get the selected serie
+        Serie serie = (Serie)ui.getCbAvgOfWatchedSerie().getSelectedItem();
 
-        EpisodeManagerlmpl episodeManagerlmpl = new EpisodeManagerlmpl(gui);
+        EpisodeManagerlmpl episodeManagerlmpl = new EpisodeManagerlmpl(ui);
         episodeManagerlmpl.fillAllEpisodesCbx(serie.getId());
     }
 }

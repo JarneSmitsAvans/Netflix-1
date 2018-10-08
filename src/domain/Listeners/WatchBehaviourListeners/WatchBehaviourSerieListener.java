@@ -31,7 +31,7 @@ public class WatchBehaviourSerieListener implements ActionListener {
         // Clear before adding
         ui.getCbAddWatchedMediaSerieTitle().removeAllItems();
 
-        ArrayList<Serie> serieArrayList = this.serieManager.setSerieList();
+        ArrayList<Serie> serieArrayList = this.serieManager.getSerie();
         serieManager.appendComboBox(ui.getCbAddWatchedMediaSerieTitle(), serieArrayList);
 
 

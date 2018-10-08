@@ -10,7 +10,7 @@ import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.MovieListeners.MovieCreateListener;
 import domain.Listeners.MovieListeners.MovieGetCbValueWatchedByAccountListener;
 import domain.Listeners.ProfileListeners.*;
-import domain.Listeners.SerieListeners.SerieViewListener;
+import domain.Listeners.SerieListeners.*;
 import domain.Listeners.WatchBehaviourListeners.*;
 import domain.Movie;
 import domain.Profile;
@@ -123,15 +123,15 @@ public class GUI implements Runnable {
     private JButton btnEditProfile;
     private JButton btnDeleteProfile;
     private JTextField txtCreateSerieTitle;
-    private JTextField TxtCreateSerieGenre;
+    private JTextField txtCreateSerieGenre;
     private JTextField txtCreateSerieLanguage;
     private JTextField txtCreatSerieAge;
-    private JComboBox cbxGetUpdateSerie;
+    private JComboBox cbGetUpdateSerie;
     private JTextField txtUpdateSerieTitle;
     private JTextField txtUpdateSerieGenre;
     private JTextField txtUpdateSerieAge;
     private JTextField txtUpdateSerieLanguage;
-    private JComboBox cbxGetdeleteSerie;
+    private JComboBox cbGetdeleteSerie;
     private JComboBox cbCreateEpisodeForSerie;
     private JTextField cbCreateEpisodeTitle;
     private JTextField cbCreateEpisodeDuration;
@@ -158,6 +158,9 @@ public class GUI implements Runnable {
     private JLabel lblSerieTitle;
     private JButton btnAddWatchBehaviour;
     private JTextPane txtAmountOfViewersForMovie;
+    private JButton btnDeleteSerie;
+    private JButton btnEditSerie;
+    private JButton btnCreateSerie;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -299,18 +302,45 @@ public class GUI implements Runnable {
     public JLabel getLblSerieTitle() {
         return lblSerieTitle;
     }
+
     //Serie
-        //View Series
-            //ComoBox
+        //View series
+            //ComboBox
             public JComboBox getCbAvgOfWatchedSerie(){
                 return cbAvgOfWatchedSerie;
             }
-            public JComboBox getcbAvgWatchedSerie(){
+            public JComboBox getCbAvgWatchedSerie(){
                 return cbAvgWatchedSerie;
             }
 
+
+        //Create Series
+            //TextField
+            public JTextField getTxtCreateSerieTitle() { return txtCreateSerieTitle; }
+            public JTextField getTxtCreateSerieGenre() { return txtCreateSerieGenre; }
+            public JTextField getTxttxtCreateSerieLanguage() { return txtCreateSerieLanguage; }
+            public JTextField getTxttxttxtCreatSerieAge() { return txtCreatSerieAge; }
+
+        //Update serie
+            //Combobox
+            public JComboBox getCbGetUpdateSerie(){
+                return cbGetUpdateSerie;
+            }
+
+            //TextField
+            public JTextField getTxtUpdateSerieTitle() { return txtUpdateSerieTitle; }
+            public JTextField getTxtUpdateSerieGenre() { return txtUpdateSerieGenre; }
+            public JTextField getTxtUpdateSerieLanguage() { return txtUpdateSerieLanguage; }
+            public JTextField getTxtUpdateSerieAge() { return txtUpdateSerieAge; }
+
+         //Delete
+            //Combobox
+            public JComboBox getCbGetdeleteSerie(){
+                return cbGetdeleteSerie;
+            }
+
    //Episode
-       //View Episodes
+       //View episodes
             //ComoBox
            public JComboBox getcbAvgOfWatchedEpisode(){
                return cbAvgOfWatchedEpisode;
@@ -360,12 +390,14 @@ public class GUI implements Runnable {
         lblDesignerInfo7.setText(designInfo);
         lblDesignerInfo8.setText(designInfo);
         initializeComponents();
+
         // Account
         cbUpdateSelectedAccount.setSelectedItem(null);
         cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
         btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
         btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
         btnUpdateAccount.addActionListener(new AccountUpdateListener(this));
+
         // Profile
         cbSelectAccountForProfileEdit.setSelectedItem(null);
         cbDeleteProfile.setEnabled(false);
@@ -377,12 +409,18 @@ public class GUI implements Runnable {
 
         cbSelectAccountForProfileEdit.addActionListener(new ProfilesLoadProfilesForSelectedAccountUpdate(this));
         cbUpdateSelectedProfile.setEnabled(false);
+
         // Movie
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
         cbWatchedByAccount.setSelectedIndex(-1);
         cbWatchedByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
+
         //Serie
         cbAvgOfWatchedSerie.addActionListener(new SerieViewListener(this));
+        btnCreateSerie.addActionListener(new SerieCreateListener(this));
+        btnEditSerie.addActionListener(new SerieUpdateListener(this));
+        btnDeleteSerie.addActionListener(new SerieDeleteListener(this));
+
         // Watch Behaviour
         cbAddWatchedMediaProfile.setEnabled(false);
         cbAddWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
