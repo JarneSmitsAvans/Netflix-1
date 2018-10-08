@@ -29,18 +29,18 @@ public class MovieDAO {
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Watched_Media.Movie_Title FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id WHERE Watched_Media.Profile_Id = ?");
         preparedStatement.setInt(1, profileId);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
-        ArrayList<String> movieTitles = new ArrayList<String>();
+        ArrayList<String> watchedMovies = new ArrayList<String>();
         try {
             while (resultSet.next()) {
                 if(resultSet.getString("Movie_Title") != null) {
-                    movieTitles.add(resultSet.getString("Movie_Title"));
+                    watchedMovies.add(resultSet.getString("Movie_Title"));
                 }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         databaseConnection.CloseConnection();
-        return movieTitles;
+        return watchedMovies;
     }
 
     public ArrayList<Movie> getAllMovies() throws SQLException, ClassNotFoundException {
@@ -78,5 +78,18 @@ public class MovieDAO {
         }
         databaseConnection.CloseConnection();
         return movie;
+    }
+
+    public String getMovieWithLongestDurationAndAgeUnder16() throws SQLException, ClassNotFoundException {
+        String movieWithLongestDurationAndUnder16 = "";
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement
+                ("SELECT * FROM Movie INNER JOIN (SELECT Movie.Title, MAX(Duration) FROM Movie GROUP BY Movie.Title) movie2 ON Movie.Title = movie2.Title WHERE Movie.MinimumAge < 16");
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()){
+            movieWithLongestDurationAndUnder16 = (resultSet.getString("Title"));
+        }
+        databaseConnection.CloseConnection();
+        return movieWithLongestDurationAndUnder16;
     }
 }

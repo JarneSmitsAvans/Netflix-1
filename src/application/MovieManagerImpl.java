@@ -4,6 +4,7 @@ import datastorage.MovieDAO;
 import datastorage.ProfileDAO;
 import domain.Movie;
 import domain.Profile;
+import presentation.GUI;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -12,6 +13,10 @@ import java.util.ArrayList;
 public class MovieManagerImpl {
     private MovieDAO movieDAO = new MovieDAO();
     private ProfileDAO profileDAO = new ProfileDAO();
+
+    public void initializeMovieComponents(GUI gui) throws SQLException, ClassNotFoundException {
+        gui.getTxtLongestDurationOfMovieBelow16().setText(this.MovieWithLongestDurationAndAgeUnder16());
+    }
 
     public boolean create(Movie movie) throws SQLException, ClassNotFoundException {
         boolean movieCreated = movieDAO.create(movie);
@@ -41,5 +46,10 @@ public class MovieManagerImpl {
             }
         }
         return movieList;
+    }
+
+    public String MovieWithLongestDurationAndAgeUnder16() throws SQLException, ClassNotFoundException {
+        String movieWithLongestDurationAndUnder16 = movieDAO.getMovieWithLongestDurationAndAgeUnder16();
+        return movieWithLongestDurationAndUnder16;
     }
 }
