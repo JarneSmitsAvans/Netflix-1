@@ -17,7 +17,8 @@ public class SerieViewListener implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)
+    {
         //get the selected serie
         Serie serie =  (Serie)gui.getCbAvgOfWatchedSerie().getSelectedItem();
 

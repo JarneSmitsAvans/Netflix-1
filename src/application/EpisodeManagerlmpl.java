@@ -15,16 +15,14 @@ public class EpisodeManagerlmpl {
     private ArrayList<Episode> episodeList;
     private GUI gui;
 
-    public EpisodeManagerlmpl(GUI gui){
+    public EpisodeManagerlmpl(GUI gui)
+    {
         this.gui = gui;
     }
 
-    public ArrayList<Episode> getEpisode()  {
-
-        return episodeList;
-    }
-
-    public ArrayList<Episode> setEpisodeList(int id) {
+    //Creates a arraylist with all the episodes of a series
+    public void setEpisodeList(int id)
+    {
         // Returns an ArrayList filled with all episodes in the database.
         try {
             episodeList = episodeDAO.getEpisodes(id);
@@ -33,9 +31,17 @@ public class EpisodeManagerlmpl {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    //Returns a list with episodes
+    public ArrayList<Episode> getEpisode()
+    {
         return episodeList;
     }
-    public ArrayList<Episode> getAllEpisodes(){
+
+    //Returns a list with all the episodes
+    public ArrayList<Episode> getAllEpisodes()
+    {
         ArrayList<Episode> episodes = null;
         try {
             episodes = episodeDAO.getAllEpisodes();
@@ -48,19 +54,25 @@ public class EpisodeManagerlmpl {
 
     }
 
-    public void fillAllEpisodesCbx(int id){
-        gui.getcbAvgOfWatchedEpisode().removeAllItems();
-        gui.getcbAvgOfWatchedEpisode().setEnabled(true);
+    //Creates a arraylist with all the comboboxes that need to be filed with episodes and starts filling them
+    public void fillAllEpisodesCbx(int id)
+    {
         setEpisodeList(id);
+        JComboBox[] allEpisodecb = {gui.getcbAvgOfWatchedEpisode()};
 
-        appendComboBox(gui.getcbAvgOfWatchedEpisode(),episodeList);
+        for(int i=0; i < allEpisodecb.length; i++){
+            allEpisodecb[i].removeAllItems();
+            allEpisodecb[i].setEnabled(true);
+            appendComboBox(allEpisodecb[i],episodeList);
+        }
     }
 
+    //Fill al the comboboxes With episodes
     public void appendComboBox(JComboBox comboBox, ArrayList<Episode> episodes)
     {
         for ( Episode episode : episodes)
         {
-            comboBox.addItem(episode.getTitle());
+            comboBox.addItem(episode);
         }
     }
 }
