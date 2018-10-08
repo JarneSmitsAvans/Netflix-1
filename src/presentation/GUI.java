@@ -157,6 +157,7 @@ public class GUI implements Runnable {
     private JLabel lblMovieTitle;
     private JLabel lblSerieTitle;
     private JButton btnAddWatchBehaviour;
+    private JTextPane txtAmountOfViewersForMovie;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
