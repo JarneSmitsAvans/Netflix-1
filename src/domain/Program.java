@@ -1,13 +1,22 @@
 package domain;
-
-import java.sql.Time;
-
 public abstract class Program {
     private String title;
     private int duration;
     private String genre;
     private String language;
     private int minAge;
+    private int id;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 
     public String getTitle() {
         return this.title;

@@ -34,7 +34,7 @@ public class WatchBehaviourMovieListener implements ActionListener {
 
             // Clear before adding
             ui.getCbAddWatchedMediaMovieTitle().removeAllItems();
-                ArrayList<Movie> movieArrayList = this.movieManager.getMovies();
+            ArrayList<Movie> movieArrayList = this.movieManager.getMovies();
 
             movieManager.addMoviesToComboBox(ui.getCbAddWatchedMediaMovieTitle(), movieArrayList);
             ui.getLblDurationOfSelectedProgram().setText(Integer.toString(duration));
