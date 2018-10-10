@@ -2,6 +2,7 @@ package presentation;
 
 import application.*;
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JSpinnerDateEditor;
 import domain.Account;
 import domain.Listeners.AccountListeners.AccountCreateListener;
 import domain.Listeners.AccountListeners.AccountDeleteListener;
@@ -186,6 +187,9 @@ public class GUI implements Runnable {
     private JTextField txtEditWatchedMediaDurtion;
     private JButton btnEditWatchedMedia;
 
+
+    private JSpinnerDateEditor JSpinWatchedDate;
+
 //    ------------------------------------------------------------------------------------------------------------------
 
     // Getters
@@ -316,6 +320,9 @@ public class GUI implements Runnable {
         return lblWatchedEpisode;
     }
 
+    public JSpinnerDateEditor getJSpinWatchedDate() {
+        return JSpinWatchedDate;
+    }
     public JRadioButton getRbMovie() {
         return rbMovie;
     }
@@ -499,6 +506,8 @@ public class GUI implements Runnable {
         btnDeleteSerie.addActionListener(new SerieDeleteListener(this));
 
         // Watch Behaviour
+
+        JSpinWatchedDate.setEnabled(false);
         cbAddWatchedMediaAccount.setSelectedItem(null);
         cbEditWatchedMediaAccount.setSelectedItem(null);
         cbAddWatchedMediaProfile.setEnabled(false);

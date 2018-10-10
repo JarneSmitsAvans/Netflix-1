@@ -25,6 +25,7 @@ public class WatchBehaviourLoadProfilesForSelectedAccountListener implements Act
     public void actionPerformed(ActionEvent e) {
         try {
             if (this.ui.getCbAddWatchedMediaAccount().getSelectedItem() != null) {
+                ui.getJSpinWatchedDate().setEnabled(true);
                 ui.getRbMovie().setEnabled(true);
                 ui.getRbSerie().setEnabled(true);
                 ui.getTxtAddWatchedMediaDuration().setEnabled(true);

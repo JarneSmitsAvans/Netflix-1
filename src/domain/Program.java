@@ -6,18 +6,21 @@ public abstract class Program {
     private String language;
     private int minAge;
     private int id;
+    private String watchedOn;
 
+    public String getWatchedOn() {
+        return watchedOn;
+    }
 
+    public void setWatchedOn(String watchedOn) {
+        this.watchedOn = watchedOn;
+    }
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
-
-
     public String getTitle() {
         return this.title;
     }

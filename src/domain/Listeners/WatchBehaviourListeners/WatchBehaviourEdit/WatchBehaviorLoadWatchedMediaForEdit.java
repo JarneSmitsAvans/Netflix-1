@@ -4,6 +4,8 @@ import application.EpisodeManagerlmpl;
 import application.ProfileManagerImpl;
 import application.SerieManagerImpl;
 import application.WatchBehaviourManagerImpl;
+import domain.Episode;
+import domain.Movie;
 import domain.Program;
 import presentation.GUI;
 
@@ -38,7 +40,18 @@ public class WatchBehaviorLoadWatchedMediaForEdit implements ActionListener {
                 this.ui.getCbEditWatchedMediaTitle().removeAllItems();
                 profileID = profileManager.getIdOfProfile(ui.getCbEditWatchedMediaProfile().getSelectedItem().toString(), ui.getCbEditWatchedMediaAccount().getSelectedItem().toString());
                 ArrayList<Program> programs = watchBehaviourManager.getWatchedMedia(profileID);
-                //System.out.println(programs);
+                for (Program program : programs) {
+                    if (program.getClass().equals(new Episode().getClass())) {
+                        // do something with the watched episode
+                        System.out.println(program.getId());
+                        System.out.println(program.getWatchedOn());
+                    }
+                    if (program.getClass().equals(new Movie().getClass())) {
+                        //  // do something with the watched movie
+                        System.out.println(program.getTitle());
+                        System.out.println(program.getWatchedOn());
+                    }
+                }
             } catch (SQLException e1) {
                 e1.printStackTrace();
             } catch (ClassNotFoundException e1) {

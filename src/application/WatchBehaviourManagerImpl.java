@@ -13,8 +13,8 @@ public class WatchBehaviourManagerImpl {
 
     }
 
-    public boolean create(Program program, int profileId) throws SQLException, ClassNotFoundException {
-        boolean created = watchBehaviourDAO.create(program, profileId);
+    public boolean create(Program program, int profileId, String watchedOn) throws SQLException, ClassNotFoundException {
+        boolean created = watchBehaviourDAO.create(program, profileId, watchedOn);
         if (created) {
             return true;
         } else {
