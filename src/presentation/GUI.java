@@ -15,6 +15,7 @@ import domain.Listeners.SerieListeners.*;
 import domain.Listeners.WatchBehaviourListeners.*;
 import domain.Movie;
 import domain.Profile;
+import domain.Serie;
 
 import javax.swing.*;
 import java.awt.*;
@@ -137,12 +138,12 @@ public class GUI implements Runnable {
     private JTextField cbCreateEpisodeTitle;
     private JTextField cbCreateEpisodeDuration;
     private JTextField cbCreateEpisodeReferencenumber;
-    private JTextField cbEditEpisodeReferencenumber;
-    private JTextField cbEditEpisodeDuration;
-    private JTextField cbEditEpisodeTitle;
+    private JTextField txtEditEpisodeNumber;
+    private JTextField txtEditEpisodeDuration;
+    private JTextField txtEditEpisodeTitle;
     private JComboBox cbEditEpisodeForSerie;
-    private JComboBox cbDeleteEpisodeReferencenumber;
-    private JComboBox cbdeleteEditEpisode;
+    private JComboBox cbDeleteEpisodeFromSerie;
+    private JComboBox cbDeleteEpisode;
     private JComboBox cbSelectAccountForProfileEdit;
     private JTextPane txtMoviesWatchedByAccount;
     private JRadioButton rbMovie;
@@ -162,6 +163,10 @@ public class GUI implements Runnable {
     private JButton btnDeleteSerie;
     private JButton btnEditSerie;
     private JButton btnCreateSerie;
+    private JButton btnDeleteEpisode;
+    private JComboBox cbEditEpisodeOfSerie;
+    private JButton btnEditEpisode;
+    private JButton btnCreateEpisode;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -317,17 +322,19 @@ public class GUI implements Runnable {
             public JComboBox getCbAvgWatchedSerie(){
                 return cbAvgWatchedSerie;
             }
-
+            public JComboBox getCbCreateEpisodeForSerie(){return cbCreateEpisodeForSerie;}
+            public JComboBox getCbDeleteEpisodeFromSerie(){return cbDeleteEpisodeFromSerie;}
+            public JComboBox getCbEditEpisodeOfSerie(){return cbEditEpisodeOfSerie;}
 
         //Create Series
             //TextField
             public JTextField getTxtCreateSerieTitle() { return txtCreateSerieTitle; }
             public JTextField getTxtCreateSerieGenre() { return txtCreateSerieGenre; }
-            public JTextField getTxttxtCreateSerieLanguage() { return txtCreateSerieLanguage; }
-            public JTextField getTxttxttxtCreatSerieAge() { return txtCreatSerieAge; }
+            public JTextField getTxtCreateSerieLanguage() { return txtCreateSerieLanguage; }
+            public JTextField getTxtCreatSerieAge() { return txtCreatSerieAge; }
 
         //Update serie
-            //Combobox
+            //ComboBox
             public JComboBox getCbGetUpdateSerie(){
                 return cbGetUpdateSerie;
             }
@@ -339,17 +346,39 @@ public class GUI implements Runnable {
             public JTextField getTxtUpdateSerieAge() { return txtUpdateSerieAge; }
 
          //Delete
-            //Combobox
+            //ComboBox
             public JComboBox getCbGetdeleteSerie(){
                 return cbGetdeleteSerie;
             }
 
    //Episode
        //View episodes
-            //ComoBox
+           //ComboBox
            public JComboBox getcbAvgOfWatchedEpisode(){
                return cbAvgOfWatchedEpisode;
            }
+           public JComboBox getCbAvgOfWatchedEpisode(){
+               return cbAvgOfWatchedEpisode;
+           }
+
+       //Create episodes
+           //TextFields
+           public JTextField getCbCreateEpisodeTitle(){return cbCreateEpisodeTitle;}
+           public JTextField getCbCreateEpisodeDuration(){return cbCreateEpisodeDuration;}
+           public JTextField getCbCreateEpisodeReferencenumber(){return cbCreateEpisodeReferencenumber;}
+
+       //Edit episode
+           //ComboBox
+           public JComboBox getCbEditEpisodeForSerie() {return cbEditEpisodeForSerie;}
+
+           //TextFields
+           public JTextField getTxtEditEpisodeTitle() {return txtEditEpisodeTitle;}
+           public JTextField getTxtEditEpisodeDuration() {return txtEditEpisodeDuration;}
+           public JTextField getTxtEditEpisodeNumber() {return txtEditEpisodeNumber;}
+
+       //Delete episode
+           //ComboBox
+           public JComboBox getCbDeleteEpisode(){return cbDeleteEpisode;}
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -358,6 +387,7 @@ public class GUI implements Runnable {
     private AccountManagerImpl accountManager;
     private ProfileManagerImpl profileManager;
     private MovieManagerImpl movieManager;
+    private SerieManagerImpl serieManager;
 
     public GUI(int width, int height) {
         this.width = width;
@@ -365,6 +395,7 @@ public class GUI implements Runnable {
         this.accountManager = new AccountManagerImpl();
         this.profileManager = new ProfileManagerImpl();
         this.movieManager = new MovieManagerImpl();
+        this.serieManager = new SerieManagerImpl(this);
     }
     @Override
     public void run() {
@@ -423,7 +454,8 @@ public class GUI implements Runnable {
         cbAmountOfViewsOfMovie.addActionListener(new MovieLoadAmountOfViewsListener(this));
 
         //Serie
-        cbAvgOfWatchedSerie.addActionListener(new SerieViewListener(this));
+        cbAvgOfWatchedEpisode.addActionListener(new SerieGetValuesToUpdate());
+        cbEditEpisodeOfSerie.addActionListener(new SerieSelectedForEpisodesListener(this));
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
         btnEditSerie.addActionListener(new SerieUpdateListener(this));
         btnDeleteSerie.addActionListener(new SerieDeleteListener(this));
@@ -463,8 +495,7 @@ public class GUI implements Runnable {
             movieManager.initializeMovieComponents(this);
 
             //Serie
-            SerieManagerImpl serieManager = new SerieManagerImpl(this);
-//            serieManager.fillAllSerieCbx();
+            serieManager.fillAllSerieCbx();
 
             //Episodes
             EpisodeManagerlmpl episodeManagerlmpl = new EpisodeManagerlmpl(this);

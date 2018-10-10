@@ -8,10 +8,11 @@ import java.awt.event.ActionListener;
 
 public class SerieUpdateListener implements ActionListener {
     private GUI ui;
-    private SerieManagerImpl serieManager = new SerieManagerImpl(ui);
+    private SerieManagerImpl serieManager ;
 
     public SerieUpdateListener(GUI ui) {
         this.ui = ui;
+        this.serieManager = new SerieManagerImpl(ui);
     }
 
     @Override

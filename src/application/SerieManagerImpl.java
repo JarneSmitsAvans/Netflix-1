@@ -11,10 +11,10 @@ import java.util.ArrayList;
 public class SerieManagerImpl {
     private SerieDAO serieDAO = new SerieDAO();
     private ArrayList<Serie> serieList;
-    private GUI gui;
+    private GUI ui;
 
-    public SerieManagerImpl(GUI gui){
-        this.gui = gui;
+    public SerieManagerImpl(GUI ui){
+        this.ui = ui;
     }
 
     //Creates a arraylist with all the series
@@ -49,25 +49,14 @@ public class SerieManagerImpl {
     //Creates a arraylist with all the comboboxes that need to be filed with series and starts filling them
     public void fillAllSerieCbx() {
         setSerieList();
-        JComboBox[] allSerieCb = {gui.getCbAvgOfWatchedSerie(),gui.getCbGetUpdateSerie(),gui.getCbGetdeleteSerie(),gui.getCbAvgWatchedSerie()};
+        JComboBox[] allSerieCb = new JComboBox[]{ui.getCbAvgOfWatchedSerie(),ui.getCbGetUpdateSerie(),ui.getCbGetdeleteSerie(),ui.getCbAvgWatchedSerie(),ui.getCbCreateEpisodeForSerie(),ui.getCbDeleteEpisodeFromSerie(),ui.getCbEditEpisodeOfSerie()};
 
         for(int i= 0; i < allSerieCb.length; i++){
+            allSerieCb[i].setSelectedItem(-1);
             allSerieCb[i].removeAllItems();
             allSerieCb[i].addItem("Selecteer serie");
             appendComboBox(allSerieCb[i],serieList);
         }
-    }
-
-    public void ReFill() {
-        //setSerieList();
-        gui.getCbAvgOfWatchedSerie().removeAllItems();
-        gui.getCbGetUpdateSerie().removeAllItems();
-        gui.getCbGetdeleteSerie().removeAllItems();
-
-        appendComboBox(gui.getCbAvgOfWatchedSerie(),serieList);
-        appendComboBox(gui.getCbGetUpdateSerie(),serieList);
-        appendComboBox(gui.getCbGetdeleteSerie(),serieList);
-
     }
 
     //Fill al the comboboxes With series

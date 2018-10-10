@@ -9,17 +9,18 @@ import java.awt.event.ActionListener;
 
 public class SerieDeleteListener implements ActionListener {
     private GUI ui;
-    private SerieManagerImpl serieManager = new SerieManagerImpl(ui);
+    private SerieManagerImpl serieManager ;
 
     public SerieDeleteListener(GUI ui) {
         this.ui = ui;
+        this.serieManager = new SerieManagerImpl(ui);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
             if(ui.getCbGetdeleteSerie().getSelectedItem() != "Selecteer serie"){
-                Serie serie = (Serie)ui.getCbAvgOfWatchedSerie().getSelectedItem();
+                Serie serie = (Serie)ui.getCbGetdeleteSerie().getSelectedItem();
                 boolean deleted = serieManager.delete(serie.getId());
 
                 if(deleted){
