@@ -15,7 +15,6 @@ import domain.Listeners.SerieListeners.*;
 import domain.Listeners.WatchBehaviourListeners.*;
 import domain.Movie;
 import domain.Profile;
-import domain.Serie;
 
 import javax.swing.*;
 import java.awt.*;
@@ -454,8 +453,8 @@ public class GUI implements Runnable {
         cbAmountOfViewsOfMovie.addActionListener(new MovieLoadAmountOfViewsListener(this));
 
         //Serie
-        cbAvgOfWatchedEpisode.addActionListener(new SerieGetValuesToUpdate());
-        cbEditEpisodeOfSerie.addActionListener(new SerieSelectedForEpisodesListener(this));
+        cbAvgOfWatchedSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbAvgOfWatchedSerie));
+        cbEditEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbEditEpisodeOfSerie));
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
         btnEditSerie.addActionListener(new SerieUpdateListener(this));
         btnDeleteSerie.addActionListener(new SerieDeleteListener(this));
