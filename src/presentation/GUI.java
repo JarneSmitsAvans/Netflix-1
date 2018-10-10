@@ -11,8 +11,13 @@ import domain.Listeners.MovieListeners.MovieCreateListener;
 import domain.Listeners.MovieListeners.MovieGetCbValueWatchedByAccountListener;
 import domain.Listeners.MovieListeners.MovieLoadAmountOfViewsListener;
 import domain.Listeners.ProfileListeners.*;
-import domain.Listeners.SerieListeners.*;
-import domain.Listeners.WatchBehaviourListeners.*;
+import domain.Listeners.SerieListeners.SerieCreateListener;
+import domain.Listeners.SerieListeners.SerieDeleteListener;
+import domain.Listeners.SerieListeners.SerieGetSelectedSerieForEpisodeListener;
+import domain.Listeners.SerieListeners.SerieUpdateListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate.*;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadProfilesForSelectedAccountEditListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadWatchedMediaForEdit;
 import domain.Movie;
 import domain.Profile;
 
@@ -145,6 +150,8 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteEpisode;
     private JComboBox cbSelectAccountForProfileEdit;
     private JTextPane txtMoviesWatchedByAccount;
+
+
     private JRadioButton rbMovie;
     private JRadioButton rbSerie;
     private JComboBox cbAddWatchedMediaMovieTitle;
@@ -166,6 +173,18 @@ public class GUI implements Runnable {
     private JComboBox cbEditEpisodeOfSerie;
     private JButton btnEditEpisode;
     private JButton btnCreateEpisode;
+
+
+    private JComboBox cbEditWatchedMediaAccount;
+
+
+    private JComboBox cbEditWatchedMediaProfile;
+
+
+    private JComboBox cbEditWatchedMediaTitle;
+    private JLabel lblEditWatchedMediaDuration;
+    private JTextField txtEditWatchedMediaDurtion;
+    private JButton btnEditWatchedMedia;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -274,6 +293,7 @@ public class GUI implements Runnable {
     public JTextPane getTxtAmountOfViewersForMovie() { return txtAmountOfViewersForMovie; }
 
     // Watch Behaviour
+
     public JComboBox getCbAddWatchedMediaAccount() {
         return cbAddWatchedMediaAccount;
     }
@@ -296,6 +316,25 @@ public class GUI implements Runnable {
         return lblWatchedEpisode;
     }
 
+    public JRadioButton getRbMovie() {
+        return rbMovie;
+    }
+
+    public JComboBox getCbEditWatchedMediaAccount() {
+        return cbEditWatchedMediaAccount;
+    }
+
+    public JComboBox getCbEditWatchedMediaProfile() {
+        return cbEditWatchedMediaProfile;
+    }
+
+    public JRadioButton getRbSerie() {
+        return rbSerie;
+    }
+
+    public JComboBox getCbEditWatchedMediaTitle() {
+        return cbEditWatchedMediaTitle;
+    }
     public JComboBox getCbAddWatchedMediaMovieTitle() {
         return cbAddWatchedMediaMovieTitle;
     }
@@ -460,7 +499,13 @@ public class GUI implements Runnable {
         btnDeleteSerie.addActionListener(new SerieDeleteListener(this));
 
         // Watch Behaviour
+        cbAddWatchedMediaAccount.setSelectedItem(null);
+        cbEditWatchedMediaAccount.setSelectedItem(null);
         cbAddWatchedMediaProfile.setEnabled(false);
+        cbEditWatchedMediaProfile.setEnabled(false);
+        rbMovie.setEnabled(false);
+        rbSerie.setEnabled(false);
+        txtAddWatchedMediaDuration.setEnabled(false);
         cbAddWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
         cbAddWatchedMediaEpisode.setVisible(false);
         lblWatchedEpisode.setVisible(false);
@@ -479,6 +524,8 @@ public class GUI implements Runnable {
         cbAddWatchedMediaSerieTitle.addActionListener(new WatchBehaviourLoadEpisodesForSelectedSerieListener(this));
         cbAddWatchedMediaEpisode.addActionListener(new WatchBehaviourSelectedEpisodeListener(this));
         btnAddWatchBehaviour.addActionListener(new WatchBehaviourCreateListener(this));
+        cbEditWatchedMediaAccount.addActionListener(new WatchBehaviorLoadProfilesForSelectedAccountEditListener(this));
+        cbEditWatchedMediaProfile.addActionListener(new WatchBehaviorLoadWatchedMediaForEdit(this));
     }
     private void initializeComponents() {
         try {
@@ -498,8 +545,6 @@ public class GUI implements Runnable {
 
             //Episodes
             EpisodeManagerlmpl episodeManagerlmpl = new EpisodeManagerlmpl(this);
-
-
 
         } catch (Exception e) {
             System.out.println(e);

@@ -5,7 +5,9 @@ import domain.Movie;
 import domain.Program;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class WatchBehaviourDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -31,4 +33,27 @@ public class WatchBehaviourDAO {
             return false;
         }
     }
+
+    public ArrayList<Program> getWatchedMedia(int profileID) throws SQLException, ClassNotFoundException {
+        databaseConnection.OpenConnection();
+        ArrayList<Program> programs = new ArrayList<>();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(
+                "SELECT * FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id WHERE Watched_Media.Profile_Id = ?");
+        preparedStatement.setInt(1, profileID);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()) {
+            if (resultSet.getString(2) != "null" && resultSet.getInt(3) == 0) {
+                Movie movie = new Movie();
+                movie.setTitle(resultSet.getString("Movie_Title"));
+                programs.add(movie);
+            } else {
+                Episode episode = new Episode();
+                episode.setId(resultSet.getInt("Episode_Id"));
+                programs.add(episode);
+            }
+        }
+        databaseConnection.CloseConnection();
+        return programs;
+    }
 }
+

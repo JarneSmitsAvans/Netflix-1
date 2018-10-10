@@ -25,10 +25,11 @@ public class AccountManagerImpl extends GeneralManager{
         gui.getCbUpdateSelectedAccount().removeAllItems();
         gui.getCbAddProfileToSelectedAccount().removeAllItems();
         gui.getCbDeleteProfileFromSelectedAccount().removeAllItems();
-
         gui.getCbSelectAccountForProfileEdit().removeAllItems();
         gui.getCbSelectAccountForProfileEdit().removeAllItems();
         gui.getCbUpdateSelectedProfile().removeAllItems();
+        gui.getCbEditWatchedMediaAccount().removeAllItems();
+        gui.getCbAddWatchedMediaAccount().removeAllItems();
 
         // Fill the following JComboBoxes with accounts.
         ArrayList<Account> accountArrayList = this.getAccounts();
@@ -40,6 +41,7 @@ public class AccountManagerImpl extends GeneralManager{
         this.addAccountsToComboBox(gui.getCbDeleteProfileFromSelectedAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbAddWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbSelectAccountForProfileEdit(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbEditWatchedMediaAccount(), accountArrayList);
 
     }
     public boolean create(Account account) throws SQLException, ClassNotFoundException {

@@ -1,10 +1,10 @@
 package application;
-
 import datastorage.WatchBehaviourDAO;
 import domain.Program;
 import presentation.GUI;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class WatchBehaviourManagerImpl {
     private WatchBehaviourDAO watchBehaviourDAO = new WatchBehaviourDAO();
@@ -22,4 +22,9 @@ public class WatchBehaviourManagerImpl {
         }
     }
 
+    public ArrayList<Program> getWatchedMedia(int profileID) throws SQLException, ClassNotFoundException {
+        ArrayList<Program> programs = watchBehaviourDAO.getWatchedMedia(profileID);
+        return programs;
+    }
 }
+

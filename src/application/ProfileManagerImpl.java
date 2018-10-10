@@ -25,6 +25,8 @@ public class ProfileManagerImpl extends GeneralManager {
         gui.getCbUpdateSelectedProfile().removeAllItems();
         gui.getCbWatchedProgramsBySelectedProfile().removeAllItems();
         gui.getCbAddWatchedMediaProfile().removeAllItems();
+        gui.getCbEditWatchedMediaProfile().removeAllItems();
+
         // Fill the following JComboBoxes with profiles.
         ArrayList<Profile> profileArrayList = this.getProfiles();
         this.addProfilesToComboBox(gui.getCbWatchedProgramsBySelectedProfile(), profileArrayList);
