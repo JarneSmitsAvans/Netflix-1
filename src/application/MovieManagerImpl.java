@@ -24,9 +24,14 @@ public class MovieManagerImpl {
         }
         gui.getTxtLongestDurationOfMovieBelow16().setText(longestMovie);
 
+        gui.getCbAmountOfViewsOfMovie().removeAllItems();
+        gui.getCbUpdateMovie().removeAllItems();
+        gui.getCbDeleteMovie().removeAllItems();
+
         ArrayList<Movie> movieArraylist = this.getMovies();
         this.addMoviesToComboBox(gui.getCbAmountOfViewsOfMovie(), movieArraylist);
         this.addMoviesToComboBox(gui.getCbUpdateMovie(), movieArraylist);
+        this.addMoviesToComboBox(gui.getCbDeleteMovie(), movieArraylist);
     }
 
     public boolean create(Movie movie) throws SQLException, ClassNotFoundException {
@@ -34,9 +39,14 @@ public class MovieManagerImpl {
         return movieCreated;
     }
 
-    public boolean update(String title, Movie movie) throws SQLException, ClassNotFoundException {
-        boolean movieUpdated = movieDAO.update(title, movie);
+    public boolean update(Movie movie) throws SQLException, ClassNotFoundException {
+        boolean movieUpdated = movieDAO.update(movie);
         return movieUpdated;
+    }
+
+    public boolean delete(Movie movie) throws SQLException, ClassNotFoundException {
+        boolean movieDeleted = movieDAO.delete(movie);
+        return movieDeleted;
     }
 
     public ArrayList<Movie> getMovies() throws SQLException, ClassNotFoundException {
@@ -46,6 +56,7 @@ public class MovieManagerImpl {
 
     public void addMoviesToComboBox(JComboBox comboBox, ArrayList<Movie> arrayList) {
         // For each Movie in ArrayList, get the title and add it to the parameter comboBox
+        comboBox.setSelectedIndex(-1);
         for (Movie movie : arrayList) {
             comboBox.addItem(movie.getTitle());
         }

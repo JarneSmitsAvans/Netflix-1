@@ -36,6 +36,7 @@ public class MovieCreateListener implements ActionListener {
                 boolean movieCreated = movieManager.create(movie);
                 try {
                     if (movieCreated) {
+                        movieManager.initializeMovieComponents(ui);
                         ui.getTxtMovieTitle().setText(null);
                         ui.getTxtMovieDuration().setText(null);
                         ui.getTxtMovieGenre().setText(null);

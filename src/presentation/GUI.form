@@ -115,6 +115,8 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                   <font size="16"/>
                 </properties>
               </component>
@@ -164,6 +166,8 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                   <font size="16"/>
                 </properties>
               </component>
@@ -236,6 +240,8 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                   <font size="16"/>
                 </properties>
               </component>
@@ -285,6 +291,8 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                   <font size="16"/>
                 </properties>
               </component>
@@ -362,6 +370,8 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                   <font size="16"/>
                 </properties>
               </component>
@@ -451,6 +461,8 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                   <font size="16"/>
                 </properties>
               </component>
@@ -499,6 +511,8 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                   <font size="16"/>
                 </properties>
               </component>
@@ -2012,7 +2026,7 @@
                                   <text value="Kies film"/>
                                 </properties>
                               </component>
-                              <component id="f90c8" class="javax.swing.JComboBox" default-binding="true">
+                              <component id="f90c8" class="javax.swing.JComboBox" binding="cbDeleteMovie">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
@@ -2020,7 +2034,7 @@
                                   <font size="16"/>
                                 </properties>
                               </component>
-                              <component id="8ba16" class="javax.swing.JButton" default-binding="true">
+                              <component id="8ba16" class="javax.swing.JButton" binding="btnDeleteMovie">
                                 <constraints>
                                   <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
                                     <minimum-size width="100" height="-1"/>

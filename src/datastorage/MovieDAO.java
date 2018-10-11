@@ -24,17 +24,26 @@ public class MovieDAO {
         return inserted;
     }
 
-    public boolean update(String title, Movie movie) throws SQLException, ClassNotFoundException {
+    public boolean update(Movie movie) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Movie SET duration = ?, genre = ?, language = ?, minimumAge = ? WHERE title = ?");
         preparedStatement.setInt(1, movie.getDuration());
         preparedStatement.setString(2, movie.getGenre());
         preparedStatement.setString(3, movie.getLanguage());
         preparedStatement.setInt(4, movie.getMinAge());
-        preparedStatement.setString(5, title);
+        preparedStatement.setString(5, movie.getTitle());
         boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
         databaseConnection.CloseConnection();
         return updated;
+    }
+
+    public boolean delete(Movie movie) throws SQLException, ClassNotFoundException {
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Movie WHERE title = ?");
+        preparedStatement.setString(1, movie.getTitle());
+        boolean deleted = databaseConnection.ExecuteDeleteStatement(preparedStatement);
+        databaseConnection.CloseConnection();
+        return deleted;
     }
 
     public ArrayList<String> getWatchedMoviesByAccount(int profileId) throws SQLException, ClassNotFoundException {
@@ -107,9 +116,6 @@ public class MovieDAO {
         databaseConnection.CloseConnection();
         return strAmount;
     }
-
-    // Get viewer of movie
-    //    public JComboBox getCbAmountOfViewsOfMovie() { return cbAmountOfViewsOfMovie; }
 
     public Movie getMovieId(String title) throws SQLException, ClassNotFoundException {
         Movie movie = new Movie();
