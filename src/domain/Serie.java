@@ -5,14 +5,13 @@ import java.sql.Time;
 import java.util.*;
 
 public class Serie extends Program {
-    private int id;
+    private int referenceNumber;
 
-    public int getId() {
-        return id;
+    public int getReferenceNumber(){
+        return this.referenceNumber;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setReferenceNumber(int referenceNumber) {
+        this.referenceNumber = referenceNumber;
     }
 
     @Override

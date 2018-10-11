@@ -126,7 +126,7 @@ public class GUI implements Runnable {
     private JTextField txtUpdateSerieGenre;
     private JTextField txtUpdateSerieAge;
     private JTextField txtUpdateSerieLanguage;
-    private JButton btnEditSerie;
+    private JButton btnUpdateSerie;
 
     // Delete
     private JPanel deleteSeriesPanel;
@@ -235,6 +235,8 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaAccount;
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
+    private JComboBox cbCreateSerieReferenceNumber;
+    private JComboBox cbUpdateSerieReferenceNumber;
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
 
@@ -441,6 +443,8 @@ public class GUI implements Runnable {
     public JComboBox getCbCreateEpisodeForSerie(){return cbCreateEpisodeForSerie;}
     public JComboBox getCbDeleteEpisodeFromSerie(){return cbDeleteEpisodeFromSerie;}
     public JComboBox getCbEditEpisodeOfSerie(){return cbEditEpisodeOfSerie;}
+    public JComboBox getCbCreateSerieReferenceNumber(){return cbCreateSerieReferenceNumber;}
+    public JComboBox getCbUpdateSerieReferenceNumber(){return cbUpdateSerieReferenceNumber;}
 
     // Add
     public JTextField getTxtSerieTitle() { return txtSerieTitle; }
@@ -581,16 +585,18 @@ public class GUI implements Runnable {
         // Serie--------------------------------------------
         // Overviews
         cbSerieAvgWatchedByEpisode.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbSerieAvgWatchedByEpisode));
+        cbEditEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbEditEpisodeOfSerie));
 
         // Add
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
 
         // Edit
         cbEditEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbEditEpisodeOfSerie));
-        btnEditSerie.addActionListener(new SerieUpdateListener(this));
+        cbGetUpdateSerie.addActionListener(new SerieGetValuesToUpdate(this,cbGetUpdateSerie));
+        btnUpdateSerie.addActionListener(new SerieUpdateListener(this,cbGetUpdateSerie));
 
         // Delete
-        btnDeleteSerie.addActionListener(new SerieDeleteListener(this));
+        btnDeleteSerie.addActionListener(new SerieDeleteListener(this,cbGetdeleteSerie));
 
         // Watch Behaviour-----------------------------------
         // Add

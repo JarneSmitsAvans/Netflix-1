@@ -12,7 +12,6 @@ public abstract class Program {
     public int getWatchedDuration() {
         return watchedDuration;
     }
-
     public void setWatchedDuration(int watchedDuration) {
         this.watchedDuration = watchedDuration;
     }
@@ -20,16 +19,17 @@ public abstract class Program {
     public String getWatchedOn() {
         return watchedOn;
     }
-
     public void setWatchedOn(String watchedOn) {
         this.watchedOn = watchedOn;
     }
+
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
+
     public String getTitle() {
         return this.title;
     }

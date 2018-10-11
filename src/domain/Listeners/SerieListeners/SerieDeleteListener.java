@@ -9,25 +9,27 @@ import java.awt.event.ActionListener;
 
 public class SerieDeleteListener implements ActionListener {
     private GUI ui;
+    private JComboBox cbSelectedSerie;
     private SerieManagerImpl serieManager ;
 
-    public SerieDeleteListener(GUI ui) {
+    public SerieDeleteListener(GUI ui,JComboBox cbSelectedSerie) {
         this.ui = ui;
+        this.cbSelectedSerie = cbSelectedSerie;
         this.serieManager = new SerieManagerImpl(ui);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
-            if(ui.getCbGetdeleteSerie().getSelectedItem() != "Selecteer serie"){
-                Serie serie = (Serie)ui.getCbGetdeleteSerie().getSelectedItem();
+            if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null){
+                Serie serie = (Serie)cbSelectedSerie.getSelectedItem();
                 boolean deleted = serieManager.delete(serie.getId());
 
                 if(deleted){
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + serie.getTitle() + " is succesvol verwijderd.", "Serie verwijderd", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + serie.getTitle() + " is succesvol verwijderd.", "Serie is verwijderd", JOptionPane.INFORMATION_MESSAGE);
                     serieManager.fillAllSerieCbx();
                 }
-               else {
+                else {
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het verwijderen van de serie" + serie.getTitle() + ". Probeer het nog eens.", "Serie niet verwijderd", JOptionPane.INFORMATION_MESSAGE);
                 }
             }

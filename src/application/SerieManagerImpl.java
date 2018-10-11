@@ -20,7 +20,7 @@ public class SerieManagerImpl {
     //Creates a arraylist with all the series
     public void setSerieList() {
         try {
-            serieList = serieDAO.getSeries();
+            this.serieList = serieDAO.getSeries();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -40,6 +40,18 @@ public class SerieManagerImpl {
         return serie;
     }
 
+    public Serie getSerieById(int id) {
+        Serie serie = null;
+        try {
+            serie = serieDAO.getSerieById(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return serie;
+    }
+
     //Returns a list with all the series
     public ArrayList<Serie> getSerie()
     {
@@ -49,7 +61,7 @@ public class SerieManagerImpl {
     //Creates a arraylist with all the comboboxes that need to be filed with series and starts filling them
     public void fillAllSerieCbx() {
         setSerieList();
-        JComboBox[] allSerieCb = new JComboBox[]{ui.getCbSerieAvgWatchedByEpisode(),ui.getCbGetUpdateSerie(),ui.getCbGetdeleteSerie(),ui.getCbSerieAvgWatchedBySerie(),ui.getCbCreateEpisodeForSerie(),ui.getCbDeleteEpisodeFromSerie(),ui.getCbEditEpisodeOfSerie()};
+        JComboBox[] allSerieCb = new JComboBox[]{ui.getCbSerieAvgWatchedByEpisode(),ui.getCbGetUpdateSerie(),ui.getCbGetdeleteSerie(),ui.getCbSerieAvgWatchedBySerie(),ui.getCbCreateEpisodeForSerie(),ui.getCbDeleteEpisodeFromSerie(),ui.getCbEditEpisodeOfSerie(),ui.getCbCreateSerieReferenceNumber(),ui.getCbUpdateSerieReferenceNumber()};
 
         for(int i= 0; i < allSerieCb.length; i++){
             allSerieCb[i].setSelectedItem(-1);
@@ -68,13 +80,22 @@ public class SerieManagerImpl {
         }
     }
 
+    //Returns al boolean if a new serie has been created or not
+    public boolean create(Serie serie) throws SQLException, ClassNotFoundException {
+        boolean serieCreated = serieDAO.create(serie);
+        return serieCreated;
+    }
+
+    //Returns al boolean if a new serie has been updated or not
+    public boolean update(Serie serie) throws SQLException, ClassNotFoundException {
+        boolean serieUpdated = serieDAO.update(serie);
+        return serieUpdated;
+    }
+
+    //Returns al boolean if a new serie has been deleted or not
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
-        boolean updated = serieDAO.delete(id);
-        if (updated) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean serieDelete = serieDAO.delete(id);
+        return serieDelete;
     }
 
 
