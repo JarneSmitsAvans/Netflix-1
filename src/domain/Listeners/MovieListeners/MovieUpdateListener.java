@@ -23,19 +23,24 @@ public class MovieUpdateListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             if(ui.getCbUpdateMovie().getSelectedItem() != null) {
-                String strSelectedAccount = ui.getCbUpdateMovie().getSelectedItem().toString();
-                Movie movie = movieManager.getMovieByTitle(strSelectedAccount);
-                boolean movieUpdated = movieManager.update(strSelectedAccount, movie);
-                try {
-                    if (movieUpdated) {
-                        ui.getTxtUpdateMovieTitle().setText(null);
-                        ui.getTxtUpdateMovieDuration().setText(null);
-                        ui.getTxtUpdateMovieGenre().setText(null);
-                        ui.getTxtUpdateMovieLanguage().setText(null);
-                        ui.getTxtUpdateMovieMinimumAge().setText(null);
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Film is bewerkt", "Film bewerkt", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                } catch (Exception exx) {
+                String strSelectedMovie = ui.getCbUpdateMovie().getSelectedItem().toString();
+                movie = movieManager.getMovieByTitle(strSelectedMovie);
+                movie.setTitle(ui.getTxtUpdateMovieTitle().getText());
+                movie.setDuration(Integer.parseInt(ui.getTxtUpdateMovieDuration().getText()));
+                movie.setGenre(ui.getTxtUpdateMovieGenre().getText());
+                movie.setLanguage(ui.getTxtUpdateMovieLanguage().getText());
+                movie.setMinAge(Integer.parseInt(ui.getTxtUpdateMovieMinimumAge().getText()));
+                boolean movieUpdated = movieManager.update(movie);
+                if (movieUpdated) {
+                    movieManager.initializeMovieComponents(ui);
+                    ui.getCbUpdateMovie().setSelectedIndex(-1);
+                    ui.getTxtUpdateMovieTitle().setText(null);
+                    ui.getTxtUpdateMovieDuration().setText(null);
+                    ui.getTxtUpdateMovieGenre().setText(null);
+                    ui.getTxtUpdateMovieLanguage().setText(null);
+                    ui.getTxtUpdateMovieMinimumAge().setText(null);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Film is bewerkt", "Film bewerkt", JOptionPane.INFORMATION_MESSAGE);
+                } else {
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan bij het bewerken van de film", "Film niet bewerkt", JOptionPane.ERROR_MESSAGE);
                 }
             }

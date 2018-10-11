@@ -194,6 +194,8 @@ public class GUI implements Runnable {
     private JTextField txtUpdateMovieLanguage;
     private JTextField txtUpdateMovieMinimumAge;
     private JButton btnUpdateMovie;
+    private JComboBox cbDeleteMovie;
+    private JButton btnDeleteMovie;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -295,6 +297,9 @@ public class GUI implements Runnable {
     public JTextField getTxtUpdateMovieGenre() { return txtUpdateMovieGenre; };
     public JTextField getTxtUpdateMovieLanguage() { return txtUpdateMovieLanguage; };
     public JTextField getTxtUpdateMovieMinimumAge() { return txtUpdateMovieMinimumAge; };
+
+    // Delete movie
+    public JComboBox getCbDeleteMovie() { return cbDeleteMovie; };
 
     // Get movies by account
     public JComboBox getCbWatchedByAccount() {
@@ -506,13 +511,15 @@ public class GUI implements Runnable {
 
         // Movie
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
-        cbWatchedByAccount.setSelectedIndex(-1);
+//        cbWatchedByAccount.setSelectedIndex(-1);
         cbWatchedByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
-        cbAmountOfViewsOfMovie.setSelectedIndex(-1);
+//        cbAmountOfViewsOfMovie.setSelectedIndex(-1);
         cbAmountOfViewsOfMovie.addActionListener(new MovieLoadAmountOfViewsListener(this));
-        cbUpdateMovie.setSelectedIndex(-1);
+//        cbUpdateMovie.setSelectedIndex(-1);
         cbUpdateMovie.addActionListener(new MovieUpdateFillFieldsListener(this));
         btnUpdateMovie.addActionListener(new MovieUpdateListener(this));
+//        cbDeleteMovie.setSelectedIndex(-1);
+        btnDeleteMovie.addActionListener(new MovieDeleteListener(this));
 
         //Serie
         cbAvgOfWatchedSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbAvgOfWatchedSerie));
