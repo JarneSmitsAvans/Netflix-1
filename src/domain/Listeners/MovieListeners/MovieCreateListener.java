@@ -21,10 +21,6 @@ public class MovieCreateListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        this.account.setName(this.ui.getTxtAccountName().getText());
-//        this.account.setAddress(this.ui.getTxtAccountAddress().getText());
-//        this.account.setResidence(this.ui.getTxtAccountResidence().getText());
-        // get values of create textfields
         try {
             String title = ui.getTxtMovieTitle().getText();
             int duration = Integer.parseInt(ui.getTxtMovieDuration().getText());

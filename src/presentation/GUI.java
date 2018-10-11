@@ -8,9 +8,7 @@ import domain.Listeners.AccountListeners.AccountCreateListener;
 import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
-import domain.Listeners.MovieListeners.MovieCreateListener;
-import domain.Listeners.MovieListeners.MovieGetCbValueWatchedByAccountListener;
-import domain.Listeners.MovieListeners.MovieLoadAmountOfViewsListener;
+import domain.Listeners.MovieListeners.*;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.SerieListeners.SerieCreateListener;
 import domain.Listeners.SerieListeners.SerieDeleteListener;
@@ -189,6 +187,13 @@ public class GUI implements Runnable {
 
 
     private JSpinnerDateEditor JSpinWatchedDate;
+    private JComboBox cbUpdateMovie;
+    private JTextField txtUpdateMovieTitle;
+    private JTextField txtUpdateMovieDuration;
+    private JTextField txtUpdateMovieGenre;
+    private JTextField txtUpdateMovieLanguage;
+    private JTextField txtUpdateMovieMinimumAge;
+    private JButton btnUpdateMovie;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -282,6 +287,14 @@ public class GUI implements Runnable {
     public JTextField getTxtMovieMinAge() {
         return txtMovieMinAge;
     }
+
+    // Update movie
+    public JComboBox getCbUpdateMovie() { return cbUpdateMovie; }
+    public JTextField getTxtUpdateMovieTitle() { return txtUpdateMovieTitle; };
+    public JTextField getTxtUpdateMovieDuration() { return txtUpdateMovieDuration; };
+    public JTextField getTxtUpdateMovieGenre() { return txtUpdateMovieGenre; };
+    public JTextField getTxtUpdateMovieLanguage() { return txtUpdateMovieLanguage; };
+    public JTextField getTxtUpdateMovieMinimumAge() { return txtUpdateMovieMinimumAge; };
 
     // Get movies by account
     public JComboBox getCbWatchedByAccount() {
@@ -497,6 +510,9 @@ public class GUI implements Runnable {
         cbWatchedByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
         cbAmountOfViewsOfMovie.setSelectedIndex(-1);
         cbAmountOfViewsOfMovie.addActionListener(new MovieLoadAmountOfViewsListener(this));
+        cbUpdateMovie.setSelectedIndex(-1);
+        cbUpdateMovie.addActionListener(new MovieUpdateFillFieldsListener(this));
+        btnUpdateMovie.addActionListener(new MovieUpdateListener(this));
 
         //Serie
         cbAvgOfWatchedSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbAvgOfWatchedSerie));

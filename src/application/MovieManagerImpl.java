@@ -26,11 +26,17 @@ public class MovieManagerImpl {
 
         ArrayList<Movie> movieArraylist = this.getMovies();
         this.addMoviesToComboBox(gui.getCbAmountOfViewsOfMovie(), movieArraylist);
+        this.addMoviesToComboBox(gui.getCbUpdateMovie(), movieArraylist);
     }
 
     public boolean create(Movie movie) throws SQLException, ClassNotFoundException {
         boolean movieCreated = movieDAO.create(movie);
         return movieCreated;
+    }
+
+    public boolean update(String title, Movie movie) throws SQLException, ClassNotFoundException {
+        boolean movieUpdated = movieDAO.update(title, movie);
+        return movieUpdated;
     }
 
     public ArrayList<Movie> getMovies() throws SQLException, ClassNotFoundException {

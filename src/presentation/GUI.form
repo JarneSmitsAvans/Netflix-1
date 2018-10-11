@@ -1850,7 +1850,7 @@
                                 <properties>
                                   <enabled value="false"/>
                                   <font size="16"/>
-                                  <text value=" Titel"/>
+                                  <text value="Titel"/>
                                 </properties>
                               </component>
                               <vspacer id="af57">
@@ -1858,7 +1858,7 @@
                                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </vspacer>
-                              <component id="4f857" class="javax.swing.JTextField">
+                              <component id="4f857" class="javax.swing.JTextField" binding="txtUpdateMovieTitle">
                                 <constraints>
                                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>
@@ -1867,6 +1867,7 @@
                                   </grid>
                                 </constraints>
                                 <properties>
+                                  <enabled value="false"/>
                                   <font size="16"/>
                                 </properties>
                               </component>
@@ -1880,7 +1881,7 @@
                                   <text value="Genre"/>
                                 </properties>
                               </component>
-                              <component id="f4e5a" class="javax.swing.JTextField">
+                              <component id="f4e5a" class="javax.swing.JTextField" binding="txtUpdateMovieGenre">
                                 <constraints>
                                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>
@@ -1902,7 +1903,7 @@
                                   <text value="Taal"/>
                                 </properties>
                               </component>
-                              <component id="dbe3f" class="javax.swing.JTextField">
+                              <component id="dbe3f" class="javax.swing.JTextField" binding="txtUpdateMovieLanguage">
                                 <constraints>
                                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>
@@ -1914,7 +1915,7 @@
                                   <font size="16"/>
                                 </properties>
                               </component>
-                              <component id="5e30a" class="javax.swing.JButton">
+                              <component id="5e30a" class="javax.swing.JButton" binding="btnUpdateMovie">
                                 <constraints>
                                   <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -1922,7 +1923,7 @@
                                   <text value="Bewerk"/>
                                 </properties>
                               </component>
-                              <component id="8d97c" class="javax.swing.JTextField">
+                              <component id="8d97c" class="javax.swing.JTextField" binding="txtUpdateMovieMinimumAge">
                                 <constraints>
                                   <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>
@@ -1944,7 +1945,7 @@
                                   <text value="Leeftijd"/>
                                 </properties>
                               </component>
-                              <component id="633b2" class="javax.swing.JComboBox" default-binding="true">
+                              <component id="633b2" class="javax.swing.JComboBox" binding="cbUpdateMovie">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
@@ -1962,7 +1963,7 @@
                                   <text value="Kies film"/>
                                 </properties>
                               </component>
-                              <component id="af24" class="javax.swing.JTextField">
+                              <component id="af24" class="javax.swing.JTextField" binding="txtUpdateMovieDuration">
                                 <constraints>
                                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>

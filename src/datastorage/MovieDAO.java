@@ -24,6 +24,19 @@ public class MovieDAO {
         return inserted;
     }
 
+    public boolean update(String title, Movie movie) throws SQLException, ClassNotFoundException {
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Movie SET duration = ?, genre = ?, language = ?, minimumAge = ? WHERE title = ?");
+        preparedStatement.setInt(1, movie.getDuration());
+        preparedStatement.setString(2, movie.getGenre());
+        preparedStatement.setString(3, movie.getLanguage());
+        preparedStatement.setInt(4, movie.getMinAge());
+        preparedStatement.setString(5, title);
+        boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
+        databaseConnection.CloseConnection();
+        return updated;
+    }
+
     public ArrayList<String> getWatchedMoviesByAccount(int profileId) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT Watched_Media.Movie_Title FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id WHERE Watched_Media.Profile_Id = ?");
