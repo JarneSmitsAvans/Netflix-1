@@ -7,6 +7,15 @@ public abstract class Program {
     private int minAge;
     private int id;
     private String watchedOn;
+    private int watchedDuration;
+
+    public int getWatchedDuration() {
+        return watchedDuration;
+    }
+
+    public void setWatchedDuration(int watchedDuration) {
+        this.watchedDuration = watchedDuration;
+    }
 
     public String getWatchedOn() {
         return watchedOn;

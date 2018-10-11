@@ -25,16 +25,13 @@ public class WatchBehaviorLoadProfilesForSelectedAccountEditListener implements 
     public void actionPerformed(ActionEvent e) {
         try {
             if (this.ui.getCbEditWatchedMediaAccount().getSelectedItem() != null) {
-                //ui.getRbMovie().setEnabled(true);
-                //ui.getRbSerie().setEnabled(true);
-                //ui.getTxtAddWatchedMediaDuration().setEnabled(true);
-                //ui.getCbAddWatchedMediaProfile().setEnabled(true);
                 profileManager.initializeProfileComboBoxes(ui);
                 String strSelectedAccount = this.ui.getCbEditWatchedMediaAccount().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
                 int id = this.account.getId();
                 this.ui.getCbEditWatchedMediaProfile().setEnabled(true);
                 profileManager.addProfilesToComboBox(this.ui.getCbEditWatchedMediaProfile(), profileManager.getMatchingProfiles(id));
+                this.ui.getCbEditWatchedMediaProfile().setSelectedItem(null);
             } else {
                 return;
             }

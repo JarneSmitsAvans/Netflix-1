@@ -4,9 +4,7 @@ import application.EpisodeManagerlmpl;
 import application.ProfileManagerImpl;
 import application.SerieManagerImpl;
 import application.WatchBehaviourManagerImpl;
-import domain.Episode;
-import domain.Movie;
-import domain.Program;
+import domain.*;
 import presentation.GUI;
 
 import java.awt.event.ActionEvent;
@@ -37,21 +35,36 @@ public class WatchBehaviorLoadWatchedMediaForEdit implements ActionListener {
             try {
                 this.duration = 0;
                 int profileID;
+                String episodeTitle = "";
+                String serieTitle = "";
                 this.ui.getCbEditWatchedMediaTitle().removeAllItems();
                 profileID = profileManager.getIdOfProfile(ui.getCbEditWatchedMediaProfile().getSelectedItem().toString(), ui.getCbEditWatchedMediaAccount().getSelectedItem().toString());
                 ArrayList<Program> programs = watchBehaviourManager.getWatchedMedia(profileID);
                 for (Program program : programs) {
                     if (program.getClass().equals(new Episode().getClass())) {
-                        // do something with the watched episode
-                        System.out.println(program.getId());
-                        System.out.println(program.getWatchedOn());
+                        episodeManager.setEpisodeList(program.getId());
+                        ArrayList<Episode> episodes = episodeManager.getEpisode();
+                        for (Episode ep : episodes) {
+                            if (ep.getId() == program.getId()) {
+                                episodeTitle = ep.getTitle();
+                                serieManager.setSerieList();
+                                ArrayList<Serie> series = serieManager.getSerie();
+                                for (Serie serie : series) {
+                                    if (serie.getId() == ep.getSerieNumber()) {
+                                        serieTitle = serie.getTitle();
+                                    }
+                                }
+                            }
+                        }
+                        ui.getCbEditWatchedMediaTitle().addItem(new ComboBoxItem(program.getId(), serieTitle, episodeTitle, program.getWatchedOn(), program.getWatchedDuration()));
                     }
                     if (program.getClass().equals(new Movie().getClass())) {
-                        //  // do something with the watched movie
-                        System.out.println(program.getTitle());
-                        System.out.println(program.getWatchedOn());
+                        ui.getCbEditWatchedMediaTitle().addItem(new ComboBoxItem(0, program.getTitle(), "", program.getWatchedOn(), program.getWatchedDuration()));
                     }
                 }
+                ui.getCbEditWatchedMediaTitle().setSelectedItem(null);
+                ui.getLblEditWatchedMediaDuration().setText("0");
+                ui.getTxtEditWatchedMediaDuration().setText("0");
             } catch (SQLException e1) {
                 e1.printStackTrace();
             } catch (ClassNotFoundException e1) {

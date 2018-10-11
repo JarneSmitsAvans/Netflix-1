@@ -1,4 +1,5 @@
 package application;
+
 import datastorage.WatchBehaviourDAO;
 import domain.Program;
 import presentation.GUI;
@@ -16,6 +17,15 @@ public class WatchBehaviourManagerImpl {
     public boolean create(Program program, int profileId, String watchedOn) throws SQLException, ClassNotFoundException {
         boolean created = watchBehaviourDAO.create(program, profileId, watchedOn);
         if (created) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean update(String watchDateAndTime, Program program, int profileId) throws SQLException, ClassNotFoundException {
+        boolean updated = watchBehaviourDAO.update(watchDateAndTime, program, profileId);
+        if (updated) {
             return true;
         } else {
             return false;

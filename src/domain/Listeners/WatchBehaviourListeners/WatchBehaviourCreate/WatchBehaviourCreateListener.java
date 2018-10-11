@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class WatchBehaviourCreateListener implements ActionListener {
     private WatchBehaviourManagerImpl watchBehaviourManager;
@@ -48,9 +47,7 @@ public class WatchBehaviourCreateListener implements ActionListener {
             } catch (ClassNotFoundException e1) {
                 e1.printStackTrace();
             }
-            Object selectedValue = ui.getJSpinWatchedDate().getValue();
-            Date watchedDateAndTime = (Date) selectedValue;
-            String strDate = dateFormat.format(watchedDateAndTime);
+            String selectedValue = ui.getJSpinWatchedDate().getValue().toString();
             if (command.equals("insertEpisode")) {
                 if (ui.getCbAddWatchedMediaEpisode().getSelectedItem() != null) {
                     String selectedEpisode = ui.getCbAddWatchedMediaEpisode().getSelectedItem().toString();
@@ -68,7 +65,7 @@ public class WatchBehaviourCreateListener implements ActionListener {
                                     program.setDuration(Integer.parseInt(timeWatched));
                                     if (!(program.getDuration() > Integer.parseInt(ui.getLblDurationOfSelectedProgram().getText()))) {
 
-                                        boolean created = watchBehaviourManager.create(program, profileID, strDate);
+                                        boolean created = watchBehaviourManager.create(program, profileID, selectedValue);
                                         if (created) {
                                             JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watchbehaviour has been created.", "Watchbehaviour has been added", JOptionPane.INFORMATION_MESSAGE);
                                             this.ui.getTxtAddWatchedMediaDuration().setText(null);
@@ -97,8 +94,7 @@ public class WatchBehaviourCreateListener implements ActionListener {
                         Program program = movie;
                         program.setDuration(Integer.parseInt(timeWatched));
                         if (!(program.getDuration() > Integer.parseInt(ui.getLblDurationOfSelectedProgram().getText()))) {
-
-                            boolean created = watchBehaviourManager.create(program, profileID, strDate);
+                            boolean created = watchBehaviourManager.create(program, profileID, selectedValue);
                             if (created) {
                                 JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watchbehaviour has been created.", "Watchbehaviour has been added", JOptionPane.INFORMATION_MESSAGE);
                                 this.ui.getTxtAddWatchedMediaDuration().setText(null);
@@ -117,7 +113,7 @@ public class WatchBehaviourCreateListener implements ActionListener {
                 }
             }
         } else {
-            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "The value entered for time watched is invalid. Please specify a different value", "Watchbehaviour has not been added", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "The values entered for the new watch behaviour are invalid. Please specify different values", "Watchbehaviour has not been added", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

@@ -17,6 +17,8 @@ import domain.Listeners.SerieListeners.SerieUpdateListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate.*;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadProfilesForSelectedAccountEditListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadWatchedMediaForEdit;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourEditBehaviourListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourLoadDurationListener;
 import domain.Movie;
 import domain.Profile;
 
@@ -181,8 +183,12 @@ public class GUI implements Runnable {
 
 
     private JComboBox cbEditWatchedMediaTitle;
+
+
     private JLabel lblEditWatchedMediaDuration;
-    private JTextField txtEditWatchedMediaDurtion;
+
+
+    private JTextField txtEditWatchedMediaDuration;
     private JButton btnEditWatchedMedia;
 
 
@@ -194,6 +200,9 @@ public class GUI implements Runnable {
     private JTextField txtUpdateMovieLanguage;
     private JTextField txtUpdateMovieMinimumAge;
     private JButton btnUpdateMovie;
+
+
+    private JSpinnerDateEditor JSpinNewWatchedDate;
 
 //    ------------------------------------------------------------------------------------------------------------------
 
@@ -310,7 +319,9 @@ public class GUI implements Runnable {
     public JTextPane getTxtAmountOfViewersForMovie() { return txtAmountOfViewersForMovie; }
 
     // Watch Behaviour
-
+    public JSpinnerDateEditor getJSpinNewWatchedDate() {
+        return JSpinNewWatchedDate;
+    }
     public JComboBox getCbAddWatchedMediaAccount() {
         return cbAddWatchedMediaAccount;
     }
@@ -333,6 +344,9 @@ public class GUI implements Runnable {
         return lblWatchedEpisode;
     }
 
+    public JTextField getTxtEditWatchedMediaDuration() {
+        return txtEditWatchedMediaDuration;
+    }
     public JSpinnerDateEditor getJSpinWatchedDate() {
         return JSpinWatchedDate;
     }
@@ -363,6 +377,9 @@ public class GUI implements Runnable {
         return cbAddWatchedMediaSerieTitle;
     }
 
+    public JLabel getLblEditWatchedMediaDuration() {
+        return lblEditWatchedMediaDuration;
+    }
     public JLabel getLblMovieTitle() {
         return lblMovieTitle;
     }
@@ -551,6 +568,8 @@ public class GUI implements Runnable {
         btnAddWatchBehaviour.addActionListener(new WatchBehaviourCreateListener(this));
         cbEditWatchedMediaAccount.addActionListener(new WatchBehaviorLoadProfilesForSelectedAccountEditListener(this));
         cbEditWatchedMediaProfile.addActionListener(new WatchBehaviorLoadWatchedMediaForEdit(this));
+        cbEditWatchedMediaTitle.addActionListener(new WatchBehaviourLoadDurationListener(this));
+        btnEditWatchedMedia.addActionListener(new WatchBehaviourEditBehaviourListener(this));
     }
     private void initializeComponents() {
         try {
