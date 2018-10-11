@@ -25,8 +25,8 @@ public class AccountUpdateListener implements ActionListener {
         try {
             if (!accountManager.empty(this.ui.getTxtUpdateAccountName().getText()) &&
                     !accountManager.empty(this.ui.getTxtUpdateAccountAdres().getText()) &&
-                    !accountManager.empty(this.ui.getTxtUpdateAccountResidence().getText()) && this.ui.getCbUpdateSelectedAccount().getSelectedItem() != null) {
-                String strSelectedAccount = this.ui.getCbUpdateSelectedAccount().getSelectedItem().toString();
+                    !accountManager.empty(this.ui.getTxtUpdateAccountResidence().getText()) && this.ui.getCbUpdateAccount().getSelectedItem() != null) {
+                String strSelectedAccount = this.ui.getCbUpdateAccount().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
                 account.setName(this.ui.getTxtUpdateAccountName().getText());
                 account.setAddress(this.ui.getTxtUpdateAccountAdres().getText());
@@ -35,7 +35,7 @@ public class AccountUpdateListener implements ActionListener {
                 if(updated)
                 {
                     this.accountManager.initializeAccountComboBoxes(ui);
-                    this.ui.getCbUpdateSelectedAccount().setSelectedItem(null);
+                    this.ui.getCbUpdateAccount().setSelectedItem(null);
                     this.ui.getTxtUpdateAccountName().setText(null);
                     this.ui.getTxtUpdateAccountAdres().setText(null);
                     this.ui.getTxtUpdateAccountResidence().setText(null);

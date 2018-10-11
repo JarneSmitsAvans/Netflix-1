@@ -19,10 +19,10 @@ public class AccountManagerImpl extends GeneralManager{
 
     public void initializeAccountComboBoxes(GUI gui) throws SQLException, ClassNotFoundException {
         // Empty All ComboBoxes should there be any data inside of them.
-        gui.getCbAvgWatchedAccount().removeAllItems();
-        gui.getCbWatchedByAccount().removeAllItems();
-        gui.getCbDeleteSelectedAccount().removeAllItems();
-        gui.getCbUpdateSelectedAccount().removeAllItems();
+        gui.getCbAccountAvgWatchedBySerie().removeAllItems();
+        gui.getCbWatchedMoviesByAccount().removeAllItems();
+        gui.getCbDeleteAccount().removeAllItems();
+        gui.getCbUpdateAccount().removeAllItems();
         gui.getCbAddProfileToSelectedAccount().removeAllItems();
         gui.getCbDeleteProfileFromSelectedAccount().removeAllItems();
         gui.getCbSelectAccountForProfileEdit().removeAllItems();
@@ -33,10 +33,10 @@ public class AccountManagerImpl extends GeneralManager{
 
         // Fill the following JComboBoxes with accounts.
         ArrayList<Account> accountArrayList = this.getAccounts();
-        this.addAccountsToComboBox(gui.getCbAvgWatchedAccount(), accountArrayList);
-        this.addAccountsToComboBox(gui.getCbWatchedByAccount(), accountArrayList);
-        this.addAccountsToComboBox(gui.getCbDeleteSelectedAccount(), accountArrayList);
-        this.addAccountsToComboBox(gui.getCbUpdateSelectedAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbAccountAvgWatchedBySerie(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbWatchedMoviesByAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbDeleteAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbUpdateAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbAddProfileToSelectedAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbDeleteProfileFromSelectedAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbAddWatchedMediaAccount(), accountArrayList);

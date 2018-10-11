@@ -1,7 +1,6 @@
 package datastorage;
 
 import domain.Movie;
-import domain.Profile;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

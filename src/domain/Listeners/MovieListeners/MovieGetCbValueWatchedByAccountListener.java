@@ -28,8 +28,8 @@ public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            if(ui.getCbWatchedByAccount().getSelectedItem() != null) {
-                String strSelectedAccount = ui.getCbWatchedByAccount().getSelectedItem().toString();
+            if(ui.getCbWatchedMoviesByAccount().getSelectedItem() != null) {
+                String strSelectedAccount = ui.getCbWatchedMoviesByAccount().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
                 int id = account.getId();
                 ArrayList<String> watchedMoviesList = movieManager.watchedMovieByAccountArrayList(id);

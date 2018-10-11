@@ -4,24 +4,14 @@ import application.*;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 import domain.Account;
-import domain.Listeners.AccountListeners.AccountCreateListener;
-import domain.Listeners.AccountListeners.AccountDeleteListener;
-import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
-import domain.Listeners.AccountListeners.AccountUpdateListener;
-import domain.Listeners.MovieListeners.*;
-import domain.Listeners.ProfileListeners.*;
-import domain.Listeners.SerieListeners.SerieCreateListener;
-import domain.Listeners.SerieListeners.SerieDeleteListener;
-import domain.Listeners.SerieListeners.SerieGetSelectedSerieForEpisodeListener;
-import domain.Listeners.SerieListeners.SerieUpdateListener;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate.*;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadProfilesForSelectedAccountEditListener;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadWatchedMediaForEdit;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourEditBehaviourListener;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourLoadDurationListener;
 import domain.Movie;
 import domain.Profile;
-
+import domain.Listeners.AccountListeners.*;
+import domain.Listeners.MovieListeners.*;
+import domain.Listeners.ProfileListeners.*;
+import domain.Listeners.SerieListeners.*;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate.*;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.*;
 import javax.swing.*;
 import java.awt.*;
 
@@ -30,18 +20,20 @@ public class GUI implements Runnable {
     private int width;
     private int height;
 
-//    ------------------------------------------------------------------------------------------------------------------
+//    Components ------------------------------------------------------------------------------------------------------------------
 
-    // Components
-    // JFrame
+    // JFrame--------------------------------------
     private JFrame frame;
+
     // JTabbedPanes
     private JTabbedPane tabbedPane;
     private JTabbedPane crudPane;
     private JTabbedPane crudAccountsAndProfiles;
     private JTabbedPane crudSeriesAndEpisodes;
     private JTabbedPane crudMovie;
-    //  Labels
+    private JTabbedPane crudWatchBehaviour;
+
+    //  Algemeen----------------------------------------------
     private JLabel NetflixStatistixLogo;
     private JLabel lblDesignerInfo;
     private JLabel lblDesignerInfo2;
@@ -51,148 +43,149 @@ public class GUI implements Runnable {
     private JLabel lblDesignerInfo6;
     private JLabel lblDesignerInfo7;
     private JLabel lblDesignerInfo8;
-    // JPanels
+    private JLabel lblDesignerInfo9;
     private JPanel Home;
     private JPanel mainPanel;
-    private JPanel tijdsduurAfleveringPerAccountSerie;
-    private JPanel tijdsduurSeriePerAfleveringPanel;
-    private JPanel bekekenFilmsDoorAccount;
-    private JPanel filmMetLangsteTijdsduurOnder16;
-    private JPanel aantalKijkersPerFilm;
-    private JPanel accountsMet1Profiel;
-    private JPanel moviesPane;
-    private JPanel editAccount;
-    private JPanel editSeries;
-    private JPanel editMovie;
-    private JPanel deleteAccount;
-    private JPanel deleteSeries;
-    private JPanel deleteMovie;
-    private JPanel addProfileToAccount;
-    private JPanel addEpisodeToSeries;
-    private JPanel editProfile;
-    private JPanel editEpisode;
-    private JPanel deleteProfile;
-    private JPanel deleteEpisode;
-    private JPanel addSeries;
-    private JPanel addMovie;
-    private JPanel netflixBeheer;
-    private JPanel addAccount;
-    private JPanel accountsAndProfilesPane;
-    private JPanel seriesAndEpisodesPane;
-    // JTextPanes
-    private JTextPane txtLongestDurationOfMovieBelow16;
+
+    // CRUD Panels---------------------------------------------
+    private JPanel netflixManagement;
+    private JPanel accountsAndProfilesPanel;
+    private JPanel seriesAndEpisodesPanel;
+    private JPanel moviesPanel;
+    private JPanel watchBehaviourPanel;
+
+    // Account-------------------------------------------------
+    // Overviews
+    private JPanel accountsWithOneProfilePanel;
     private JTextPane txtAccountsWithOneProfile;
-    private JTextPane txtAvgWatchedSeries;
-    // JComboBoxes
-    private JComboBox cbAvgWatchedAccount;
-    private JComboBox cbAvgWatchedSerie;
-    private JComboBox cbAvgOfWatchedSerie;
-    private JComboBox cbAvgOfWatchedEpisode;
-    private JComboBox cbAmountOfViewsOfMovie;
-    private JComboBox cbWatchedByAccount;
-    private JComboBox cbUpdateSelectedAccount;
-    private JComboBox cbDeleteSelectedAccount;
-    private JComboBox cbAddProfileToSelectedAccount;
-    private JComboBox cbUpdateSelectedProfile;
-    private JComboBox cbDeleteProfileFromSelectedAccount;
-    private JComboBox cbDeleteProfile;
-    private JComboBox cbWatchedProgramsBySelectedProfile;
-    // JTextFields
-    // Add account
+
+    // Add
+    private JPanel addAccountPanel;
     private JTextField txtAccountName;
     private JTextField txtAccountAddress;
     private JTextField txtAccountResidence;
-    // Add movie
-    private JTextField txtMovieTitle;
-    private JTextField txtMovieDuration;
-    private JTextField txtMovieGenre;
-    private JTextField txtMovieLanguage;
-    private JTextField txtMovieMinAge;
-    // Edit account
+    private JButton btnAddAccount;
+
+    // Edit
+    private JPanel editAccountPanel;
+    private JComboBox cbUpdateAccount;
     private JTextField txtUpdateAccountName;
     private JTextField txtUpdateAccountAdres;
     private JTextField txtUpdateAccountResidence;
-    // Profile
-    private JTextField txtProfileName;
-    private JTextField txtUpdateProfileName;
-    // JDateChoosers
-    private JDateChooser jDPdateOfBirth;
-    private JDateChooser jDPnewDateOfBirth;
-    // JButtons
-    private JButton btnAddAccount;
-    private JButton btnDeleteAccount;
     private JButton btnUpdateAccount;
-    private JButton btnAddMovie;
-    private JPanel watchedProgramsByProfile;
-    private JComboBox cbAddWatchedMediaAccount;
-    private JComboBox cbAddWatchedMediaProfile;
+
+    // Delete
+    private JPanel deleteAccountPanel;
+    private JComboBox cbDeleteAccount;
+    private JButton btnDeleteAccount;
+
+    // Profile----------------------------------------------------
+    // Overviews
+    private JComboBox cbWatchedProgramsBySelectedProfile;
+
+    // Add
+    private JPanel addProfileToAccountPanel;
+    private JComboBox cbAddProfileToSelectedAccount;
+    private JTextField txtProfileName;
+    private JDateChooser jDPdateOfBirth;
     private JButton btnCreateProfile;
+
+    // Edit
+    private JPanel editProfilePanel;
+    private JComboBox cbSelectAccountForProfileEdit;
+    private JComboBox cbUpdateSelectedProfile;
+    private JTextField txtUpdateProfileName;
+    private JDateChooser jDPnewDateOfBirth;
     private JButton btnEditProfile;
+
+    // Delete
+    private JPanel deleteProfilePanel;
+    private JComboBox cbDeleteProfileFromSelectedAccount;
+    private JComboBox cbDeleteProfile;
     private JButton btnDeleteProfile;
-    private JTextField txtCreateSerieTitle;
-    private JTextField txtCreateSerieGenre;
-    private JTextField txtCreateSerieLanguage;
-    private JTextField txtCreatSerieAge;
+
+    // Serie------------------------------------------------------
+    // Overviews
+    private JPanel avgWatchedSerieByAccountPanel;
+    private JTextPane txtAvgWatchedSeries;
+    private JComboBox cbAccountAvgWatchedBySerie;
+    private JComboBox cbSerieAvgWatchedBySerie;
+
+    // Add
+    private JPanel addSeriesPanel;
+    private JTextField txtSerieTitle;
+    private JTextField txtSerieGenre;
+    private JTextField txtSerieLanguage;
+    private JTextField txtSerieAge;
+    private JButton btnCreateSerie;
+
+    // Edit
+    private JPanel editSeriesPanel;
     private JComboBox cbGetUpdateSerie;
     private JTextField txtUpdateSerieTitle;
     private JTextField txtUpdateSerieGenre;
     private JTextField txtUpdateSerieAge;
     private JTextField txtUpdateSerieLanguage;
+    private JButton btnEditSerie;
+
+    // Delete
+    private JPanel deleteSeriesPanel;
     private JComboBox cbGetdeleteSerie;
+    private JButton btnDeleteSerie;
+
+    // Episode-------------------------------------------------
+    // Overviews
+    private JPanel avgWatchedEpisodeBySeriePanel;
+    private JComboBox cbSerieAvgWatchedByEpisode;
+    private JComboBox cbEpisodeAvgWatchedByEpisode;
+
+    // Add
+    private JPanel addEpisodeToSeriesPanel;
     private JComboBox cbCreateEpisodeForSerie;
     private JTextField cbCreateEpisodeTitle;
     private JTextField cbCreateEpisodeDuration;
     private JTextField cbCreateEpisodeReferencenumber;
+    private JButton btnCreateEpisode;
+
+    // Edit
+    private JPanel editEpisodePanel;
+    private JComboBox cbEditEpisodeOfSerie;
+    private JComboBox cbEditEpisodeForSerie;
     private JTextField txtEditEpisodeNumber;
     private JTextField txtEditEpisodeDuration;
     private JTextField txtEditEpisodeTitle;
-    private JComboBox cbEditEpisodeForSerie;
+    private JButton btnEditEpisode;
+
+    // Delete
+    private JPanel deleteEpisodePanel;
     private JComboBox cbDeleteEpisodeFromSerie;
     private JComboBox cbDeleteEpisode;
-    private JComboBox cbSelectAccountForProfileEdit;
+    private JButton btnDeleteEpisode;
+
+    // Movie----------------------------------------------------
+    // Overviews
+    private JPanel watchedMoviesByAccountPanel;
+    private JComboBox cbWatchedMoviesByAccount;
     private JTextPane txtMoviesWatchedByAccount;
 
+    private JPanel movieWithLongestDurationAndMinAgeBelow16Panel;
+    private JTextPane txtLongestDurationOfMovieBelow16;
 
-    private JRadioButton rbMovie;
-    private JRadioButton rbSerie;
-    private JComboBox cbAddWatchedMediaMovieTitle;
-    private JLabel lblDurationOfSelectedProgram;
-    private JTextField txtAddWatchedMediaDuration;
-    private JPanel WatchBehaviourPane;
-    private JPanel WatchBehaviourCreate;
-    private JComboBox cbAddWatchedMediaEpisode;
-    private JLabel lblWatchedEpisode;
-    private JComboBox cbAddWatchedMediaSerieTitle;
-    private JLabel lblMovieTitle;
-    private JLabel lblSerieTitle;
-    private JButton btnAddWatchBehaviour;
+    private JPanel amountOfViewerByMoviePanel;
+    private JComboBox cbAmountOfViewsOfMovie;
     private JTextPane txtAmountOfViewersForMovie;
-    private JButton btnDeleteSerie;
-    private JButton btnEditSerie;
-    private JButton btnCreateSerie;
-    private JButton btnDeleteEpisode;
-    private JComboBox cbEditEpisodeOfSerie;
-    private JButton btnEditEpisode;
-    private JButton btnCreateEpisode;
 
+    // Add
+    private JPanel addMoviePanel;
+    private JTextField txtMovieTitle;
+    private JTextField txtMovieDuration;
+    private JTextField txtMovieGenre;
+    private JTextField txtMovieLanguage;
+    private JTextField txtMovieMinAge;
+    private JButton btnAddMovie;
 
-    private JComboBox cbEditWatchedMediaAccount;
-
-
-    private JComboBox cbEditWatchedMediaProfile;
-
-
-    private JComboBox cbEditWatchedMediaTitle;
-
-
-    private JLabel lblEditWatchedMediaDuration;
-
-
-    private JTextField txtEditWatchedMediaDuration;
-    private JButton btnEditWatchedMedia;
-
-
-    private JSpinnerDateEditor JSpinWatchedDate;
+    // Edit
+    private JPanel editMoviePanel;
     private JComboBox cbUpdateMovie;
     private JTextField txtUpdateMovieTitle;
     private JTextField txtUpdateMovieDuration;
@@ -200,25 +193,63 @@ public class GUI implements Runnable {
     private JTextField txtUpdateMovieLanguage;
     private JTextField txtUpdateMovieMinimumAge;
     private JButton btnUpdateMovie;
+
+    // Delete
+    private JPanel deleteMoviePanel;
     private JComboBox cbDeleteMovie;
     private JButton btnDeleteMovie;
 
+    // Watched media-----------------------------------------------
+    // Overviews
+    private JPanel watchedProgramsByProfilePanel;
 
+    // Add
+    private JPanel addWatchBehaviourPanel;
+    private JComboBox cbAddWatchedMediaAccount;
+    private JComboBox cbAddWatchedMediaProfile;
+    private JRadioButton rbMovie;
+    private JRadioButton rbSerie;
+    private JComboBox cbAddWatchedMediaMovieTitle;
+    private JLabel lblDurationOfSelectedProgram;
+    private JTextField txtAddWatchedMediaDuration;
+    private JComboBox cbAddWatchedMediaEpisode;
+    private JLabel lblWatchedEpisode;
+    private JComboBox cbAddWatchedMediaSerieTitle;
+    private JLabel lblMovieTitle;
+    private JLabel lblSerieTitle;
+    private JSpinnerDateEditor JSpinWatchedDate;
+    private JButton btnAddWatchBehaviour;
+
+    // Edit
+    private JPanel editWatchBehaviourPanel;
+    private JComboBox cbEditWatchedMediaAccount;
+    private JComboBox cbEditWatchedMediaProfile;
+    private JComboBox cbEditWatchedMediaTitle;
+    private JLabel lblEditWatchedMediaDuration;
+    private JTextField txtEditWatchedMediaDuration;
     private JSpinnerDateEditor JSpinNewWatchedDate;
+    private JButton btnEditWatchedMedia;
 
-//    ------------------------------------------------------------------------------------------------------------------
+    // Delete
+    private JPanel deleteWatchBehaviourPanel;
+    private JComboBox cbDeleteWatchedMediaAccount;
+    private JComboBox cbDeleteWatchedMediaProfile;
+    private JComboBox cbDeleteWatchedMediaTitle;
 
-    // Getters
+//    Getters ------------------------------------------------------------------------------------------------------------------
+
+    // JPanel------------------------------------------------------------
     public JPanel getMainPanel() {
         return mainPanel;
     }
-    // Account
-    public JComboBox getCbAvgWatchedAccount() {
-        return cbAvgWatchedAccount;
-    }
+
+    // Account-----------------------------------------------------------
+    // Overviews
     public JTextPane getTxtAccountsWithOneProfile() {
         return txtAccountsWithOneProfile;
     }
+
+    // Add
     public JTextField getTxtAccountName() {
         return txtAccountName;
     }
@@ -228,9 +259,8 @@ public class GUI implements Runnable {
     public JTextField getTxtAccountResidence() {
         return txtAccountResidence;
     }
-    public JComboBox getCbDeleteSelectedAccount() {
-        return cbDeleteSelectedAccount;
-    }
+
+    // Edit
     public JTextField getTxtUpdateAccountName() {
         return txtUpdateAccountName;
     }
@@ -240,15 +270,18 @@ public class GUI implements Runnable {
     public JTextField getTxtUpdateAccountResidence() {
         return txtUpdateAccountResidence;
     }
-    public JComboBox getCbUpdateSelectedAccount() {
-        return cbUpdateSelectedAccount;
+    public JComboBox getCbUpdateAccount() {
+        return cbUpdateAccount;
     }
 
-    // Profiles
-    public JComboBox getCbWatchedProgramsBySelectedProfile() {
-        return cbWatchedProgramsBySelectedProfile;
+    // Delete
+    public JComboBox getCbDeleteAccount() {
+        return cbDeleteAccount;
     }
-    // Create profile
+
+
+    // Profiles----------------------------------------------------------
+    // Add
     public JComboBox getCbAddProfileToSelectedAccount() {
         return cbAddProfileToSelectedAccount;
     }
@@ -259,7 +292,7 @@ public class GUI implements Runnable {
         return jDPdateOfBirth;
     }
 
-    // Edit profile
+    // Edit
     public JComboBox getCbUpdateSelectedProfile() {
         return cbUpdateSelectedProfile;
     }
@@ -270,7 +303,7 @@ public class GUI implements Runnable {
         return jDPnewDateOfBirth;
     }
 
-    // Delete profile
+    // Delete
     public JComboBox getCbDeleteProfileFromSelectedAccount() {
         return cbDeleteProfileFromSelectedAccount;
     }
@@ -281,8 +314,19 @@ public class GUI implements Runnable {
         return cbSelectAccountForProfileEdit;
     }
 
-    // Movie
-    // Create movie
+    // Movie-------------------------------------------------------------
+    // Overviews
+    public JComboBox getCbWatchedMoviesByAccount() {
+        return cbWatchedMoviesByAccount;
+    }
+    public JTextPane getTxtMoviesWatchedByAccount() { return txtMoviesWatchedByAccount; }
+
+    public JTextPane getTxtLongestDurationOfMovieBelow16() { return txtLongestDurationOfMovieBelow16; }
+
+    public JComboBox getCbAmountOfViewsOfMovie() { return cbAmountOfViewsOfMovie; }
+    public JTextPane getTxtAmountOfViewersForMovie() { return txtAmountOfViewersForMovie; }
+
+    // Add
     public JTextField getTxtMovieTitle() {
         return txtMovieTitle;
     }
@@ -299,7 +343,7 @@ public class GUI implements Runnable {
         return txtMovieMinAge;
     }
 
-    // Update movie
+    // Edit
     public JComboBox getCbUpdateMovie() { return cbUpdateMovie; }
     public JTextField getTxtUpdateMovieTitle() { return txtUpdateMovieTitle; };
     public JTextField getTxtUpdateMovieDuration() { return txtUpdateMovieDuration; };
@@ -307,26 +351,16 @@ public class GUI implements Runnable {
     public JTextField getTxtUpdateMovieLanguage() { return txtUpdateMovieLanguage; };
     public JTextField getTxtUpdateMovieMinimumAge() { return txtUpdateMovieMinimumAge; };
 
-    // Delete movie
+    // Delete
     public JComboBox getCbDeleteMovie() { return cbDeleteMovie; };
 
-    // Get movies by account
-    public JComboBox getCbWatchedByAccount() {
-        return cbWatchedByAccount;
+    // Watch Behaviour---------------------------------------------------
+    // Overviews
+    public JComboBox getCbWatchedProgramsBySelectedProfile() {
+        return cbWatchedProgramsBySelectedProfile;
     }
-    public JTextPane getTxtMoviesWatchedByAccount() { return txtMoviesWatchedByAccount; }
 
-    // Get movie with longest duration
-    public JTextPane getTxtLongestDurationOfMovieBelow16() { return txtLongestDurationOfMovieBelow16; }
-
-    // Get viewer of movie
-    public JComboBox getCbAmountOfViewsOfMovie() { return cbAmountOfViewsOfMovie; }
-    public JTextPane getTxtAmountOfViewersForMovie() { return txtAmountOfViewersForMovie; }
-
-    // Watch Behaviour
-    public JSpinnerDateEditor getJSpinNewWatchedDate() {
-        return JSpinNewWatchedDate;
-    }
+    // Add
     public JComboBox getCbAddWatchedMediaAccount() {
         return cbAddWatchedMediaAccount;
     }
@@ -336,8 +370,11 @@ public class GUI implements Runnable {
     public JComboBox getCbAddWatchedMediaEpisode() {
         return cbAddWatchedMediaEpisode;
     }
-    public JButton getBtnAddWatchBehaviour() {
-        return btnAddWatchBehaviour;
+    public JComboBox getCbAddWatchedMediaMovieTitle() {
+        return cbAddWatchedMediaMovieTitle;
+    }
+    public JComboBox getCbAddWatchedMediaSerieTitle() {
+        return cbAddWatchedMediaSerieTitle;
     }
     public JTextField getTxtAddWatchedMediaDuration() {
         return txtAddWatchedMediaDuration;
@@ -348,127 +385,115 @@ public class GUI implements Runnable {
     public JLabel getLblWatchedEpisode() {
         return lblWatchedEpisode;
     }
-
-    public JTextField getTxtEditWatchedMediaDuration() {
-        return txtEditWatchedMediaDuration;
-    }
     public JSpinnerDateEditor getJSpinWatchedDate() {
         return JSpinWatchedDate;
     }
     public JRadioButton getRbMovie() {
         return rbMovie;
     }
-
-    public JComboBox getCbEditWatchedMediaAccount() {
-        return cbEditWatchedMediaAccount;
-    }
-
-    public JComboBox getCbEditWatchedMediaProfile() {
-        return cbEditWatchedMediaProfile;
-    }
-
     public JRadioButton getRbSerie() {
         return rbSerie;
-    }
-
-    public JComboBox getCbEditWatchedMediaTitle() {
-        return cbEditWatchedMediaTitle;
-    }
-    public JComboBox getCbAddWatchedMediaMovieTitle() {
-        return cbAddWatchedMediaMovieTitle;
-    }
-
-    public JComboBox getCbAddWatchedMediaSerieTitle() {
-        return cbAddWatchedMediaSerieTitle;
-    }
-
-    public JLabel getLblEditWatchedMediaDuration() {
-        return lblEditWatchedMediaDuration;
     }
     public JLabel getLblMovieTitle() {
         return lblMovieTitle;
     }
-
     public JLabel getLblSerieTitle() {
         return lblSerieTitle;
     }
+    public JButton getBtnAddWatchBehaviour() {
+        return btnAddWatchBehaviour;
+    }
 
-    //Serie
-        //View series
-            //ComboBox
-            public JComboBox getCbAvgOfWatchedSerie(){
-                return cbAvgOfWatchedSerie;
-            }
-            public JComboBox getCbAvgWatchedSerie(){
-                return cbAvgWatchedSerie;
-            }
-            public JComboBox getCbCreateEpisodeForSerie(){return cbCreateEpisodeForSerie;}
-            public JComboBox getCbDeleteEpisodeFromSerie(){return cbDeleteEpisodeFromSerie;}
-            public JComboBox getCbEditEpisodeOfSerie(){return cbEditEpisodeOfSerie;}
+    // Edit
+    public JComboBox getCbEditWatchedMediaAccount() {
+        return cbEditWatchedMediaAccount;
+    }
+    public JComboBox getCbEditWatchedMediaProfile() {
+        return cbEditWatchedMediaProfile;
+    }
+    public JComboBox getCbEditWatchedMediaTitle() {
+        return cbEditWatchedMediaTitle;
+    }
+    public JSpinnerDateEditor getJSpinNewWatchedDate() {
+        return JSpinNewWatchedDate;
+    }
+    public JTextField getTxtEditWatchedMediaDuration() {
+        return txtEditWatchedMediaDuration;
+    }
+    public JLabel getLblEditWatchedMediaDuration() {
+        return lblEditWatchedMediaDuration;
+    }
 
-        //Create Series
-            //TextField
-            public JTextField getTxtCreateSerieTitle() { return txtCreateSerieTitle; }
-            public JTextField getTxtCreateSerieGenre() { return txtCreateSerieGenre; }
-            public JTextField getTxtCreateSerieLanguage() { return txtCreateSerieLanguage; }
-            public JTextField getTxtCreatSerieAge() { return txtCreatSerieAge; }
+    // Delete
+    // Hier komen nog de delete getters voor watched behaviour.. Deze regel mag dan weg.
 
-        //Update serie
-            //ComboBox
-            public JComboBox getCbGetUpdateSerie(){
-                return cbGetUpdateSerie;
-            }
+    // Serie-------------------------------------------------------------
+    // Overviews
+    public JComboBox getCbAccountAvgWatchedBySerie() {
+        return cbAccountAvgWatchedBySerie;
+    }
+    public JComboBox getCbSerieAvgWatchedByEpisode(){
+        return cbSerieAvgWatchedByEpisode;
+    }
+    public JComboBox getCbSerieAvgWatchedBySerie(){
+        return cbSerieAvgWatchedBySerie;
+    }
+    public JComboBox getCbCreateEpisodeForSerie(){return cbCreateEpisodeForSerie;}
+    public JComboBox getCbDeleteEpisodeFromSerie(){return cbDeleteEpisodeFromSerie;}
+    public JComboBox getCbEditEpisodeOfSerie(){return cbEditEpisodeOfSerie;}
 
-            //TextField
-            public JTextField getTxtUpdateSerieTitle() { return txtUpdateSerieTitle; }
-            public JTextField getTxtUpdateSerieGenre() { return txtUpdateSerieGenre; }
-            public JTextField getTxtUpdateSerieLanguage() { return txtUpdateSerieLanguage; }
-            public JTextField getTxtUpdateSerieAge() { return txtUpdateSerieAge; }
+    // Add
+    public JTextField getTxtSerieTitle() { return txtSerieTitle; }
+    public JTextField getTxtSerieGenre() { return txtSerieGenre; }
+    public JTextField getTxtSerieLanguage() { return txtSerieLanguage; }
+    public JTextField getTxtSerieAge() { return txtSerieAge; }
 
-         //Delete
-            //ComboBox
-            public JComboBox getCbGetdeleteSerie(){
+    // Edit
+    public JComboBox getCbGetUpdateSerie(){
+        return cbGetUpdateSerie;
+    }
+    public JTextField getTxtUpdateSerieTitle() { return txtUpdateSerieTitle; }
+    public JTextField getTxtUpdateSerieGenre() { return txtUpdateSerieGenre; }
+    public JTextField getTxtUpdateSerieLanguage() { return txtUpdateSerieLanguage; }
+    public JTextField getTxtUpdateSerieAge() { return txtUpdateSerieAge; }
+
+    // Delete
+    public JComboBox getCbGetdeleteSerie(){
                 return cbGetdeleteSerie;
             }
 
-   //Episode
-       //View episodes
-           //ComboBox
-           public JComboBox getcbAvgOfWatchedEpisode(){
-               return cbAvgOfWatchedEpisode;
+    // Episode--------------------------------------------------------------
+    // Overviews
+    public JComboBox getcbAvgOfWatchedEpisode(){
+       return cbEpisodeAvgWatchedByEpisode;
+   }
+    public JComboBox getCbEpisodeAvgWatchedByEpisode(){
+               return cbEpisodeAvgWatchedByEpisode;
            }
-           public JComboBox getCbAvgOfWatchedEpisode(){
-               return cbAvgOfWatchedEpisode;
-           }
 
-       //Create episodes
-           //TextFields
-           public JTextField getCbCreateEpisodeTitle(){return cbCreateEpisodeTitle;}
-           public JTextField getCbCreateEpisodeDuration(){return cbCreateEpisodeDuration;}
-           public JTextField getCbCreateEpisodeReferencenumber(){return cbCreateEpisodeReferencenumber;}
+    // Add
+    public JTextField getCbCreateEpisodeTitle(){return cbCreateEpisodeTitle;}
+    public JTextField getCbCreateEpisodeDuration(){return cbCreateEpisodeDuration;}
+    public JTextField getCbCreateEpisodeReferencenumber(){return cbCreateEpisodeReferencenumber;}
 
-       //Edit episode
-           //ComboBox
-           public JComboBox getCbEditEpisodeForSerie() {return cbEditEpisodeForSerie;}
+    // Edit
+    public JComboBox getCbEditEpisodeForSerie() {return cbEditEpisodeForSerie;}
+    public JTextField getTxtEditEpisodeTitle() {return txtEditEpisodeTitle;}
+    public JTextField getTxtEditEpisodeDuration() {return txtEditEpisodeDuration;}
+    public JTextField getTxtEditEpisodeNumber() {return txtEditEpisodeNumber;}
 
-           //TextFields
-           public JTextField getTxtEditEpisodeTitle() {return txtEditEpisodeTitle;}
-           public JTextField getTxtEditEpisodeDuration() {return txtEditEpisodeDuration;}
-           public JTextField getTxtEditEpisodeNumber() {return txtEditEpisodeNumber;}
+    // Delete
+    public JComboBox getCbDeleteEpisode(){return cbDeleteEpisode;}
 
-       //Delete episode
-           //ComboBox
-           public JComboBox getCbDeleteEpisode(){return cbDeleteEpisode;}
-
-//    ------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 
     // Managers
-    // Account
     private AccountManagerImpl accountManager;
     private ProfileManagerImpl profileManager;
     private MovieManagerImpl movieManager;
     private SerieManagerImpl serieManager;
 
+    // Constructor
     public GUI(int width, int height) {
         this.width = width;
         this.height = height;
@@ -477,6 +502,7 @@ public class GUI implements Runnable {
         this.movieManager = new MovieManagerImpl();
         this.serieManager = new SerieManagerImpl(this);
     }
+
     @Override
     public void run() {
         frame = new JFrame("Netflix Statistix");
@@ -490,8 +516,6 @@ public class GUI implements Runnable {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        // Setting txtAccountsWithOneProfile read only.
-        txtAccountsWithOneProfile.setEditable(false);
     }
 
     private void createComponents(Container container) {
@@ -505,53 +529,74 @@ public class GUI implements Runnable {
         lblDesignerInfo6.setText(designInfo);
         lblDesignerInfo7.setText(designInfo);
         lblDesignerInfo8.setText(designInfo);
+        lblDesignerInfo9.setText(designInfo);
+
         initializeComponents();
 
-        // Account
-        cbUpdateSelectedAccount.setSelectedItem(null);
-        cbUpdateSelectedAccount.addActionListener(new AccountUpdateComboBoxListener(this));
+//    ActionListeners ------------------------------------------------------------------------------------------------------------------
+
+        // Account-------------------------------------------
+        // Add
         btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
-        btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
+
+        // Edit
+        cbUpdateAccount.setSelectedItem(null);
+        cbUpdateAccount.addActionListener(new AccountUpdateComboBoxListener(this));
         btnUpdateAccount.addActionListener(new AccountUpdateListener(this));
 
-        // Profile
-        cbSelectAccountForProfileEdit.setSelectedItem(null);
-        cbDeleteProfile.setEnabled(false);
-        btnEditProfile.addActionListener(new ProfileUpdateListener(this));
-        btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
-        cbDeleteProfileFromSelectedAccount.addActionListener(new ProfileLoadProfilesForSelectedAccountListener(this));
-        cbUpdateSelectedProfile.addActionListener(new ProfileUpdateComboBoxListener(this));
-        btnDeleteProfile.addActionListener(new ProfileDeleteListener(this));
+        // Delete
+        btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
 
+        // Profile-------------------------------------------
+        // Add
+        btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
+
+        // Edit
+        cbSelectAccountForProfileEdit.setSelectedItem(null);
         cbSelectAccountForProfileEdit.addActionListener(new ProfilesLoadProfilesForSelectedAccountUpdate(this));
         cbUpdateSelectedProfile.setEnabled(false);
+        cbUpdateSelectedProfile.addActionListener(new ProfileUpdateComboBoxListener(this));
+        btnEditProfile.addActionListener(new ProfileUpdateListener(this));
 
-        // Movie
-        btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
-//        cbWatchedByAccount.setSelectedIndex(-1);
-        cbWatchedByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
-//        cbAmountOfViewsOfMovie.setSelectedIndex(-1);
+        // Delete
+        cbDeleteProfileFromSelectedAccount.addActionListener(new ProfileLoadProfilesForSelectedAccountListener(this));
+        cbDeleteProfile.setEnabled(false);
+        btnDeleteProfile.addActionListener(new ProfileDeleteListener(this));
+
+        // Movie--------------------------------------------
+        // Overviews
+        cbWatchedMoviesByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
         cbAmountOfViewsOfMovie.addActionListener(new MovieLoadAmountOfViewsListener(this));
-//        cbUpdateMovie.setSelectedIndex(-1);
+
+        // Add
+        btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
+
+        // Edit
         cbUpdateMovie.addActionListener(new MovieUpdateFillFieldsListener(this));
         btnUpdateMovie.addActionListener(new MovieUpdateListener(this));
-//        cbDeleteMovie.setSelectedIndex(-1);
+
+        // Delete
         btnDeleteMovie.addActionListener(new MovieDeleteListener(this));
 
-        //Serie
-        cbAvgOfWatchedSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbAvgOfWatchedSerie));
-        cbEditEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbEditEpisodeOfSerie));
+        // Serie--------------------------------------------
+        // Overviews
+        cbSerieAvgWatchedByEpisode.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbSerieAvgWatchedByEpisode));
+
+        // Add
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
+
+        // Edit
+        cbEditEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbEditEpisodeOfSerie));
         btnEditSerie.addActionListener(new SerieUpdateListener(this));
+
+        // Delete
         btnDeleteSerie.addActionListener(new SerieDeleteListener(this));
 
-        // Watch Behaviour
-
-        JSpinWatchedDate.setEnabled(false);
+        // Watch Behaviour-----------------------------------
+        // Add
         cbAddWatchedMediaAccount.setSelectedItem(null);
-        cbEditWatchedMediaAccount.setSelectedItem(null);
         cbAddWatchedMediaProfile.setEnabled(false);
-        cbEditWatchedMediaProfile.setEnabled(false);
+        JSpinWatchedDate.setEnabled(false);
         rbMovie.setEnabled(false);
         rbSerie.setEnabled(false);
         txtAddWatchedMediaDuration.setEnabled(false);
@@ -573,11 +618,16 @@ public class GUI implements Runnable {
         cbAddWatchedMediaSerieTitle.addActionListener(new WatchBehaviourLoadEpisodesForSelectedSerieListener(this));
         cbAddWatchedMediaEpisode.addActionListener(new WatchBehaviourSelectedEpisodeListener(this));
         btnAddWatchBehaviour.addActionListener(new WatchBehaviourCreateListener(this));
+
+        // Edit
+        cbEditWatchedMediaAccount.setSelectedItem(null);
+        cbEditWatchedMediaProfile.setEnabled(false);
         cbEditWatchedMediaAccount.addActionListener(new WatchBehaviorLoadProfilesForSelectedAccountEditListener(this));
         cbEditWatchedMediaProfile.addActionListener(new WatchBehaviorLoadWatchedMediaForEdit(this));
         cbEditWatchedMediaTitle.addActionListener(new WatchBehaviourLoadDurationListener(this));
         btnEditWatchedMedia.addActionListener(new WatchBehaviourEditBehaviourListener(this));
     }
+
     private void initializeComponents() {
         try {
             /* Initialize the value for components in the GUI */
@@ -593,9 +643,6 @@ public class GUI implements Runnable {
 
             //Serie
             serieManager.fillAllSerieCbx();
-
-            //Episodes
-            EpisodeManagerlmpl episodeManagerlmpl = new EpisodeManagerlmpl(this);
 
         } catch (Exception e) {
             System.out.println(e);

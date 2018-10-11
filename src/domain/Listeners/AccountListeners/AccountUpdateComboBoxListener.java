@@ -22,8 +22,8 @@ public class AccountUpdateComboBoxListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            if (this.ui.getCbUpdateSelectedAccount().getSelectedItem() != null) {
-                String strSelectedAccount = this.ui.getCbUpdateSelectedAccount().getSelectedItem().toString();
+            if (this.ui.getCbUpdateAccount().getSelectedItem() != null) {
+                String strSelectedAccount = this.ui.getCbUpdateAccount().getSelectedItem().toString();
                 account = accountManager.getAccountByName(strSelectedAccount);
                 this.ui.getTxtUpdateAccountName().setText(this.account.getName());
                 this.ui.getTxtUpdateAccountAdres().setText(this.account.getAddress());

@@ -49,7 +49,7 @@ public class SerieManagerImpl {
     //Creates a arraylist with all the comboboxes that need to be filed with series and starts filling them
     public void fillAllSerieCbx() {
         setSerieList();
-        JComboBox[] allSerieCb = new JComboBox[]{ui.getCbAvgOfWatchedSerie(),ui.getCbGetUpdateSerie(),ui.getCbGetdeleteSerie(),ui.getCbAvgWatchedSerie(),ui.getCbCreateEpisodeForSerie(),ui.getCbDeleteEpisodeFromSerie(),ui.getCbEditEpisodeOfSerie()};
+        JComboBox[] allSerieCb = new JComboBox[]{ui.getCbSerieAvgWatchedByEpisode(),ui.getCbGetUpdateSerie(),ui.getCbGetdeleteSerie(),ui.getCbSerieAvgWatchedBySerie(),ui.getCbCreateEpisodeForSerie(),ui.getCbDeleteEpisodeFromSerie(),ui.getCbEditEpisodeOfSerie()};
 
         for(int i= 0; i < allSerieCb.length; i++){
             allSerieCb[i].setSelectedItem(-1);
