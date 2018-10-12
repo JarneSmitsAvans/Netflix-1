@@ -1,8 +1,6 @@
 package domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit;
 
-import application.EpisodeManagerlmpl;
 import application.ProfileManagerImpl;
-import application.SerieManagerImpl;
 import application.WatchBehaviourManagerImpl;
 import domain.Episode;
 import domain.EpisodeComboBoxItem;
@@ -16,22 +14,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class WatchBehaviorLoadWatchedMediaForEdit implements ActionListener {
-    private SerieManagerImpl serieManager;
-    private EpisodeManagerlmpl episodeManager;
     private WatchBehaviourManagerImpl watchBehaviourManager;
     private ProfileManagerImpl profileManager;
     private GUI ui;
     public WatchBehaviorLoadWatchedMediaForEdit(GUI ui) {
         this.ui = ui;
-        this.serieManager = new SerieManagerImpl(ui);
-        this.episodeManager = new EpisodeManagerlmpl(ui);
         this.watchBehaviourManager = new WatchBehaviourManagerImpl();
         this.profileManager = new ProfileManagerImpl();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (ui.getCbEditWatchedMediaProfile().getSelectedItem() != null) {
             try {
                 int profileID;
@@ -52,9 +45,7 @@ public class WatchBehaviorLoadWatchedMediaForEdit implements ActionListener {
             } catch (ClassNotFoundException e1) {
                 e1.printStackTrace();
             }
-
             ui.getCbEditWatchedMediaTitle().setSelectedItem(null);
-
             ui.getLblEditWatchedMediaDuration().setText("0");
             ui.getTxtEditWatchedMediaDuration().setText("0");
         }

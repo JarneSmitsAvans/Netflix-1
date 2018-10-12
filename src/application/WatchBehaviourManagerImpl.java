@@ -43,6 +43,15 @@ public class WatchBehaviourManagerImpl {
         }
     }
 
+    public boolean delete(int mediaId, int profileId) throws SQLException, ClassNotFoundException {
+        boolean deleted = watchBehaviourDAO.delete(mediaId, profileId);
+        if (deleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public ArrayList<Movie> getWatchedMovies(int profileID) throws SQLException, ClassNotFoundException {
         ArrayList<Movie> watchedMovies = watchBehaviourDAO.getWatchedMovies(profileID);
         return watchedMovies;

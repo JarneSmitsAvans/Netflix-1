@@ -1,8 +1,6 @@
 package domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate;
-
 import application.EpisodeManagerlmpl;
 import application.SerieManagerImpl;
-import application.WatchBehaviourManagerImpl;
 import domain.Episode;
 import domain.Serie;
 import presentation.GUI;
@@ -13,14 +11,12 @@ import java.util.ArrayList;
 
 public class WatchBehaviourSelectedEpisodeListener implements ActionListener {
     private GUI ui;
-    private WatchBehaviourManagerImpl watchBehaviourManager;
     private SerieManagerImpl serieManager;
     private EpisodeManagerlmpl episodeManagerlmpl;
     private int duration;
 
     public WatchBehaviourSelectedEpisodeListener(GUI ui) {
         this.ui = ui;
-        this.watchBehaviourManager = new WatchBehaviourManagerImpl();
         this.serieManager = new SerieManagerImpl(ui);
         this.episodeManagerlmpl = new EpisodeManagerlmpl(ui);
     }

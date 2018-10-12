@@ -1,37 +1,6 @@
 package domain;
 
 public class EpisodeComboBoxItem extends Episode {
-    public int getEpisodeId() {
-        return episodeId;
-    }
-
-    @Override
-    public int getWatchedDuration() {
-        return watchedDuration;
-    }
-
-    public String getWatchDateAndTime() {
-        return watchDateAndTime;
-    }
-
-    @Override
-    public String getTitle() {
-        return title;
-    }
-
-    @Override
-    public String getSerieTitle() {
-        return serieTitle;
-    }
-
-    public int getTotalDuration() {
-        return totalDuration;
-    }
-
-    public void setEpisodeId(int episodeId) {
-        this.episodeId = episodeId;
-    }
-
     private int episodeId;
     private int watchedDuration;
     private String watchDateAndTime;
@@ -47,7 +16,24 @@ public class EpisodeComboBoxItem extends Episode {
         this.serieTitle = serieTitle;
         this.totalDuration = totalDuration;
     }
-
+    public int getEpisodeId() {
+        return episodeId;
+    }
+    @Override
+    public int getWatchedDuration() {
+        return watchedDuration;
+    }
+    @Override
+    public String getTitle() {
+        return title;
+    }
+    @Override
+    public String getSerieTitle() {
+        return serieTitle;
+    }
+    public int getTotalDuration() {
+        return totalDuration;
+    }
     @Override
     public String toString() {
         return serieTitle + " : " + title + " watched on: " + watchDateAndTime;

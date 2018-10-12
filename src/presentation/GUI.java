@@ -15,6 +15,9 @@ import domain.Listeners.MovieListeners.*;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.SerieListeners.*;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate.*;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete.WatchBehaviourDeleteListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete.WatchBehaviourLoadProfilesForSelectedAccountDeleteListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete.WatchBehaviourLoadWatchedMediaForDelete;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadProfilesForSelectedAccountEditListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadWatchedMediaForEdit;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourEditBehaviourListener;
@@ -658,11 +661,11 @@ public class GUI implements Runnable {
         btnEditWatchedMedia.addActionListener(new WatchBehaviourEditBehaviourListener(this));
 
         // Delete
-        //cbDeleteWatchedMediaAccount.setSelectedItem(null);
-        //cbDeleteWatchedMediaProfile.setEnabled(false);
-        //cbDeleteWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountDeleteListener(this));
-        //cbDeleteWatchedMediaProfile.addActionListener(new WatchBehaviourLoadWatchedMediaForDelete(this));
-        //btnDeleteWatchBehaviour.addActionListener(new WatchBehaviourDeleteListener(this));
+        cbDeleteWatchedMediaAccount.setSelectedItem(null);
+        cbDeleteWatchedMediaProfile.setEnabled(false);
+        cbDeleteWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountDeleteListener(this));
+        cbDeleteWatchedMediaProfile.addActionListener(new WatchBehaviourLoadWatchedMediaForDelete(this));
+        btnDeleteWatchBehaviour.addActionListener(new WatchBehaviourDeleteListener(this));
     }
 
     private void initializeComponents() {

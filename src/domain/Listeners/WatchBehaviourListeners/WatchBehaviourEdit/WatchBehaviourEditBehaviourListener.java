@@ -1,6 +1,7 @@
 package domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit;
 
-import application.*;
+import application.ProfileManagerImpl;
+import application.WatchBehaviourManagerImpl;
 import domain.Episode;
 import domain.EpisodeComboBoxItem;
 import domain.Movie;
@@ -13,21 +14,13 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class WatchBehaviourEditBehaviourListener implements ActionListener {
-
-    private SerieManagerImpl serieManager;
-    private EpisodeManagerlmpl episodeManager;
     private WatchBehaviourManagerImpl watchBehaviourManager;
     private ProfileManagerImpl profileManager;
-    private MovieManagerImpl movieManager;
     private GUI ui;
-
     public WatchBehaviourEditBehaviourListener(GUI ui) {
         this.ui = ui;
-        this.serieManager = new SerieManagerImpl(ui);
-        this.episodeManager = new EpisodeManagerlmpl(ui);
         this.watchBehaviourManager = new WatchBehaviourManagerImpl();
         this.profileManager = new ProfileManagerImpl();
-        this.movieManager = new MovieManagerImpl();
     }
     @Override
     public void actionPerformed(ActionEvent e) {

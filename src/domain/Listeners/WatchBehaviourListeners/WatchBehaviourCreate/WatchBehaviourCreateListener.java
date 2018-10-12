@@ -45,8 +45,6 @@ public class WatchBehaviourCreateListener implements ActionListener {
                 e1.printStackTrace();
             }
             String watchDateAndTime = ui.getJSpinWatchedDate().getValue().toString();
-            System.out.println("Selected: " + watchDateAndTime);
-            // TODO: Fix bug: newWatchDateAndTime is not the selected date and time, but the default date and time.
             if (command.equals("insertEpisode")) {
                 if (ui.getCbAddWatchedMediaEpisode().getSelectedItem() != null) {
                     String selectedEpisode = ui.getCbAddWatchedMediaEpisode().getSelectedItem().toString();

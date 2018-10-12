@@ -35,9 +35,18 @@ public class WatchBehaviourDAO {
         }
     }
 
+    public boolean delete(int mediaId, int profileId) throws SQLException, ClassNotFoundException {
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Watched_Media WHERE Id = ? AND Profile_Id = ?");
+        preparedStatement.setInt(1, mediaId);
+        preparedStatement.setInt(2, profileId);
+        boolean deleted = databaseConnection.ExecuteDeleteStatement(preparedStatement);
+        databaseConnection.CloseConnection();
+        return deleted;
+    }
+
     public boolean updateWatchedEpisode(Episode episode, int profileId) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        System.out.println(episode.getWatchedDuration());
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Watched_Media SET TimeWatched = ?, WatchedOn = ?  WHERE Profile_Id = ? AND Id = ?");
         preparedStatement.setInt(1, episode.getWatchedDuration());
         preparedStatement.setString(2, episode.getWatchedOn());
@@ -56,11 +65,9 @@ public class WatchBehaviourDAO {
         preparedStatement.setString(2, movie.getWatchedOn());
         preparedStatement.setInt(3, profileId);
         preparedStatement.setInt(4, movie.getId());
-
         boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
         databaseConnection.CloseConnection();
         return updated;
-
     }
 
     public ArrayList<Movie> getWatchedMovies(int profileID) throws SQLException, ClassNotFoundException {
