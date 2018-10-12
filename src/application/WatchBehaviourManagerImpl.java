@@ -25,8 +25,8 @@ public class WatchBehaviourManagerImpl {
         }
     }
 
-    public boolean updateWatchedEpisode(String watchedOn, Episode episode, int profileId) throws SQLException, ClassNotFoundException {
-        boolean updated = watchBehaviourDAO.updateWatchedEpisode(watchedOn, episode, profileId);
+    public boolean updateWatchedEpisode(Episode episode, int profileId) throws SQLException, ClassNotFoundException {
+        boolean updated = watchBehaviourDAO.updateWatchedEpisode(episode, profileId);
         if (updated) {
             return true;
         } else {
@@ -34,8 +34,8 @@ public class WatchBehaviourManagerImpl {
         }
     }
 
-    public boolean updateWatchedMovie(String watchedOn, Movie movie, int profileId) throws SQLException, ClassNotFoundException {
-        boolean updated = watchBehaviourDAO.updateWatchedMovie(watchedOn, movie, profileId);
+    public boolean updateWatchedMovie(Movie movie, int profileId) throws SQLException, ClassNotFoundException {
+        boolean updated = watchBehaviourDAO.updateWatchedMovie(movie, profileId);
         if (updated) {
             return true;
         } else {

@@ -622,6 +622,7 @@ public class GUI implements Runnable {
 
         // Watch Behaviour-----------------------------------
         // Add
+        ((JSpinner.DefaultEditor) JSpinWatchedDate.getEditor()).getTextField().setEditable(false);
         cbAddWatchedMediaAccount.setSelectedItem(null);
         cbAddWatchedMediaProfile.setEnabled(false);
         JSpinWatchedDate.setEnabled(false);
@@ -648,6 +649,7 @@ public class GUI implements Runnable {
         btnAddWatchBehaviour.addActionListener(new WatchBehaviourCreateListener(this));
 
         // Edit
+        ((JSpinner.DefaultEditor) JSpinNewWatchedDate.getEditor()).getTextField().setEditable(false);
         cbEditWatchedMediaAccount.setSelectedItem(null);
         cbEditWatchedMediaProfile.setEnabled(false);
         cbEditWatchedMediaAccount.addActionListener(new WatchBehaviorLoadProfilesForSelectedAccountEditListener(this));

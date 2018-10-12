@@ -12,7 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-
 public class WatchBehaviourEditBehaviourListener implements ActionListener {
 
     private SerieManagerImpl serieManager;
@@ -32,15 +31,12 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if (this.ui.getCbEditWatchedMediaAccount().getSelectedItem() != null && this.ui.getCbEditWatchedMediaProfile().getSelectedItem() != null
                 && this.ui.getCbEditWatchedMediaTitle().getSelectedItem() != null && this.ui.getJSpinNewWatchedDate().getValue().toString() != null && !ui.getTxtEditWatchedMediaDuration().getText().isEmpty() && ui.getTxtEditWatchedMediaDuration().getText().matches("^[0-9]*$")) {
             try {
                 String newWatchDateAndTime = ui.getJSpinNewWatchedDate().getValue().toString();
-                System.out.println("Selected: " + newWatchDateAndTime);
-                // TODO: Fix bug: newWatchDateAndTime is not the selected date and time, but the default date and time.
-
                 boolean updated = false;
-                String watchedOn;
                 String strSelectedAccount = this.ui.getCbEditWatchedMediaAccount().getSelectedItem().toString();
                 String strSelectedProfile = this.ui.getCbEditWatchedMediaProfile().getSelectedItem().toString();
                 int profileId = profileManager.getIdOfProfile(strSelectedProfile, strSelectedAccount);
@@ -54,8 +50,7 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
                         movie.setTitle(movieComboBoxItem.getTitle());
                         movie.setWatchedDuration(newTimeWatched);
                         movie.setWatchedOn(newWatchDateAndTime);
-                        watchedOn = movieComboBoxItem.getWatchDateAndTime();
-                        updated = watchBehaviourManager.updateWatchedMovie(watchedOn, movie, profileId);
+                        updated = watchBehaviourManager.updateWatchedMovie(movie, profileId);
 
                     } else if (comboBoxItem instanceof EpisodeComboBoxItem) {
                         EpisodeComboBoxItem episodeComboBoxItem = (EpisodeComboBoxItem) comboBoxItem;
@@ -63,8 +58,7 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
                         episode.setWatchedDuration(newTimeWatched);
                         episode.setWatchedOn(newWatchDateAndTime);
                         episode.setId(episodeComboBoxItem.getEpisodeId());
-                        watchedOn = episodeComboBoxItem.getWatchDateAndTime();
-                        updated = watchBehaviourManager.updateWatchedEpisode(watchedOn, episode, profileId);
+                        updated = watchBehaviourManager.updateWatchedEpisode(episode, profileId);
                     }
                     if (updated) {
                         this.ui.getTxtEditWatchedMediaDuration().setText(null);
