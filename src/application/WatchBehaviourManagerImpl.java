@@ -1,6 +1,8 @@
 package application;
 
 import datastorage.WatchBehaviourDAO;
+import domain.Episode;
+import domain.Movie;
 import domain.Program;
 import presentation.GUI;
 
@@ -23,8 +25,8 @@ public class WatchBehaviourManagerImpl {
         }
     }
 
-    public boolean update(String watchDateAndTime, Program program, int profileId) throws SQLException, ClassNotFoundException {
-        boolean updated = watchBehaviourDAO.update(watchDateAndTime, program, profileId);
+    public boolean updateWatchedEpisode(String watchedOn, Episode episode, int profileId) throws SQLException, ClassNotFoundException {
+        boolean updated = watchBehaviourDAO.updateWatchedEpisode(watchedOn, episode, profileId);
         if (updated) {
             return true;
         } else {
@@ -32,9 +34,23 @@ public class WatchBehaviourManagerImpl {
         }
     }
 
-    public ArrayList<Program> getWatchedMedia(int profileID) throws SQLException, ClassNotFoundException {
-        ArrayList<Program> programs = watchBehaviourDAO.getWatchedMedia(profileID);
-        return programs;
+    public boolean updateWatchedMovie(String watchedOn, Movie movie, int profileId) throws SQLException, ClassNotFoundException {
+        boolean updated = watchBehaviourDAO.updateWatchedMovie(watchedOn, movie, profileId);
+        if (updated) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public ArrayList<Movie> getWatchedMovies(int profileID) throws SQLException, ClassNotFoundException {
+        ArrayList<Movie> watchedMovies = watchBehaviourDAO.getWatchedMovies(profileID);
+        return watchedMovies;
+    }
+
+    public ArrayList<Episode> getWatchedEpisodes(int profileID) throws SQLException, ClassNotFoundException {
+        ArrayList<Episode> watchedEpisodes = watchBehaviourDAO.getWatchedEpisodes(profileID);
+        return watchedEpisodes;
     }
 }
 

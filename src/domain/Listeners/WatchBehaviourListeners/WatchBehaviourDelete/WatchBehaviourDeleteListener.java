@@ -1,20 +1,13 @@
-package domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit;
+package domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete;
 
 import application.*;
-import domain.Episode;
-import domain.EpisodeComboBoxItem;
-import domain.Movie;
-import domain.MovieComboBoxItem;
 import presentation.GUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
-
-public class WatchBehaviourEditBehaviourListener implements ActionListener {
-
+public class WatchBehaviourDeleteListener implements ActionListener {
     private SerieManagerImpl serieManager;
     private EpisodeManagerlmpl episodeManager;
     private WatchBehaviourManagerImpl watchBehaviourManager;
@@ -22,7 +15,7 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
     private MovieManagerImpl movieManager;
     private GUI ui;
 
-    public WatchBehaviourEditBehaviourListener(GUI ui) {
+    public WatchBehaviourDeleteListener(GUI ui) {
         this.ui = ui;
         this.serieManager = new SerieManagerImpl(ui);
         this.episodeManager = new EpisodeManagerlmpl(ui);
@@ -30,43 +23,38 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
         this.profileManager = new ProfileManagerImpl();
         this.movieManager = new MovieManagerImpl();
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.ui.getCbEditWatchedMediaAccount().getSelectedItem() != null && this.ui.getCbEditWatchedMediaProfile().getSelectedItem() != null
-                && this.ui.getCbEditWatchedMediaTitle().getSelectedItem() != null && this.ui.getJSpinNewWatchedDate().getValue().toString() != null && !ui.getTxtEditWatchedMediaDuration().getText().isEmpty() && ui.getTxtEditWatchedMediaDuration().getText().matches("^[0-9]*$")) {
-            try {
-                String newWatchDateAndTime = ui.getJSpinNewWatchedDate().getValue().toString();
-                System.out.println("Selected: " + newWatchDateAndTime);
-                // TODO: Fix bug: newWatchDateAndTime is not the selected date and time, but the default date and time.
-
-                boolean updated = false;
-                String watchedOn;
+                && this.ui.getCbEditWatchedMediaTitle().getSelectedItem() != null && this.ui.getJSpinNewWatchedDate().getValue() != null && !ui.getTxtEditWatchedMediaDuration().getText().isEmpty() && ui.getTxtEditWatchedMediaDuration().getText().matches("^[0-9]*$")) {
+           /* try {
+                boolean deleted;
                 String strSelectedAccount = this.ui.getCbEditWatchedMediaAccount().getSelectedItem().toString();
                 String strSelectedProfile = this.ui.getCbEditWatchedMediaProfile().getSelectedItem().toString();
                 int profileId = profileManager.getIdOfProfile(strSelectedProfile, strSelectedAccount);
                 Object comboBoxItem = ui.getCbEditWatchedMediaTitle().getSelectedItem();
+                MovieComboBoxItem cbSelectedMedia = (MovieComboBoxItem) comboBoxItem;
+                String mediaTitle = cbSelectedMedia.getMediaTitle();
+                int episodeId = cbSelectedMedia.getId();
                 int newTimeWatched = Integer.parseInt(ui.getTxtEditWatchedMediaDuration().getText());
+                String watchedOn = cbSelectedMedia.getWatchDate();
+                String selectedValue = ui.getJSpinNewWatchedDate().getValue().toString();
                 if (!(newTimeWatched > Integer.parseInt(ui.getLblEditWatchedMediaDuration().getText()))) {
-                    if (comboBoxItem instanceof MovieComboBoxItem) {
-                        MovieComboBoxItem movieComboBoxItem = (MovieComboBoxItem) comboBoxItem;
-                        Movie movie = new Movie();
-                        movie.setId(movieComboBoxItem.getId());
-                        movie.setTitle(movieComboBoxItem.getTitle());
+                    if (!mediaTitle.isEmpty()) {
+                        Program movie = new Movie();
+                        movie.setTitle(mediaTitle);
+                        movie.setId(0);
                         movie.setWatchedDuration(newTimeWatched);
-                        movie.setWatchedOn(newWatchDateAndTime);
-                        watchedOn = movieComboBoxItem.getWatchDateAndTime();
-                        updated = watchBehaviourManager.updateWatchedMovie(watchedOn, movie, profileId);
-
-                    } else if (comboBoxItem instanceof EpisodeComboBoxItem) {
-                        EpisodeComboBoxItem episodeComboBoxItem = (EpisodeComboBoxItem) comboBoxItem;
-                        Episode episode = new Episode();
+                        movie.setWatchedOn(selectedValue);
+                    } else {
+                        Program episode = new Episode();
+                        episode.setTitle(null);
+                        episode.setId(episodeId);
                         episode.setWatchedDuration(newTimeWatched);
-                        episode.setWatchedOn(newWatchDateAndTime);
-                        episode.setId(episodeComboBoxItem.getEpisodeId());
-                        watchedOn = episodeComboBoxItem.getWatchDateAndTime();
-                        updated = watchBehaviourManager.updateWatchedEpisode(watchedOn, episode, profileId);
+                        episode.setWatchedOn(selectedValue);
                     }
-                    if (updated) {
+                    if (deleted) {
                         this.ui.getTxtEditWatchedMediaDuration().setText(null);
                         this.ui.getLblEditWatchedMediaDuration().setText(null);
                         this.ui.getCbEditWatchedMediaTitle().setSelectedItem(null);
@@ -84,8 +72,8 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
             } catch (ClassNotFoundException e1) {
                 e1.printStackTrace();
             }
+        } else {*/
+            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "The values entered for the new watch behaviour are invalid. Please specify different values", "Watchbehaviour has not been edited", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
-
-

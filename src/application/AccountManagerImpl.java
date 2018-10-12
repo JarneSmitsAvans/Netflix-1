@@ -13,6 +13,7 @@ public class AccountManagerImpl extends GeneralManager{
 
     public void initializeAccountComponents(GUI gui) throws SQLException, ClassNotFoundException {
         //Fill txtAccountsWithOneProfile with Accounts that have one and only one profile.
+        gui.getTxtAccountsWithOneProfile().setText(null);
         ArrayList<String> singleProfileAccounts = this.singleProfile();
         this.addToTextPane(gui.getTxtAccountsWithOneProfile(), singleProfileAccounts);
     }
@@ -30,6 +31,8 @@ public class AccountManagerImpl extends GeneralManager{
         gui.getCbUpdateSelectedProfile().removeAllItems();
         gui.getCbEditWatchedMediaAccount().removeAllItems();
         gui.getCbAddWatchedMediaAccount().removeAllItems();
+        gui.getCbDeleteWatchedMediaAccount().removeAllItems();
+        initializeAccountComponents(gui);
 
         // Fill the following JComboBoxes with accounts.
         ArrayList<Account> accountArrayList = this.getAccounts();
@@ -42,6 +45,7 @@ public class AccountManagerImpl extends GeneralManager{
         this.addAccountsToComboBox(gui.getCbAddWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbSelectAccountForProfileEdit(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbEditWatchedMediaAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbDeleteWatchedMediaAccount(), accountArrayList);
 
     }
     public boolean create(Account account) throws SQLException, ClassNotFoundException {

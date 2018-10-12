@@ -1,17 +1,27 @@
 package presentation;
 
-import application.*;
+import application.AccountManagerImpl;
+import application.MovieManagerImpl;
+import application.ProfileManagerImpl;
+import application.SerieManagerImpl;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 import domain.Account;
-import domain.Movie;
-import domain.Profile;
-import domain.Listeners.AccountListeners.*;
+import domain.Listeners.AccountListeners.AccountCreateListener;
+import domain.Listeners.AccountListeners.AccountDeleteListener;
+import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
+import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.MovieListeners.*;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.SerieListeners.*;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate.*;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.*;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadProfilesForSelectedAccountEditListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadWatchedMediaForEdit;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourEditBehaviourListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourLoadDurationListener;
+import domain.Movie;
+import domain.Profile;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -232,11 +242,13 @@ public class GUI implements Runnable {
 
     // Delete
     private JPanel deleteWatchBehaviourPanel;
+
     private JComboBox cbDeleteWatchedMediaAccount;
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
     private JComboBox cbCreateSerieReferenceNumber;
     private JComboBox cbUpdateSerieReferenceNumber;
+    private JButton btnDeleteWatchBehaviour;
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
 
@@ -427,7 +439,17 @@ public class GUI implements Runnable {
     }
 
     // Delete
-    // Hier komen nog de delete getters voor watched behaviour.. Deze regel mag dan weg.
+    public JComboBox getCbDeleteWatchedMediaAccount() {
+        return cbDeleteWatchedMediaAccount;
+    }
+
+    public JComboBox getCbDeleteWatchedMediaProfile() {
+        return cbDeleteWatchedMediaProfile;
+    }
+
+    public JComboBox getCbDeleteWatchedMediaTitle() {
+        return cbDeleteWatchedMediaTitle;
+    }
 
     // Serie-------------------------------------------------------------
     // Overviews
@@ -632,6 +654,13 @@ public class GUI implements Runnable {
         cbEditWatchedMediaProfile.addActionListener(new WatchBehaviorLoadWatchedMediaForEdit(this));
         cbEditWatchedMediaTitle.addActionListener(new WatchBehaviourLoadDurationListener(this));
         btnEditWatchedMedia.addActionListener(new WatchBehaviourEditBehaviourListener(this));
+
+        // Delete
+        //cbDeleteWatchedMediaAccount.setSelectedItem(null);
+        //cbDeleteWatchedMediaProfile.setEnabled(false);
+        //cbDeleteWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountDeleteListener(this));
+        //cbDeleteWatchedMediaProfile.addActionListener(new WatchBehaviourLoadWatchedMediaForDelete(this));
+        //btnDeleteWatchBehaviour.addActionListener(new WatchBehaviourDeleteListener(this));
     }
 
     private void initializeComponents() {

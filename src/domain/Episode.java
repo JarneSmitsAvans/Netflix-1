@@ -1,10 +1,22 @@
 package domain;
 
-import java.sql.Time;
-
 public class Episode extends Program {
     private int episodeNumber;
     private int serieNumber;
+
+    public int getEpisodeNumber() {
+        return episodeNumber;
+    }
+
+    public String getSerieTitle() {
+        return serieTitle;
+    }
+
+    public void setSerieTitle(String serieTitle) {
+        this.serieTitle = serieTitle;
+    }
+
+    private String serieTitle;
 
     public int getEpisodenumber(){
         return this.episodeNumber;

@@ -1,5 +1,6 @@
 package domain.Listeners.ProfileListeners;
 
+import application.AccountManagerImpl;
 import application.ProfileManagerImpl;
 import domain.Profile;
 import presentation.GUI;
@@ -12,11 +13,14 @@ public class ProfileUpdateListener implements ActionListener {
     private GUI ui;
     private ProfileManagerImpl profileManager;
     private Profile profile;
+    private AccountManagerImpl accountManager;
+
 
     public ProfileUpdateListener(GUI ui) {
         this.ui = ui;
         this.profile = new Profile();
         this.profileManager = new ProfileManagerImpl();
+        this.accountManager = new AccountManagerImpl();
     }
 
     @Override
@@ -35,6 +39,7 @@ public class ProfileUpdateListener implements ActionListener {
                 boolean updated = profileManager.update(id, profile);
                 if (updated) {
                     this.profileManager.initializeProfileComboBoxes(ui);
+                    this.accountManager.initializeAccountComboBoxes(ui);
                     this.ui.getCbUpdateSelectedProfile().setSelectedItem(null);
                     this.ui.getTxtUpdateProfileName().setText(null);
                     this.ui.getjDPnewDateOfBirth().setDate(null);

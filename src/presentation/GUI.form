@@ -2481,7 +2481,7 @@
                                   <font size="16"/>
                                 </properties>
                               </component>
-                              <component id="b624c" class="javax.swing.JButton">
+                              <component id="b624c" class="javax.swing.JButton" binding="btnDeleteWatchBehaviour">
                                 <constraints>
                                   <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
                                     <minimum-size width="100" height="-1"/>
