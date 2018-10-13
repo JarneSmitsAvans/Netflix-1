@@ -9,7 +9,7 @@ import presentation.GUI;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class WatchBehaviourManagerImpl {
+public class WatchBehaviourManagerImpl extends GeneralManager {
     private WatchBehaviourDAO watchBehaviourDAO = new WatchBehaviourDAO();
 
     public void initializeWatchBehaviourComboBoxes(GUI gui) {

@@ -2,8 +2,8 @@ package domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete;
 
 import application.ProfileManagerImpl;
 import application.WatchBehaviourManagerImpl;
-import domain.EpisodeComboBoxItem;
-import domain.MovieComboBoxItem;
+import domain.Listeners.WatchBehaviourListeners.EpisodeComboBoxItem;
+import domain.Listeners.WatchBehaviourListeners.MovieComboBoxItem;
 import presentation.GUI;
 
 import javax.swing.*;

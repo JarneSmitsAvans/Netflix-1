@@ -27,12 +27,11 @@ public class ProfileManagerImpl extends GeneralManager {
         gui.getCbAddWatchedMediaProfile().removeAllItems();
         gui.getCbEditWatchedMediaProfile().removeAllItems();
         gui.getCbDeleteWatchedMediaProfile().removeAllItems();
-
-
+        gui.getCbWatchedProgramsBySelectedProfile().removeAllItems();
 
         // Fill the following JComboBoxes with profiles.
-        ArrayList<Profile> profileArrayList = this.getProfiles();
-        this.addProfilesToComboBox(gui.getCbWatchedProgramsBySelectedProfile(), profileArrayList);
+        //ArrayList<Profile> profileArrayList = this.getProfiles();
+        //this.addProfilesToComboBox(gui.getCbWatchedProgramsBySelectedProfile(), profileArrayList);
     }
 
     public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {

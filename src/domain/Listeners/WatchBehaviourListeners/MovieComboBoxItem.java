@@ -1,23 +1,20 @@
-package domain;
+package domain.Listeners.WatchBehaviourListeners;
 
-public class EpisodeComboBoxItem extends Episode {
-    private int episodeId;
+import domain.Movie;
+
+public class MovieComboBoxItem extends Movie {
+    private int id;
     private int watchedDuration;
     private String watchDateAndTime;
     private String title;
-    private String serieTitle;
     private int totalDuration;
 
-    public EpisodeComboBoxItem(int episodeId, int watchedDuration, String watchDateAndTime, String title, String serieTitle, int totalDuration) {
-        this.episodeId = episodeId;
+    public MovieComboBoxItem(int watchedDuration, String watchDateAndTime, String title, int totalDuration, int id) {
         this.watchedDuration = watchedDuration;
         this.watchDateAndTime = watchDateAndTime;
         this.title = title;
-        this.serieTitle = serieTitle;
         this.totalDuration = totalDuration;
-    }
-    public int getEpisodeId() {
-        return episodeId;
+        this.id = id;
     }
     @Override
     public int getWatchedDuration() {
@@ -27,15 +24,24 @@ public class EpisodeComboBoxItem extends Episode {
     public String getTitle() {
         return title;
     }
-    @Override
-    public String getSerieTitle() {
-        return serieTitle;
-    }
     public int getTotalDuration() {
         return totalDuration;
     }
     @Override
+    public int getId() {
+        return id;
+    }
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+    @Override
     public String toString() {
-        return serieTitle + " : " + title + " watched on: " + watchDateAndTime;
+        return title + " watched on: " + watchDateAndTime;
     }
 }
+
+
+
+
+

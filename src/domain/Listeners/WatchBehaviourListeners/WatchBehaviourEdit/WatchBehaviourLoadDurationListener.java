@@ -1,7 +1,7 @@
 package domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit;
 
-import domain.EpisodeComboBoxItem;
-import domain.MovieComboBoxItem;
+import domain.Listeners.WatchBehaviourListeners.EpisodeComboBoxItem;
+import domain.Listeners.WatchBehaviourListeners.MovieComboBoxItem;
 import presentation.GUI;
 
 import java.awt.event.ActionEvent;

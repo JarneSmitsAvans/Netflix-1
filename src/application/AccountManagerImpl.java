@@ -32,6 +32,7 @@ public class AccountManagerImpl extends GeneralManager{
         gui.getCbEditWatchedMediaAccount().removeAllItems();
         gui.getCbAddWatchedMediaAccount().removeAllItems();
         gui.getCbDeleteWatchedMediaAccount().removeAllItems();
+        gui.getCbWatchedProgramsBySelectedAccount().removeAllItems();
         initializeAccountComponents(gui);
 
         // Fill the following JComboBoxes with accounts.
@@ -46,7 +47,7 @@ public class AccountManagerImpl extends GeneralManager{
         this.addAccountsToComboBox(gui.getCbSelectAccountForProfileEdit(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbEditWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbDeleteWatchedMediaAccount(), accountArrayList);
-
+        this.addAccountsToComboBox(gui.getCbWatchedProgramsBySelectedAccount(), accountArrayList);
     }
     public boolean create(Account account) throws SQLException, ClassNotFoundException {
         boolean created = accountDAO.create(account);

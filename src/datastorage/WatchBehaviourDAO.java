@@ -55,7 +55,6 @@ public class WatchBehaviourDAO {
         boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
         databaseConnection.CloseConnection();
         return updated;
-
     }
 
     public boolean updateWatchedMovie(Movie movie, int profileId) throws SQLException, ClassNotFoundException {

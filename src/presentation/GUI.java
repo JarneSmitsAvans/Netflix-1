@@ -22,6 +22,8 @@ import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehavior
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadWatchedMediaForEdit;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourEditBehaviourListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourLoadDurationListener;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadProfilesForSelectedAccount;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadWatchedMediaListener;
 import domain.Movie;
 import domain.Profile;
 
@@ -93,6 +95,9 @@ public class GUI implements Runnable {
     // Profile----------------------------------------------------
     // Overviews
     private JComboBox cbWatchedProgramsBySelectedProfile;
+
+
+    private JComboBox cbWatchedProgramsBySelectedAccount;
 
     // Add
     private JPanel addProfileToAccountPanel;
@@ -218,6 +223,8 @@ public class GUI implements Runnable {
     // Overviews
     private JPanel watchedProgramsByProfilePanel;
 
+    private JTextPane txtWatchedProgramsBySelectedProfile;
+
     // Add
     private JPanel addWatchBehaviourPanel;
     private JComboBox cbAddWatchedMediaAccount;
@@ -255,6 +262,7 @@ public class GUI implements Runnable {
     private JComboBox cbUpdateSerieReferenceNumber;
     private JButton btnDeleteWatchBehaviour;
 
+
 //    Getters ------------------------------------------------------------------------------------------------------------------
 
     // JPanel------------------------------------------------------------
@@ -267,6 +275,7 @@ public class GUI implements Runnable {
     public JTextPane getTxtAccountsWithOneProfile() {
         return txtAccountsWithOneProfile;
     }
+
 
     // Add
     public JTextField getTxtAccountName() {
@@ -378,8 +387,15 @@ public class GUI implements Runnable {
 
     // Watch Behaviour---------------------------------------------------
     // Overviews
+    public JTextPane getTxtWatchedProgramsBySelectedProfile() {
+        return txtWatchedProgramsBySelectedProfile;
+    }
     public JComboBox getCbWatchedProgramsBySelectedProfile() {
         return cbWatchedProgramsBySelectedProfile;
+    }
+
+    public JComboBox getCbWatchedProgramsBySelectedAccount() {
+        return cbWatchedProgramsBySelectedAccount;
     }
 
     // Add
@@ -629,6 +645,11 @@ public class GUI implements Runnable {
         btnDeleteSerie.addActionListener(new SerieDeleteListener(this,cbGetdeleteSerie));
 
         // Watch Behaviour-----------------------------------
+
+        // Overviews
+        cbWatchedProgramsBySelectedAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccount(this));
+        cbWatchedProgramsBySelectedProfile.addActionListener(new WatchBehaviourLoadWatchedMediaListener(this));
+        cbWatchedProgramsBySelectedProfile.setSelectedItem(null);
         // Add
         ((JSpinner.DefaultEditor) JSpinWatchedDate.getEditor()).getTextField().setEditable(false);
         cbAddWatchedMediaAccount.setSelectedItem(null);
