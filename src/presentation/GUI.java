@@ -38,8 +38,6 @@ public class GUI implements Runnable {
     // JFrame--------------------------------------
     private JFrame frame;
 
-    // JTabbedPanes
-    private JTabbedPane tabbedPane;
     private JTabbedPane crudPane;
     private JTabbedPane crudAccountsAndProfiles;
     private JTabbedPane crudSeriesAndEpisodes;
@@ -187,6 +185,10 @@ public class GUI implements Runnable {
     private JPanel amountOfViewerByMoviePanel;
     private JComboBox cbAmountOfViewsOfMovie;
     private JTextPane txtAmountOfViewersForMovie;
+
+    private JPanel amountOfViewersWhoWatchedWholeMoviePanel;
+    private JComboBox cbAmountOfViewerWholeMovie;
+    private JTextPane txtAmountOfViewersWholeMovie;
 
     // Add
     private JPanel addMoviePanel;
@@ -342,6 +344,9 @@ public class GUI implements Runnable {
 
     public JComboBox getCbAmountOfViewsOfMovie() { return cbAmountOfViewsOfMovie; }
     public JTextPane getTxtAmountOfViewersForMovie() { return txtAmountOfViewersForMovie; }
+
+    public JComboBox getCbAmountOfViewerWholeMovie() { return cbAmountOfViewerWholeMovie; };
+    public JTextPane getTxtAmountOfViewersWholeMovie() { return txtAmountOfViewersWholeMovie; };
 
     // Add
     public JTextField getTxtMovieTitle() {

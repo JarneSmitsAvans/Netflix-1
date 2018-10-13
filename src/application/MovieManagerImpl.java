@@ -32,6 +32,7 @@ public class MovieManagerImpl {
         this.addMoviesToComboBox(gui.getCbAmountOfViewsOfMovie(), movieArraylist);
         this.addMoviesToComboBox(gui.getCbUpdateMovie(), movieArraylist);
         this.addMoviesToComboBox(gui.getCbDeleteMovie(), movieArraylist);
+        this.addMoviesToComboBox(gui.getCbAmountOfViewerWholeMovie(), movieArraylist);
     }
 
     public boolean create(Movie movie) throws SQLException, ClassNotFoundException {
