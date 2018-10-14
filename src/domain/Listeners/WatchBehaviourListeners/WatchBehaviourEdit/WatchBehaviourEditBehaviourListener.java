@@ -1,5 +1,6 @@
 package domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit;
 
+import application.MovieManagerImpl;
 import application.ProfileManagerImpl;
 import application.WatchBehaviourManagerImpl;
 import domain.Episode;
@@ -16,11 +17,14 @@ import java.sql.SQLException;
 public class WatchBehaviourEditBehaviourListener implements ActionListener {
     private WatchBehaviourManagerImpl watchBehaviourManager;
     private ProfileManagerImpl profileManager;
+    private MovieManagerImpl movieManager;
     private GUI ui;
+
     public WatchBehaviourEditBehaviourListener(GUI ui) {
         this.ui = ui;
         this.watchBehaviourManager = new WatchBehaviourManagerImpl();
         this.profileManager = new ProfileManagerImpl();
+        this.movieManager = new MovieManagerImpl();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -60,6 +64,7 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
                         this.ui.getCbEditWatchedMediaProfile().removeAllItems();
                         this.ui.getCbEditWatchedMediaAccount().setSelectedItem(null);
                         JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watchbehaviour has been edited.", "Watchbehaviour has been edited", JOptionPane.INFORMATION_MESSAGE);
+                        movieManager.initializeMovieComponents(ui);
                     } else {
                         JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occured.", "Watchbehaviour has been added", JOptionPane.ERROR_MESSAGE);
                     }

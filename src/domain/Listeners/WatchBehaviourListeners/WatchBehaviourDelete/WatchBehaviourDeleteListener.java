@@ -1,5 +1,6 @@
 package domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete;
 
+import application.MovieManagerImpl;
 import application.ProfileManagerImpl;
 import application.WatchBehaviourManagerImpl;
 import domain.Listeners.WatchBehaviourListeners.EpisodeComboBoxItem;
@@ -14,12 +15,14 @@ import java.sql.SQLException;
 public class WatchBehaviourDeleteListener implements ActionListener {
     private WatchBehaviourManagerImpl watchBehaviourManager;
     private ProfileManagerImpl profileManager;
+    private MovieManagerImpl movieManager;
     private GUI ui;
 
     public WatchBehaviourDeleteListener(GUI ui) {
         this.ui = ui;
         this.watchBehaviourManager = new WatchBehaviourManagerImpl();
         this.profileManager = new ProfileManagerImpl();
+        this.movieManager = new MovieManagerImpl();
     }
 
     @Override
@@ -44,6 +47,7 @@ public class WatchBehaviourDeleteListener implements ActionListener {
                     ui.getCbDeleteWatchedMediaProfile().removeAllItems();
                     ui.getCbDeleteWatchedMediaAccount().setSelectedItem(null);
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watched media has been deleted.", "Watched media deleted", JOptionPane.INFORMATION_MESSAGE);
+                    movieManager.initializeMovieComponents(ui);
                 } else {
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watched media has not been deleted due to an unexpected error.", "Watched media not deleted", JOptionPane.ERROR_MESSAGE);
                 }

@@ -58,6 +58,7 @@ public class GUI implements Runnable {
     private JLabel lblDesignerInfo8;
     private JLabel lblDesignerInfo9;
     private JLabel lblDesignerInfo10;
+    private JLabel lblDesignerInfo11;
     private JPanel Home;
     private JPanel mainPanel;
 
@@ -127,6 +128,8 @@ public class GUI implements Runnable {
     private JTextPane txtAvgWatchedSeries;
     private JComboBox cbAccountAvgWatchedBySerie;
     private JComboBox cbSerieAvgWatchedBySerie;
+
+    private JPanel avgWatchedSeriePanel;
 
     // Add
     private JPanel addSeriesPanel;
@@ -262,6 +265,7 @@ public class GUI implements Runnable {
     private JComboBox cbCreateSerieReferenceNumber;
     private JComboBox cbUpdateSerieReferenceNumber;
     private JButton btnDeleteWatchBehaviour;
+
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -582,6 +586,7 @@ public class GUI implements Runnable {
         lblDesignerInfo8.setText(designInfo);
         lblDesignerInfo9.setText(designInfo);
         lblDesignerInfo10.setText(designInfo);
+        lblDesignerInfo11.setText(designInfo);
 
         initializeComponents();
 

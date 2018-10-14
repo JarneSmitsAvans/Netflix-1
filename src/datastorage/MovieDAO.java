@@ -12,6 +12,13 @@ public class MovieDAO {
 
     public boolean create(Movie movie) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
+        PreparedStatement preparedStatementTitle = databaseConnection.getConnection().prepareStatement("SELECT * FROM Movie WHERE title = ?");
+        preparedStatementTitle.setString(1, movie.getTitle());
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatementTitle);
+        while (resultSet.next()) {
+            return false;
+        }
+
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Movie (title, duration, genre, language, minimumAge) VALUES (?, ?, ?, ?, ?)");
         preparedStatement.setString(1, movie.getTitle());
         preparedStatement.setInt(2, movie.getDuration());

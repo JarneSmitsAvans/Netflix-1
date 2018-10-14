@@ -66,6 +66,7 @@ public class WatchBehaviourCreateListener implements ActionListener {
                                             JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watchbehaviour has been created.", "Watchbehaviour has been added", JOptionPane.INFORMATION_MESSAGE);
                                             this.ui.getTxtAddWatchedMediaDuration().setText(null);
                                             watchBehaviourManager.initializeWatchBehaviourComboBoxes(ui);
+                                            movieManager.initializeMovieComponents(ui);
                                         } else {
                                             JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occured.", "Watchbehaviour has been added", JOptionPane.ERROR_MESSAGE);
                                         }

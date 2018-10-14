@@ -43,7 +43,8 @@ public class MovieCreateListener implements ActionListener {
                         ui.getTxtMovieLanguage().setText(null);
                         ui.getTxtMovieMinAge().setText(null);
                         JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Film is toegevoegd", "Film toegevoegd", JOptionPane.INFORMATION_MESSAGE);
-
+                    } else {
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan bij het toevoegen van de film", "Film niet toegevoegd", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (Exception exx) {
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan bij het toevoegen van de film", "Film niet toegevoegd", JOptionPane.ERROR_MESSAGE);

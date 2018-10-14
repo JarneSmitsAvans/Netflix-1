@@ -7,8 +7,6 @@ import domain.Profile;
 import presentation.GUI;
 
 import javax.swing.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -27,12 +25,26 @@ public class MovieManagerImpl {
         gui.getCbAmountOfViewsOfMovie().removeAllItems();
         gui.getCbUpdateMovie().removeAllItems();
         gui.getCbDeleteMovie().removeAllItems();
+        gui.getCbAmountOfViewerWholeMovie().removeAllItems();
 
         ArrayList<Movie> movieArraylist = this.getMovies();
         this.addMoviesToComboBox(gui.getCbAmountOfViewsOfMovie(), movieArraylist);
         this.addMoviesToComboBox(gui.getCbUpdateMovie(), movieArraylist);
         this.addMoviesToComboBox(gui.getCbDeleteMovie(), movieArraylist);
         this.addMoviesToComboBox(gui.getCbAmountOfViewerWholeMovie(), movieArraylist);
+
+        gui.getCbAmountOfViewsOfMovie().setSelectedIndex(-1);
+        gui.getCbUpdateMovie().setSelectedIndex(-1);
+        gui.getCbDeleteMovie().setSelectedIndex(-1);
+        gui.getCbAmountOfViewerWholeMovie().setSelectedIndex(-1);
+
+        gui.getTxtAmountOfViewersWholeMovie().setText("");
+        gui.getTxtAmountOfViewersForMovie().setText("");
+        gui.getTxtUpdateMovieTitle().setText("");
+        gui.getTxtUpdateMovieDuration().setText("");
+        gui.getTxtUpdateMovieGenre().setText("");
+        gui.getTxtUpdateMovieLanguage().setText("");
+        gui.getTxtUpdateMovieMinimumAge().setText("");
     }
 
     public boolean create(Movie movie) throws SQLException, ClassNotFoundException {
@@ -57,7 +69,6 @@ public class MovieManagerImpl {
 
     public void addMoviesToComboBox(JComboBox comboBox, ArrayList<Movie> arrayList) {
         // For each Movie in ArrayList, get the title and add it to the parameter comboBox
-        comboBox.setSelectedIndex(-1);
         for (Movie movie : arrayList) {
             comboBox.addItem(movie.getTitle());
         }
