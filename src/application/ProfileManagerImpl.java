@@ -19,7 +19,7 @@ public class ProfileManagerImpl extends GeneralManager {
         }
     }
 
-    public void initializeProfileComboBoxes(GUI gui) throws SQLException, ClassNotFoundException {
+    public void initializeProfileComboBoxes(GUI gui) {
         // Empty all comboBoxes should there be any data inside of them.
         gui.getCbDeleteProfile().removeAllItems();
         gui.getCbUpdateSelectedProfile().removeAllItems();
@@ -28,10 +28,6 @@ public class ProfileManagerImpl extends GeneralManager {
         gui.getCbEditWatchedMediaProfile().removeAllItems();
         gui.getCbDeleteWatchedMediaProfile().removeAllItems();
         gui.getCbWatchedProgramsBySelectedProfile().removeAllItems();
-
-        // Fill the following JComboBoxes with profiles.
-        //ArrayList<Profile> profileArrayList = this.getProfiles();
-        //this.addProfilesToComboBox(gui.getCbWatchedProgramsBySelectedProfile(), profileArrayList);
     }
 
     public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {

@@ -60,6 +60,8 @@ public class WatchBehaviourLoadWatchedMediaListener implements ActionListener {
             } catch (BadLocationException e1) {
                 e1.printStackTrace();
             }
+        }else{
+            return;
         }
     }
 }

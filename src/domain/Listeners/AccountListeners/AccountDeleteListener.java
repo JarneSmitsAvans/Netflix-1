@@ -2,6 +2,7 @@ package domain.Listeners.AccountListeners;
 
 import application.AccountManagerImpl;
 import domain.Account;
+import domain.ErrorHandling;
 import presentation.GUI;
 
 import javax.swing.*;
@@ -26,14 +27,15 @@ public class AccountDeleteListener implements ActionListener  {
                     if (deleted) {
                         this.accountManager.initializeAccountComboBoxes(ui);
                         this.ui.getCbDeleteAccount().setSelectedItem(null);
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account has been deleted.", "Account deleted", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account is verwijderd.", "Account verwijderd", JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account has not been deleted due to an unexpected error.", "Account not deleted", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Account niet verwijderd", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
             else{
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "No account selected for deletion", "Account not deleted", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.EMPTYINPUT.getError(), "Account niet verwijderd", JOptionPane.ERROR_MESSAGE);
+                return;
             }
         } catch (Exception e1) {
             e1.printStackTrace();

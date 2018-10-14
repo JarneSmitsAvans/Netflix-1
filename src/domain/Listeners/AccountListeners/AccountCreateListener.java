@@ -2,6 +2,7 @@ package domain.Listeners.AccountListeners;
 
 import application.AccountManagerImpl;
 import domain.Account;
+import domain.ErrorHandling;
 import presentation.GUI;
 
 import javax.swing.*;
@@ -33,16 +34,17 @@ public class AccountCreateListener implements ActionListener {
                     this.ui.getTxtAccountAddress().setText(null);
                     this.ui.getTxtAccountResidence().setText(null);
                     this.accountManager.initializeAccountComboBoxes(ui);
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account has been created.", "Account created", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account is aangemaakt.", "Account aangemaakt", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else
                 {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occurred when trying to create a new account.", "Account has not been created", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Account niet aangemaakt", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else
             {
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "One or more fields were found empty when trying to create a new account. Please validate your input.", "Missing information", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.EMPTYINPUT.getError(), "Account niet verwijderd", JOptionPane.ERROR_MESSAGE);
+                return;
             }
         } catch (Exception e1) {
             e1.printStackTrace();

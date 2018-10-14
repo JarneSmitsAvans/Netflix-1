@@ -2,6 +2,7 @@ package domain.Listeners.AccountListeners;
 
 import application.AccountManagerImpl;
 import domain.Account;
+import domain.ErrorHandling;
 import presentation.GUI;
 
 import javax.swing.*;
@@ -39,14 +40,15 @@ public class AccountUpdateListener implements ActionListener {
                     this.ui.getTxtUpdateAccountName().setText(null);
                     this.ui.getTxtUpdateAccountAdres().setText(null);
                     this.ui.getTxtUpdateAccountResidence().setText(null);
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account has been updated.", "Account updated", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account is gewijzigd.", "Account gewijzigd", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occurred when trying to update the selected account.", "Account has not been updated", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Account niet gewijzigd", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "One or more fields were found empty when trying to update the account. Please validate your input.", "Missing information", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.EMPTYINPUT.getError(), "Lege velden", JOptionPane.ERROR_MESSAGE);
+                return;
             }
         } catch (SQLException e1) {
             e1.printStackTrace();

@@ -3,6 +3,7 @@ package domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete;
 import application.MovieManagerImpl;
 import application.ProfileManagerImpl;
 import application.WatchBehaviourManagerImpl;
+import domain.ErrorHandling;
 import domain.Listeners.WatchBehaviourListeners.EpisodeComboBoxItem;
 import domain.Listeners.WatchBehaviourListeners.MovieComboBoxItem;
 import presentation.GUI;
@@ -46,10 +47,10 @@ public class WatchBehaviourDeleteListener implements ActionListener {
                     ui.getCbEditWatchedMediaTitle().removeAllItems();
                     ui.getCbDeleteWatchedMediaProfile().removeAllItems();
                     ui.getCbDeleteWatchedMediaAccount().setSelectedItem(null);
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watched media has been deleted.", "Watched media deleted", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Kijkgedrag is verwijderd", "Kijkgedrag verwijderd", JOptionPane.INFORMATION_MESSAGE);
                     movieManager.initializeMovieComponents(ui);
                 } else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watched media has not been deleted due to an unexpected error.", "Watched media not deleted", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Kijkgedrag niet verwijderd", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
@@ -57,7 +58,8 @@ public class WatchBehaviourDeleteListener implements ActionListener {
                 e1.printStackTrace();
             }
         } else {
-            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Not a valid selection for deletion", "Watched media not deleted", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.EMPTYINPUT.getError(), "Lege velden", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }
 }

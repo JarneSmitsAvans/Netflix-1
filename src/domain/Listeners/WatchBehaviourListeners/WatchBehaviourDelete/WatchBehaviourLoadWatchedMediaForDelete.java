@@ -44,6 +44,8 @@ public class WatchBehaviourLoadWatchedMediaForDelete implements ActionListener {
                 e1.printStackTrace();
             }
             ui.getCbDeleteWatchedMediaTitle().setSelectedItem(null);
+        }else{
+            return;
         }
     }
 }

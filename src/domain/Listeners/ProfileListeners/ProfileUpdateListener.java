@@ -2,6 +2,7 @@ package domain.Listeners.ProfileListeners;
 
 import application.AccountManagerImpl;
 import application.ProfileManagerImpl;
+import domain.ErrorHandling;
 import domain.Profile;
 import presentation.GUI;
 
@@ -43,12 +44,13 @@ public class ProfileUpdateListener implements ActionListener {
                     this.ui.getCbUpdateSelectedProfile().setSelectedItem(null);
                     this.ui.getTxtUpdateProfileName().setText(null);
                     this.ui.getjDPnewDateOfBirth().setDate(null);
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profile has been updated.", "Profile updated", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profiel is gewijzigd.", "Profiel is gewijzigd", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occurred when trying to update the selected profile.", "Profile has not been updated", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Profiel is niet gewijzigd", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "One or more fields were found empty when trying to update the profile. Please validate your input.", "Missing information", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.EMPTYINPUT.getError(), "Lege velden", JOptionPane.ERROR_MESSAGE);
+                return;
             }
         } catch (SQLException e1) {
             e1.printStackTrace();

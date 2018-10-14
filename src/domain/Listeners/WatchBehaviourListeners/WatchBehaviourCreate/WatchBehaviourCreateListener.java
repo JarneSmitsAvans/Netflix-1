@@ -1,10 +1,7 @@
 package domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate;
 
 import application.*;
-import domain.Episode;
-import domain.Movie;
-import domain.Program;
-import domain.Serie;
+import domain.*;
 import presentation.GUI;
 
 import javax.swing.*;
@@ -63,15 +60,15 @@ public class WatchBehaviourCreateListener implements ActionListener {
 
                                         boolean created = watchBehaviourManager.create(program, profileID, watchDateAndTime);
                                         if (created) {
-                                            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watchbehaviour has been created.", "Watchbehaviour has been added", JOptionPane.INFORMATION_MESSAGE);
+                                            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Kijkgedrag is aangemaakt.", "Kijkgedrag is aangemaakt.", JOptionPane.INFORMATION_MESSAGE);
                                             this.ui.getTxtAddWatchedMediaDuration().setText(null);
                                             watchBehaviourManager.initializeWatchBehaviourComboBoxes(ui);
                                             movieManager.initializeMovieComponents(ui);
                                         } else {
-                                            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occured.", "Watchbehaviour has been added", JOptionPane.ERROR_MESSAGE);
+                                            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Kijkgedrag is niet aangemaakt.", JOptionPane.ERROR_MESSAGE);
                                         }
                                     } else {
-                                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "The value entered for time watched is greater than the duration of the selected media. Please specify a different value", "Watchbehaviour has not been added", JOptionPane.ERROR_MESSAGE);
+                                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.ISGREATER.getError(), "Kijkgedrag is niet aangemaakt.", JOptionPane.ERROR_MESSAGE);
                                     }
                                 } catch (SQLException e1) {
                                     e1.printStackTrace();
@@ -93,14 +90,14 @@ public class WatchBehaviourCreateListener implements ActionListener {
                         if (!(program.getDuration() > Integer.parseInt(ui.getLblDurationOfSelectedProgram().getText()))) {
                             boolean created = watchBehaviourManager.create(program, profileID, watchDateAndTime);
                             if (created) {
-                                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watchbehaviour has been created.", "Watchbehaviour has been added", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Kijkgedrag is aangemaakt.", "Kijkgedrag is aangemaakt.", JOptionPane.INFORMATION_MESSAGE);
                                 this.ui.getTxtAddWatchedMediaDuration().setText(null);
                                 watchBehaviourManager.initializeWatchBehaviourComboBoxes(ui);
                             } else {
-                                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occured.", "Watchbehaviour has been added", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Kijkgedrag is niet aangemaakt.", JOptionPane.ERROR_MESSAGE);
                             }
                         } else {
-                            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "The value entered for time watched is greater than the duration of the selected media. Please specify a different value", "Watchbehaviour has not been added", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.ISGREATER.getError(), "Kijkgedrag is niet aangemaakt.", JOptionPane.ERROR_MESSAGE);
                         }
                     } catch (SQLException e1) {
                         e1.printStackTrace();
@@ -110,7 +107,8 @@ public class WatchBehaviourCreateListener implements ActionListener {
                 }
             }
         } else {
-            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "The values entered for the new watch behaviour are invalid. Please specify different values", "Watchbehaviour has not been added", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.EMPTYINPUT.getError(), "Lege velden", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }
 }

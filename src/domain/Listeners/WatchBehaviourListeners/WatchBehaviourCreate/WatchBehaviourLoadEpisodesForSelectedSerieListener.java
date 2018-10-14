@@ -36,6 +36,8 @@ public class WatchBehaviourLoadEpisodesForSelectedSerieListener implements Actio
             episodeManager.appendComboBox(this.ui.getCbAddWatchedMediaEpisode(), episodes);
             ui.getLblDurationOfSelectedProgram().setText(Integer.toString(duration));
             ui.getCbAddWatchedMediaEpisode().setSelectedItem(null);
+        }else{
+            return;
         }
     }
 }

@@ -39,6 +39,8 @@ public class WatchBehaviourSelectedMovieListener implements ActionListener {
             } catch (ClassNotFoundException e1) {
                 e1.printStackTrace();
             }
+        }else{
+            return;
         }
     }
 }

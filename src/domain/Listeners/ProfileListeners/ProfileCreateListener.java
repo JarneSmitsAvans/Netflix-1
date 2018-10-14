@@ -2,6 +2,7 @@ package domain.Listeners.ProfileListeners;
 import application.AccountManagerImpl;
 import application.ProfileManagerImpl;
 import domain.Account;
+import domain.ErrorHandling;
 import domain.Profile;
 import presentation.GUI;
 
@@ -40,18 +41,19 @@ public class ProfileCreateListener implements ActionListener {
                         this.ui.getCbAddProfileToSelectedAccount().setSelectedItem(null);
                         this.ui.getTxtProfileName().setText(null);
                         this.ui.getjDPdateOfBirth().setDate(null);
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profile has been created.", "Profile created", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profiel is aangemaakt.", "Profiel aangemaakt", JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occurred when trying to create a new profile.", "Profile has not been created", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Profiel is niet aangemaakt.", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "A profile with that name already exists for that account.", "Profile has not been created", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.ALREADYEXISTS.getError(), "Profiel is niet aangemaakt.", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         } else {
-            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "One or more fields were found empty when trying to create a new profile. Please validate your input.", "Missing information", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.EMPTYINPUT.getError(), "Lege velden", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }
 }

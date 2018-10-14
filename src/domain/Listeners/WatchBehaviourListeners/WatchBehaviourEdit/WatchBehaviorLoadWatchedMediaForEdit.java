@@ -48,6 +48,8 @@ public class WatchBehaviorLoadWatchedMediaForEdit implements ActionListener {
             ui.getCbEditWatchedMediaTitle().setSelectedItem(null);
             ui.getLblEditWatchedMediaDuration().setText("0");
             ui.getTxtEditWatchedMediaDuration().setText("0");
+        }else{
+            return;
         }
     }
 }

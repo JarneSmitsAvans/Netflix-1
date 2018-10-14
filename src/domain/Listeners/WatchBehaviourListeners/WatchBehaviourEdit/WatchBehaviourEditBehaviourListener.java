@@ -4,6 +4,7 @@ import application.MovieManagerImpl;
 import application.ProfileManagerImpl;
 import application.WatchBehaviourManagerImpl;
 import domain.Episode;
+import domain.ErrorHandling;
 import domain.Listeners.WatchBehaviourListeners.EpisodeComboBoxItem;
 import domain.Listeners.WatchBehaviourListeners.MovieComboBoxItem;
 import domain.Movie;
@@ -63,19 +64,22 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
                         this.ui.getCbEditWatchedMediaTitle().setSelectedItem(null);
                         this.ui.getCbEditWatchedMediaProfile().removeAllItems();
                         this.ui.getCbEditWatchedMediaAccount().setSelectedItem(null);
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Watchbehaviour has been edited.", "Watchbehaviour has been edited", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Kijkgedrag is gewijzigd", "Kijkgedrag gewijzigd", JOptionPane.INFORMATION_MESSAGE);
                         movieManager.initializeMovieComponents(ui);
                     } else {
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "An unexpected error occured.", "Watchbehaviour has been added", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Kijkgedrag is niet gewijzigd.", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "The value entered for time watched is greater than the duration of the selected media. Please specify a different value", "Watchbehaviour has not been edited", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.ISGREATER.getError(), "Kijkgedrag is niet gewijzigd.", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
             } catch (ClassNotFoundException e1) {
                 e1.printStackTrace();
             }
+        }else{
+            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.EMPTYINPUT.getError(), "Lege velden", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }
 }

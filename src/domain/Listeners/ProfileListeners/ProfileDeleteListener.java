@@ -2,6 +2,7 @@ package domain.Listeners.ProfileListeners;
 
 import application.AccountManagerImpl;
 import application.ProfileManagerImpl;
+import domain.ErrorHandling;
 import presentation.GUI;
 
 import javax.swing.*;
@@ -32,13 +33,14 @@ public class ProfileDeleteListener implements ActionListener {
                         this.profileManager.initializeProfileComboBoxes(ui);
                         this.accountManager.initializeAccountComboBoxes(ui);
                         this.ui.getCbDeleteProfileFromSelectedAccount().setSelectedItem(null);
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profile has been deleted.", "Profile deleted", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profiel is verwijderd.", "Profiel verwijderd", JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Profile has not been deleted due to an unexpected error.", "Profile not deleted", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.UNEXPECTEDERROR.getError(), "Profiel niet verwijderd", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             } else {
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "No profile selected for deletion", "Profile not deleted", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), ErrorHandling.EMPTYINPUT.getError(), "Profiel niet verwijderd", JOptionPane.ERROR_MESSAGE);
+                return;
             }
         } catch (Exception e1) {
             e1.printStackTrace();

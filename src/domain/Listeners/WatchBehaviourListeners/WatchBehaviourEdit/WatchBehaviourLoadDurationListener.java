@@ -30,6 +30,8 @@ public class WatchBehaviourLoadDurationListener implements ActionListener {
                 ui.getLblEditWatchedMediaDuration().setText(Integer.toString(episodeComboBoxItem.getTotalDuration()));
                 ui.getTxtEditWatchedMediaDuration().setText((Integer.toString(watchedDuration)));
             }
+        }else{
+            return;
         }
     }
 }

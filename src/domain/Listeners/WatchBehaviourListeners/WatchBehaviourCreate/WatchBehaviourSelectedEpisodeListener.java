@@ -36,6 +36,8 @@ public class WatchBehaviourSelectedEpisodeListener implements ActionListener {
                     }
                 }
             }
+        }else{
+            return;
         }
     }
 }
