@@ -7,14 +7,26 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 
+/**
+ * GeneralManager.java
+ * <p>
+ * This class has methods that do generic things, like;
+ * * Adding an ArrayList of strings to a textpane
+ * * Checking if a string is not empty/null
+ * * Calculating the age of a person (Not used anywhere, but it could be in the future)
+ * <p>
+ * Author: Dylan ten Böhmer
+ */
+
 public class GeneralManager {
+    // Return true if parameter string is found empty.
     public static boolean empty(String string) {
-        // return true if parameter string is found empty.
         return string == null || string.trim().isEmpty();
     }
 
+    // Add contents of parameter ArrayList to parameter JTextPane
     public void addToTextPane(JTextPane textPane, ArrayList<String> arrayList) {
-        // Add contents of parameter ArrayList to parameter JTextPane
+
         StyledDocument styledDocument = textPane.getStyledDocument();
         for (String string : arrayList) {
             try {
@@ -25,6 +37,7 @@ public class GeneralManager {
         }
     }
 
+    // Returns the age of a person
     public static int calculateAge(LocalDate birthDate, LocalDate currentDate) {
         // Calculate the age of a person
         if ((birthDate != null) && (currentDate != null)) {

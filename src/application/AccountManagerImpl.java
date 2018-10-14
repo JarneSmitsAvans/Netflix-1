@@ -8,18 +8,33 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AccountManagerImpl extends GeneralManager{
+/**
+ * AccountManagerImpl.java
+ * <p>
+ * This class has methods that do things with accounts, like;
+ * * Implementation for CRUD Operations
+ * * Getting data for overviews
+ * * Adding account objects to swing components.
+ * <p>
+ * Author: Dylan ten Böhmer
+ */
+
+public class AccountManagerImpl extends GeneralManager {
+    // Initialize a new accountDAO object.
     private AccountDAO accountDAO = new AccountDAO();
 
+    //Empty and fill txtAccountsWithOneProfile with accounts that have one and only one profile.
     public void initializeAccountComponents(GUI gui) throws SQLException, ClassNotFoundException {
-        //Fill txtAccountsWithOneProfile with Accounts that have one and only one profile.
+
         gui.getTxtAccountsWithOneProfile().setText(null);
         ArrayList<String> singleProfileAccounts = this.singleProfile();
         this.addToTextPane(gui.getTxtAccountsWithOneProfile(), singleProfileAccounts);
     }
 
+    /*Empty all ComboBoxes should there be any data inside of them so that
+    there won't be double data inside ComboBoxes when we re-fill them. Then, re-fill them.*/
     public void initializeAccountComboBoxes(GUI gui) throws SQLException, ClassNotFoundException {
-        // Empty All ComboBoxes should there be any data inside of them.
+        // Remove all data from the following comboBoxes to avoid double data
         gui.getCbAccountAvgWatchedBySerie().removeAllItems();
         gui.getCbWatchedMoviesByAccount().removeAllItems();
         gui.getCbDeleteAccount().removeAllItems();
@@ -35,8 +50,9 @@ public class AccountManagerImpl extends GeneralManager{
         gui.getCbWatchedProgramsBySelectedAccount().removeAllItems();
         initializeAccountComponents(gui);
 
-        // Fill the following JComboBoxes with accounts.
+        // Get all accounts that are present in the database.
         ArrayList<Account> accountArrayList = this.getAccounts();
+        /// Add all those accounts to the following comboBoxes.
         this.addAccountsToComboBox(gui.getCbAccountAvgWatchedBySerie(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbWatchedMoviesByAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbDeleteAccount(), accountArrayList);
@@ -49,6 +65,8 @@ public class AccountManagerImpl extends GeneralManager{
         this.addAccountsToComboBox(gui.getCbDeleteWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbWatchedProgramsBySelectedAccount(), accountArrayList);
     }
+
+    // Sends an object of type Account to the Account DAO that needs to be inserted into the database.
     public boolean create(Account account) throws SQLException, ClassNotFoundException {
         boolean created = accountDAO.create(account);
         if (created) {
@@ -57,6 +75,8 @@ public class AccountManagerImpl extends GeneralManager{
             return false;
         }
     }
+
+    // Sends an object of type Account to the Account DAO that needs to be updated in the database.
     public boolean update(int id, Account account) throws SQLException, ClassNotFoundException {
         boolean updated = accountDAO.update(id, account);
         if (updated) {
@@ -65,6 +85,8 @@ public class AccountManagerImpl extends GeneralManager{
             return false;
         }
     }
+
+    // Sends an object of type Account to the Account DAO that needs to be deleted from the database.
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         boolean deleted = accountDAO.delete(id);
         if (deleted) {
@@ -73,26 +95,29 @@ public class AccountManagerImpl extends GeneralManager{
             return false;
         }
     }
+
+    // Returns an ArrayList filled with all accounts that only have one profile assigned to them.
     public ArrayList<String> singleProfile() throws SQLException, ClassNotFoundException {
-        // Returns an ArrayList filled with all accounts that only have one profile assigned to them.
         ArrayList<String> arrayList = accountDAO.getSingleAccounts();
         return arrayList;
     }
+
+    // Returns an ArrayList filled with all accounts in the database.
     public ArrayList<Account> getAccounts() throws SQLException, ClassNotFoundException {
-        // Returns an ArrayList filled with all accounts in the database.
         ArrayList<Account> arrayList = accountDAO.getAccounts();
         return arrayList;
     }
-    public void addAccountsToComboBox(JComboBox comboBox, ArrayList<Account> arrayList)
-    {
-        // For each Account in ArrayList, get the account name and add it to the parameter comboBox
-        for (Account account : arrayList)
-        {
+
+    // For each Account in ArrayList, get the account name and add it to the parameter comboBox
+    public void addAccountsToComboBox(JComboBox comboBox, ArrayList<Account> arrayList) {
+        for (Account account : arrayList) {
             comboBox.addItem(account.getName());
         }
     }
+
+    // Returns the requested Account by name and parses it to an object of Account type.
     public Account getAccountByName(String name) throws SQLException, ClassNotFoundException {
-        Account account = accountDAO.getAccountId(name);
+        Account account = accountDAO.getAccountByName(name);
         return  account;
     }
 }

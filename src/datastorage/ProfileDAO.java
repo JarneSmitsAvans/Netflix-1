@@ -8,8 +8,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * ProfileDAO.java
+ * This class creates SQL PreparedStatement for Profile CRUD operations, and sends them to the DatabaseConnection for execution.
+ * The DatabaseConnection class then returns true if it was executed successfully, false is it wasn't.
+ * If a select statement was created, the requested ResultSet is then returned as the return type of that called method.
+ * <p>
+ * Author: Dylan ten Böhmer
+ */
+
 public class ProfileDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
+
+    // Generate the SQL Statement that will create a new Profile.
     public boolean create(Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT INTO Profile (profilename, DateOfBirth, fk_account) VALUES (?, ?, ?)");
@@ -25,6 +36,7 @@ public class ProfileDAO {
         }
     }
 
+    // Generate the SQL Statement that will update an existing profile.
     public boolean update(int id, Profile profile) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Profile SET profilename = ?, DateOfBirth = ? WHERE id = ?");
@@ -40,6 +52,7 @@ public class ProfileDAO {
         }
     }
 
+    // Generate the SQL Statement that will delete an existing profile.
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Profile WHERE id = ?");
@@ -52,9 +65,9 @@ public class ProfileDAO {
             return false;
         }
     }
-    public ArrayList<Profile> getProfiles() throws SQLException, ClassNotFoundException
-    {
-        // Returns an ArrayList filled with all profiles in the database.
+
+    // Generate the SQL Statement that will return all profiles in the database.
+    public ArrayList<Profile> getProfiles() throws SQLException, ClassNotFoundException {
         ArrayList<Profile> profileArrayList = new ArrayList<>();
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Profile");
@@ -71,6 +84,7 @@ public class ProfileDAO {
         return profileArrayList;
     }
 
+    // Generate the SQL Statement that will return the profiles matching the account id.
     public ArrayList<Profile> getMatchingProfiles(int id) throws SQLException, ClassNotFoundException {
         ArrayList<Profile> profileArrayList = new ArrayList<>();
         databaseConnection.OpenConnection();
@@ -88,6 +102,7 @@ public class ProfileDAO {
         return profileArrayList;
     }
 
+    // Generate the SQL Statement that will return the id of the profile that matches the parameter profile and account.
     public int getIdOfProfile(String profile, String account) throws SQLException, ClassNotFoundException {
         int profileId = 0;
         databaseConnection.OpenConnection();
@@ -102,8 +117,8 @@ public class ProfileDAO {
         return profileId;
     }
 
+    // Generate the SQL Statement that will return the requested profile that matches the parameter id.
     public Profile getProfileById(int id) throws SQLException, ClassNotFoundException {
-        // Returns the data matching parameter id
         Profile profile = new Profile();
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Profile WHERE id = ?");

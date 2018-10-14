@@ -9,9 +9,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * WatchBehaviourDAO.java
+ * This class creates SQL PreparedStatement for WatchBehaviour CRUD operations, and sends them to the DatabaseConnection for execution.
+ * The DatabaseConnection class then returns true if it was executed successfully, false is it wasn't.
+ * If a select statement was created, the requested ResultSet is then returned as the return type of that called method.
+ * <p>
+ * Author: Dylan ten Böhmer
+ */
+
 public class WatchBehaviourDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
+    // Generate the SQL Statement that will insert a new watched behaviour record.
     public boolean create(Program program, int profileId, String watchedOn) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Watched_Media" +
@@ -35,6 +45,7 @@ public class WatchBehaviourDAO {
         }
     }
 
+    // Generate the SQL Statement that will delete existing watched behaviour.
     public boolean delete(int mediaId, int profileId) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Watched_Media WHERE Id = ? AND Profile_Id = ?");
@@ -45,6 +56,8 @@ public class WatchBehaviourDAO {
         return deleted;
     }
 
+    /* Generate the SQL Statement that will update a watched episode
+    with a new watchedDuration and watchedOn value*/
     public boolean updateWatchedEpisode(Episode episode, int profileId) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Watched_Media SET TimeWatched = ?, WatchedOn = ?  WHERE Profile_Id = ? AND Id = ?");
@@ -57,6 +70,8 @@ public class WatchBehaviourDAO {
         return updated;
     }
 
+    /* Generate the SQL Statement that will update a watched movie
+    with a new watchedDuration and watchedOn value*/
     public boolean updateWatchedMovie(Movie movie, int profileId) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Watched_Media SET TimeWatched = ?, WatchedOn = ? WHERE Profile_Id = ? AND Id = ?");
@@ -69,6 +84,7 @@ public class WatchBehaviourDAO {
         return updated;
     }
 
+    // Generate the SQL Statement that returns all the watched movies of a profile.
     public ArrayList<Movie> getWatchedMovies(int profileID) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         ArrayList<Movie> movies = new ArrayList<>();
@@ -89,6 +105,7 @@ public class WatchBehaviourDAO {
         return movies;
     }
 
+    // Generate the SQL Statement that returns all the watched episodes of a profile.
     public ArrayList<Episode> getWatchedEpisodes(int profileID) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
         ArrayList<Episode> episodes = new ArrayList<>();

@@ -8,11 +8,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * WatchBehaviourMovieListener.java
+ * This ActionListener fires should the user decide to add a newly watched movie.
+ * It makes all the components required for inserting a newly watched movie visible,
+ * and hides all the components for inserting an episode.
+ * <p>
+ * It then adds all the available movies to the movies comboBox
+ * <p>
+ * Author: Dylan ten Böhmer
+ */
+
 public class WatchBehaviourMovieListener implements ActionListener {
     private GUI ui;
     private MovieManagerImpl movieManager;
     private int duration;
 
+    // Constructor
     public WatchBehaviourMovieListener(GUI ui) {
         this.ui = ui;
         this.movieManager = new MovieManagerImpl();
@@ -36,10 +48,10 @@ public class WatchBehaviourMovieListener implements ActionListener {
             ui.getCbAddWatchedMediaMovieTitle().removeAllItems();
             ArrayList<Movie> movieArrayList = this.movieManager.getMovies();
 
+            // Add all available movies to the movies comboBox.
             movieManager.addMoviesToComboBox(ui.getCbAddWatchedMediaMovieTitle(), movieArrayList);
             ui.getLblDurationOfSelectedProgram().setText(Integer.toString(duration));
             ui.getCbAddWatchedMediaMovieTitle().setSelectedItem(null);
-
 
         } catch (Exception el) {
             el.printStackTrace();

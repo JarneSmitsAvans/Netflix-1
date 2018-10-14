@@ -669,9 +669,12 @@ public class GUI implements Runnable {
         cbAddWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
         cbAddWatchedMediaEpisode.setVisible(false);
         lblWatchedEpisode.setVisible(false);
+
+        // Create a button group for the two radio buttons on the Watch Behaviour tab.
         ButtonGroup watchBehaviourbtnGrp = new ButtonGroup();
         watchBehaviourbtnGrp.add(rbMovie);
         watchBehaviourbtnGrp.add(rbSerie);
+
         cbAddWatchedMediaMovieTitle.setVisible(false);
         cbAddWatchedMediaSerieTitle.setVisible(false);
         cbAddWatchedMediaEpisode.setVisible(false);
