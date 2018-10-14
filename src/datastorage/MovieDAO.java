@@ -116,6 +116,41 @@ public class MovieDAO {
         return strAmount;
     }
 
+    public String getViewersByMovie(String movieTitle) throws SQLException, ClassNotFoundException {
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Watched_Media where Movie_Title = ?");
+        preparedStatement.setString(1, movieTitle);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        Movie DataOfMovie = getMovieId(movieTitle);
+        int durationOfMovie = DataOfMovie.getDuration();
+        int watchedWholeMovie = 0;
+        int watchedMovie = 0;
+
+        String strViewers = "";
+        if(!resultSet.isBeforeFirst()) {
+            strViewers = "De film '" + movieTitle + "' is nog niet bekeken";
+        } else {
+            while (resultSet.next()) {
+                watchedMovie++;
+                if(resultSet.getInt("TimeWatched") == durationOfMovie) {
+                    watchedWholeMovie++;
+                }
+            }
+            float percentage = (float)((watchedWholeMovie*100) / watchedMovie);
+            String amountOfViewerWhoWatchedWholeMovie = "";
+            if(watchedMovie > 1) {
+                amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " kijkers (" + percentage + "%) hebben de film ";
+            }
+            else {
+                amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " (" + percentage + "%) kijker heeft de film ";
+            }
+            strViewers = movieTitle + "\nDe film is " + watchedMovie + "x bekeken.\n" + amountOfViewerWhoWatchedWholeMovie + "'" + movieTitle + "' volledig bekeken.";
+        }
+
+        databaseConnection.CloseConnection();
+        return strViewers;
+    }
+
     public Movie getMovieId(String title) throws SQLException, ClassNotFoundException {
         Movie movie = new Movie();
         databaseConnection.OpenConnection();

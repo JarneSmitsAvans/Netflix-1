@@ -86,6 +86,11 @@ public class MovieManagerImpl {
         return amountOfViewers;
     }
 
+    public String viewersByMovie(String movieTitle) throws SQLException, ClassNotFoundException {
+        String amountOfViewersByMovie = movieDAO.getViewersByMovie(movieTitle);
+        return amountOfViewersByMovie;
+    }
+
     public Movie getMovieByTitle(String title) throws SQLException, ClassNotFoundException {
         Movie movie = movieDAO.getMovieId(title);
         return movie;

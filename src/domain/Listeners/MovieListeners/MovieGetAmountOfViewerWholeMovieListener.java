@@ -20,9 +20,11 @@ public class MovieGetAmountOfViewerWholeMovieListener implements ActionListener 
         try {
             if (ui.getCbAmountOfViewerWholeMovie().getSelectedItem() != null) {
                 String strSelectedMovie = ui.getCbAmountOfViewerWholeMovie().getSelectedItem().toString();
+                String amountOfViewer = movieManager.viewersByMovie(strSelectedMovie);
+                ui.getTxtAmountOfViewersWholeMovie().setText(amountOfViewer);
             }
         } catch (Exception ex) {
-
+            ui.getTxtAmountOfViewersWholeMovie().setText("Er is iets fout gegaan met het ophalen van de gegevens.");
         }
     }
 }

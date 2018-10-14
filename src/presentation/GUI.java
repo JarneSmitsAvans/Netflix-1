@@ -57,6 +57,7 @@ public class GUI implements Runnable {
     private JLabel lblDesignerInfo7;
     private JLabel lblDesignerInfo8;
     private JLabel lblDesignerInfo9;
+    private JLabel lblDesignerInfo10;
     private JPanel Home;
     private JPanel mainPanel;
 
@@ -580,6 +581,7 @@ public class GUI implements Runnable {
         lblDesignerInfo7.setText(designInfo);
         lblDesignerInfo8.setText(designInfo);
         lblDesignerInfo9.setText(designInfo);
+        lblDesignerInfo10.setText(designInfo);
 
         initializeComponents();
 
@@ -617,6 +619,7 @@ public class GUI implements Runnable {
         // Overviews
         cbWatchedMoviesByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
         cbAmountOfViewsOfMovie.addActionListener(new MovieLoadAmountOfViewsListener(this));
+        cbAmountOfViewerWholeMovie.addActionListener(new MovieGetAmountOfViewerWholeMovieListener(this));
 
         // Add
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
