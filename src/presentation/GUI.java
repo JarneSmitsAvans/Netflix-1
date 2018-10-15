@@ -11,6 +11,10 @@ import domain.Listeners.AccountListeners.AccountCreateListener;
 import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
+import domain.Listeners.EpisodeListeners.EpisodeCreateListener;
+import domain.Listeners.EpisodeListeners.EpisodeDeleteListener;
+import domain.Listeners.EpisodeListeners.EpisodeGetValuesToUpdate;
+import domain.Listeners.EpisodeListeners.EpisodeUpdateListener;
 import domain.Listeners.MovieListeners.*;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.SerieListeners.*;
@@ -133,10 +137,10 @@ public class GUI implements Runnable {
 
     // Add
     private JPanel addSeriesPanel;
-    private JTextField txtSerieTitle;
-    private JTextField txtSerieGenre;
-    private JTextField txtSerieLanguage;
-    private JTextField txtSerieAge;
+    private JTextField txtSerieCreateTitle;
+    private JTextField txtSerieCreateGenre;
+    private JTextField txtSerieCreateLanguage;
+    private JTextField txtSerieCreateAge;
     private JButton btnCreateSerie;
 
     // Edit
@@ -162,19 +166,19 @@ public class GUI implements Runnable {
     // Add
     private JPanel addEpisodeToSeriesPanel;
     private JComboBox cbCreateEpisodeForSerie;
-    private JTextField cbCreateEpisodeTitle;
-    private JTextField cbCreateEpisodeDuration;
-    private JTextField cbCreateEpisodeReferencenumber;
+    private JTextField txtCreateEpisodeTitle;
+    private JTextField txtCreateEpisodeDuration;
+    private JTextField txtCreateEpisodeNumber;
     private JButton btnCreateEpisode;
 
     // Edit
     private JPanel editEpisodePanel;
-    private JComboBox cbEditEpisodeOfSerie;
-    private JComboBox cbEditEpisodeForSerie;
-    private JTextField txtEditEpisodeNumber;
-    private JTextField txtEditEpisodeDuration;
-    private JTextField txtEditEpisodeTitle;
-    private JButton btnEditEpisode;
+    private JComboBox cbUpdateEpisodeOfSerie;
+    private JComboBox cbUpdateEpisodeForSerie;
+    private JTextField txtUpdateEpisodeNumber;
+    private JTextField txtUpdateEpisodeDuration;
+    private JTextField txtUpdateEpisodeTitle;
+    private JButton btnUpdateEpisode;
 
     // Delete
     private JPanel deleteEpisodePanel;
@@ -493,15 +497,15 @@ public class GUI implements Runnable {
     }
     public JComboBox getCbCreateEpisodeForSerie(){return cbCreateEpisodeForSerie;}
     public JComboBox getCbDeleteEpisodeFromSerie(){return cbDeleteEpisodeFromSerie;}
-    public JComboBox getCbEditEpisodeOfSerie(){return cbEditEpisodeOfSerie;}
-    public JComboBox getCbCreateSerieReferenceNumber(){return cbCreateSerieReferenceNumber;}
+    public JComboBox getCbUpdateEpisodeOfSerie(){return cbUpdateEpisodeOfSerie;}
     public JComboBox getCbUpdateSerieReferenceNumber(){return cbUpdateSerieReferenceNumber;}
+    public JComboBox getCbCreateSerieReferenceNumber(){return cbCreateSerieReferenceNumber;}
 
     // Add
-    public JTextField getTxtSerieTitle() { return txtSerieTitle; }
-    public JTextField getTxtSerieGenre() { return txtSerieGenre; }
-    public JTextField getTxtSerieLanguage() { return txtSerieLanguage; }
-    public JTextField getTxtSerieAge() { return txtSerieAge; }
+    public JTextField getTxtSerieCreateTitle() { return txtSerieCreateTitle; }
+    public JTextField getTxtSerieCreateGenre() { return txtSerieCreateGenre; }
+    public JTextField getTxtSerieCreateLanguage() { return txtSerieCreateLanguage; }
+    public JTextField getTxtSerieCreateAge() { return txtSerieCreateAge; }
 
     // Edit
     public JComboBox getCbGetUpdateSerie(){
@@ -527,15 +531,15 @@ public class GUI implements Runnable {
            }
 
     // Add
-    public JTextField getCbCreateEpisodeTitle(){return cbCreateEpisodeTitle;}
-    public JTextField getCbCreateEpisodeDuration(){return cbCreateEpisodeDuration;}
-    public JTextField getCbCreateEpisodeReferencenumber(){return cbCreateEpisodeReferencenumber;}
+    public JTextField getTxtCreateEpisodeTitle(){return txtCreateEpisodeTitle;}
+    public JTextField getTxtCreateEpisodeDuration(){return txtCreateEpisodeDuration;}
+    public JTextField getTxtCreateEpisodeNumber(){return txtCreateEpisodeNumber;}
 
     // Edit
-    public JComboBox getCbEditEpisodeForSerie() {return cbEditEpisodeForSerie;}
-    public JTextField getTxtEditEpisodeTitle() {return txtEditEpisodeTitle;}
-    public JTextField getTxtEditEpisodeDuration() {return txtEditEpisodeDuration;}
-    public JTextField getTxtEditEpisodeNumber() {return txtEditEpisodeNumber;}
+    public JComboBox getCbUpdateEpisodeForSerie() {return cbUpdateEpisodeForSerie;}
+    public JTextField getTxtUpdateEpisodeTitle() {return txtUpdateEpisodeTitle;}
+    public JTextField getTxtUpdateEpisodeDuration() {return txtUpdateEpisodeDuration;}
+    public JTextField getTxtUpdateEpisodeNumber() {return txtUpdateEpisodeNumber;}
 
     // Delete
     public JComboBox getCbDeleteEpisode(){return cbDeleteEpisode;}
@@ -639,18 +643,30 @@ public class GUI implements Runnable {
         // Serie--------------------------------------------
         // Overviews
         cbSerieAvgWatchedByEpisode.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbSerieAvgWatchedByEpisode));
-        cbEditEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbEditEpisodeOfSerie));
+        cbUpdateEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbUpdateEpisodeOfSerie));
+        cbDeleteEpisodeFromSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbDeleteEpisodeFromSerie));
 
         // Add
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
 
         // Edit
-        cbEditEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbEditEpisodeOfSerie));
+        cbUpdateEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbUpdateEpisodeOfSerie));
         cbGetUpdateSerie.addActionListener(new SerieGetValuesToUpdate(this,cbGetUpdateSerie));
         btnUpdateSerie.addActionListener(new SerieUpdateListener(this,cbGetUpdateSerie));
 
         // Delete
         btnDeleteSerie.addActionListener(new SerieDeleteListener(this,cbGetdeleteSerie));
+
+        // Episode------------------------------------------
+        // Add
+        btnCreateEpisode.addActionListener(new EpisodeCreateListener(this));
+
+        // Update
+        cbUpdateEpisodeForSerie.addActionListener(new EpisodeGetValuesToUpdate(this, cbUpdateEpisodeForSerie));
+        btnUpdateEpisode.addActionListener(new EpisodeUpdateListener(this,cbUpdateEpisodeForSerie));
+
+        // Delete
+        btnDeleteEpisode.addActionListener(new EpisodeDeleteListener(this,cbDeleteEpisode));
 
         // Watch Behaviour-----------------------------------
 

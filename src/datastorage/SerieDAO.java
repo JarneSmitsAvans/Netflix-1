@@ -74,12 +74,12 @@ public class SerieDAO {
         return serie;
     }
 
-    //Creat a new serie
+    // Create a new serie
     public boolean create(Serie serie) throws SQLException, ClassNotFoundException
     {
         databaseConnection.OpenConnection();
 
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Serie (title, genre, language, minimumAge, ReferenceNumber) VALUES (?, ?, ?, ?, ?)");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Serie (title, genre, Language, minimumAge, referencenumber) VALUES (?, ?, ?, ?, ?)");
         preparedStatement.setString(1, serie.getTitle());
         preparedStatement.setString(2, serie.getGenre());
         preparedStatement.setString(3, serie.getLanguage());
@@ -92,11 +92,11 @@ public class SerieDAO {
         return inserted;
     }
 
-    //Update the selected serie
+    // Update the selected serie
     public boolean update(Serie serie) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
 
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Serie SET title = ?, genre = ?, language = ?, minimumage = ? ReferenceNumber = ? WHERE id = ?");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Serie SET title = ?, genre = ?, language = ?, minimumage = ?, referencenumber = ? WHERE id = ?");
         preparedStatement.setString(1, serie.getTitle());
         preparedStatement.setString(2, serie.getGenre());
         preparedStatement.setString(3, serie.getLanguage());
@@ -110,7 +110,7 @@ public class SerieDAO {
         return updated;
     }
 
-    //Delete the selected serie
+    // Delete the selected serie
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
 

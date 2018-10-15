@@ -13,6 +13,7 @@ public class SerieUpdateListener implements ActionListener {
     private JComboBox cbSelectedSerie;
     private SerieManagerImpl serieManager ;
 
+    //Constructor
     public SerieUpdateListener(GUI ui,JComboBox cbSelectedSerie) {
         this.ui = ui;
         this.cbSelectedSerie = cbSelectedSerie;
@@ -23,27 +24,41 @@ public class SerieUpdateListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try{
             if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null){
-                Serie serie = (Serie)cbSelectedSerie.getSelectedItem();
+               String serieTitle = ui.getTxtUpdateSerieTitle().getText();
+               String serieGenre = ui.getTxtUpdateSerieGenre().getText();
+               String serieLanguage = ui.getTxtUpdateSerieLanguage().getText();
+               String serieAge = ui.getTxtUpdateSerieAge().getText();
 
-                serie.setTitle(ui.getTxtUpdateSerieTitle().getText());
-                serie.setGenre(ui.getTxtUpdateSerieGenre().getText());
-                serie.setLanguage(ui.getTxtUpdateSerieLanguage().getText());
-                serie.setLanguage(ui.getTxtUpdateSerieLanguage().getText());
+                if(ui.getCbUpdateSerieReferenceNumber().getSelectedItem() != "Selecteer serie" && ui.getCbUpdateSerieReferenceNumber().getSelectedItem() != null && !serieTitle.isEmpty() && !serieGenre.isEmpty() && !serieLanguage.isEmpty() && !serieAge.isEmpty()) {
+                    Serie serie = (Serie) cbSelectedSerie.getSelectedItem();
 
-                Serie serieReference = (Serie)ui.getCbUpdateSerieReferenceNumber().getSelectedItem();
-                serie.setReferenceNumber(serieReference.getId());
+                    serie.setTitle(serieTitle);
+                    serie.setGenre(serieGenre);
+                    serie.setLanguage(serieLanguage);
 
-                int minAge = Integer.valueOf(ui.getTxtUpdateSerieAge().getText());
-                serie.setMinAge(minAge);
+                    int minAge = Integer.valueOf(serieAge);
+                    serie.setMinAge(minAge);
 
-                boolean update = serieManager.update(serie);
+                    Serie serieReference = (Serie)ui.getCbUpdateSerieReferenceNumber().getSelectedItem();
+                    serie.setReferenceNumber(serieReference.getId());
 
-                if(update){
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + serie.getTitle() + " is succesvol geupdate.", "Serie is geupdate", JOptionPane.INFORMATION_MESSAGE);
-                    serieManager.fillAllSerieCbx();
+
+                    boolean updated = serieManager.update(serie);
+
+                    if (updated) {
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + serie.getTitle() + " is succesvol geupdate.", "Serie is geupdate", JOptionPane.INFORMATION_MESSAGE);
+                        serieManager.fillAllSerieCbx();
+                        ui.getTxtUpdateSerieTitle().setText(null);
+                        ui.getTxtUpdateSerieGenre().setText(null);
+                        ui.getTxtUpdateSerieLanguage().setText(null);
+                        ui.getTxtUpdateSerieAge().setText(null);
+                    }
+                    else {
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het updaten van de serie" + serie.getTitle() + ". Probeer het nog eens.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
                 else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het updaten van de serie" + serie.getTitle() + ". Probeer het nog eens.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
             else{

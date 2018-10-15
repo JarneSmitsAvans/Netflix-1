@@ -12,6 +12,7 @@ public class SerieDeleteListener implements ActionListener {
     private JComboBox cbSelectedSerie;
     private SerieManagerImpl serieManager ;
 
+    //Constructor
     public SerieDeleteListener(GUI ui,JComboBox cbSelectedSerie) {
         this.ui = ui;
         this.cbSelectedSerie = cbSelectedSerie;

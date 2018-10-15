@@ -5,7 +5,6 @@ import domain.Episode;
 import presentation.GUI;
 
 import javax.swing.*;
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -13,11 +12,11 @@ public class EpisodeManagerlmpl {
 
     private EpisodeDAO episodeDAO = new EpisodeDAO();
     private ArrayList<Episode> episodeList;
-    private GUI gui;
+    private GUI ui;
 
-    public EpisodeManagerlmpl(GUI gui)
+    public EpisodeManagerlmpl(GUI ui)
     {
-        this.gui = gui;
+        this.ui = ui;
     }
 
     //Creates a arraylist with all the episodes of a series
@@ -58,7 +57,7 @@ public class EpisodeManagerlmpl {
     public void fillAllEpisodesCbx(int id)
     {
         setEpisodeList(id);
-        JComboBox[] allEpisodecb = {gui.getcbAvgOfWatchedEpisode(),gui.getCbEditEpisodeForSerie()};
+        JComboBox[] allEpisodecb = {ui.getcbAvgOfWatchedEpisode(),ui.getCbUpdateEpisodeForSerie(),ui.getCbDeleteEpisode()};
 
         for(int i=0; i < allEpisodecb.length; i++){
             allEpisodecb[i].setSelectedIndex(-1);
@@ -75,5 +74,23 @@ public class EpisodeManagerlmpl {
         {
             comboBox.addItem(episode);
         }
+    }
+
+    // Returns al boolean if a new serie has been created or not
+    public boolean create(Episode episode) throws SQLException, ClassNotFoundException {
+        boolean serieCreated = episodeDAO.create(episode);
+        return serieCreated;
+    }
+
+    // Returns al boolean if a new serie has been updated or not
+    public boolean update(Episode episode) throws SQLException, ClassNotFoundException {
+        boolean serieUpdated = episodeDAO.update(episode);
+        return serieUpdated;
+    }
+
+    // Returns al boolean if a new serie has been deleted or not
+    public boolean delete(int id) throws SQLException, ClassNotFoundException {
+        boolean serieDelete = episodeDAO.delete(id);
+        return serieDelete;
     }
 }

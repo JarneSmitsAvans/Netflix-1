@@ -12,6 +12,7 @@ public class SerieGetSelectedSerieForEpisodeListener implements ActionListener {
     private GUI ui;
     private JComboBox cbSelectedSerie;
 
+    //Constructor
     public SerieGetSelectedSerieForEpisodeListener(GUI ui , JComboBox cbSelectedSerie){
         this.ui = ui;
         this.cbSelectedSerie = cbSelectedSerie;

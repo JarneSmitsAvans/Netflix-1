@@ -15,6 +15,7 @@ public class SerieGetValuesToUpdate implements ActionListener {
     private JComboBox cbSelectedSerie;
     private SerieManagerImpl serieManager ;
 
+    //Constructor
     public SerieGetValuesToUpdate(GUI ui,JComboBox cbSelectedSerie) {
         this.ui = ui;
         this.cbSelectedSerie = cbSelectedSerie;
@@ -35,8 +36,8 @@ public class SerieGetValuesToUpdate implements ActionListener {
 
             Serie selectedSerie = serieManager.getSerieById(serie.getId());
             Serie serieReference = serieManager.getSerieById(selectedSerie.getReferenceNumber());
-            System.out.println(serieReference);
-            serieManager.fillAllSerieCbx();
+
+            //serieManager.fillAllSerieCbx();
             ui.getCbUpdateSerieReferenceNumber().addItem(serieReference);
             ui.getCbUpdateSerieReferenceNumber().setSelectedItem(serieReference);
         }
