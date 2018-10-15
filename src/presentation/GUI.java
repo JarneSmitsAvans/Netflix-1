@@ -30,6 +30,8 @@ import domain.Profile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class GUI implements Runnable {
     // Class variables
@@ -504,6 +506,7 @@ public class GUI implements Runnable {
     public JTextField getTxtSerieCreateLanguage() { return txtSerieCreateLanguage; }
     public JTextField getTxtSerieCreateAge() { return txtSerieCreateAge; }
 
+
     // Edit
     public JComboBox getCbGetUpdateSerie(){
         return cbGetUpdateSerie;
@@ -642,11 +645,14 @@ public class GUI implements Runnable {
 
         // Add
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
+        txtSerieCreateAge.addKeyListener(new IntFilter());
+
 
         // Edit
         cbUpdateEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbUpdateEpisodeOfSerie));
         cbGetUpdateSerie.addActionListener(new SerieGetValuesToUpdate(this,cbGetUpdateSerie));
         btnUpdateSerie.addActionListener(new SerieUpdateListener(this,cbGetUpdateSerie));
+        txtUpdateSerieAge.addKeyListener(new IntFilter());
 
         // Delete
         btnDeleteSerie.addActionListener(new SerieDeleteListener(this,cbGetdeleteSerie));
@@ -654,10 +660,14 @@ public class GUI implements Runnable {
         // Episode------------------------------------------
         // Add
         btnCreateEpisode.addActionListener(new EpisodeCreateListener(this));
+        txtCreateEpisodeDuration.addKeyListener(new IntFilter());
+        txtCreateEpisodeNumber.addKeyListener(new IntFilter());
 
         // Update
         cbUpdateEpisodeForSerie.addActionListener(new EpisodeGetValuesToUpdate(this, cbUpdateEpisodeForSerie));
         btnUpdateEpisode.addActionListener(new EpisodeUpdateListener(this,cbUpdateEpisodeForSerie));
+        txtUpdateEpisodeNumber.addKeyListener(new IntFilter());
+        txtUpdateEpisodeDuration.addKeyListener(new IntFilter());
 
         // Delete
         btnDeleteEpisode.addActionListener(new EpisodeDeleteListener(this,cbDeleteEpisode));
