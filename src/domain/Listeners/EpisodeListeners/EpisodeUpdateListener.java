@@ -26,7 +26,7 @@ public class EpisodeUpdateListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
-            if(cbSelectedEpisode.getSelectedItem() != "Selecteer serie" && cbSelectedEpisode.getSelectedItem() != null){
+            if(ui.getCbUpdateEpisodeOfSerie().getSelectedItem() != "Selecteer serie" && ui.getCbUpdateEpisodeOfSerie().getSelectedItem() != null){
                 String episodeTitle = ui.getTxtUpdateEpisodeTitle().getText();
                 int episodeNumber = Integer.valueOf(ui.getTxtUpdateEpisodeNumber().getText());
                 int episodeDuration = Integer.valueOf(ui.getTxtUpdateEpisodeDuration().getText());
