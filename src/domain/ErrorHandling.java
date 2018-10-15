@@ -7,9 +7,9 @@ package domain;
  * Author: Dylan ten Böhmer
  */
 public enum ErrorHandling {
-    UNEXPECTEDERROR("Er is een onverwachte fout opgetreden"),
-    EMPTYINPUT("Een of meerdere velden zijn leeg gelaten of onjuist ingevuld"),
-    ALREADYEXISTS("Een instantie met de opgegeven informatie bestaat al voor het geselecteerde object."),
+    UNEXPECTEDERROR("Er is een onverwachte fout opgetreden."),
+    EMPTYINPUT("Een of meerdere velden zijn leeg gelaten of onjuist ingevuld."),
+    ALREADYEXISTS("Een instantie met de opgegeven informatie bestaat al binnen het systeem."),
     ISGREATER("De ingevoerde waarde voor de bekeken tijd is groter dan de duur van het geselecteerde media.");
     private String error;
 

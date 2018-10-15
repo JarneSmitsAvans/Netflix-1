@@ -1,5 +1,8 @@
 package datastorage;
 
+import domain.ErrorHandling;
+
+import javax.swing.*;
 import java.sql.*;
 
 /**
@@ -96,6 +99,7 @@ public class DatabaseConnection
             }
         } catch (SQLException e) {
             e.printStackTrace();
+
             return false;
         }
     }
@@ -112,6 +116,9 @@ public class DatabaseConnection
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            if (e.getMessage().contains("Cannot insert duplicate key")) {
+                JOptionPane.showMessageDialog(null, ErrorHandling.ALREADYEXISTS.getError(), "Object is niet aangepast.", JOptionPane.ERROR_MESSAGE);
+            }
             return false;
         }
     }
