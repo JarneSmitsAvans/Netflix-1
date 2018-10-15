@@ -7,6 +7,12 @@ import presentation.GUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * MovieLoadAmountOfViewsListener.java
+ * This ActionListener will get the amount of viewers by the selected movie.
+ * Author: Kim van den Berg
+ */
+
 public class MovieLoadAmountOfViewsListener implements ActionListener {
     private GUI ui;
     private MovieManagerImpl movieManager;

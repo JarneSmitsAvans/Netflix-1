@@ -6,6 +6,12 @@ import presentation.GUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * MovieGetAmountOfViewerWholeMovieListener.java
+ * This ActionListener will get the amount of viewers who watched the selected movie completely.
+ * Author: Kim van den Berg
+ */
+
 public class MovieGetAmountOfViewerWholeMovieListener implements ActionListener {
     private GUI ui;
     private MovieManagerImpl movieManager;

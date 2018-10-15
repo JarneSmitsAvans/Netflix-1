@@ -1,5 +1,11 @@
 package domain;
 
+/**
+ * Movie.java
+ * This class contains a toString method to display a movie.
+ * Author: Kim van den Berg
+ */
+
 public class Movie extends Program {
 
     @Override

@@ -10,6 +10,15 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * MovieManagerImpl.java
+ * This class has methods that do things with movies, like;
+ * * CRUD Operations
+ * * Getting data for overviews
+ * * Adding movies to comboboxes.
+ * Author: Kim van den Berg
+ */
+
 public class MovieManagerImpl {
     // Initialize a new MovieDAO & ProfileDAO object
     private MovieDAO movieDAO = new MovieDAO();

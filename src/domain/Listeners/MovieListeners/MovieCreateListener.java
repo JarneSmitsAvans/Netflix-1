@@ -8,6 +8,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * MovieCreateListener.java
+ * This ActionListener will create a movie.
+ * Author: Kim van den Berg
+ */
+
 public class MovieCreateListener implements ActionListener {
     private GUI ui;
     private MovieManagerImpl movieManager;

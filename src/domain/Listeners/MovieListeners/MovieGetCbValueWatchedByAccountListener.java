@@ -12,6 +12,12 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * MovieGetCbValueWatchedByAccountListener.java
+ * This ActionListener will get the movies who has been watched by the selected Account.
+ * Author: Kim van den Berg
+ */
+
 public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
     private GUI ui;
     private AccountManagerImpl accountManager;

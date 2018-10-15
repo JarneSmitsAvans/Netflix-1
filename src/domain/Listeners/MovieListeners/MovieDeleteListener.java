@@ -8,6 +8,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * MovieDeleteListener.java
+ * This ActionListener will delete selected movie.
+ * Author: Kim van den Berg
+ */
+
 public class MovieDeleteListener implements ActionListener {
     private GUI ui;
     private MovieManagerImpl movieManager;

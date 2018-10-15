@@ -7,6 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * MovieDAO.java
+ * This class creates SQL statements for Movie CRUD operations, and executes them.
+ * Author: Kim van den Berg
+ */
+
 public class MovieDAO {
     // Get databaseconnection
     private DatabaseConnection databaseConnection = new DatabaseConnection();

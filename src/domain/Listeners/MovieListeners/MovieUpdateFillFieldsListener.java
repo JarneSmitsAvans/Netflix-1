@@ -8,6 +8,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * MovieUpdateFillFieldsListener.java
+ * This ActionListener will fill the update fields by chosen movie.
+ * Author: Kim van den Berg
+ */
+
 public class MovieUpdateFillFieldsListener implements ActionListener {
     private GUI ui;
     private MovieManagerImpl movieManager;
