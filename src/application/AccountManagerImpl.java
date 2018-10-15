@@ -64,6 +64,8 @@ public class AccountManagerImpl extends GeneralManager {
         this.addAccountsToComboBox(gui.getCbEditWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbDeleteWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbWatchedProgramsBySelectedAccount(), accountArrayList);
+
+        gui.getCbWatchedMoviesByAccount().setSelectedIndex(-1);
     }
 
     // Sends an object of type Account to the Account DAO that needs to be inserted into the database.

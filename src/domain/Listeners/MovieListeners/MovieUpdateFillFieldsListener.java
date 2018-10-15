@@ -32,9 +32,6 @@ public class MovieUpdateFillFieldsListener implements ActionListener {
                 ui.getTxtUpdateMovieGenre().setText(movie.getGenre());
                 ui.getTxtUpdateMovieLanguage().setText(movie.getLanguage());
                 ui.getTxtUpdateMovieMinimumAge().setText(Integer.toString(movie.getMinAge()));
-            } else {
-                // If combobox item is null
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan bij het ophalen van de gegevens van de film", "Filmgegevens konden niet worden opgehaald", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             // If something went wrong..
