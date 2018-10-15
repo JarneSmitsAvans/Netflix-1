@@ -11,10 +11,7 @@ import domain.Listeners.AccountListeners.AccountCreateListener;
 import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
-import domain.Listeners.EpisodeListeners.EpisodeCreateListener;
-import domain.Listeners.EpisodeListeners.EpisodeDeleteListener;
-import domain.Listeners.EpisodeListeners.EpisodeGetValuesToUpdate;
-import domain.Listeners.EpisodeListeners.EpisodeUpdateListener;
+import domain.Listeners.EpisodeListeners.*;
 import domain.Listeners.MovieListeners.*;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.SerieListeners.*;
@@ -523,12 +520,9 @@ public class GUI implements Runnable {
 
     // Episode--------------------------------------------------------------
     // Overviews
-    public JComboBox getcbAvgOfWatchedEpisode(){
-       return cbEpisodeAvgWatchedByEpisode;
-   }
-    public JComboBox getCbEpisodeAvgWatchedByEpisode(){
-               return cbEpisodeAvgWatchedByEpisode;
-           }
+    public JComboBox getcbAvgOfWatchedEpisode(){ return cbEpisodeAvgWatchedByEpisode; }
+    public JComboBox getCbEpisodeAvgWatchedByEpisode(){ return cbEpisodeAvgWatchedByEpisode; }
+    public JTextPane getTxtAvgWatchedSeries(){ return txtAvgWatchedSeries; }
 
     // Add
     public JTextField getTxtCreateEpisodeTitle(){return txtCreateEpisodeTitle;}
@@ -674,6 +668,8 @@ public class GUI implements Runnable {
         cbWatchedProgramsBySelectedAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccount(this));
         cbWatchedProgramsBySelectedProfile.addActionListener(new WatchBehaviourLoadWatchedMediaListener(this));
         cbWatchedProgramsBySelectedProfile.setSelectedItem(null);
+        cbSerieAvgWatchedBySerie.addActionListener(new EpisodesGetAvgOfWatchedEpisodesFromAccount(this,cbSerieAvgWatchedBySerie));
+
         // Add
         ((JSpinner.DefaultEditor) JSpinWatchedDate.getEditor()).getTextField().setEditable(false);
         cbAddWatchedMediaAccount.setSelectedItem(null);

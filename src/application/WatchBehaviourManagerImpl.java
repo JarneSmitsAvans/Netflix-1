@@ -76,5 +76,11 @@ public class WatchBehaviourManagerImpl extends GeneralManager {
         ArrayList<Episode> watchedEpisodes = watchBehaviourDAO.getWatchedEpisodes(profileID);
         return watchedEpisodes;
     }
+
+    // Returns an ArrayList of all the watched episodes from a serie and account.
+    public ArrayList<Episode> getWatchedEpisodesFromAccount(int profileID, int episodeID) throws SQLException, ClassNotFoundException {
+        ArrayList<Episode> watchedEpisodes = watchBehaviourDAO.getWatchedEpisodesFromAccount(profileID,episodeID);
+        return watchedEpisodes;
+    }
 }
 

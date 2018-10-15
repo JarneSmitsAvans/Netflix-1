@@ -60,7 +60,7 @@ public class EpisodeDAO {
 
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Episode (title, episodenumber, duration, fk_serie) VALUES (?, ?, ?, ?)");
         preparedStatement.setString(1, episode.getTitle());
-        preparedStatement.setInt(2, episode.getEpisodenumber());
+        preparedStatement.setInt(2, episode.getEpisodeNumber());
         preparedStatement.setInt(3, episode.getDuration());
         preparedStatement.setInt(4, episode.getSerieNumber());
 
@@ -75,7 +75,7 @@ public class EpisodeDAO {
 
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Episode SET title = ?, episodenumber = ?, duration = ? WHERE id = ?");
         preparedStatement.setString(1, episode.getTitle());
-        preparedStatement.setInt(2, episode.getEpisodenumber());
+        preparedStatement.setInt(2, episode.getEpisodeNumber());
         preparedStatement.setInt(3, episode.getDuration());
         preparedStatement.setInt(4, episode.getId());
 

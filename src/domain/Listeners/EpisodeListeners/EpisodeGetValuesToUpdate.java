@@ -25,7 +25,7 @@ public class EpisodeGetValuesToUpdate implements ActionListener {
             Episode episode = (Episode) cbSelectedEpisode.getSelectedItem();
 
             ui.getTxtUpdateEpisodeTitle().setText(episode.getTitle());
-            String episodeNumber = Integer.toString(episode.getEpisodenumber());
+            String episodeNumber = Integer.toString(episode.getEpisodeNumber());
             ui.getTxtUpdateEpisodeNumber().setText(episodeNumber);
             String episodeDuration = Integer.toString(episode.getDuration());
             ui.getTxtUpdateEpisodeDuration().setText(episodeDuration);

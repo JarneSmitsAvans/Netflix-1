@@ -126,5 +126,26 @@ public class WatchBehaviourDAO {
         databaseConnection.CloseConnection();
         return episodes;
     }
+
+    // Generate the SQL Statement that returns all the watched episodes of a profile.
+    public ArrayList<Episode> getWatchedEpisodesFromAccount(int profileID, int episodeID) throws SQLException, ClassNotFoundException {
+        databaseConnection.OpenConnection();
+        ArrayList<Episode> episodes = new ArrayList<>();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(
+                "SELECT * FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id JOIN Episode on Episode.Id = Watched_Media.Episode_Id JOIN Serie on Serie.id = Episode.Fk_Serie WHERE Watched_Media.Profile_Id = ? AND Watched_Media.Episode_Id = ?");
+        preparedStatement.setInt(1, profileID);
+        preparedStatement.setInt(2, episodeID);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()) {
+            Episode episode = new Episode();
+            episode.setId(resultSet.getInt("Id"));
+            episode.setTitle(resultSet.getString(10));
+            episode.setWatchedDuration(resultSet.getInt("TimeWatched"));
+            episode.setDuration(resultSet.getInt("Duration"));
+            episodes.add(episode);
+        }
+        databaseConnection.CloseConnection();
+        return episodes;
+    }
 }
 

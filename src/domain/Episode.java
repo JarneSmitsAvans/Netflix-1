@@ -3,10 +3,7 @@ package domain;
 public class Episode extends Program {
     private int episodeNumber;
     private int serieNumber;
-
-    public int getEpisodeNumber() {
-        return episodeNumber;
-    }
+    private String serieTitle;
 
     public String getSerieTitle() {
         return serieTitle;
@@ -16,17 +13,15 @@ public class Episode extends Program {
         this.serieTitle = serieTitle;
     }
 
-    private String serieTitle;
-
-    public int getEpisodenumber(){
-        return this.episodeNumber;
+    public int getEpisodeNumber(){
+        return episodeNumber;
     }
     public void setEpisodeNumber(int episodeNumber) {
         this.episodeNumber = episodeNumber;
     }
 
     public int getSerieNumber(){
-        return this.serieNumber;
+        return serieNumber;
     }
     public void setSerieNumber(int serieNumber) {
         this.serieNumber = serieNumber;
