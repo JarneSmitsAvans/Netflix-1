@@ -18,6 +18,7 @@ public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
     private MovieManagerImpl movieManager;
     private Account account;
 
+    // Constructor
     public MovieGetCbValueWatchedByAccountListener(GUI ui) {
         this.ui = ui;
         this.accountManager = new AccountManagerImpl();
@@ -28,27 +29,40 @@ public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
+            // If selected combobox item is not null, get watched movies by account.
             if(ui.getCbWatchedMoviesByAccount().getSelectedItem() != null) {
+                // Get account
                 String strSelectedAccount = ui.getCbWatchedMoviesByAccount().getSelectedItem().toString();
+                // Get account by name.
                 account = accountManager.getAccountByName(strSelectedAccount);
+                // Get id of selected account
                 int id = account.getId();
+                // Get movieTitles who has been watched by selected account.
                 ArrayList<String> watchedMoviesList = movieManager.watchedMovieByAccountArrayList(id);
                 String watchedMovies = "";
+                // If the arrayList is not empty, get frequency and title
                 if(!watchedMoviesList.isEmpty()) {
+                    // Get all unique movies from the list.
                     Set<String> uniqueMovies = new HashSet<String>(watchedMoviesList);
                     for (String movie : uniqueMovies) {
+                        // Get frequency of current movie
                         int howManyTimes = Collections.frequency(watchedMoviesList, movie);
+                        // Add rule to String watchedMovies.
                         watchedMovies += howManyTimes + "x " + movie + "\n";
                     }
                 } else {
+                    // If arraylist is empty show this.
                     watchedMovies += "Er zijn nog geen films bekeken door dit account";
                 }
+                // Fill textpane with variable watchedMovies.
                 this.ui.getTxtMoviesWatchedByAccount().setText(watchedMovies);
             } else {
-                return;
+                // If combobox item is null.
+                this.ui.getTxtMoviesWatchedByAccount().setText("Er is geen juist item gekozen.");
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            // If something went wrong..
+            this.ui.getTxtMoviesWatchedByAccount().setText("Er is iets fout gegaan bij het ophalen van de films.");
         }
     }
 }
