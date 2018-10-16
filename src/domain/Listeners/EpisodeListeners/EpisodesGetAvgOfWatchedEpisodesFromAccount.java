@@ -12,24 +12,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class EpisodesGetAvgOfWatchedEpisodesFromAccount implements ActionListener {
-    private GUI ui;
+public class EpisodesGetAvgOfWatchedEpisodesFromAccount extends EpisodeGetAvg implements ActionListener {
     private JComboBox cbSelectedSerie;
-    private SerieManagerImpl serieManager ;
-    private EpisodeManagerlmpl episodeManager ;
-    private ProfileManagerImpl profileManager;
-    private AccountManagerImpl accountManager;
-    private WatchBehaviourManagerImpl watchBehaviourManager;
+
 
     //Constructor
     public EpisodesGetAvgOfWatchedEpisodesFromAccount(GUI ui, JComboBox cbSelectedSerie) {
-        this.ui = ui;
+        super(ui);
         this.cbSelectedSerie = cbSelectedSerie;
-        this.serieManager = new SerieManagerImpl(ui);
-        this.episodeManager = new EpisodeManagerlmpl(ui);
-        this.profileManager = new ProfileManagerImpl();
-        this.accountManager = new AccountManagerImpl();
-        this.watchBehaviourManager = new WatchBehaviourManagerImpl();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -37,44 +27,22 @@ public class EpisodesGetAvgOfWatchedEpisodesFromAccount implements ActionListene
             // Get te selected serie
             Serie selectedSerie = (Serie)cbSelectedSerie.getSelectedItem();
             // Returned a list with all the episodes from a serie
-            episodeManager.setEpisodeList(selectedSerie.getId());
-            ArrayList<Episode> episodeList = episodeManager.getEpisode();
+            getEpisodeManager().setEpisodeList(selectedSerie.getId());
+            ArrayList<Episode> episodeList = getEpisodeManager().getEpisode();
 
-            String selectedAccountName = ui.getCbAccountAvgWatchedBySerie().getSelectedItem().toString();
-            Account selectedAccount = accountManager.getAccountByName(selectedAccountName);
-            ArrayList<Profile> profileList = profileManager.getMatchingProfiles(selectedAccount.getId());
+            String selectedAccountName = getUi().getCbAccountAvgWatchedBySerie().getSelectedItem().toString();
+            Account selectedAccount = getAccountManager().getAccountByName(selectedAccountName);
+            ArrayList<Profile> profileList = getProfileManager().getMatchingProfiles(selectedAccount.getId());
 
             StringBuilder sb = new StringBuilder();
-
             for (Episode episode : episodeList)
             {
-                int bufferTimesWatched = 0;
-                int bufferWatchTime = 0;
-                sb.append(episode.getTitle() + "\n");
-                for (Profile profile : profileList)
-                {
-                    ArrayList<Episode> watchedEpisode = watchBehaviourManager.getWatchedEpisodesFromAccount(profile.getProfileID(),episode.getId());
-                    if(watchedEpisode != null)
-                    {
-                        for (Episode watchedEpisodeFromProfile : watchedEpisode)
-                        {
-                            bufferWatchTime += watchedEpisodeFromProfile.getWatchedDuration();
-                            bufferTimesWatched++;
-                        }
-                    }
-                }
-                if(bufferTimesWatched > 0 ){
-                    int percentViewed = (bufferWatchTime * 100) / (episode.getDuration() * bufferTimesWatched);
-                    sb.append("Is in totaal " + bufferTimesWatched + " Keer bekeken. Met een gemiddelde van " + percentViewed + "% bekeken is.") ;
-                }
-                else{
-                    sb.append("Heeft nog niemand bekeken");
-                }
-                sb.append("\n \n");
+                getWatchedAvgOfEpisodes(episode,profileList,sb);
             }
 
+            getUi().getTxtAvgWatchedSeries().setText(sb.toString());
 
-            ui.getTxtAvgWatchedSeries().setText(sb.toString());
+
         }
         catch (Exception ex) {
             ex.printStackTrace();

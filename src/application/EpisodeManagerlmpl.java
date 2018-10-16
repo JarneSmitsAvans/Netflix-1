@@ -60,10 +60,10 @@ public class EpisodeManagerlmpl {
         JComboBox[] allEpisodecb = {ui.getcbAvgOfWatchedEpisode(),ui.getCbUpdateEpisodeForSerie(),ui.getCbDeleteEpisode()};
 
         for(int i=0; i < allEpisodecb.length; i++){
-            allEpisodecb[i].setSelectedIndex(-1);
             allEpisodecb[i].removeAllItems();
             allEpisodecb[i].setEnabled(true);
             appendComboBox(allEpisodecb[i],episodeList);
+            allEpisodecb[i].setSelectedIndex(0);
         }
     }
 

@@ -30,8 +30,6 @@ import domain.Profile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class GUI implements Runnable {
     // Class variables
@@ -268,7 +266,7 @@ public class GUI implements Runnable {
     private JComboBox cbCreateSerieReferenceNumber;
     private JComboBox cbUpdateSerieReferenceNumber;
     private JButton btnDeleteWatchBehaviour;
-
+    private JTextPane txtAvgWatchedEpisode;
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -494,11 +492,11 @@ public class GUI implements Runnable {
     public JComboBox getCbSerieAvgWatchedBySerie(){
         return cbSerieAvgWatchedBySerie;
     }
-    public JComboBox getCbCreateEpisodeForSerie(){return cbCreateEpisodeForSerie;}
-    public JComboBox getCbDeleteEpisodeFromSerie(){return cbDeleteEpisodeFromSerie;}
-    public JComboBox getCbUpdateEpisodeOfSerie(){return cbUpdateEpisodeOfSerie;}
-    public JComboBox getCbUpdateSerieReferenceNumber(){return cbUpdateSerieReferenceNumber;}
-    public JComboBox getCbCreateSerieReferenceNumber(){return cbCreateSerieReferenceNumber;}
+    public JComboBox getCbCreateEpisodeForSerie(){ return cbCreateEpisodeForSerie; }
+    public JComboBox getCbDeleteEpisodeFromSerie(){ return cbDeleteEpisodeFromSerie; }
+    public JComboBox getCbUpdateEpisodeOfSerie(){ return cbUpdateEpisodeOfSerie; }
+    public JComboBox getCbUpdateSerieReferenceNumber(){ return cbUpdateSerieReferenceNumber; }
+    public JComboBox getCbCreateSerieReferenceNumber(){ return cbCreateSerieReferenceNumber; }
 
     // Add
     public JTextField getTxtSerieCreateTitle() { return txtSerieCreateTitle; }
@@ -526,20 +524,21 @@ public class GUI implements Runnable {
     public JComboBox getcbAvgOfWatchedEpisode(){ return cbEpisodeAvgWatchedByEpisode; }
     public JComboBox getCbEpisodeAvgWatchedByEpisode(){ return cbEpisodeAvgWatchedByEpisode; }
     public JTextPane getTxtAvgWatchedSeries(){ return txtAvgWatchedSeries; }
+    public JTextPane getTxtAvgWatchedEpisode() { return txtAvgWatchedEpisode; }
 
     // Add
-    public JTextField getTxtCreateEpisodeTitle(){return txtCreateEpisodeTitle;}
-    public JTextField getTxtCreateEpisodeDuration(){return txtCreateEpisodeDuration;}
-    public JTextField getTxtCreateEpisodeNumber(){return txtCreateEpisodeNumber;}
+    public JTextField getTxtCreateEpisodeTitle(){ return txtCreateEpisodeTitle; }
+    public JTextField getTxtCreateEpisodeDuration(){ return txtCreateEpisodeDuration; }
+    public JTextField getTxtCreateEpisodeNumber(){ return txtCreateEpisodeNumber; }
 
     // Edit
-    public JComboBox getCbUpdateEpisodeForSerie() {return cbUpdateEpisodeForSerie;}
-    public JTextField getTxtUpdateEpisodeTitle() {return txtUpdateEpisodeTitle;}
-    public JTextField getTxtUpdateEpisodeDuration() {return txtUpdateEpisodeDuration;}
-    public JTextField getTxtUpdateEpisodeNumber() {return txtUpdateEpisodeNumber;}
+    public JComboBox getCbUpdateEpisodeForSerie() { return cbUpdateEpisodeForSerie; }
+    public JTextField getTxtUpdateEpisodeTitle() { return txtUpdateEpisodeTitle; }
+    public JTextField getTxtUpdateEpisodeDuration() { return txtUpdateEpisodeDuration; }
+    public JTextField getTxtUpdateEpisodeNumber() { return txtUpdateEpisodeNumber; }
 
     // Delete
-    public JComboBox getCbDeleteEpisode(){return cbDeleteEpisode;}
+    public JComboBox getCbDeleteEpisode(){ return cbDeleteEpisode; }
 
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -658,6 +657,9 @@ public class GUI implements Runnable {
         btnDeleteSerie.addActionListener(new SerieDeleteListener(this,cbGetdeleteSerie));
 
         // Episode------------------------------------------
+        // Overviews
+        cbEpisodeAvgWatchedByEpisode.addActionListener(new EpisodeGetAvgOfWatchedEpisodes(this, cbEpisodeAvgWatchedByEpisode));
+
         // Add
         btnCreateEpisode.addActionListener(new EpisodeCreateListener(this));
         txtCreateEpisodeDuration.addKeyListener(new IntFilter());
