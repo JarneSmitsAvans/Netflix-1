@@ -11,11 +11,13 @@ import java.awt.event.ActionListener;
 public class SerieGetSelectedSerieForEpisodeListener implements ActionListener {
     private GUI ui;
     private JComboBox cbSelectedSerie;
+    private JComboBox episodeCbToFill;
 
     //Constructor
-    public SerieGetSelectedSerieForEpisodeListener(GUI ui , JComboBox cbSelectedSerie){
+    public SerieGetSelectedSerieForEpisodeListener(GUI ui , JComboBox cbSelectedSerie,JComboBox episodeCbToFill){
         this.ui = ui;
         this.cbSelectedSerie = cbSelectedSerie;
+        this.episodeCbToFill = episodeCbToFill;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -24,7 +26,7 @@ public class SerieGetSelectedSerieForEpisodeListener implements ActionListener {
             Serie serie = (Serie)cbSelectedSerie.getSelectedItem();
 
             EpisodeManagerlmpl episodeManagerlmpl = new EpisodeManagerlmpl(ui);
-            episodeManagerlmpl.fillAllEpisodesCbx(serie.getId());
+            episodeManagerlmpl.fillAllEpisodesCbx(serie.getId(),episodeCbToFill);
         }
     }
 }

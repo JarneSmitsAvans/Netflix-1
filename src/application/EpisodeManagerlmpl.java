@@ -54,17 +54,14 @@ public class EpisodeManagerlmpl {
     }
 
     //Creates a arraylist with all the comboboxes that need to be filed with episodes and starts filling them
-    public void fillAllEpisodesCbx(int id)
+    public void fillAllEpisodesCbx(int id,JComboBox episodeCbToFill)
     {
         setEpisodeList(id);
-        JComboBox[] allEpisodecb = {ui.getcbAvgOfWatchedEpisode(),ui.getCbUpdateEpisodeForSerie(),ui.getCbDeleteEpisode()};
 
-        for(int i=0; i < allEpisodecb.length; i++){
-            allEpisodecb[i].removeAllItems();
-            allEpisodecb[i].setEnabled(true);
-            appendComboBox(allEpisodecb[i],episodeList);
-            allEpisodecb[i].setSelectedIndex(0);
-        }
+        episodeCbToFill.removeAllItems();
+        episodeCbToFill.setEnabled(true);
+        appendComboBox(episodeCbToFill,episodeList);
+
     }
 
     //Fill al the comboboxes With episodes

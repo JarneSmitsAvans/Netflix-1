@@ -638,9 +638,9 @@ public class GUI implements Runnable {
 
         // Serie--------------------------------------------
         // Overviews
-        cbSerieAvgWatchedByEpisode.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbSerieAvgWatchedByEpisode));
-        cbUpdateEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbUpdateEpisodeOfSerie));
-        cbDeleteEpisodeFromSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbDeleteEpisodeFromSerie));
+        cbSerieAvgWatchedByEpisode.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbSerieAvgWatchedByEpisode,cbEpisodeAvgWatchedByEpisode));
+        cbUpdateEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbUpdateEpisodeOfSerie,cbUpdateEpisodeForSerie));
+        cbDeleteEpisodeFromSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbDeleteEpisodeFromSerie,cbDeleteEpisode));
 
         // Add
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
@@ -648,7 +648,6 @@ public class GUI implements Runnable {
 
 
         // Edit
-        cbUpdateEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbUpdateEpisodeOfSerie));
         cbGetUpdateSerie.addActionListener(new SerieGetValuesToUpdate(this,cbGetUpdateSerie));
         btnUpdateSerie.addActionListener(new SerieUpdateListener(this,cbGetUpdateSerie));
         txtUpdateSerieAge.addKeyListener(new IntFilter());
