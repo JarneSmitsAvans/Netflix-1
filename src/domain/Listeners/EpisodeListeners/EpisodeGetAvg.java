@@ -47,8 +47,8 @@ public abstract class EpisodeGetAvg {
             }
             if(bufferTimesWatched > 0 ){
                 int percentViewed = (bufferWatchTime * 100) / (episode.getDuration() * bufferTimesWatched);
-                sb.append("Is in totaal " + bufferTimesWatched + " Keer bekeken. \n") ;
-                sb.append("Met een gemiddelde kijktijd van (" + percentViewed + "%).") ;
+                sb.append("Deze aflevering is in totaal " + bufferTimesWatched + " keer bekeken. \n") ;
+                sb.append("Met een gemiddelde kijktijd van " + percentViewed + "%.") ;
             }
             else{
                 sb.append("Nog niemand heeft de aflevering '" + episode.getTitle() + "' gekeken" );

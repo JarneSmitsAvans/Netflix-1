@@ -50,11 +50,11 @@ public class EpisodeCreateListener implements ActionListener {
                     ui.getTxtCreateEpisodeNumber().setText(null);
                     ui.getTxtSerieCreateAge().setText(null);
                 } else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het aanmaken van de serie" + newEpisode.getTitle() + ". Probeer het nog eens.", "Aflevering niet aangemaakt", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het aanmaken van de serie" + newEpisode.getTitle() + ". Probeer het nog eens.", "Aflevering niet aangemaakt", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Aflevering niet aangemaakt", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Aflevering niet aangemaakt", JOptionPane.ERROR_MESSAGE);
             }
         }
         catch (Exception ex) {

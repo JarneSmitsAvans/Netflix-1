@@ -38,13 +38,13 @@ public class SerieGetRecommendedSerieFromAccount implements ActionListener {
 
             sb.append("Aanbevolen series: \n");
             if(serie.getRecommendedSerie() != 0){
-                sb.append("Omdat u als laatste naar " + serie.getTitle() + " hebt gekeken. Bevelen wij u de volgende serie aan: \n");
-
                 Serie recommendedSerie = serieManager.getSerieById(serie.getRecommendedSerie());
+                sb.append("Omdat u als laatste naar " + serie.getTitle() + " hebt gekeken.\n \n");
+                sb.append("Bevelen wij u de volgende serie aan: \n");
                 sb.append( recommendedSerie.getTitle() + " \n");
             }
             else{
-                sb.append("U heeft nog nergens naar gekeken. Bekijk eerst een serie");
+                sb.append("U heeft nog nergens naar gekeken. Bekijk eerst een serie.");
             }
             ui.getTxtRecommendedSerie().setText(sb.toString());
         }

@@ -31,11 +31,11 @@ public class SerieDeleteListener implements ActionListener {
                     serieManager.fillAllSerieCbx();
                 }
                 else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het verwijderen van de serie" + serie.getTitle() + ". Probeer het nog eens.", "Serie niet verwijderd", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het verwijderen van de serie" + serie.getTitle() + ". Probeer het nog eens.", "Serie niet verwijderd", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "U heeft nog geen serie geselecteerd. Selecteer eerst een serie en probeer het dan opnieuw.", "Serie niet verwijderd", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "U heeft nog geen serie geselecteerd. Selecteer eerst een serie en probeer het dan opnieuw.", "Serie niet verwijderd", JOptionPane.ERROR_MESSAGE);
             }
 
         }

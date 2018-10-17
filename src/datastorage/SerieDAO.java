@@ -123,4 +123,26 @@ public class SerieDAO {
 
         return deleted;
     }
+
+    // Returns the serie with the selected id
+    public Serie checkSerieTitle(String serieTitle, int serieId) throws SQLException, ClassNotFoundException {
+        Serie serie = new Serie();
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie WHERE id != ? AND title = ?");
+        preparedStatement.setInt(1, serieId);
+        preparedStatement.setString(2, serieTitle);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement (preparedStatement);
+
+        while (resultSet.next()) {
+            serie.setId(resultSet.getInt("id"));
+            serie.setTitle(resultSet.getString("title"));
+            serie.setGenre(resultSet.getString("genre"));
+            serie.setLanguage(resultSet.getString("language"));
+            serie.setMinAge(resultSet.getInt("minimumage"));
+            serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
+        }
+
+        databaseConnection.CloseConnection();
+        return serie;
+    }
 }

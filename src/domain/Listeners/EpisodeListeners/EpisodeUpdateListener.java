@@ -49,11 +49,11 @@ public class EpisodeUpdateListener implements ActionListener {
                         ui.getTxtUpdateEpisodeDuration().setText(null);
                     }
                     else {
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het updaten van de aflvering " + episode.getTitle() + ". Probeer het nog eens.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het updaten van de aflvering " + episode.getTitle() + ". Probeer het nog eens.", "Serie niet geupdate", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Serie niet geupdate", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{

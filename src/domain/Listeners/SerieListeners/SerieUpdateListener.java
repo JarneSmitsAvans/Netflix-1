@@ -24,45 +24,49 @@ public class SerieUpdateListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try{
             if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null){
+               Serie serie = (Serie) cbSelectedSerie.getSelectedItem();
                String serieTitle = ui.getTxtUpdateSerieTitle().getText();
                String serieGenre = ui.getTxtUpdateSerieGenre().getText();
                String serieLanguage = ui.getTxtUpdateSerieLanguage().getText();
                String serieAge = ui.getTxtUpdateSerieAge().getText();
 
-                if(ui.getCbUpdateSerieRecomendedSerie().getSelectedItem() != "Selecteer serie" && ui.getCbUpdateSerieRecomendedSerie().getSelectedItem() != null && !serieTitle.isEmpty() && !serieGenre.isEmpty() && !serieLanguage.isEmpty() && !serieAge.isEmpty()) {
-                    Serie serie = (Serie) cbSelectedSerie.getSelectedItem();
+               if(ui.getCbUpdateSerieRecomendedSerie().getSelectedItem() != "Selecteer serie" && ui.getCbUpdateSerieRecomendedSerie().getSelectedItem() != null && !serieTitle.isEmpty() && !serieGenre.isEmpty() && !serieLanguage.isEmpty() && !serieAge.isEmpty()) {
+                   Serie checkSerie = serieManager.checkSerieTitle(serieTitle, serie.getId());
+                   if (checkSerie.getTitle() == null) {
+                       serie.setTitle(serieTitle);
+                       serie.setGenre(serieGenre);
+                       serie.setLanguage(serieLanguage);
 
-                    serie.setTitle(serieTitle);
-                    serie.setGenre(serieGenre);
-                    serie.setLanguage(serieLanguage);
+                       int minAge = Integer.valueOf(serieAge);
+                       serie.setMinAge(minAge);
 
-                    int minAge = Integer.valueOf(serieAge);
-                    serie.setMinAge(minAge);
+                       Serie serieReference = (Serie) ui.getCbUpdateSerieRecomendedSerie().getSelectedItem();
+                       serie.setRecommendedSerie(serieReference.getId());
 
-                    Serie serieReference = (Serie)ui.getCbUpdateSerieRecomendedSerie().getSelectedItem();
-                    serie.setRecommendedSerie(serieReference.getId());
+                       boolean updated = serieManager.update(serie);
 
-
-                    boolean updated = serieManager.update(serie);
-
-                    if (updated) {
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + serie.getTitle() + " is succesvol geupdate.", "Serie is geupdate", JOptionPane.INFORMATION_MESSAGE);
-                        serieManager.fillAllSerieCbx();
-                        ui.getTxtUpdateSerieTitle().setText(null);
-                        ui.getTxtUpdateSerieGenre().setText(null);
-                        ui.getTxtUpdateSerieLanguage().setText(null);
-                        ui.getTxtUpdateSerieAge().setText(null);
-                    }
-                    else {
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het updaten van de serie" + serie.getTitle() + ". Probeer het nog eens.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                }
-                else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
-                }
+                       if (updated) {
+                           JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + serie.getTitle() + " is succesvol geupdate.", "Serie is geupdate", JOptionPane.INFORMATION_MESSAGE);
+                           serieManager.fillAllSerieCbx();
+                           ui.getTxtUpdateSerieTitle().setText(null);
+                           ui.getTxtUpdateSerieGenre().setText(null);
+                           ui.getTxtUpdateSerieLanguage().setText(null);
+                           ui.getTxtUpdateSerieAge().setText(null);
+                       }
+                       else {
+                           JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het updaten van de serie " + serie.getTitle() + ". Probeer het nog eens.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
+                       }
+                   }
+                   else {
+                       JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is al een serie met deze titel.", "Serie niet aangemaakt", JOptionPane.ERROR_MESSAGE);
+                   }
+               }
+               else {
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Serie niet geupdate", JOptionPane.ERROR_MESSAGE);
+               }
             }
             else{
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "U heeft nog geen serie geselecteerd. Selecteer eerst een serie en probeer het dan opnieuw.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "U heeft nog geen serie geselecteerd. Selecteer eerst een serie en probeer het dan opnieuw.", "Serie niet geupdate", JOptionPane.ERROR_MESSAGE);
             }
 
         }

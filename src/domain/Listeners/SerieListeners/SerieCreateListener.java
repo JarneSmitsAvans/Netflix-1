@@ -27,34 +27,39 @@ public class SerieCreateListener implements ActionListener {
             String serieAge = ui.getTxtSerieCreateAge().getText();
 
             if(ui.getCbCreateSerieRecomendedSerie().getSelectedItem() != "Selecteer serie" && ui.getCbCreateSerieRecomendedSerie().getSelectedItem() != null && !serieTitle.isEmpty() && !serieGenre.isEmpty() && !serieLanguage.isEmpty() && !serieAge.isEmpty()) {
-                Serie newSerie = new Serie();
+                if( serieManager.getSerieByName(serieTitle).getTitle() == null){
+                    Serie newSerie = new Serie();
 
-                newSerie.setTitle(serieTitle);
-                newSerie.setGenre(serieGenre);
-                newSerie.setLanguage(serieLanguage);
+                    newSerie.setTitle(serieTitle);
+                    newSerie.setGenre(serieGenre);
+                    newSerie.setLanguage(serieLanguage);
 
-                int minAge = Integer.valueOf(serieAge);
-                newSerie.setMinAge(minAge);
+                    int minAge = Integer.valueOf(serieAge);
+                    newSerie.setMinAge(minAge);
 
-                Serie serieReference = (Serie) ui.getCbCreateSerieRecomendedSerie().getSelectedItem();
-                newSerie.setRecommendedSerie(serieReference.getId());
+                    Serie serieReference = (Serie) ui.getCbCreateSerieRecomendedSerie().getSelectedItem();
+                    newSerie.setRecommendedSerie(serieReference.getId());
 
 
-                boolean created = serieManager.create(newSerie);
+                    boolean created = serieManager.create(newSerie);
 
-                if (created) {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + newSerie.getTitle() + " is succesvol aangemaakt.", "Serie is aangemaakt", JOptionPane.INFORMATION_MESSAGE);
-                    serieManager.fillAllSerieCbx();
-                    ui.getTxtSerieCreateTitle().setText(null);
-                    ui.getTxtSerieCreateGenre().setText(null);
-                    ui.getTxtSerieCreateLanguage().setText(null);
-                    ui.getTxtSerieCreateAge().setText(null);
-                } else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het aanmaken van de serie" + newSerie.getTitle() + ". Probeer het nog eens.", "Serie niet aangemaakt", JOptionPane.INFORMATION_MESSAGE);
+                    if (created) {
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + newSerie.getTitle() + " is succesvol aangemaakt.", "Serie is aangemaakt", JOptionPane.INFORMATION_MESSAGE);
+                        serieManager.fillAllSerieCbx();
+                        ui.getTxtSerieCreateTitle().setText(null);
+                        ui.getTxtSerieCreateGenre().setText(null);
+                        ui.getTxtSerieCreateLanguage().setText(null);
+                        ui.getTxtSerieCreateAge().setText(null);
+                    } else {
+                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het aanmaken van de serie" + newSerie.getTitle() + ". Probeer het nog eens.", "Serie niet aangemaakt", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else{
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is al een serie met deze titel.", "Serie niet aangemaakt", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Serie niet aangemaakt", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Serie niet aangemaakt", JOptionPane.ERROR_MESSAGE);
             }
         }
         catch (Exception ex) {

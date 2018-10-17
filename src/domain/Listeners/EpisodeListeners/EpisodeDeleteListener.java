@@ -38,11 +38,11 @@ public class EpisodeDeleteListener implements ActionListener {
                     cbSelectedEpisode.setSelectedIndex(-1);
                     cbSelectedEpisode.setEnabled(false);
                 } else {
-                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het verwijderen van de serie" + episode.getTitle() + ". Probeer het nog eens.", "Aflevering niet verwijderd", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het verwijderen van de serie" + episode.getTitle() + ". Probeer het nog eens.", "Aflevering niet verwijderd", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Aflevering niet verwijderd", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Aflevering niet verwijderd", JOptionPane.ERROR_MESSAGE);
             }
         }
         catch (Exception ex) {
