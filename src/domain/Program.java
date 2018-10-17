@@ -4,7 +4,7 @@ package domain;
  * Program.java
  * This abstract class has generic variables that every program in Netflix has.
  * <p>
- * Author: Dylan ten Böhmer
+ * Author: Dylan ten Böhmer, Marc Verwijmeren
  */
 
 public abstract class Program {

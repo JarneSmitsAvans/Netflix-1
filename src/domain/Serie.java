@@ -1,17 +1,13 @@
 package domain;
 
-import java.security.PublicKey;
-import java.sql.Time;
-import java.util.*;
-
 public class Serie extends Program {
-    private int referenceNumber;
+    private int recommendedSerie;
 
-    public int getReferenceNumber(){
-        return this.referenceNumber;
+    public int getRecommendedSerie(){
+        return this.recommendedSerie;
     }
-    public void setReferenceNumber(int referenceNumber) {
-        this.referenceNumber = referenceNumber;
+    public void setRecommendedSerie(int referenceNumber) {
+        this.recommendedSerie = referenceNumber;
     }
 
     @Override

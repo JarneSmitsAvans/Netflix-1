@@ -1,8 +1,6 @@
 package domain.Listeners.SerieListeners;
 
-import application.EpisodeManagerlmpl;
 import application.SerieManagerImpl;
-import com.sun.xml.internal.ws.commons.xmlutil.Converter;
 import domain.Serie;
 import presentation.GUI;
 
@@ -35,11 +33,11 @@ public class SerieGetValuesToUpdate implements ActionListener {
             ui.getTxtUpdateSerieAge().setText(minAge);
 
             Serie selectedSerie = serieManager.getSerieById(serie.getId());
-            Serie serieReference = serieManager.getSerieById(selectedSerie.getReferenceNumber());
+            Serie serieReference = serieManager.getSerieById(selectedSerie.getRecommendedSerie());
 
             //serieManager.fillAllSerieCbx();
-            ui.getCbUpdateSerieReferenceNumber().addItem(serieReference);
-            ui.getCbUpdateSerieReferenceNumber().setSelectedItem(serieReference);
+            ui.getCbUpdateSerieRecomendedSerie().addItem(serieReference);
+            ui.getCbUpdateSerieRecomendedSerie().setSelectedItem(serieReference);
         }
     }
 }

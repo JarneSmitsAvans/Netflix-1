@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EpisodeManagerlmpl {
-
     private EpisodeDAO episodeDAO = new EpisodeDAO();
     private ArrayList<Episode> episodeList;
     private GUI ui;

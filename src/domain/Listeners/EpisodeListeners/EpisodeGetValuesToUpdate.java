@@ -19,6 +19,7 @@ public class EpisodeGetValuesToUpdate implements ActionListener {
         this.cbSelectedEpisode = cbSelectedEpisode;
         this.episodeManager = new EpisodeManagerlmpl(ui);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(cbSelectedEpisode.getSelectedItem() != "Selecteer serie" && cbSelectedEpisode.getSelectedItem() != null){

@@ -46,6 +46,7 @@ public class SerieDAO {
             serie.setGenre(resultSet.getString("genre"));
             serie.setLanguage(resultSet.getString("language"));
             serie.setMinAge(resultSet.getInt("minimumage"));
+            serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
 
         }
 
@@ -67,7 +68,7 @@ public class SerieDAO {
             serie.setGenre(resultSet.getString("genre"));
             serie.setLanguage(resultSet.getString("language"));
             serie.setMinAge(resultSet.getInt("minimumage"));
-            serie.setReferenceNumber(resultSet.getInt("ReferenceNumber"));
+            serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
         }
 
         databaseConnection.CloseConnection();
@@ -79,12 +80,12 @@ public class SerieDAO {
     {
         databaseConnection.OpenConnection();
 
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Serie (title, genre, Language, minimumAge, referencenumber) VALUES (?, ?, ?, ?, ?)");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Serie (title, genre, Language, minimumAge, RecommendedSerie) VALUES (?, ?, ?, ?, ?)");
         preparedStatement.setString(1, serie.getTitle());
         preparedStatement.setString(2, serie.getGenre());
         preparedStatement.setString(3, serie.getLanguage());
         preparedStatement.setInt(4, serie.getMinAge());
-        preparedStatement.setInt(5, serie.getReferenceNumber());
+        preparedStatement.setInt(5, serie.getRecommendedSerie());
 
         boolean inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
 
@@ -96,12 +97,12 @@ public class SerieDAO {
     public boolean update(Serie serie) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
 
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Serie SET title = ?, genre = ?, language = ?, minimumage = ?, referencenumber = ? WHERE id = ?");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Serie SET title = ?, genre = ?, language = ?, minimumage = ?, RecommendedSerie = ? WHERE id = ?");
         preparedStatement.setString(1, serie.getTitle());
         preparedStatement.setString(2, serie.getGenre());
         preparedStatement.setString(3, serie.getLanguage());
         preparedStatement.setInt(4, serie.getMinAge());
-        preparedStatement.setInt(5, serie.getReferenceNumber());
+        preparedStatement.setInt(5, serie.getRecommendedSerie());
         preparedStatement.setInt(6, serie.getId());
 
         boolean updated = databaseConnection.ExecuteDeleteStatement(preparedStatement);

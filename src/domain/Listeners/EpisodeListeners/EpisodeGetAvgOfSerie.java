@@ -1,6 +1,5 @@
 package domain.Listeners.EpisodeListeners;
 
-import application.*;
 import domain.Account;
 import domain.Episode;
 import domain.Profile;
@@ -12,11 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class EpisodesGetAvgOfWatchedEpisodesFromAccount extends EpisodeGetAvg implements ActionListener {
+public class EpisodeGetAvgOfSerie extends EpisodeGetAvg implements ActionListener {
     private JComboBox cbSelectedSerie;
 
     //Constructor
-    public EpisodesGetAvgOfWatchedEpisodesFromAccount(GUI ui, JComboBox cbSelectedSerie) {
+    public EpisodeGetAvgOfSerie(GUI ui, JComboBox cbSelectedSerie) {
         super(ui);
         this.cbSelectedSerie = cbSelectedSerie;
     }
@@ -31,9 +30,7 @@ public class EpisodesGetAvgOfWatchedEpisodesFromAccount extends EpisodeGetAvg im
                 getEpisodeManager().setEpisodeList(selectedSerie.getId());
                 ArrayList<Episode> episodeList = getEpisodeManager().getEpisode();
 
-                String selectedAccountName = getUi().getCbAccountAvgWatchedBySerie().getSelectedItem().toString();
-                Account selectedAccount = getAccountManager().getAccountByName(selectedAccountName);
-                ArrayList<Profile> profileList = getProfileManager().getMatchingProfiles(selectedAccount.getId());
+                ArrayList<Profile> profileList = getProfileManager().getProfiles();
 
                 StringBuilder sb = new StringBuilder();
                 for (Episode episode : episodeList)
@@ -41,7 +38,7 @@ public class EpisodesGetAvgOfWatchedEpisodesFromAccount extends EpisodeGetAvg im
                     getWatchedAvgOfEpisodes(episode,profileList,sb);
                 }
 
-                getUi().getTxtAvgWatchedSeries().setText(sb.toString());
+                getUi().getTxtGetAvgOfSerie().setText(sb.toString());
             }
         }
         catch (Exception ex) {

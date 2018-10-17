@@ -29,7 +29,7 @@ public class SerieUpdateListener implements ActionListener {
                String serieLanguage = ui.getTxtUpdateSerieLanguage().getText();
                String serieAge = ui.getTxtUpdateSerieAge().getText();
 
-                if(ui.getCbUpdateSerieReferenceNumber().getSelectedItem() != "Selecteer serie" && ui.getCbUpdateSerieReferenceNumber().getSelectedItem() != null && !serieTitle.isEmpty() && !serieGenre.isEmpty() && !serieLanguage.isEmpty() && !serieAge.isEmpty()) {
+                if(ui.getCbUpdateSerieRecomendedSerie().getSelectedItem() != "Selecteer serie" && ui.getCbUpdateSerieRecomendedSerie().getSelectedItem() != null && !serieTitle.isEmpty() && !serieGenre.isEmpty() && !serieLanguage.isEmpty() && !serieAge.isEmpty()) {
                     Serie serie = (Serie) cbSelectedSerie.getSelectedItem();
 
                     serie.setTitle(serieTitle);
@@ -39,8 +39,8 @@ public class SerieUpdateListener implements ActionListener {
                     int minAge = Integer.valueOf(serieAge);
                     serie.setMinAge(minAge);
 
-                    Serie serieReference = (Serie)ui.getCbUpdateSerieReferenceNumber().getSelectedItem();
-                    serie.setReferenceNumber(serieReference.getId());
+                    Serie serieReference = (Serie)ui.getCbUpdateSerieRecomendedSerie().getSelectedItem();
+                    serie.setRecommendedSerie(serieReference.getId());
 
 
                     boolean updated = serieManager.update(serie);

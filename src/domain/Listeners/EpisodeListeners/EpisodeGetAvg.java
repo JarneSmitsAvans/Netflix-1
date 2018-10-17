@@ -31,7 +31,7 @@ public abstract class EpisodeGetAvg {
             int bufferTimesWatched = 0;
             int bufferWatchTime = 0;
             if(episode != null){
-                sb.append(episode.getTitle() + "\n");
+                sb.append("Aflevering "+ episode.getEpisodeNumber() + ": " + episode.getTitle() + "\n");
             }
             for (Profile profile : profileList)
             {
@@ -47,7 +47,8 @@ public abstract class EpisodeGetAvg {
             }
             if(bufferTimesWatched > 0 ){
                 int percentViewed = (bufferWatchTime * 100) / (episode.getDuration() * bufferTimesWatched);
-                sb.append("Is in totaal " + bufferTimesWatched + " Keer bekeken. Met een gemiddelde kijktijd van (" + percentViewed + "%).") ;
+                sb.append("Is in totaal " + bufferTimesWatched + " Keer bekeken. \n") ;
+                sb.append("Met een gemiddelde kijktijd van (" + percentViewed + "%).") ;
             }
             else{
                 sb.append("Nog niemand heeft de aflevering '" + episode.getTitle() + "' gekeken" );

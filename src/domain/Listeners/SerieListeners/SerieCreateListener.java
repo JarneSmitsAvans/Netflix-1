@@ -26,7 +26,7 @@ public class SerieCreateListener implements ActionListener {
             String serieLanguage = ui.getTxtSerieCreateLanguage().getText();
             String serieAge = ui.getTxtSerieCreateAge().getText();
 
-            if(ui.getCbCreateSerieReferenceNumber().getSelectedItem() != "Selecteer serie" && ui.getCbCreateSerieReferenceNumber().getSelectedItem() != null && !serieTitle.isEmpty() && !serieGenre.isEmpty() && !serieLanguage.isEmpty() && !serieAge.isEmpty()) {
+            if(ui.getCbCreateSerieRecomendedSerie().getSelectedItem() != "Selecteer serie" && ui.getCbCreateSerieRecomendedSerie().getSelectedItem() != null && !serieTitle.isEmpty() && !serieGenre.isEmpty() && !serieLanguage.isEmpty() && !serieAge.isEmpty()) {
                 Serie newSerie = new Serie();
 
                 newSerie.setTitle(serieTitle);
@@ -36,8 +36,8 @@ public class SerieCreateListener implements ActionListener {
                 int minAge = Integer.valueOf(serieAge);
                 newSerie.setMinAge(minAge);
 
-                Serie serieReference = (Serie) ui.getCbCreateSerieReferenceNumber().getSelectedItem();
-                newSerie.setReferenceNumber(serieReference.getId());
+                Serie serieReference = (Serie) ui.getCbCreateSerieRecomendedSerie().getSelectedItem();
+                newSerie.setRecommendedSerie(serieReference.getId());
 
 
                 boolean created = serieManager.create(newSerie);

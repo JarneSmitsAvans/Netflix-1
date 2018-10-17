@@ -14,13 +14,12 @@ import java.util.ArrayList;
 public class EpisodeGetAvgOfWatchedEpisodes extends EpisodeGetAvg implements ActionListener  {
     private JComboBox cbSelectedSerie;
 
-
     //Constructor
     public EpisodeGetAvgOfWatchedEpisodes(GUI ui, JComboBox cbSelectedSerie) {
         super(ui);
         this.cbSelectedSerie = cbSelectedSerie;
-
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         try{

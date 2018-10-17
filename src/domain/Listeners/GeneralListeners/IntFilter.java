@@ -1,4 +1,4 @@
-package presentation;
+package domain.Listeners.GeneralListeners;
 
 import javax.swing.*;
 import javax.swing.text.AttributeSet;

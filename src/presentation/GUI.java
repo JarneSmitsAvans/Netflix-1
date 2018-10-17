@@ -12,6 +12,7 @@ import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.EpisodeListeners.*;
+import domain.Listeners.GeneralListeners.IntFilter;
 import domain.Listeners.MovieListeners.*;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.SerieListeners.*;
@@ -129,8 +130,9 @@ public class GUI implements Runnable {
     private JTextPane txtAvgWatchedSeries;
     private JComboBox cbAccountAvgWatchedBySerie;
     private JComboBox cbSerieAvgWatchedBySerie;
-
+    private JTextPane txtGetAvgOfSerie;
     private JPanel avgWatchedSeriePanel;
+    private JComboBox cbSerieAvgOfSerie;
 
     // Add
     private JPanel addSeriesPanel;
@@ -159,6 +161,7 @@ public class GUI implements Runnable {
     private JPanel avgWatchedEpisodeBySeriePanel;
     private JComboBox cbSerieAvgWatchedByEpisode;
     private JComboBox cbEpisodeAvgWatchedByEpisode;
+    private JTextPane txtAvgWatchedEpisode;
 
     // Add
     private JPanel addEpisodeToSeriesPanel;
@@ -263,10 +266,10 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaAccount;
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
-    private JComboBox cbCreateSerieReferenceNumber;
-    private JComboBox cbUpdateSerieReferenceNumber;
+    private JComboBox cbCreateSerieRecomendedSerie;
+    private JComboBox cbUpdateSerieRecomendedSerie;
     private JButton btnDeleteWatchBehaviour;
-    private JTextPane txtAvgWatchedEpisode;
+
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -495,8 +498,9 @@ public class GUI implements Runnable {
     public JComboBox getCbCreateEpisodeForSerie(){ return cbCreateEpisodeForSerie; }
     public JComboBox getCbDeleteEpisodeFromSerie(){ return cbDeleteEpisodeFromSerie; }
     public JComboBox getCbUpdateEpisodeOfSerie(){ return cbUpdateEpisodeOfSerie; }
-    public JComboBox getCbUpdateSerieReferenceNumber(){ return cbUpdateSerieReferenceNumber; }
-    public JComboBox getCbCreateSerieReferenceNumber(){ return cbCreateSerieReferenceNumber; }
+    public JComboBox getCbUpdateSerieRecomendedSerie(){ return cbUpdateSerieRecomendedSerie; }
+    public JComboBox getCbCreateSerieRecomendedSerie(){ return cbCreateSerieRecomendedSerie; }
+    public JComboBox getCbSerieAvgOfSerie() { return cbSerieAvgOfSerie; }
 
     // Add
     public JTextField getTxtSerieCreateTitle() { return txtSerieCreateTitle; }
@@ -525,6 +529,7 @@ public class GUI implements Runnable {
     public JComboBox getCbEpisodeAvgWatchedByEpisode(){ return cbEpisodeAvgWatchedByEpisode; }
     public JTextPane getTxtAvgWatchedSeries(){ return txtAvgWatchedSeries; }
     public JTextPane getTxtAvgWatchedEpisode() { return txtAvgWatchedEpisode; }
+    public JTextPane getTxtGetAvgOfSerie() { return txtGetAvgOfSerie; }
 
     // Add
     public JTextField getTxtCreateEpisodeTitle(){ return txtCreateEpisodeTitle; }
@@ -641,7 +646,7 @@ public class GUI implements Runnable {
         cbSerieAvgWatchedByEpisode.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbSerieAvgWatchedByEpisode,cbEpisodeAvgWatchedByEpisode));
         cbUpdateEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbUpdateEpisodeOfSerie,cbUpdateEpisodeForSerie));
         cbDeleteEpisodeFromSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbDeleteEpisodeFromSerie,cbDeleteEpisode));
-
+        cbSerieAvgOfSerie.addActionListener(new EpisodeGetAvgOfSerie(this, cbSerieAvgOfSerie));
         // Add
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
         txtSerieCreateAge.addKeyListener(new IntFilter());
