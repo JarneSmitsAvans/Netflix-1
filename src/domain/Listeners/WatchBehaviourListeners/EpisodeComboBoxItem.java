@@ -58,6 +58,6 @@ public class EpisodeComboBoxItem extends Episode {
     // Prints the EpisodeComboBox object.
     @Override
     public String toString() {
-        return serieTitle + " : " + title + " watched on: " + watchDateAndTime;
+        return serieTitle + " : " + title + "\n watched on: " + watchDateAndTime;
     }
 }

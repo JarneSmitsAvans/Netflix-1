@@ -56,8 +56,9 @@ public class MovieComboBoxItem extends Movie {
 
     // Prints the MovieComboBoxItem object.
     @Override
+    // TODO Enter in comboboxitem bij kijkgedrag
     public String toString() {
-        return title + " watched on: " + watchDateAndTime;
+        return title + "\n watched on: " + watchDateAndTime;
     }
 }
 

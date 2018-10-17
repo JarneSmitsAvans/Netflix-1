@@ -626,20 +626,18 @@ public class GUI implements Runnable {
         // Profile-------------------------------------------
         // Add
         btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
-        cbRecommendedSerieForProfile.addActionListener(new SerieGetRecommendedSerieFromAccount(this));
-
+        cbAddProfileToSelectedAccount.setSelectedItem(null);
         // Edit
         cbSelectAccountForProfileEdit.setSelectedItem(null);
         cbSelectAccountForProfileEdit.addActionListener(new ProfilesLoadProfilesForSelectedAccountUpdate(this));
         cbUpdateSelectedProfile.setEnabled(false);
         cbUpdateSelectedProfile.addActionListener(new ProfileUpdateComboBoxListener(this));
         btnEditProfile.addActionListener(new ProfileUpdateListener(this));
-
         // Delete
+        cbDeleteProfileFromSelectedAccount.setSelectedItem(null);
         cbDeleteProfileFromSelectedAccount.addActionListener(new ProfileLoadProfilesForSelectedAccountListener(this));
         cbDeleteProfile.setEnabled(false);
         btnDeleteProfile.addActionListener(new ProfileDeleteListener(this));
-
         // Movie--------------------------------------------
         // Overviews
         cbWatchedMoviesByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
