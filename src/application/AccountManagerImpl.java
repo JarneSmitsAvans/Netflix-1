@@ -48,6 +48,7 @@ public class AccountManagerImpl extends GeneralManager {
         gui.getCbAddWatchedMediaAccount().removeAllItems();
         gui.getCbDeleteWatchedMediaAccount().removeAllItems();
         gui.getCbWatchedProgramsBySelectedAccount().removeAllItems();
+        gui.getCbRecommendedSerieForAccount().removeAllItems();
         initializeAccountComponents(gui);
 
         // Get all accounts that are present in the database.
@@ -64,6 +65,7 @@ public class AccountManagerImpl extends GeneralManager {
         this.addAccountsToComboBox(gui.getCbEditWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbDeleteWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbWatchedProgramsBySelectedAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbRecommendedSerieForAccount(), accountArrayList);
 
         gui.getCbWatchedMoviesByAccount().setSelectedIndex(-1);
     }

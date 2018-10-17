@@ -4,6 +4,7 @@ import datastorage.WatchBehaviourDAO;
 import domain.Episode;
 import domain.Movie;
 import domain.Program;
+import domain.Serie;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -75,6 +76,12 @@ public class WatchBehaviourManagerImpl extends GeneralManager {
     public ArrayList<Episode> getWatchedEpisodes(int profileID) throws SQLException, ClassNotFoundException {
         ArrayList<Episode> watchedEpisodes = watchBehaviourDAO.getWatchedEpisodes(profileID);
         return watchedEpisodes;
+    }
+
+    // Returns an ArrayList of all the watched episodes of a profile.
+    public Serie getLastWatchedSerie (int profileID) throws SQLException, ClassNotFoundException {
+        Serie lastWatchedSerie = watchBehaviourDAO.getRecommendedLastWatchedSerie(profileID);
+        return lastWatchedSerie;
     }
 
     // Returns an ArrayList of all the watched episodes from a serie and account.

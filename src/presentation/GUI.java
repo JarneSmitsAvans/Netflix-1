@@ -76,6 +76,7 @@ public class GUI implements Runnable {
     // Overviews
     private JPanel accountsWithOneProfilePanel;
     private JTextPane txtAccountsWithOneProfile;
+    private JComboBox cbRecommendedSerieForAccount;
 
     // Add
     private JPanel addAccountPanel;
@@ -101,6 +102,7 @@ public class GUI implements Runnable {
     // Overviews
     private JComboBox cbWatchedProgramsBySelectedProfile;
     private JComboBox cbWatchedProgramsBySelectedAccount;
+    private JComboBox cbRecommendedSerieForProfile;
 
     // Add
     private JPanel addProfileToAccountPanel;
@@ -132,8 +134,8 @@ public class GUI implements Runnable {
     private JTextPane txtGetAvgOfSerie;
     private JPanel avgWatchedSeriePanel;
     private JComboBox cbSerieAvgOfSerie;
-
     private JPanel recommendedSeriesByProfilePanel;
+    private JTextPane txtRecommendedSerie;
 
     // Add
     private JPanel addSeriesPanel;
@@ -151,6 +153,8 @@ public class GUI implements Runnable {
     private JTextField txtUpdateSerieAge;
     private JTextField txtUpdateSerieLanguage;
     private JButton btnUpdateSerie;
+    private JComboBox cbCreateSerieRecomendedSerie;
+    private JComboBox cbUpdateSerieRecomendedSerie;
 
     // Delete
     private JPanel deleteSeriesPanel;
@@ -267,9 +271,12 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaAccount;
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
-    private JComboBox cbCreateSerieRecomendedSerie;
-    private JComboBox cbUpdateSerieRecomendedSerie;
     private JButton btnDeleteWatchBehaviour;
+
+
+
+
+
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -284,6 +291,7 @@ public class GUI implements Runnable {
     public JTextPane getTxtAccountsWithOneProfile() {
         return txtAccountsWithOneProfile;
     }
+    public JComboBox getCbRecommendedSerieForAccount() { return cbRecommendedSerieForAccount; }
 
 
     // Add
@@ -318,6 +326,9 @@ public class GUI implements Runnable {
 
 
     // Profiles----------------------------------------------------------
+    // Overview
+    public JComboBox getCbRecommendedSerieForProfile() { return cbRecommendedSerieForProfile; }
+
     // Add
     public JComboBox getCbAddProfileToSelectedAccount() {
         return cbAddProfileToSelectedAccount;
@@ -501,6 +512,7 @@ public class GUI implements Runnable {
     public JComboBox getCbUpdateSerieRecomendedSerie(){ return cbUpdateSerieRecomendedSerie; }
     public JComboBox getCbCreateSerieRecomendedSerie(){ return cbCreateSerieRecomendedSerie; }
     public JComboBox getCbSerieAvgOfSerie() { return cbSerieAvgOfSerie; }
+    public JTextPane getTxtRecommendedSerie() { return txtRecommendedSerie; }
 
     // Add
     public JTextField getTxtSerieCreateTitle() { return txtSerieCreateTitle; }
@@ -601,6 +613,7 @@ public class GUI implements Runnable {
         // Account-------------------------------------------
         // Add
         btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
+        cbRecommendedSerieForAccount.addActionListener(new ProfileLoadProfielsForRecommendedSeries(this,cbRecommendedSerieForAccount,cbRecommendedSerieForProfile));
 
         // Edit
         cbUpdateAccount.setSelectedItem(null);
@@ -613,6 +626,7 @@ public class GUI implements Runnable {
         // Profile-------------------------------------------
         // Add
         btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
+        cbRecommendedSerieForProfile.addActionListener(new SerieGetRecommendedSerieFromAccount(this));
 
         // Edit
         cbSelectAccountForProfileEdit.setSelectedItem(null);

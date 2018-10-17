@@ -3,6 +3,7 @@ package datastorage;
 import domain.Episode;
 import domain.Movie;
 import domain.Program;
+import domain.Serie;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -146,6 +147,26 @@ public class WatchBehaviourDAO {
         }
         databaseConnection.CloseConnection();
         return episodes;
+    }
+
+    // Generate the SQL Statement that returns all the watched episodes of a profile.
+    public Serie getRecommendedLastWatchedSerie(int profileID) throws SQLException, ClassNotFoundException {
+        databaseConnection.OpenConnection();
+        Serie serie = new Serie();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(
+                "SELECT * FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id JOIN Episode on Episode.Id = Watched_Media.Episode_Id JOIN Serie on Serie.id = Episode.Fk_Serie WHERE Watched_Media.Profile_Id = ?");
+        preparedStatement.setInt(1, profileID);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+        while (resultSet.next()) {
+            serie.setId(resultSet.getInt("Id"));
+            serie.setTitle(resultSet.getString(16));
+            //serie.setWatchedOn(resultSet.getString("WatchedOn"));
+            serie.setRecommendedSerie(resultSet.getInt(20));
+            serie.setWatchedDuration(resultSet.getInt("TimeWatched"));
+            serie.setDuration(resultSet.getInt("Duration"));
+        }
+        databaseConnection.CloseConnection();
+        return serie;
     }
 }
 
