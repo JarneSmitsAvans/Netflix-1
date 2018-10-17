@@ -2389,7 +2389,7 @@
                               </component>
                               <component id="a191a" class="javax.swing.JButton" binding="btnAddWatchBehaviour">
                                 <constraints>
-                                  <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <text value="Toevoegen"/>
@@ -2570,7 +2570,7 @@
                               </component>
                               <component id="a8554" class="javax.swing.JTextField" binding="txtEditWatchedMediaDuration">
                                 <constraints>
-                                  <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                                  <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <minimum-size width="-1" height="30"/>
                                     <preferred-size width="150" height="30"/>
                                     <maximum-size width="-1" height="30"/>
@@ -2582,7 +2582,7 @@
                               </component>
                               <component id="60c02" class="javax.swing.JButton" binding="btnEditWatchedMedia">
                                 <constraints>
-                                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <text value="Bewerk"/>
@@ -2600,7 +2600,7 @@
                               </component>
                               <component id="b38ca" class="javax.swing.JComboBox" binding="cbEditWatchedMediaAccount">
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -2618,7 +2618,7 @@
                               </component>
                               <component id="c366f" class="javax.swing.JComboBox" binding="cbEditWatchedMediaProfile">
                                 <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -2636,7 +2636,7 @@
                               </component>
                               <component id="712be" class="javax.swing.JComboBox" binding="cbEditWatchedMediaTitle">
                                 <constraints>
-                                  <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -2654,7 +2654,7 @@
                               </component>
                               <component id="8d9d9" class="com.toedter.calendar.JSpinnerDateEditor" binding="JSpinNewWatchedDate">
                                 <constraints>
-                                  <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -2662,7 +2662,7 @@
                               </component>
                               <component id="44804" class="javax.swing.JLabel" binding="lblEditWatchedMediaDuration">
                                 <constraints>
-                                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -2742,11 +2742,7 @@
                               </component>
                               <component id="b624c" class="javax.swing.JButton" binding="btnDeleteWatchBehaviour">
                                 <constraints>
-                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                                    <minimum-size width="100" height="-1"/>
-                                    <preferred-size width="100" height="-1"/>
-                                    <maximum-size width="100" height="-1"/>
-                                  </grid>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <text value="Verwijder"/>
