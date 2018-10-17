@@ -39,7 +39,7 @@ public class AccountCreateListener implements ActionListener {
                 this.account.setResidence(this.ui.getTxtAccountResidence().getText());
                 // Check if the account already exists
                 Account existingAccount = accountManager.getAccountByName(this.account.getName());
-                if (existingAccount.getName() == this.account.getName()) {
+                if (existingAccount.getName() != this.account.getName()) {
                     // Create the account
                     boolean created = this.accountManager.create(account);
                     if (created) {
