@@ -61,6 +61,7 @@ public class GUI implements Runnable {
     private JLabel lblDesignerInfo9;
     private JLabel lblDesignerInfo10;
     private JLabel lblDesignerInfo11;
+    private JLabel lblDesignerInfo12;
     private JPanel Home;
     private JPanel mainPanel;
 
@@ -99,8 +100,6 @@ public class GUI implements Runnable {
     // Profile----------------------------------------------------
     // Overviews
     private JComboBox cbWatchedProgramsBySelectedProfile;
-
-
     private JComboBox cbWatchedProgramsBySelectedAccount;
 
     // Add
@@ -133,6 +132,8 @@ public class GUI implements Runnable {
     private JTextPane txtGetAvgOfSerie;
     private JPanel avgWatchedSeriePanel;
     private JComboBox cbSerieAvgOfSerie;
+
+    private JPanel recommendedSeriesByProfilePanel;
 
     // Add
     private JPanel addSeriesPanel;
@@ -269,7 +270,6 @@ public class GUI implements Runnable {
     private JComboBox cbCreateSerieRecomendedSerie;
     private JComboBox cbUpdateSerieRecomendedSerie;
     private JButton btnDeleteWatchBehaviour;
-
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -592,6 +592,7 @@ public class GUI implements Runnable {
         lblDesignerInfo9.setText(designInfo);
         lblDesignerInfo10.setText(designInfo);
         lblDesignerInfo11.setText(designInfo);
+        lblDesignerInfo12.setText(designInfo);
 
         initializeComponents();
 
