@@ -49,6 +49,7 @@ public class AccountManagerImpl extends GeneralManager {
         gui.getCbDeleteWatchedMediaAccount().removeAllItems();
         gui.getCbWatchedProgramsBySelectedAccount().removeAllItems();
         gui.getCbRecommendedSerieForAccount().removeAllItems();
+
         initializeAccountComponents(gui);
 
         // Get all accounts that are present in the database.
@@ -66,8 +67,24 @@ public class AccountManagerImpl extends GeneralManager {
         this.addAccountsToComboBox(gui.getCbDeleteWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbWatchedProgramsBySelectedAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbRecommendedSerieForAccount(), accountArrayList);
-
+        gui.getTxtUpdateAccountName().setText(null);
+        gui.getTxtUpdateAccountAdres().setText(null);
+        gui.getTxtUpdateAccountResidence().setText(null);
+        gui.getCbAccountAvgWatchedBySerie().setSelectedItem(null);
         gui.getCbWatchedMoviesByAccount().setSelectedIndex(-1);
+        gui.getCbDeleteAccount().setSelectedItem(null);
+        gui.getCbUpdateAccount().setSelectedItem(null);
+        gui.getCbAddWatchedMediaAccount().setSelectedItem(null);
+        gui.getCbEditWatchedMediaAccount().setSelectedItem(null);
+        gui.getCbDeleteWatchedMediaAccount().setSelectedItem(null);
+        gui.getCbWatchedProgramsBySelectedAccount().setSelectedItem(null);
+        gui.getCbRecommendedSerieForAccount().setSelectedItem(null);
+        gui.getCbAddProfileToSelectedAccount().setSelectedItem(null);
+        gui.getCbSelectAccountForProfileEdit().setSelectedItem(null);
+        gui.getCbDeleteProfileFromSelectedAccount().setSelectedItem(null);
+
+        gui.getjDPnewDateOfBirth().setDate(null);
+        gui.getTxtUpdateProfileName().setText(null);
     }
 
     // Sends an object of type Account to the Account DAO that needs to be inserted into the database.
