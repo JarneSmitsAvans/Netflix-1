@@ -28,6 +28,7 @@ import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBeh
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadWatchedMediaListener;
 import domain.Movie;
 import domain.Profile;
+import javax.swing.UIManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,6 +65,7 @@ public class GUI implements Runnable {
     private JLabel lblDesignerInfo12;
     private JPanel Home;
     private JPanel mainPanel;
+    private JTabbedPane jTabbedPaneBase;
 
     // CRUD Panels---------------------------------------------
     private JPanel netflixManagement;
@@ -77,6 +79,9 @@ public class GUI implements Runnable {
     private JPanel accountsWithOneProfilePanel;
     private JTextPane txtAccountsWithOneProfile;
     private JComboBox cbRecommendedSerieForAccount;
+
+    // View
+    private JPanel readAccountPanel;
 
     // Add
     private JPanel addAccountPanel;
@@ -103,6 +108,9 @@ public class GUI implements Runnable {
     private JComboBox cbWatchedProgramsBySelectedProfile;
     private JComboBox cbWatchedProgramsBySelectedAccount;
     private JComboBox cbRecommendedSerieForProfile;
+
+    // View
+    private JPanel readProfilePanel;
 
     // Add
     private JPanel addProfileToAccountPanel;
@@ -137,6 +145,9 @@ public class GUI implements Runnable {
     private JPanel recommendedSeriesByProfilePanel;
     private JTextPane txtRecommendedSerie;
 
+    // View
+    private JPanel readSeriesPanel;
+
     // Add
     private JPanel addSeriesPanel;
     private JTextField txtSerieCreateTitle;
@@ -167,6 +178,9 @@ public class GUI implements Runnable {
     private JComboBox cbSerieAvgWatchedByEpisode;
     private JComboBox cbEpisodeAvgWatchedByEpisode;
     private JTextPane txtAvgWatchedEpisode;
+
+    // View
+    private JPanel readEpisodePanel;
 
     // Add
     private JPanel addEpisodeToSeriesPanel;
@@ -207,6 +221,9 @@ public class GUI implements Runnable {
     private JPanel amountOfViewersWhoWatchedWholeMoviePanel;
     private JComboBox cbAmountOfViewerWholeMovie;
     private JTextPane txtAmountOfViewersWholeMovie;
+
+    // View
+    private JPanel readMoviePanel;
 
     // Add
     private JPanel addMoviePanel;
@@ -272,10 +289,6 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
     private JButton btnDeleteWatchBehaviour;
-
-
-
-
 
 
 
@@ -605,6 +618,8 @@ public class GUI implements Runnable {
         lblDesignerInfo10.setText(designInfo);
         lblDesignerInfo11.setText(designInfo);
         lblDesignerInfo12.setText(designInfo);
+
+//        UIManager.put("TabbedPane.selected", Color.RED);
 
         initializeComponents();
 
