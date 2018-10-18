@@ -28,8 +28,6 @@ import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBeh
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadWatchedMediaListener;
 import domain.Movie;
 import domain.Profile;
-import javax.swing.UIManager;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -612,6 +610,8 @@ public class GUI implements Runnable {
         this.profileManager = new ProfileManagerImpl();
         this.movieManager = new MovieManagerImpl();
         this.serieManager = new SerieManagerImpl(this);
+
+//        UIManager.put("TabbedPane.selected", Color.red);
     }
 
     @Override
@@ -645,8 +645,6 @@ public class GUI implements Runnable {
         lblDesignerInfo11.setText(designInfo);
         lblDesignerInfo12.setText(designInfo);
 
-//        UIManager.put("TabbedPane.selected", Color.RED);
-
         initializeComponents();
 
 //    ActionListeners ------------------------------------------------------------------------------------------------------------------
@@ -679,6 +677,7 @@ public class GUI implements Runnable {
         cbDeleteProfileFromSelectedAccount.addActionListener(new ProfileLoadProfilesForSelectedAccountListener(this));
         cbDeleteProfile.setEnabled(false);
         btnDeleteProfile.addActionListener(new ProfileDeleteListener(this));
+
         // Movie--------------------------------------------
         // Overviews
         cbWatchedMoviesByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));

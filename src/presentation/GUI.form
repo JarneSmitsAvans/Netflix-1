@@ -5,7 +5,7 @@
       <xy x="25" y="20" width="1495" height="935"/>
     </constraints>
     <properties>
-      <background color="-16777216"/>
+      <background color="-1"/>
       <maximumSize width="1500" height="1000"/>
       <minimumSize width="1000" height="600"/>
     </properties>
@@ -788,7 +788,7 @@
                     <properties>
                       <background color="-1"/>
                     </properties>
-                    <border type="line">
+                    <border type="none">
                       <title-color color="-16777216"/>
                       <color color="-1767148"/>
                     </border>
@@ -1546,7 +1546,7 @@
                     <properties>
                       <background color="-1"/>
                     </properties>
-                    <border type="line">
+                    <border type="none">
                       <color color="-1767148"/>
                     </border>
                     <children>
@@ -2472,7 +2472,7 @@
                     <properties>
                       <background color="-1"/>
                     </properties>
-                    <border type="line">
+                    <border type="none">
                       <color color="-1767148"/>
                     </border>
                     <children>
@@ -2982,7 +2982,7 @@
                     <properties>
                       <background color="-1"/>
                     </properties>
-                    <border type="line">
+                    <border type="none">
                       <color color="-1767148"/>
                     </border>
                     <children>
