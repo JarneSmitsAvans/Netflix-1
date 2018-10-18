@@ -224,6 +224,18 @@ public class GUI implements Runnable {
 
     // View
     private JPanel readMoviePanel;
+    private JComboBox cbReadMovie;
+    private JLabel lblReadMovieTitle;
+    private JLabel lblReadMovieDuration;
+    private JLabel lblReadMovieGenre;
+    private JLabel lblReadMovieLanguage;
+    private JLabel lblReadMovieAge;
+
+    private JLabel lblReadMovieTitleLabel;
+    private JLabel lblReadMovieDurationLabel;
+    private JLabel lblReadMovieGenreLabel;
+    private JLabel lblReadMovieLanguageLabel;
+    private JLabel lblReadMovieAgeLabel;
 
     // Add
     private JPanel addMoviePanel;
@@ -389,6 +401,20 @@ public class GUI implements Runnable {
 
     public JComboBox getCbAmountOfViewerWholeMovie() { return cbAmountOfViewerWholeMovie; };
     public JTextPane getTxtAmountOfViewersWholeMovie() { return txtAmountOfViewersWholeMovie; };
+
+    // View
+    public JComboBox getCbReadMovie() { return cbReadMovie; }
+    public JLabel getLblReadMovieTitle() { return lblReadMovieTitle; }
+    public JLabel getLblReadMovieDuration() { return lblReadMovieDuration; }
+    public JLabel getLblReadMovieGenre() { return lblReadMovieGenre; }
+    public JLabel getLblReadMovieLanguage() { return lblReadMovieLanguage; }
+    public JLabel getLblReadMovieAge() { return lblReadMovieAge; }
+
+    public JLabel getLblReadMovieTitleLabel() { return lblReadMovieTitleLabel; }
+    public JLabel getLblReadMovieDurationLabel() { return lblReadMovieDurationLabel; }
+    public JLabel getLblReadMovieGenreLabel() { return lblReadMovieGenreLabel; }
+    public JLabel getLblReadMovieLanguageLabel() { return lblReadMovieLanguageLabel; }
+    public JLabel getLblReadMovieAgeLabel() { return lblReadMovieAgeLabel; }
 
     // Add
     public JTextField getTxtMovieTitle() {
@@ -658,6 +684,9 @@ public class GUI implements Runnable {
         cbWatchedMoviesByAccount.addActionListener(new MovieGetCbValueWatchedByAccountListener(this));
         cbAmountOfViewsOfMovie.addActionListener(new MovieLoadAmountOfViewsListener(this));
         cbAmountOfViewerWholeMovie.addActionListener(new MovieGetAmountOfViewerWholeMovieListener(this));
+
+        // View
+        cbReadMovie.addActionListener(new MovieGetAllInformationListener(this));
 
         // Add
         btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));

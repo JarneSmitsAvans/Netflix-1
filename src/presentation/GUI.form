@@ -2499,7 +2499,7 @@
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="de9a5" class="javax.swing.JLabel">
+                              <component id="de9a5" class="javax.swing.JLabel" binding="lblReadMovieTitleLabel">
                                 <constraints>
                                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -2508,13 +2508,16 @@
                                   <font size="16"/>
                                   <text value="Titel"/>
                                 </properties>
+                                <clientProperties>
+                                  <html.disable class="java.lang.Boolean" value="false"/>
+                                </clientProperties>
                               </component>
                               <vspacer id="58edf">
                                 <constraints>
                                   <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </vspacer>
-                              <component id="8a772" class="javax.swing.JLabel">
+                              <component id="8a772" class="javax.swing.JLabel" binding="lblReadMovieLanguageLabel">
                                 <constraints>
                                   <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -2524,7 +2527,7 @@
                                   <text value="Taal"/>
                                 </properties>
                               </component>
-                              <component id="6ddfa" class="javax.swing.JLabel">
+                              <component id="6ddfa" class="javax.swing.JLabel" binding="lblReadMovieGenreLabel">
                                 <constraints>
                                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -2534,7 +2537,7 @@
                                   <text value="Genre"/>
                                 </properties>
                               </component>
-                              <component id="becd5" class="javax.swing.JComboBox">
+                              <component id="becd5" class="javax.swing.JComboBox" binding="cbReadMovie">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
@@ -2552,7 +2555,7 @@
                                   <text value="Kies film"/>
                                 </properties>
                               </component>
-                              <component id="d5dad" class="javax.swing.JLabel">
+                              <component id="d5dad" class="javax.swing.JLabel" binding="lblReadMovieTitle">
                                 <constraints>
                                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>
@@ -2561,7 +2564,7 @@
                                   <text value="Label"/>
                                 </properties>
                               </component>
-                              <component id="f115f" class="javax.swing.JLabel">
+                              <component id="f115f" class="javax.swing.JLabel" binding="lblReadMovieGenre">
                                 <constraints>
                                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>
@@ -2570,7 +2573,7 @@
                                   <text value="Label"/>
                                 </properties>
                               </component>
-                              <component id="ed4ba" class="javax.swing.JLabel">
+                              <component id="ed4ba" class="javax.swing.JLabel" binding="lblReadMovieLanguage">
                                 <constraints>
                                   <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>
@@ -2588,7 +2591,7 @@
                                   </grid>
                                 </constraints>
                               </vspacer>
-                              <component id="c55f" class="javax.swing.JLabel">
+                              <component id="c55f" class="javax.swing.JLabel" binding="lblReadMovieAgeLabel">
                                 <constraints>
                                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -2598,7 +2601,7 @@
                                   <text value="Min. leeftijd"/>
                                 </properties>
                               </component>
-                              <component id="94ae5" class="javax.swing.JLabel">
+                              <component id="94ae5" class="javax.swing.JLabel" binding="lblReadMovieAge">
                                 <constraints>
                                   <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>
@@ -2607,7 +2610,7 @@
                                   <text value="Label"/>
                                 </properties>
                               </component>
-                              <component id="1c296" class="javax.swing.JLabel">
+                              <component id="1c296" class="javax.swing.JLabel" binding="lblReadMovieDurationLabel">
                                 <constraints>
                                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -2617,7 +2620,7 @@
                                   <text value="Tijdsduur (min)"/>
                                 </properties>
                               </component>
-                              <component id="21497" class="javax.swing.JLabel">
+                              <component id="21497" class="javax.swing.JLabel" binding="lblReadMovieDuration">
                                 <constraints>
                                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>

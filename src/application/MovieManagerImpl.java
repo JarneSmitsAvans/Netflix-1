@@ -41,6 +41,7 @@ public class MovieManagerImpl {
         gui.getCbUpdateMovie().removeAllItems();
         gui.getCbDeleteMovie().removeAllItems();
         gui.getCbAmountOfViewerWholeMovie().removeAllItems();
+        gui.getCbReadMovie().removeAllItems();
 
         // Fill comboboxes with the titles of the movies.
         ArrayList<Movie> movieArraylist = this.getMovies();
@@ -48,12 +49,14 @@ public class MovieManagerImpl {
         this.addMoviesToComboBox(gui.getCbUpdateMovie(), movieArraylist);
         this.addMoviesToComboBox(gui.getCbDeleteMovie(), movieArraylist);
         this.addMoviesToComboBox(gui.getCbAmountOfViewerWholeMovie(), movieArraylist);
+        this.addMoviesToComboBox(gui.getCbReadMovie(), movieArraylist);
 
         // Do not select the first item from the combobox, but select a white/empty item
         gui.getCbAmountOfViewsOfMovie().setSelectedIndex(-1);
         gui.getCbUpdateMovie().setSelectedIndex(-1);
         gui.getCbDeleteMovie().setSelectedIndex(-1);
         gui.getCbAmountOfViewerWholeMovie().setSelectedIndex(-1);
+        gui.getCbReadMovie().setSelectedIndex(-1);
 
         // Make all fields from movie empty
         gui.getTxtAmountOfViewersWholeMovie().setText("");
@@ -63,6 +66,17 @@ public class MovieManagerImpl {
         gui.getTxtUpdateMovieGenre().setText("");
         gui.getTxtUpdateMovieLanguage().setText("");
         gui.getTxtUpdateMovieMinimumAge().setText("");
+        gui.getLblReadMovieTitle().setText(null);
+        gui.getLblReadMovieDuration().setText(null);
+        gui.getLblReadMovieGenre().setText(null);
+        gui.getLblReadMovieLanguage().setText(null);
+        gui.getLblReadMovieAge().setText(null);
+
+        gui.getLblReadMovieTitleLabel().setVisible(false);
+        gui.getLblReadMovieDurationLabel().setVisible(false);
+        gui.getLblReadMovieLanguageLabel().setVisible(false);
+        gui.getLblReadMovieGenreLabel().setVisible(false);
+        gui.getLblReadMovieAgeLabel().setVisible(false);
     }
 
     // Call movieDAO function 'create' with the parameter movie from the datatype Movie
