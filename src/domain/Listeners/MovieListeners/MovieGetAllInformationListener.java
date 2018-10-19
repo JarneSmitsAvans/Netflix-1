@@ -44,9 +44,6 @@ public class MovieGetAllInformationListener implements ActionListener {
                 ui.getLblReadMovieGenre().setText(movie.getGenre());
                 ui.getLblReadMovieLanguage().setText(movie.getLanguage());
                 ui.getLblReadMovieAge().setText(Integer.toString(movie.getMinAge()));
-            } else {
-                // If selected combobox item is null, show error
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan bij het ophalen van de film gegevens", "Fout bij ophalen film", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             // If something went wrong, show error
