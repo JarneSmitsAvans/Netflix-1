@@ -9,12 +9,15 @@ import com.toedter.calendar.JSpinnerDateEditor;
 import domain.Account;
 import domain.Listeners.AccountListeners.AccountCreateListener;
 import domain.Listeners.AccountListeners.AccountDeleteListener;
+import domain.Listeners.AccountListeners.AccountOverview.AccountOverviewLoadListener;
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.EpisodeListeners.*;
 import domain.Listeners.GeneralListeners.IntFilter;
 import domain.Listeners.MovieListeners.*;
 import domain.Listeners.ProfileListeners.*;
+import domain.Listeners.ProfileListeners.ProfileOverview.ProfileOverviewLoadProfilesForSelectedAccount;
+import domain.Listeners.ProfileListeners.ProfileOverview.ProfilesOverviewLoadListener;
 import domain.Listeners.SerieListeners.*;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate.*;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete.WatchBehaviourDeleteListener;
@@ -28,6 +31,8 @@ import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBeh
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadWatchedMediaListener;
 import domain.Movie;
 import domain.Profile;
+import domain.TabListener;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -79,7 +84,14 @@ public class GUI implements Runnable {
     private JComboBox cbRecommendedSerieForAccount;
 
     // View
+    private JComboBox cbAccountOverviewSelectAccount;
     private JPanel readAccountPanel;
+    private JLabel lblForOverviewAccountName;
+    private JLabel lblForOverviewAccountAddress;
+    private JLabel lblForOverviewAccountResidence;
+    private JLabel lblOverviewAccountName;
+    private JLabel lblOverviewAccountAddress;
+    private JLabel lblOverviewAccountResidence;
 
     // Add
     private JPanel addAccountPanel;
@@ -108,7 +120,13 @@ public class GUI implements Runnable {
     private JComboBox cbRecommendedSerieForProfile;
 
     // View
+    private JComboBox cbProfileOverviewSelectAccount;
+    private JComboBox cbProfileOverviewSelectProfile;
     private JPanel readProfilePanel;
+    private JLabel lblOverviewProfileName;
+    private JLabel lblOverviewProfileDateOfBirth;
+    private JLabel lblForOverviewProfileName;
+    private JLabel lblForOverviewProfileDateOfBirth;
 
     // Add
     private JPanel addProfileToAccountPanel;
@@ -311,6 +329,37 @@ public class GUI implements Runnable {
 
     // Account-----------------------------------------------------------
     // Overviews
+    public JComboBox getCbAccountOverviewSelectAccount() {
+        return cbAccountOverviewSelectAccount;
+    }
+
+    public JPanel getReadAccountPanel() {
+        return readAccountPanel;
+    }
+
+    public JLabel getLblForOverviewAccountName() {
+        return lblForOverviewAccountName;
+    }
+
+    public JLabel getLblForOverviewAccountAddress() {
+        return lblForOverviewAccountAddress;
+    }
+
+    public JLabel getLblForOverviewAccountResidence() {
+        return lblForOverviewAccountResidence;
+    }
+
+    public JLabel getLblOverviewAccountName() {
+        return lblOverviewAccountName;
+    }
+
+    public JLabel getLblOverviewAccountAddress() {
+        return lblOverviewAccountAddress;
+    }
+
+    public JLabel getLblOverviewAccountResidence() {
+        return lblOverviewAccountResidence;
+    }
     public JTextPane getTxtAccountsWithOneProfile() {
         return txtAccountsWithOneProfile;
     }
@@ -350,6 +399,33 @@ public class GUI implements Runnable {
 
     // Profiles----------------------------------------------------------
     // Overview
+    public JComboBox getCbProfileOverviewSelectAccount() {
+        return cbProfileOverviewSelectAccount;
+    }
+
+    public JComboBox getCbProfileOverviewSelectProfile() {
+        return cbProfileOverviewSelectProfile;
+    }
+
+    public JPanel getReadProfilePanel() {
+        return readProfilePanel;
+    }
+
+    public JLabel getLblOverviewProfileName() {
+        return lblOverviewProfileName;
+    }
+
+    public JLabel getLblOverviewProfileDateOfBirth() {
+        return lblOverviewProfileDateOfBirth;
+    }
+
+    public JLabel getLblForOverviewProfileName() {
+        return lblForOverviewProfileName;
+    }
+
+    public JLabel getLblForOverviewProfileDateOfBirth() {
+        return lblForOverviewProfileDateOfBirth;
+    }
     public JComboBox getCbRecommendedSerieForProfile() { return cbRecommendedSerieForProfile; }
 
     // Add
@@ -610,7 +686,7 @@ public class GUI implements Runnable {
         this.profileManager = new ProfileManagerImpl();
         this.movieManager = new MovieManagerImpl();
         this.serieManager = new SerieManagerImpl(this);
-
+        this.jTabbedPaneBase.addChangeListener(new TabListener(jTabbedPaneBase));
 //        UIManager.put("TabbedPane.selected", Color.red);
     }
 
@@ -650,6 +726,8 @@ public class GUI implements Runnable {
 //    ActionListeners ------------------------------------------------------------------------------------------------------------------
 
         // Account-------------------------------------------
+        // Overviews
+        cbAccountOverviewSelectAccount.addActionListener(new AccountOverviewLoadListener(this));
         // Add
         btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
         cbRecommendedSerieForAccount.addActionListener(new ProfileLoadProfielsForRecommendedSeries(this,cbRecommendedSerieForAccount,cbRecommendedSerieForProfile));
@@ -663,6 +741,9 @@ public class GUI implements Runnable {
         btnDeleteAccount.addActionListener(new AccountDeleteListener(this));
 
         // Profile-------------------------------------------
+        // Overviews
+        cbProfileOverviewSelectAccount.addActionListener(new ProfileOverviewLoadProfilesForSelectedAccount(this));
+        cbProfileOverviewSelectProfile.addActionListener(new ProfilesOverviewLoadListener(this));
         // Add
         btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
         cbAddProfileToSelectedAccount.setSelectedItem(null);

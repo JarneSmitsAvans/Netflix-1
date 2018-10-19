@@ -44,6 +44,7 @@ public class ProfileManagerImpl extends GeneralManager {
         gui.getCbDeleteWatchedMediaProfile().removeAllItems();
         gui.getCbWatchedProgramsBySelectedProfile().removeAllItems();
         gui.getCbRecommendedSerieForProfile().removeAllItems();
+        gui.getCbProfileOverviewSelectProfile().removeAllItems();
     }
 
     // Sends an object of type Profile to the Profile DAO that needs to be updated in the database.

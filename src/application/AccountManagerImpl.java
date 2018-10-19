@@ -49,6 +49,8 @@ public class AccountManagerImpl extends GeneralManager {
         gui.getCbDeleteWatchedMediaAccount().removeAllItems();
         gui.getCbWatchedProgramsBySelectedAccount().removeAllItems();
         gui.getCbRecommendedSerieForAccount().removeAllItems();
+        gui.getCbAccountOverviewSelectAccount().removeAllItems();
+        gui.getCbProfileOverviewSelectAccount().removeAllItems();
 
         initializeAccountComponents(gui);
 
@@ -67,10 +69,14 @@ public class AccountManagerImpl extends GeneralManager {
         this.addAccountsToComboBox(gui.getCbDeleteWatchedMediaAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbWatchedProgramsBySelectedAccount(), accountArrayList);
         this.addAccountsToComboBox(gui.getCbRecommendedSerieForAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbAccountOverviewSelectAccount(), accountArrayList);
+        this.addAccountsToComboBox(gui.getCbProfileOverviewSelectAccount(), accountArrayList);
+
         gui.getTxtUpdateAccountName().setText(null);
         gui.getTxtUpdateAccountAdres().setText(null);
         gui.getTxtUpdateAccountResidence().setText(null);
         gui.getCbAccountAvgWatchedBySerie().setSelectedItem(null);
+        gui.getCbProfileOverviewSelectAccount().setSelectedItem(null);
         gui.getCbWatchedMoviesByAccount().setSelectedIndex(-1);
         gui.getCbDeleteAccount().setSelectedItem(null);
         gui.getCbUpdateAccount().setSelectedItem(null);
@@ -82,9 +88,15 @@ public class AccountManagerImpl extends GeneralManager {
         gui.getCbAddProfileToSelectedAccount().setSelectedItem(null);
         gui.getCbSelectAccountForProfileEdit().setSelectedItem(null);
         gui.getCbDeleteProfileFromSelectedAccount().setSelectedItem(null);
-
+        gui.getCbAccountOverviewSelectAccount().setSelectedItem(null);
         gui.getjDPnewDateOfBirth().setDate(null);
         gui.getTxtUpdateProfileName().setText(null);
+        gui.getLblForOverviewAccountAddress().setVisible(false);
+        gui.getLblForOverviewAccountName().setVisible(false);
+        gui.getLblForOverviewAccountResidence().setVisible(false);
+        gui.getLblOverviewAccountAddress().setVisible(false);
+        gui.getLblOverviewAccountName().setVisible(false);
+        gui.getLblOverviewAccountResidence().setVisible(false);
     }
 
     // Sends an object of type Account to the Account DAO that needs to be inserted into the database.
