@@ -64,7 +64,6 @@ public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
                 this.ui.getTxtMoviesWatchedByAccount().setText(watchedMovies);
             } else {
                 // If combobox item is null.
-                this.ui.getTxtMoviesWatchedByAccount().setText("Er is geen juist item gekozen.");
             }
         } catch (Exception ex) {
             // If something went wrong..
