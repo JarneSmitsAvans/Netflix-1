@@ -744,6 +744,7 @@ public class GUI implements Runnable {
         // Overviews
         cbProfileOverviewSelectAccount.addActionListener(new ProfileOverviewLoadProfilesForSelectedAccount(this));
         cbProfileOverviewSelectProfile.addActionListener(new ProfilesOverviewLoadListener(this));
+
         // Add
         btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
         cbAddProfileToSelectedAccount.setSelectedItem(null);
@@ -784,13 +785,15 @@ public class GUI implements Runnable {
         cbUpdateEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbUpdateEpisodeOfSerie,cbUpdateEpisodeForSerie));
         cbDeleteEpisodeFromSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbDeleteEpisodeFromSerie,cbDeleteEpisode));
         cbSerieAvgOfSerie.addActionListener(new EpisodeGetAvgOfSerie(this, cbSerieAvgOfSerie));
+        cbRecommendedSerieForProfile.addActionListener(new SerieGetRecommendedSerieFromProfileListener(this));
+
         // Add
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
         txtSerieCreateAge.addKeyListener(new IntFilter());
 
 
         // Edit
-        cbGetUpdateSerie.addActionListener(new SerieGetValuesToUpdate(this,cbGetUpdateSerie));
+        cbGetUpdateSerie.addActionListener(new SerieGetValuesToUpdateListener(this,cbGetUpdateSerie));
         btnUpdateSerie.addActionListener(new SerieUpdateListener(this,cbGetUpdateSerie));
         txtUpdateSerieAge.addKeyListener(new IntFilter());
 

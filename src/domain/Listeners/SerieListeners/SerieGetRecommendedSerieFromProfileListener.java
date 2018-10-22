@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class SerieGetRecommendedSerieFromAccount implements ActionListener {
+public class SerieGetRecommendedSerieFromProfileListener implements ActionListener {
     private GUI ui;
     private SerieManagerImpl serieManager ;
     private EpisodeManagerlmpl episodeManager ;
@@ -18,7 +18,7 @@ public class SerieGetRecommendedSerieFromAccount implements ActionListener {
     private AccountManagerImpl accountManager;
     private WatchBehaviourManagerImpl watchBehaviourManager;
 
-    public SerieGetRecommendedSerieFromAccount(GUI ui) {
+    public SerieGetRecommendedSerieFromProfileListener(GUI ui) {
         this.ui = ui;
         this.serieManager = new SerieManagerImpl(ui);
         this.episodeManager = new EpisodeManagerlmpl(ui);

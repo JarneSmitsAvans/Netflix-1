@@ -8,13 +8,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SerieGetValuesToUpdate implements ActionListener {
+public class SerieGetValuesToUpdateListener implements ActionListener {
     private GUI ui;
     private JComboBox cbSelectedSerie;
     private SerieManagerImpl serieManager ;
 
     //Constructor
-    public SerieGetValuesToUpdate(GUI ui,JComboBox cbSelectedSerie) {
+    public SerieGetValuesToUpdateListener(GUI ui, JComboBox cbSelectedSerie) {
         this.ui = ui;
         this.cbSelectedSerie = cbSelectedSerie;
         this.serieManager = new SerieManagerImpl(ui);

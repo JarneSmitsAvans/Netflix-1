@@ -8,24 +8,21 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
+    <orderEntry type="library" name="mssql-jdbc-6.2.2.jre8" level="project" />
+    <orderEntry type="library" name="jcalendar-1.4" level="project" />
+    <orderEntry type="module-library" scope="TEST">
+      <library name="JUnit5.2">
         <CLASSES>
-          <root url="jar://D:/Downloadmapjes/JDBC 6.2/sqljdbc_6.2/enu/mssql-jdbc-6.2.2.jre8.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/junit-jupiter-api-5.3.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/apiguardian-api-1.0.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/opentest4j-1.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/junit-platform-commons-1.3.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://D:/Downloads_NIEUW/jcalendar-1.4/lib/jcalendar-1.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="libraries" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5.2">
         <CLASSES>
