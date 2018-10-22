@@ -16,25 +16,26 @@ import domain.Listeners.EpisodeListeners.*;
 import domain.Listeners.GeneralListeners.IntFilter;
 import domain.Listeners.MovieListeners.*;
 import domain.Listeners.ProfileListeners.*;
-import domain.Listeners.ProfileListeners.ProfileOverview.ProfileOverviewLoadProfilesForSelectedAccount;
+import domain.Listeners.ProfileListeners.ProfileOverview.ProfileOverviewLoadProfilesForSelectedAccountListener;
 import domain.Listeners.ProfileListeners.ProfileOverview.ProfilesOverviewLoadListener;
 import domain.Listeners.SerieListeners.*;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate.*;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete.WatchBehaviourDeleteListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete.WatchBehaviourLoadProfilesForSelectedAccountDeleteListener;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete.WatchBehaviourLoadWatchedMediaForDelete;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourDelete.WatchBehaviourLoadWatchedMediaForDeleteListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadProfilesForSelectedAccountEditListener;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadWatchedMediaForEdit;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviorLoadWatchedMediaForEditListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourEditBehaviourListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourLoadDurationListener;
-import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadProfilesForSelectedAccount;
+import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadProfilesForSelectedAccountListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadWatchedMediaListener;
 import domain.Movie;
 import domain.Profile;
-//import domain.TabListener;
 
 import javax.swing.*;
 import java.awt.*;
+
+//import domain.TabListener;
 
 public class GUI implements Runnable {
     // Class variables
@@ -742,7 +743,7 @@ public class GUI implements Runnable {
 
         // Profile-------------------------------------------
         // Overviews
-        cbProfileOverviewSelectAccount.addActionListener(new ProfileOverviewLoadProfilesForSelectedAccount(this));
+        cbProfileOverviewSelectAccount.addActionListener(new ProfileOverviewLoadProfilesForSelectedAccountListener(this));
         cbProfileOverviewSelectProfile.addActionListener(new ProfilesOverviewLoadListener(this));
 
         // Add
@@ -750,7 +751,7 @@ public class GUI implements Runnable {
         cbAddProfileToSelectedAccount.setSelectedItem(null);
         // Edit
         cbSelectAccountForProfileEdit.setSelectedItem(null);
-        cbSelectAccountForProfileEdit.addActionListener(new ProfilesLoadProfilesForSelectedAccountUpdate(this));
+        cbSelectAccountForProfileEdit.addActionListener(new ProfilesLoadProfilesForSelectedAccountUpdateListener(this));
         cbUpdateSelectedProfile.setEnabled(false);
         cbUpdateSelectedProfile.addActionListener(new ProfileUpdateComboBoxListener(this));
         btnEditProfile.addActionListener(new ProfileUpdateListener(this));
@@ -821,7 +822,7 @@ public class GUI implements Runnable {
         // Watch Behaviour-----------------------------------
 
         // Overviews
-        cbWatchedProgramsBySelectedAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccount(this));
+        cbWatchedProgramsBySelectedAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
         cbWatchedProgramsBySelectedProfile.addActionListener(new WatchBehaviourLoadWatchedMediaListener(this));
         cbWatchedProgramsBySelectedProfile.setSelectedItem(null);
         cbSerieAvgWatchedBySerie.addActionListener(new EpisodesGetAvgOfWatchedEpisodesFromAccount(this,cbSerieAvgWatchedBySerie));
@@ -834,7 +835,7 @@ public class GUI implements Runnable {
         rbMovie.setEnabled(false);
         rbSerie.setEnabled(false);
         txtAddWatchedMediaDuration.setEnabled(false);
-        cbAddWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountListener(this));
+        cbAddWatchedMediaAccount.addActionListener(new domain.Listeners.WatchBehaviourListeners.WatchBehaviourCreate.WatchBehaviourLoadProfilesForSelectedAccountListener(this));
         cbAddWatchedMediaEpisode.setVisible(false);
         lblWatchedEpisode.setVisible(false);
 
@@ -861,7 +862,7 @@ public class GUI implements Runnable {
         cbEditWatchedMediaAccount.setSelectedItem(null);
         cbEditWatchedMediaProfile.setEnabled(false);
         cbEditWatchedMediaAccount.addActionListener(new WatchBehaviorLoadProfilesForSelectedAccountEditListener(this));
-        cbEditWatchedMediaProfile.addActionListener(new WatchBehaviorLoadWatchedMediaForEdit(this));
+        cbEditWatchedMediaProfile.addActionListener(new WatchBehaviorLoadWatchedMediaForEditListener(this));
         cbEditWatchedMediaTitle.addActionListener(new WatchBehaviourLoadDurationListener(this));
         btnEditWatchedMedia.addActionListener(new WatchBehaviourEditBehaviourListener(this));
 
@@ -869,7 +870,7 @@ public class GUI implements Runnable {
         cbDeleteWatchedMediaAccount.setSelectedItem(null);
         cbDeleteWatchedMediaProfile.setEnabled(false);
         cbDeleteWatchedMediaAccount.addActionListener(new WatchBehaviourLoadProfilesForSelectedAccountDeleteListener(this));
-        cbDeleteWatchedMediaProfile.addActionListener(new WatchBehaviourLoadWatchedMediaForDelete(this));
+        cbDeleteWatchedMediaProfile.addActionListener(new WatchBehaviourLoadWatchedMediaForDeleteListener(this));
         btnDeleteWatchBehaviour.addActionListener(new WatchBehaviourDeleteListener(this));
     }
 

@@ -10,19 +10,19 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 /**
- * ProfileOverviewLoadProfilesForSelectedAccount.java
+ * ProfileOverviewLoadProfilesForSelectedAccountListener.java
  * This ActionListener gets all the profiles matching the selected account and places it into the profile comboBox.
  * <p>
  * Author: Dylan ten Böhmer
  */
 
-public class ProfileOverviewLoadProfilesForSelectedAccount implements ActionListener {
+public class ProfileOverviewLoadProfilesForSelectedAccountListener implements ActionListener {
     private GUI ui;
     private AccountManagerImpl accountManager;
     private ProfileManagerImpl profileManager;
     private Account account;
 
-    public ProfileOverviewLoadProfilesForSelectedAccount(GUI ui) {
+    public ProfileOverviewLoadProfilesForSelectedAccountListener(GUI ui) {
         this.ui = ui;
         this.accountManager = new AccountManagerImpl();
         this.profileManager = new ProfileManagerImpl();

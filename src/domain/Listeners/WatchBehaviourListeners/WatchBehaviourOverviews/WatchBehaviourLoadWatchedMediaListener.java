@@ -48,7 +48,7 @@ public class WatchBehaviourLoadWatchedMediaListener implements ActionListener {
                 ArrayList<Episode> watchedEpisodes = watchBehaviourManager.getWatchedEpisodes(profileID);
                 HashSet<String> fullyWatchedTitles = new HashSet<>();
 
-                // For each movie, check if it was fully watched, if so, add it to the fully watched titels HashSet.
+                // For each movie, check if it was fully watched, if so, add it to the fully watched titles HashSet.
                 for (Movie movie : watchedMovies) {
                     int watchedDuration = movie.getWatchedDuration();
                     int totalDuration = movie.getDuration();
@@ -66,8 +66,12 @@ public class WatchBehaviourLoadWatchedMediaListener implements ActionListener {
                 }
                 // For each fully watched title, add it to the textPane.
                 StyledDocument styledDocument = ui.getTxtWatchedProgramsBySelectedProfile().getStyledDocument();
-                for (String string : fullyWatchedTitles) {
-                    styledDocument.insertString(0, string + "\n", null);
+                if (!fullyWatchedTitles.isEmpty()) {
+                    for (String string : fullyWatchedTitles) {
+                        styledDocument.insertString(0, string + "\n", null);
+                    }
+                } else {
+                    styledDocument.insertString(0, "Geselecteerd profiel heeft nog geen programma's volledig (100%) bekeken." + "\n", null);
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();

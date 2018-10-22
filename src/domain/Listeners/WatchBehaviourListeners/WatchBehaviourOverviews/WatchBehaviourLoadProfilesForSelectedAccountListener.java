@@ -9,20 +9,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * WatchBehaviourLoadProfilesForSelectedAccount.java
+ * WatchBehaviourLoadProfilesForSelectedAccountListener.java
  * This ActionListener gets all the profiles matching the selected account and places it into the profile comboBox.
  * <p>
  * Author: Dylan ten Böhmer
  */
 
-public class WatchBehaviourLoadProfilesForSelectedAccount implements ActionListener {
+public class WatchBehaviourLoadProfilesForSelectedAccountListener implements ActionListener {
     private GUI ui;
     private AccountManagerImpl accountManager;
     private ProfileManagerImpl profileManager;
     private Account account;
 
     // Constructor
-    public WatchBehaviourLoadProfilesForSelectedAccount(GUI ui) {
+    public WatchBehaviourLoadProfilesForSelectedAccountListener(GUI ui) {
         this.ui = ui;
         accountManager = new AccountManagerImpl();
         profileManager = new ProfileManagerImpl();
