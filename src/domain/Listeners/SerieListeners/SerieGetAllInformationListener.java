@@ -21,7 +21,7 @@ public class SerieGetAllInformationListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(selectedSerie.getSelectedItem() != "" && selectedSerie.getSelectedItem() != null){
+        if(selectedSerie.getSelectedItem() != "Selecteer serie" && selectedSerie.getSelectedItem() != null){
             Serie serie = (Serie)selectedSerie.getSelectedItem();
 
             ui.getLblSerieViewTitlelb().setText(serie.getTitle());
