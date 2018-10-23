@@ -20,10 +20,10 @@ public class MovieCreateListener implements ActionListener {
     private Movie movie;
 
     // Constructor
-    public MovieCreateListener(GUI ui, Movie movie) {
+    public MovieCreateListener(GUI ui) {
         this.ui = ui;
         this.movieManager = new MovieManagerImpl();
-        this.movie = movie;
+        this.movie = new Movie();
     }
 
     @Override
