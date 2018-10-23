@@ -22,9 +22,9 @@ public class AccountCreateListener implements ActionListener {
     private Account account;
 
     // Constructor
-    public AccountCreateListener(GUI ui, Account account) {
+    public AccountCreateListener(GUI ui) {
         this.ui = ui;
-        this.account = account;
+        this.account = new Account();
         this.accountManager = new AccountManagerImpl();
     }
 

@@ -6,7 +6,6 @@ import application.ProfileManagerImpl;
 import application.SerieManagerImpl;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
-import domain.Account;
 import domain.Listeners.AccountListeners.AccountCreateListener;
 import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountOverview.AccountOverviewLoadListener;
@@ -730,7 +729,7 @@ public class GUI implements Runnable {
         // Overviews
         cbAccountOverviewSelectAccount.addActionListener(new AccountOverviewLoadListener(this));
         // Add
-        btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
+        btnAddAccount.addActionListener(new AccountCreateListener(this));
         cbRecommendedSerieForAccount.addActionListener(new ProfileLoadProfielsForRecommendedSeries(this,cbRecommendedSerieForAccount,cbRecommendedSerieForProfile));
 
         // Edit
