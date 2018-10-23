@@ -1,23 +1,28 @@
 package domain.Listeners.SerieListeners;
 
 import application.SerieManagerImpl;
+import datastorage.SerieDAO;
 import domain.Serie;
 import presentation.GUI;
-
+import datastorage.SerieDAO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SerieGetValuesToUpdateListener implements ActionListener {
     private GUI ui;
     private JComboBox cbSelectedSerie;
     private SerieManagerImpl serieManager ;
+    private SerieDAO serieDAO ;
 
     //Constructor
     public SerieGetValuesToUpdateListener(GUI ui, JComboBox cbSelectedSerie) {
         this.ui = ui;
         this.cbSelectedSerie = cbSelectedSerie;
         this.serieManager = new SerieManagerImpl(ui);
+        this.serieDAO = new SerieDAO();
     }
 
     @Override
@@ -32,12 +37,24 @@ public class SerieGetValuesToUpdateListener implements ActionListener {
             String minAge = Integer.toString(serie.getMinAge());
             ui.getTxtUpdateSerieAge().setText(minAge);
 
-            Serie selectedSerie = serieManager.getSerieById(serie.getId());
-            Serie serieReference = serieManager.getSerieById(selectedSerie.getRecommendedSerie());
 
-            //serieManager.fillAllSerieCbx();
-            ui.getCbUpdateSerieRecomendedSerie().addItem(serieReference);
-            ui.getCbUpdateSerieRecomendedSerie().setSelectedItem(serieReference);
+            try {
+                ArrayList<Serie> serieList = serieDAO.getSeries();
+                ui.getCbUpdateSerieRecomendedSerie().removeAllItems();
+                serieManager.appendComboBox(ui.getCbUpdateSerieRecomendedSerie(),serieList);
+
+                for(Serie serie1 : serieList){
+                    if(serie1.getId() == serie.getRecommendedSerie()){
+                        ui.getCbUpdateSerieRecomendedSerie().setSelectedItem(serie1);
+                    }
+                }
+
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            } catch (ClassNotFoundException e1) {
+                e1.printStackTrace();
+            }
+
         }
     }
 }

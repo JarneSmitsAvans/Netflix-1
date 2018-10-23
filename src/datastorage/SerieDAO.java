@@ -18,13 +18,14 @@ public class SerieDAO {
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
 
         while (resultSet.next()) {
-            Serie newserie = new Serie();
-            newserie.setId(resultSet.getInt("id"));
-            newserie.setTitle(resultSet.getString("title"));
-            newserie.setGenre(resultSet.getString("genre"));
-            newserie.setLanguage(resultSet.getString("language"));
-            newserie.setMinAge(resultSet.getInt("minimumage"));
-            serieList.add(newserie);
+            Serie serie = new Serie();
+            serie.setId(resultSet.getInt("id"));
+            serie.setTitle(resultSet.getString("title"));
+            serie.setGenre(resultSet.getString("genre"));
+            serie.setLanguage(resultSet.getString("language"));
+            serie.setMinAge(resultSet.getInt("minimumage"));
+            serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
+            serieList.add(serie);
         }
 
         databaseConnection.CloseConnection();

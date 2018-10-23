@@ -29,24 +29,32 @@ public class SerieGetRecommendedSerieFromProfileListener implements ActionListen
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        try{
-            int profileID = profileManager.getIdOfProfile(ui.getCbRecommendedSerieForProfile().getSelectedItem().toString(), ui.getCbRecommendedSerieForAccount().getSelectedItem().toString());
-            Serie serie = watchBehaviourManager.getLastWatchedSerie(profileID);
+        try {
+            String profileName = ui.getCbRecommendedSerieForProfile().getSelectedItem().toString();
+            if (profileName != "" && ui.getCbRecommendedSerieForAccount() != null) {
+
+                String accountName = ui.getCbRecommendedSerieForAccount().getSelectedItem().toString();
 
 
-            StringBuilder sb = new StringBuilder();
+                int profileID = profileManager.getIdOfProfile(profileName, accountName);
+                Serie serie = watchBehaviourManager.getLastWatchedSerie(profileID);
 
-            sb.append("Aanbevolen series: \n");
-            if(serie.getRecommendedSerie() != 0){
-                Serie recommendedSerie = serieManager.getSerieById(serie.getRecommendedSerie());
-                sb.append("Omdat u als laatste naar " + serie.getTitle() + " hebt gekeken.\n \n");
-                sb.append("Bevelen wij u de volgende serie aan: \n");
-                sb.append( recommendedSerie.getTitle() + " \n");
+                StringBuilder sb = new StringBuilder();
+
+                sb.append("Aanbevolen series: \n");
+                if (serie.getRecommendedSerie() != 0) {
+                    Serie recommendedSerie = serieManager.getSerieById(serie.getRecommendedSerie());
+                    sb.append("Omdat u als laatste naar " + serie.getTitle() + " hebt gekeken.\n \n");
+                    sb.append("Bevelen wij u de volgende serie aan: \n");
+                    sb.append(recommendedSerie.getTitle() + " \n");
+                } else {
+                    sb.append("U heeft nog nergens naar gekeken. Bekijk eerst een serie.");
+                }
+                ui.getTxtRecommendedSerie().setText(sb.toString());
             }
             else{
-                sb.append("U heeft nog nergens naar gekeken. Bekijk eerst een serie.");
+                return;
             }
-            ui.getTxtRecommendedSerie().setText(sb.toString());
         }
         catch (Exception ex) {
             ex.printStackTrace();

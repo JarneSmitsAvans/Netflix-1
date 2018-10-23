@@ -159,11 +159,8 @@ public class WatchBehaviourDAO {
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
             serie.setId(resultSet.getInt("Id"));
-            serie.setTitle(resultSet.getString(16));
-            //serie.setWatchedOn(resultSet.getString("WatchedOn"));
-            serie.setRecommendedSerie(resultSet.getInt(20));
-            serie.setWatchedDuration(resultSet.getInt("TimeWatched"));
-            serie.setDuration(resultSet.getInt("Duration"));
+            serie.setTitle(resultSet.getString(17));
+            serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
         }
         databaseConnection.CloseConnection();
         return serie;

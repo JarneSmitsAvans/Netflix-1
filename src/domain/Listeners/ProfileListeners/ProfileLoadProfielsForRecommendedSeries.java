@@ -15,16 +15,16 @@ public class ProfileLoadProfielsForRecommendedSeries implements ActionListener {
     private AccountManagerImpl accountManager;
     private ProfileManagerImpl profileManager;
     private Account account;
-    private JComboBox cbSelectedSerie;
+    private JComboBox cbSelectedAccount;
     private JComboBox profileCbToFill;
 
     // Constructor
-    public ProfileLoadProfielsForRecommendedSeries(GUI ui ,JComboBox cbSelectedSerie, JComboBox profileCbToFill) {
+    public ProfileLoadProfielsForRecommendedSeries(GUI ui ,JComboBox cbSelectedAccount, JComboBox profileCbToFill) {
         this.ui = ui;
         this.accountManager = new AccountManagerImpl();
         this.profileManager = new ProfileManagerImpl();
         this.account = new Account();
-        this.cbSelectedSerie = cbSelectedSerie;
+        this.cbSelectedAccount = cbSelectedAccount;
         this.profileCbToFill = profileCbToFill;
     }
 
@@ -33,16 +33,20 @@ public class ProfileLoadProfielsForRecommendedSeries implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             // Check if input wasn't empty or invalid
-            if (cbSelectedSerie.getSelectedItem() != null) {
+            if (cbSelectedAccount.getSelectedItem() != null) {
                 // Empty the comboBox to avoid double data
                 profileManager.initializeProfileComboBoxes(ui);
+                profileCbToFill.removeAllItems();
+
                 // Declare/initialize variables
-                String strSelectedAccount = cbSelectedSerie.getSelectedItem().toString();
+                String strSelectedAccount = cbSelectedAccount.getSelectedItem().toString();
+
                 // Get the account data that matches the selected Account.
                 account = accountManager.getAccountByName(strSelectedAccount);
+
                 // Get the ID of the account.
                 int id = this.account.getId();
-                ui.getCbDeleteProfile().setEnabled(true);
+
                 // Place all profiles that belong to the variable account into the comboBox.
                 profileManager.addProfilesToComboBox(profileCbToFill, profileManager.getMatchingProfiles(id));
             } else {

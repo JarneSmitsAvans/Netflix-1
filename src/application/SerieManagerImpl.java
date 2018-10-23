@@ -61,7 +61,7 @@ public class SerieManagerImpl {
     //Creates a arraylist with all the comboboxes that need to be filed with series and starts filling them
     public void fillAllSerieCbx() {
         setSerieList();
-        JComboBox[] allSerieCb = new JComboBox[]{ui.getCbSerieAvgWatchedByEpisode(),ui.getCbGetUpdateSerie(),ui.getCbGetdeleteSerie(),ui.getCbSerieAvgWatchedBySerie(),ui.getCbCreateEpisodeForSerie(),ui.getCbDeleteEpisodeFromSerie(),ui.getCbUpdateEpisodeOfSerie(),ui.getCbCreateSerieRecomendedSerie(),ui.getCbUpdateSerieRecomendedSerie(),ui.getCbSerieAvgOfSerie()};
+        JComboBox[] allSerieCb = new JComboBox[]{ui.getCbReadserie(),ui.getCbSerieAvgWatchedByEpisode(),ui.getCbGetUpdateSerie(),ui.getCbGetdeleteSerie(),ui.getCbSerieAvgWatchedBySerie(),ui.getCbCreateEpisodeForSerie(),ui.getCbDeleteEpisodeFromSerie(),ui.getCbUpdateEpisodeOfSerie(),ui.getCbCreateSerieRecomendedSerie(),ui.getCbSerieAvgOfSerie()};
 
         for(int i= 0; i < allSerieCb.length; i++){
             allSerieCb[i].setSelectedItem(-1);
@@ -69,6 +69,8 @@ public class SerieManagerImpl {
             allSerieCb[i].addItem("Selecteer serie");
             appendComboBox(allSerieCb[i],serieList);
         }
+
+
     }
 
     //Fill al the comboboxes With series
@@ -78,6 +80,20 @@ public class SerieManagerImpl {
         {
             seriecb.addItem(serie);
         }
+    }
+
+    public void hideSerieLabels(){
+        ui.getLblSerieViewTitlelb().setVisible(false);
+        ui.getLblSerieGenre().setVisible(false);
+        ui.getLblSerieLanguage().setVisible(false);
+        ui.getLblSerieMinAge().setVisible(false);
+        ui.getLblSerieRecommended().setVisible(false);
+
+        ui.getLblSerieTitleLabel().setVisible(false);
+        ui.getLblSerieGenreLabel().setVisible(false);
+        ui.getLblSerieLanguageLabel().setVisible(false);
+        ui.getLblSerieMinAgeLabel().setVisible(false);
+        ui.getLblSerieRecommendedLabel().setVisible(false);
     }
 
     //Returns al boolean if a new serie has been created or not

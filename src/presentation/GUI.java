@@ -318,7 +318,17 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
     private JButton btnDeleteWatchBehaviour;
-
+    private JComboBox cbReadserie;
+    private JLabel lblSerieTitleLabel;
+    private JLabel lblSerieGenreLabel;
+    private JLabel lblSerieGenre;
+    private JLabel lblSerieLanguageLabel;
+    private JLabel lblSerieLanguage;
+    private JLabel lblSerieMinAgeLabel;
+    private JLabel lblSerieMinAge;
+    private JLabel lblSerieRecommendedLabel;
+    private JLabel lblSerieRecommended;
+    private JLabel lblSerieViewTitle;
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -628,6 +638,21 @@ public class GUI implements Runnable {
     public JComboBox getCbSerieAvgOfSerie() { return cbSerieAvgOfSerie; }
     public JTextPane getTxtRecommendedSerie() { return txtRecommendedSerie; }
 
+    // View
+    public JLabel getLblSerieViewTitlelb() { return lblSerieViewTitle; }
+    public JLabel getLblSerieGenre() { return lblSerieGenre; }
+    public JLabel getLblSerieLanguage() { return lblSerieLanguage; }
+    public JLabel getLblSerieMinAge() { return lblSerieMinAge; }
+    public JLabel getLblSerieRecommended() { return  lblSerieRecommended; }
+
+    public JLabel getLblSerieTitleLabel() { return lblSerieTitleLabel; }
+    public JLabel getLblSerieGenreLabel() { return lblSerieGenreLabel; }
+    public JLabel getLblSerieLanguageLabel() { return lblSerieLanguageLabel; }
+    public JLabel getLblSerieMinAgeLabel() { return lblSerieMinAgeLabel; }
+    public JLabel getLblSerieRecommendedLabel() { return lblSerieRecommendedLabel; }
+
+    public JComboBox getCbReadserie() { return cbReadserie; }
+
     // Add
     public JTextField getTxtSerieCreateTitle() { return txtSerieCreateTitle; }
     public JTextField getTxtSerieCreateGenre() { return txtSerieCreateGenre; }
@@ -788,6 +813,9 @@ public class GUI implements Runnable {
         cbSerieAvgOfSerie.addActionListener(new EpisodeGetAvgOfSerie(this, cbSerieAvgOfSerie));
         cbRecommendedSerieForProfile.addActionListener(new SerieGetRecommendedSerieFromProfileListener(this));
 
+        // View
+        cbReadserie.addActionListener(new SerieGetAllInformationListener(this, cbReadserie));
+
         // Add
         btnCreateSerie.addActionListener(new SerieCreateListener(this));
         txtSerieCreateAge.addKeyListener(new IntFilter());
@@ -889,6 +917,7 @@ public class GUI implements Runnable {
 
             //Serie
             serieManager.fillAllSerieCbx();
+            serieManager.hideSerieLabels();
 
         } catch (Exception e) {
             System.out.println(e);

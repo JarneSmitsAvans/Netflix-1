@@ -1565,7 +1565,7 @@
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="1ea67" class="javax.swing.JLabel">
+                              <component id="1ea67" class="javax.swing.JLabel" binding="lblSerieTitleLabel">
                                 <constraints>
                                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -1574,13 +1574,16 @@
                                   <font size="16"/>
                                   <text value="Titel"/>
                                 </properties>
+                                <clientProperties>
+                                  <html.disable class="java.lang.Boolean" value="false"/>
+                                </clientProperties>
                               </component>
                               <vspacer id="cce5c">
                                 <constraints>
                                   <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </vspacer>
-                              <component id="1d93f" class="javax.swing.JLabel">
+                              <component id="1d93f" class="javax.swing.JLabel" binding="lblSerieLanguageLabel">
                                 <constraints>
                                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -1590,7 +1593,7 @@
                                   <text value="Taal"/>
                                 </properties>
                               </component>
-                              <component id="d6f3" class="javax.swing.JLabel">
+                              <component id="d6f3" class="javax.swing.JLabel" binding="lblSerieGenreLabel">
                                 <constraints>
                                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -1600,12 +1603,13 @@
                                   <text value="Genre"/>
                                 </properties>
                               </component>
-                              <component id="95a20" class="javax.swing.JComboBox">
+                              <component id="95a20" class="javax.swing.JComboBox" binding="cbReadserie">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
+                                  <model/>
                                 </properties>
                               </component>
                               <component id="6bcf3" class="javax.swing.JLabel">
@@ -1618,7 +1622,7 @@
                                   <text value="Kies serie"/>
                                 </properties>
                               </component>
-                              <component id="7eb7b" class="javax.swing.JLabel">
+                              <component id="7eb7b" class="javax.swing.JLabel" binding="lblSerieViewTitle">
                                 <constraints>
                                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>
@@ -1627,7 +1631,7 @@
                                   <text value="Label"/>
                                 </properties>
                               </component>
-                              <component id="22ad0" class="javax.swing.JLabel">
+                              <component id="22ad0" class="javax.swing.JLabel" binding="lblSerieGenre">
                                 <constraints>
                                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>
@@ -1636,7 +1640,7 @@
                                   <text value="Label"/>
                                 </properties>
                               </component>
-                              <component id="9a4c3" class="javax.swing.JLabel">
+                              <component id="9a4c3" class="javax.swing.JLabel" binding="lblSerieLanguage">
                                 <constraints>
                                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>
@@ -1654,7 +1658,7 @@
                                   </grid>
                                 </constraints>
                               </vspacer>
-                              <component id="7f343" class="javax.swing.JLabel">
+                              <component id="7f343" class="javax.swing.JLabel" binding="lblSerieMinAgeLabel">
                                 <constraints>
                                   <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -1664,7 +1668,7 @@
                                   <text value="Min. leeftijd"/>
                                 </properties>
                               </component>
-                              <component id="c1778" class="javax.swing.JLabel">
+                              <component id="c1778" class="javax.swing.JLabel" binding="lblSerieMinAge">
                                 <constraints>
                                   <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>
@@ -1673,7 +1677,7 @@
                                   <text value="Label"/>
                                 </properties>
                               </component>
-                              <component id="bf7c5" class="javax.swing.JLabel">
+                              <component id="bf7c5" class="javax.swing.JLabel" binding="lblSerieRecommendedLabel">
                                 <constraints>
                                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -1683,7 +1687,7 @@
                                   <text value="Relevante serie"/>
                                 </properties>
                               </component>
-                              <component id="b802b" class="javax.swing.JLabel">
+                              <component id="b802b" class="javax.swing.JLabel" binding="lblSerieRecommended">
                                 <constraints>
                                   <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="10" use-parent-layout="false"/>
                                 </constraints>
@@ -2499,6 +2503,7 @@
                                   <enabled value="false"/>
                                   <font size="16"/>
                                   <text value="Titel"/>
+                                  <visible value="true"/>
                                 </properties>
                                 <clientProperties>
                                   <html.disable class="java.lang.Boolean" value="false"/>
