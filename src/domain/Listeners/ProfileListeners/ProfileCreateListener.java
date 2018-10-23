@@ -24,9 +24,9 @@ public class ProfileCreateListener implements ActionListener {
     private AccountManagerImpl accountManager;
 
     // Constructor
-    public ProfileCreateListener(GUI ui, Profile profile) {
+    public ProfileCreateListener(GUI ui) {
         this.ui = ui;
-        this.profile = profile;
+        this.profile = new Profile();
         this.profileManager = new ProfileManagerImpl();
         this.accountManager = new AccountManagerImpl();
     }

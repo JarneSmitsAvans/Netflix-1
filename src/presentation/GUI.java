@@ -6,7 +6,6 @@ import application.ProfileManagerImpl;
 import application.SerieManagerImpl;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
-import domain.Account;
 import domain.Listeners.AccountListeners.AccountCreateListener;
 import domain.Listeners.AccountListeners.AccountDeleteListener;
 import domain.Listeners.AccountListeners.AccountOverview.AccountOverviewLoadListener;
@@ -29,8 +28,6 @@ import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviou
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit.WatchBehaviourLoadDurationListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadProfilesForSelectedAccountListener;
 import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBehaviourLoadWatchedMediaListener;
-import domain.Movie;
-import domain.Profile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -755,7 +752,7 @@ public class GUI implements Runnable {
         // Overviews
         cbAccountOverviewSelectAccount.addActionListener(new AccountOverviewLoadListener(this));
         // Add
-        btnAddAccount.addActionListener(new AccountCreateListener(this, new Account()));
+        btnAddAccount.addActionListener(new AccountCreateListener(this));
         cbRecommendedSerieForAccount.addActionListener(new ProfileLoadProfielsForRecommendedSeries(this,cbRecommendedSerieForAccount,cbRecommendedSerieForProfile));
 
         // Edit
@@ -772,7 +769,7 @@ public class GUI implements Runnable {
         cbProfileOverviewSelectProfile.addActionListener(new ProfilesOverviewLoadListener(this));
 
         // Add
-        btnCreateProfile.addActionListener(new ProfileCreateListener(this, new Profile()));
+        btnCreateProfile.addActionListener(new ProfileCreateListener(this));
         cbAddProfileToSelectedAccount.setSelectedItem(null);
         // Edit
         cbSelectAccountForProfileEdit.setSelectedItem(null);
@@ -796,7 +793,7 @@ public class GUI implements Runnable {
         cbReadMovie.addActionListener(new MovieGetAllInformationListener(this));
 
         // Add
-        btnAddMovie.addActionListener(new MovieCreateListener(this, new Movie()));
+        btnAddMovie.addActionListener(new MovieCreateListener(this));
 
         // Edit
         cbUpdateMovie.addActionListener(new MovieUpdateFillFieldsListener(this));
