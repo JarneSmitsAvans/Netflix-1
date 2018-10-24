@@ -74,6 +74,7 @@ public class AccountDAO {
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
             Account account = new Account();
+            account.setId(resultSet.getInt("id"));
             account.setName(resultSet.getString("name"));
             account.setAddress(resultSet.getString("address"));
             account.setResidence(resultSet.getString("residence"));

@@ -1,3 +1,4 @@
+import application.AccountManagerImpl;
 import datastorage.AccountDAO;
 import datastorage.ProfileDAO;
 import domain.Account;
@@ -38,5 +39,44 @@ class AccountTest {
         }
         // Assert
         Assertions.assertTrue(checker);
+    }
+
+    // Test if accounts can be created (and deleted)
+    @Test
+    void testCreateAccount() throws SQLException, ClassNotFoundException {
+        // Arrange
+        AccountManagerImpl accountManager = new AccountManagerImpl();
+        Account account = new Account();
+        account.setName("TestAccount");
+        account.setAddress("TestAddress");
+        account.setResidence("TestResidence");
+        // Act
+        boolean created = accountManager.create(account);
+        Account testedAccount = accountManager.getAccountByName(account.getName());
+        accountManager.delete(testedAccount.getId());
+        // Assert
+        Assertions.assertTrue(created);
+    }
+
+    // Test if accounts can be updated (and deleted)
+    @Test
+    void testUpdateAccount() throws SQLException, ClassNotFoundException {
+        // Arrange
+        AccountManagerImpl accountManager = new AccountManagerImpl();
+        Account account = new Account();
+        account.setName("TestAccount");
+        account.setAddress("TestAddress");
+        account.setResidence("TestResidence");
+        // Act
+        accountManager.create(account);
+        Account testedAccount = accountManager.getAccountByName(account.getName());
+        Account newValuesAccount = new Account();
+        newValuesAccount.setName("newTestAccount");
+        newValuesAccount.setAddress("newTestAddress");
+        newValuesAccount.setResidence("newTestResidence");
+        boolean updatedAccount = accountManager.update(testedAccount.getId(), newValuesAccount);
+        accountManager.delete(testedAccount.getId());
+        // Assert
+        Assertions.assertTrue(updatedAccount);
     }
 }
