@@ -8,17 +8,25 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * SerieGetAllInformationListener.java
+ * This ActionListener will show all the information about a serie.
+ * Author: Marc Verwijmeren
+ */
+
 public class SerieGetAllInformationListener implements ActionListener {
     private GUI ui;
     private JComboBox selectedSerie;
     private SerieManagerImpl serieManager;
 
+    // Constructor
     public SerieGetAllInformationListener(GUI ui, JComboBox selectedSerie) {
         this.ui = ui;
         this.selectedSerie = selectedSerie;
         this.serieManager = new SerieManagerImpl(ui);
     }
 
+    // OnActionPerformed: Show and fill all the labels with the data from a serie
     @Override
     public void actionPerformed(ActionEvent e) {
         if(selectedSerie.getSelectedItem() != "Selecteer serie" && selectedSerie.getSelectedItem() != null){

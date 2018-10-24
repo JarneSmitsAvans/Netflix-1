@@ -8,12 +8,18 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * SerieUpdateListener.java
+ * This ActionListener will update the selected serie.
+ * Author: Marc Verwijmeren
+ */
+
 public class SerieUpdateListener implements ActionListener {
     private GUI ui;
     private JComboBox cbSelectedSerie;
     private SerieManagerImpl serieManager ;
 
-    //Constructor
+    // Constructor
     public SerieUpdateListener(GUI ui,JComboBox cbSelectedSerie) {
         this.ui = ui;
         this.cbSelectedSerie = cbSelectedSerie;

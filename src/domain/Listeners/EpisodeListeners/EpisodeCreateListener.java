@@ -10,6 +10,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * EpisodeCreateListener.java
+ * This ActionListener will create a new episode.
+ * Author: Marc Verwijmeren
+ */
+
 public class EpisodeCreateListener implements ActionListener {
     private GUI ui;
     private EpisodeManagerlmpl episodeManager ;

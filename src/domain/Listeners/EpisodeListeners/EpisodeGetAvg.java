@@ -9,6 +9,13 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * EpisodeGetAllInformationListener.java
+ * This abstract class has generic variables that every averageListener uses in Netflix has
+ * Has a function to show the average of watched episodes and series.
+ * Author: Marc Verwijmeren
+ */
+
 public abstract class EpisodeGetAvg {
     private GUI ui;
     private SerieManagerImpl serieManager ;
@@ -16,6 +23,7 @@ public abstract class EpisodeGetAvg {
     private ProfileManagerImpl profileManager;
     private AccountManagerImpl accountManager;
     private WatchBehaviourManagerImpl watchBehaviourManager;
+    private int percent;
 
     public EpisodeGetAvg(GUI ui) {
         this.ui = ui;
@@ -49,6 +57,7 @@ public abstract class EpisodeGetAvg {
                 int percentViewed = (bufferWatchTime * 100) / (episode.getDuration() * bufferTimesWatched);
                 sb.append("Deze aflevering is in totaal " + bufferTimesWatched + " keer bekeken. \n") ;
                 sb.append("Met een gemiddelde kijktijd van " + percentViewed + "%.") ;
+                percent += percentViewed;
             }
             else{
                 sb.append("Nog niemand heeft de aflevering '" + episode.getTitle() + "' gekeken" );
@@ -84,5 +93,13 @@ public abstract class EpisodeGetAvg {
 
     public GUI getUi() {
         return ui;
+    }
+
+    public int getPercent() {
+        return percent;
+    }
+
+    public void setPercent(int percent) {
+        this.percent = percent;
     }
 }

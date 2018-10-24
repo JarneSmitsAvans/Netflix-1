@@ -7,12 +7,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * SerieDAO.java
+ * This class has methods that do things with series, like;
+ * This class creates SQL statements for series CRUD operations, and executes them.
+ * Retuned a boolean if a create, update or delete succeeded is or not
+ * * Author: Marc Verwijmeren
+ */
+
 public class SerieDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
     // Returns an ArrayList filled with all series in the database.
     public ArrayList<Serie> getSeries() throws SQLException, ClassNotFoundException {
         ArrayList<Serie> serieList = new ArrayList<Serie>();
+        // Open database connection
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie");
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
@@ -28,6 +37,7 @@ public class SerieDAO {
             serieList.add(serie);
         }
 
+        // Close database connection
         databaseConnection.CloseConnection();
 
         return serieList;
@@ -36,8 +46,11 @@ public class SerieDAO {
     // Returns the serie with the selected name
     public Serie getSerieByName(String name) throws SQLException, ClassNotFoundException {
         Serie serie = new Serie();
+        // Open database connection
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie WHERE Title = ?");
+
+        // Bind values to the ?'s in the preparedStatement.
         preparedStatement.setString(1, name);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
 
@@ -51,6 +64,7 @@ public class SerieDAO {
 
         }
 
+        // Close database connection
         databaseConnection.CloseConnection();
         return serie;
     }
@@ -58,8 +72,11 @@ public class SerieDAO {
     // Returns the serie with the selected id
     public Serie getSerieById(int id) throws SQLException, ClassNotFoundException {
         Serie serie = new Serie();
+        // Open database connection
         databaseConnection.OpenConnection();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie WHERE id = ?");
+
+        // Bind values to the ?'s in the preparedStatement.
         preparedStatement.setInt(1, id);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
 
@@ -72,15 +89,17 @@ public class SerieDAO {
             serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
         }
 
+        // Close database connection
         databaseConnection.CloseConnection();
         return serie;
     }
 
     // Create a new serie
-    public boolean create(Serie serie) throws SQLException, ClassNotFoundException
-    {
+    public boolean create(Serie serie) throws SQLException, ClassNotFoundException{
+        // Open database connection
         databaseConnection.OpenConnection();
 
+        // Bind values to the ?'s in the preparedStatement.
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("INSERT into Serie (title, genre, Language, minimumAge, RecommendedSerie) VALUES (?, ?, ?, ?, ?)");
         preparedStatement.setString(1, serie.getTitle());
         preparedStatement.setString(2, serie.getGenre());
@@ -90,14 +109,19 @@ public class SerieDAO {
 
         boolean inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
 
+        // Close database connection
         databaseConnection.CloseConnection();
+
+        // Retuned a boolean if the episode has bin inserted
         return inserted;
     }
 
     // Update the selected serie
     public boolean update(Serie serie) throws SQLException, ClassNotFoundException {
+        // Open database connection
         databaseConnection.OpenConnection();
 
+        // Bind values to the ?'s in the preparedStatement.
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("UPDATE Serie SET title = ?, genre = ?, language = ?, minimumage = ?, RecommendedSerie = ? WHERE id = ?");
         preparedStatement.setString(1, serie.getTitle());
         preparedStatement.setString(2, serie.getGenre());
@@ -106,29 +130,40 @@ public class SerieDAO {
         preparedStatement.setInt(5, serie.getRecommendedSerie());
         preparedStatement.setInt(6, serie.getId());
 
-        boolean updated = databaseConnection.ExecuteDeleteStatement(preparedStatement);
+        boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
+
+        // Close database connection
         databaseConnection.CloseConnection();
 
+        // Retuned a boolean if the episode has bin updated
         return updated;
     }
 
     // Delete the selected serie
     public boolean delete(int id) throws SQLException, ClassNotFoundException {
+        // Open database connection
         databaseConnection.OpenConnection();
-
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("DELETE FROM Serie WHERE id = ?");
+
+        // Bind values to the ?'s in the preparedStatement.
         preparedStatement.setInt(1, id);
 
         boolean deleted = databaseConnection.ExecuteDeleteStatement(preparedStatement);
+
+        // Close database connection
         databaseConnection.CloseConnection();
 
+        // Retuned a boolean if the episode has bin deleted
         return deleted;
     }
 
-    // Returns the serie with the selected id
+    // Checks if there is already a serie with this title
     public Serie checkSerieTitle(String serieTitle, int serieId) throws SQLException, ClassNotFoundException {
         Serie serie = new Serie();
+        // Open database connection
         databaseConnection.OpenConnection();
+
+        // Bind values to the ?'s in the preparedStatement.
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie WHERE id != ? AND title = ?");
         preparedStatement.setInt(1, serieId);
         preparedStatement.setString(2, serieTitle);
@@ -143,6 +178,7 @@ public class SerieDAO {
             serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
         }
 
+        // Close database connection
         databaseConnection.CloseConnection();
         return serie;
     }

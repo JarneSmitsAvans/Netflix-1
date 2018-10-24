@@ -11,13 +11,19 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * SerieGetValuesToUpdateListener.java
+ * This ActionListener will get all the values that needs to be updated and place them in a textfield.
+ * Author: Marc Verwijmeren
+ */
+
 public class SerieGetValuesToUpdateListener implements ActionListener {
     private GUI ui;
     private JComboBox cbSelectedSerie;
     private SerieManagerImpl serieManager ;
     private SerieDAO serieDAO ;
 
-    //Constructor
+    // Constructor
     public SerieGetValuesToUpdateListener(GUI ui, JComboBox cbSelectedSerie) {
         this.ui = ui;
         this.cbSelectedSerie = cbSelectedSerie;
@@ -28,7 +34,7 @@ public class SerieGetValuesToUpdateListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //Get the selected serie
-        if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null){
+        if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null && cbSelectedSerie.getItemCount() >0){
             Serie serie = (Serie)cbSelectedSerie.getSelectedItem();
 
             ui.getTxtUpdateSerieTitle().setText(serie.getTitle());
@@ -55,6 +61,13 @@ public class SerieGetValuesToUpdateListener implements ActionListener {
                 e1.printStackTrace();
             }
 
+        }
+        else {
+            ui.getTxtUpdateSerieTitle().setText(null);
+            ui.getTxtUpdateSerieGenre().setText(null);
+            ui.getTxtUpdateSerieLanguage().setText(null);
+            ui.getTxtUpdateSerieAge().setText(null);
+            ui.getCbUpdateSerieRecomendedSerie().removeAllItems();
         }
     }
 }

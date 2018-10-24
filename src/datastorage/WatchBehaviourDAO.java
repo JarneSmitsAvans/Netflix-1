@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * WatchBehaviourDAO.java
@@ -150,20 +151,24 @@ public class WatchBehaviourDAO {
     }
 
     // Generate the SQL Statement that returns all the watched episodes of a profile.
-    public Serie getRecommendedLastWatchedSerie(int profileID) throws SQLException, ClassNotFoundException {
+    public HashSet<Serie> getRecommendedWatchedSerie(int profileID) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        Serie serie = new Serie();
+        HashSet<Serie> serieHashSet = new HashSet<Serie>();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(
                 "SELECT * FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id JOIN Episode on Episode.Id = Watched_Media.Episode_Id JOIN Serie on Serie.id = Episode.Fk_Serie WHERE Watched_Media.Profile_Id = ?");
         preparedStatement.setInt(1, profileID);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
+            Serie serie = new Serie();
             serie.setId(resultSet.getInt("Id"));
             serie.setTitle(resultSet.getString(17));
             serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
+            serieHashSet.add(serie);
         }
+
+
         databaseConnection.CloseConnection();
-        return serie;
+        return serieHashSet;
     }
 }
 

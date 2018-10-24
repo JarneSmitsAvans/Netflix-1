@@ -8,11 +8,21 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * EpisodeManagerImpl.java
+ * This class has methods that do things with Episodes, like;
+ * * Implementation for CRUD Operations
+ * * Getting data for overviews
+ * * Adding Episode objects to swing components.
+ * Author: Marc Verwijmeren
+ */
+
 public class EpisodeManagerlmpl {
     private EpisodeDAO episodeDAO = new EpisodeDAO();
     private ArrayList<Episode> episodeList;
     private GUI ui;
 
+    // Constructor
     public EpisodeManagerlmpl(GUI ui)
     {
         this.ui = ui;
@@ -29,6 +39,17 @@ public class EpisodeManagerlmpl {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    //Hide all the labels for episodes
+    public void hideEpisodeLabels(){
+        ui.getLblEpisodeTitle().setVisible(false);
+        ui.getLblEpisodeNumber().setVisible(false);
+        ui.getLblEpisodeDuration().setVisible(false);
+
+        ui.getLblEpisodeTitleLabel().setVisible(false);
+        ui.getLblEpisodeNumberLabel().setVisible(false);
+        ui.getLblEpisodeDurationLabel().setVisible(false);
     }
 
     //Returns a list with episodes

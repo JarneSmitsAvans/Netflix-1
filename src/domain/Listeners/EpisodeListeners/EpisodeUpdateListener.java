@@ -10,6 +10,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * EpisodeUpdateListener.java
+ * This ActionListener will update the selected episode.
+ * Author: Marc Verwijmeren
+ */
+
 public class EpisodeUpdateListener implements ActionListener {
     private GUI ui;
     private JComboBox cbSelectedEpisode;
@@ -26,7 +32,7 @@ public class EpisodeUpdateListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
-            if(ui.getCbUpdateEpisodeOfSerie().getSelectedItem() != "Selecteer serie" && ui.getCbUpdateEpisodeOfSerie().getSelectedItem() != null){
+            if(ui.getCbUpdateEpisodeOfSerie().getSelectedItem() != "Selecteer serie" && ui.getCbUpdateEpisodeOfSerie().getSelectedItem() != null && ui.getCbUpdateEpisodeOfSerie().getItemCount() > 0){
                 String episodeTitle = ui.getTxtUpdateEpisodeTitle().getText();
                 int episodeNumber = Integer.valueOf(ui.getTxtUpdateEpisodeNumber().getText());
                 int episodeDuration = Integer.valueOf(ui.getTxtUpdateEpisodeDuration().getText());

@@ -1,9 +1,6 @@
 package presentation;
 
-import application.AccountManagerImpl;
-import application.MovieManagerImpl;
-import application.ProfileManagerImpl;
-import application.SerieManagerImpl;
+import application.*;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 import domain.Listeners.AccountListeners.AccountCreateListener;
@@ -161,6 +158,17 @@ public class GUI implements Runnable {
 
     // View
     private JPanel readSeriesPanel;
+    private JComboBox cbReadserie;
+    private JLabel lblSerieTitleLabel;
+    private JLabel lblSerieGenreLabel;
+    private JLabel lblSerieGenre;
+    private JLabel lblSerieLanguageLabel;
+    private JLabel lblSerieLanguage;
+    private JLabel lblSerieMinAgeLabel;
+    private JLabel lblSerieMinAge;
+    private JLabel lblSerieRecommendedLabel;
+    private JLabel lblSerieRecommended;
+    private JLabel lblSerieViewTitle;
 
     // Add
     private JPanel addSeriesPanel;
@@ -195,6 +203,14 @@ public class GUI implements Runnable {
 
     // View
     private JPanel readEpisodePanel;
+    private JComboBox cbReadSerieForEpisode;
+    private JComboBox cbReadEpisode;
+    private JLabel lblEpisodeTitleLabel;
+    private JLabel lblEpisodeTitle;
+    private JLabel lblEpisodeNumberLabel;
+    private JLabel lblEpisodeNumber;
+    private JLabel lblEpisodeDurationLabel;
+    private JLabel lblEpisodeDuration;
 
     // Add
     private JPanel addEpisodeToSeriesPanel;
@@ -315,17 +331,7 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
     private JButton btnDeleteWatchBehaviour;
-    private JComboBox cbReadserie;
-    private JLabel lblSerieTitleLabel;
-    private JLabel lblSerieGenreLabel;
-    private JLabel lblSerieGenre;
-    private JLabel lblSerieLanguageLabel;
-    private JLabel lblSerieLanguage;
-    private JLabel lblSerieMinAgeLabel;
-    private JLabel lblSerieMinAge;
-    private JLabel lblSerieRecommendedLabel;
-    private JLabel lblSerieRecommended;
-    private JLabel lblSerieViewTitle;
+
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -679,6 +685,17 @@ public class GUI implements Runnable {
     public JTextPane getTxtAvgWatchedEpisode() { return txtAvgWatchedEpisode; }
     public JTextPane getTxtGetAvgOfSerie() { return txtGetAvgOfSerie; }
 
+    // View
+    public  JLabel getLblEpisodeTitle() { return lblEpisodeTitle;}
+    public  JLabel getLblEpisodeDuration() { return lblEpisodeDuration;}
+    public  JLabel getLblEpisodeNumber() { return lblEpisodeNumber;}
+    public  JComboBox getCbReadSerieForEpisode() { return cbReadSerieForEpisode; }
+    public  JComboBox getCbReadEpisode() { return cbReadEpisode; }
+
+    public  JLabel getLblEpisodeTitleLabel() { return lblEpisodeTitleLabel;}
+    public  JLabel getLblEpisodeNumberLabel() { return lblEpisodeNumberLabel;}
+    public  JLabel getLblEpisodeDurationLabel() { return lblEpisodeDurationLabel;}
+
     // Add
     public JTextField getTxtCreateEpisodeTitle(){ return txtCreateEpisodeTitle; }
     public JTextField getTxtCreateEpisodeDuration(){ return txtCreateEpisodeDuration; }
@@ -700,6 +717,7 @@ public class GUI implements Runnable {
     private ProfileManagerImpl profileManager;
     private MovieManagerImpl movieManager;
     private SerieManagerImpl serieManager;
+    private EpisodeManagerlmpl episodeManager;
 
     // Constructor
     public GUI(int width, int height) {
@@ -708,6 +726,7 @@ public class GUI implements Runnable {
         this.accountManager = new AccountManagerImpl();
         this.profileManager = new ProfileManagerImpl();
         this.movieManager = new MovieManagerImpl();
+        this.episodeManager = new EpisodeManagerlmpl(this);
         this.serieManager = new SerieManagerImpl(this);
 //        this.jTabbedPaneBase.addChangeListener(new TabListener(jTabbedPaneBase));
 //        UIManager.put("TabbedPane.selected", Color.red);
@@ -830,6 +849,9 @@ public class GUI implements Runnable {
         // Overviews
         cbEpisodeAvgWatchedByEpisode.addActionListener(new EpisodeGetAvgOfWatchedEpisodes(this, cbEpisodeAvgWatchedByEpisode));
 
+        // View
+        cbReadSerieForEpisode.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbReadSerieForEpisode,cbReadEpisode));
+        cbReadEpisode.addActionListener(new EpisodeGetAllInformationListener(this,cbReadEpisode));
         // Add
         btnCreateEpisode.addActionListener(new EpisodeCreateListener(this));
         txtCreateEpisodeDuration.addKeyListener(new IntFilter());
@@ -912,9 +934,12 @@ public class GUI implements Runnable {
             // Movie
             movieManager.initializeMovieComponents(this);
 
-            //Serie
+            // Serie
             serieManager.fillAllSerieCbx();
             serieManager.hideSerieLabels();
+
+            // Episode
+            episodeManager.hideEpisodeLabels();
 
         } catch (Exception e) {
             System.out.println(e);

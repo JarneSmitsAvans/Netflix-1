@@ -10,6 +10,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * EpisodeDeleteListener.java
+ * This ActionListener will delete the selected episode.
+ * Author: Marc Verwijmeren
+ */
+
 public class EpisodeDeleteListener implements ActionListener {
     private GUI ui;
     private EpisodeManagerlmpl episodeManager ;

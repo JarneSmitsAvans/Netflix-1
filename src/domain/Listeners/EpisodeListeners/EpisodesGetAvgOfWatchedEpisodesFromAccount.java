@@ -12,10 +12,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+
+/**
+ * EpisodesGetAvgOfWatchedEpisodesFromAccount.java
+ * This ActionListener will fill a texterea with the average time a episode had bin watched based on the selected account
+ * Author: Marc Verwijmeren
+ */
+
 public class EpisodesGetAvgOfWatchedEpisodesFromAccount extends EpisodeGetAvg implements ActionListener {
     private JComboBox cbSelectedSerie;
 
-    //Constructor
+    // Constructor
     public EpisodesGetAvgOfWatchedEpisodesFromAccount(GUI ui, JComboBox cbSelectedSerie) {
         super(ui);
         this.cbSelectedSerie = cbSelectedSerie;
@@ -24,7 +31,7 @@ public class EpisodesGetAvgOfWatchedEpisodesFromAccount extends EpisodeGetAvg im
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
-            if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null){
+            if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null && cbSelectedSerie.getItemCount() > 0){
                 // Get te selected serie
                 Serie selectedSerie = (Serie)cbSelectedSerie.getSelectedItem();
                 // Returned a list with all the episodes from a serie

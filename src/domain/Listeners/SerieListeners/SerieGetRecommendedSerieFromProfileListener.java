@@ -1,14 +1,18 @@
 package domain.Listeners.SerieListeners;
 
 import application.*;
-import domain.Episode;
-import domain.Profile;
 import domain.Serie;
 import presentation.GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.HashSet;
+
+/**
+ * SerieGetRecommendedSerieFromProfileListener.java
+ * This ActionListener will show all of the recommended series.
+ * Author: Marc Verwijmeren
+ */
 
 public class SerieGetRecommendedSerieFromProfileListener implements ActionListener {
     private GUI ui;
@@ -18,6 +22,7 @@ public class SerieGetRecommendedSerieFromProfileListener implements ActionListen
     private AccountManagerImpl accountManager;
     private WatchBehaviourManagerImpl watchBehaviourManager;
 
+    // Constructor
     public SerieGetRecommendedSerieFromProfileListener(GUI ui) {
         this.ui = ui;
         this.serieManager = new SerieManagerImpl(ui);
@@ -30,28 +35,32 @@ public class SerieGetRecommendedSerieFromProfileListener implements ActionListen
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            String profileName = ui.getCbRecommendedSerieForProfile().getSelectedItem().toString();
-            if (profileName != "" && ui.getCbRecommendedSerieForAccount() != null) {
+            if (ui.getCbRecommendedSerieForAccount() != null  && ui.getCbRecommendedSerieForProfile().getItemCount() > 0) {
 
+                String profileName = ui.getCbRecommendedSerieForProfile().getSelectedItem().toString();
                 String accountName = ui.getCbRecommendedSerieForAccount().getSelectedItem().toString();
 
-
                 int profileID = profileManager.getIdOfProfile(profileName, accountName);
-                Serie serie = watchBehaviourManager.getLastWatchedSerie(profileID);
+                HashSet<Serie> serie = watchBehaviourManager.getWatchedSerie(profileID);
 
                 StringBuilder sb = new StringBuilder();
 
                 sb.append("Aanbevolen series: \n");
-                if (serie.getRecommendedSerie() != 0) {
-                    Serie recommendedSerie = serieManager.getSerieById(serie.getRecommendedSerie());
-                    sb.append("Omdat u als laatste naar " + serie.getTitle() + " hebt gekeken.\n \n");
-                    sb.append("Bevelen wij u de volgende serie aan: \n");
-                    sb.append(recommendedSerie.getTitle() + " \n");
-                } else {
-                    sb.append("U heeft nog nergens naar gekeken. Bekijk eerst een serie.");
+                sb.append("Bevelen wij u de volgende serie aan: \n");
+
+                if(!serie.isEmpty()){
+                    for(Serie getRecommendedSerie : serie) {
+                        //sb.append("Omdat u als laatste naar " + getRecommendedSerie.getTitle() + " hebt gekeken.\n \n");
+                        sb.append(getRecommendedSerie.getTitle() + " \n");
+                    }
                 }
+                else{
+                    sb.append("U heeft nog geen serie bekeken");
+                }
+
                 ui.getTxtRecommendedSerie().setText(sb.toString());
             }
+
             else{
                 return;
             }

@@ -8,6 +8,7 @@ import domain.Serie;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * WatchBehaviourManagerImpl.java
@@ -79,9 +80,9 @@ public class WatchBehaviourManagerImpl extends GeneralManager {
     }
 
     // Returns an ArrayList of all the watched episodes of a profile.
-    public Serie getLastWatchedSerie (int profileID) throws SQLException, ClassNotFoundException {
-        Serie lastWatchedSerie = watchBehaviourDAO.getRecommendedLastWatchedSerie(profileID);
-        return lastWatchedSerie;
+    public HashSet<Serie> getWatchedSerie(int profileID) throws SQLException, ClassNotFoundException {
+        HashSet<Serie> watchedSerie = watchBehaviourDAO.getRecommendedWatchedSerie(profileID);
+        return watchedSerie;
     }
 
     // Returns an ArrayList of all the watched episodes from a serie and account.

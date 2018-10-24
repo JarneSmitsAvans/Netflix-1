@@ -23,7 +23,7 @@ public class EpisodeGetAvgOfSerie extends EpisodeGetAvg implements ActionListene
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
-            if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null){
+            if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null && cbSelectedSerie.getItemCount() > 0){
                 // Get te selected serie
                 Serie selectedSerie = (Serie)cbSelectedSerie.getSelectedItem();
                 // Returned a list with all the episodes from a serie
@@ -33,11 +33,20 @@ public class EpisodeGetAvgOfSerie extends EpisodeGetAvg implements ActionListene
                 ArrayList<Profile> profileList = getProfileManager().getProfiles();
 
                 StringBuilder sb = new StringBuilder();
+                int bufferSerieTime = 0;
+                setPercent(0);
                 for (Episode episode : episodeList)
                 {
                     getWatchedAvgOfEpisodes(episode,profileList,sb);
                 }
-
+                sb.setLength(0);
+                int totalPercent = getPercent() / episodeList.size();
+                if(totalPercent > 0){
+                    sb.append("De gemiddelde kijktijd van de serie " + selectedSerie.getTitle() + " is:  " + totalPercent + "%.");
+                }
+                else{
+                    sb.append("Nog niemand heeft de serie " + selectedSerie.getTitle() + " gekeken.");
+                }
                 getUi().getTxtGetAvgOfSerie().setText(sb.toString());
             }
         }

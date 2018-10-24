@@ -8,6 +8,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * EpisodeGetValuesToUpdate.java
+ * This ActionListener will get all the values that needs to be updated and place them in a textfield.
+ * Author: Marc Verwijmeren
+ */
+
 public class EpisodeGetValuesToUpdate implements ActionListener {
     private GUI ui;
     private JComboBox cbSelectedEpisode;
@@ -30,6 +36,11 @@ public class EpisodeGetValuesToUpdate implements ActionListener {
             ui.getTxtUpdateEpisodeNumber().setText(episodeNumber);
             String episodeDuration = Integer.toString(episode.getDuration());
             ui.getTxtUpdateEpisodeDuration().setText(episodeDuration);
+        }
+        else{
+            ui.getTxtUpdateEpisodeTitle().setText(null);
+            ui.getTxtUpdateEpisodeNumber().setText(null);
+            ui.getTxtUpdateEpisodeDuration().setText(null);
         }
     }
 }
