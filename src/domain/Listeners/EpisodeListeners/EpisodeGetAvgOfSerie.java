@@ -11,6 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * EpisodeGetAvgOfWatchedEpisodes.java
+ * This ActionListener will fill a texterea with the average watchtime of the selected serie
+ * Author: Marc Verwijmeren
+ */
+
 public class EpisodeGetAvgOfSerie extends EpisodeGetAvg implements ActionListener {
     private JComboBox cbSelectedSerie;
 

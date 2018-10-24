@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 /**
  * EpisodeGetAllInformationListener.java
- * This abstract class has generic variables that every averageListener uses in Netflix has
- * Has a function to show the average of watched episodes and series.
+ * This abstract class has generic variables that every averageListener uses in Netflix application
+ * Has a function to show the average watchtime of episodes and series.
  * Author: Marc Verwijmeren
  */
 
