@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 /**
  * EpisodesGetAvgOfWatchedEpisodesFromAccount.java
- * This ActionListener will fill a texterea with the average time a episode had bin watched based on the selected account
+ * This ActionListener will fill a texterea with the average watchtime of an episode that had bin watched based on the the selected account
  * Author: Marc Verwijmeren
  */
 

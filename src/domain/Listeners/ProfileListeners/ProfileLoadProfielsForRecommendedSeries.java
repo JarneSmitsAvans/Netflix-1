@@ -10,6 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+/**
+ * ProfileLoadProfielsForRecommendedSeries.java
+ * This ActionListener will fill the profile combobox based on the selected account.
+ * Author: Marc Verwijmeren
+ */
+
 public class ProfileLoadProfielsForRecommendedSeries implements ActionListener {
     private GUI ui;
     private AccountManagerImpl accountManager;

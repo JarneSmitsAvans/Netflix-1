@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 /**
  * SerieGetSelectedSerieForEpisodeListener.java
- * This ActionListener will fill the episode combobox based of the selected serie.
+ * This ActionListener will fill the episode combobox based on the selected serie.
  * Author: Marc Verwijmeren
  */
 

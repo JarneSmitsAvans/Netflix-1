@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 /**
  * EpisodeGetAllInformationListener.java
- * This ActionListener will show all the information about an episode.
+ * This ActionListener will show all the information of an episode.
  * Author: Marc Verwijmeren
  */
 
