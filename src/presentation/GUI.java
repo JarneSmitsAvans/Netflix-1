@@ -720,9 +720,7 @@ public class GUI implements Runnable {
     private EpisodeManagerlmpl episodeManager;
 
     // Constructor
-    public GUI(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public GUI() {
         this.accountManager = new AccountManagerImpl();
         this.profileManager = new ProfileManagerImpl();
         this.movieManager = new MovieManagerImpl();
@@ -738,8 +736,9 @@ public class GUI implements Runnable {
         frame.setContentPane(mainPanel);
         ImageIcon icon = new ImageIcon(getClass().getResource("/presentation/images/Netflix.png"));
         frame.setIconImage(icon.getImage());
-        frame.setPreferredSize(new Dimension(width, height));
-        frame.setMinimumSize(new Dimension(1550, 960));
+//        frame.setPreferredSize(new Dimension(1800, 1020));
+        frame.setMinimumSize(new Dimension(1550, 970));
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         createComponents(frame.getContentPane());
         frame.pack();
@@ -944,9 +943,6 @@ public class GUI implements Runnable {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }
 
