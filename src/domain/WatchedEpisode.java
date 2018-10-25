@@ -56,6 +56,6 @@ public class WatchedEpisode extends Episode {
     // Prints the EpisodeComboBox object.
     @Override
     public String toString() {
-        return serieTitle + " : " + title + "\n watched on: " + watchDateAndTime;
+        return serieTitle + " : " + title + "\n bekeken op: " + watchDateAndTime;
     }
 }

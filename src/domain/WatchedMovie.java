@@ -54,9 +54,8 @@ public class WatchedMovie extends Movie {
 
     // Prints the WatchedMovie object.
     @Override
-    // TODO Enter in comboboxitem bij kijkgedrag
     public String toString() {
-        return title + "\n watched on: " + watchDateAndTime;
+        return title + "\n bekeken op: " + watchDateAndTime;
     }
 }
 

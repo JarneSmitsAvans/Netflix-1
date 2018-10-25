@@ -739,7 +739,7 @@ public class GUI implements Runnable {
         ImageIcon icon = new ImageIcon(getClass().getResource("/presentation/images/Netflix.png"));
         frame.setIconImage(icon.getImage());
         frame.setPreferredSize(new Dimension(width, height));
-        frame.setMinimumSize(new Dimension(700, 500));
+        frame.setMinimumSize(new Dimension(1550, 960));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         createComponents(frame.getContentPane());
         frame.pack();
