@@ -55,6 +55,7 @@ public class ProfileCreateListener implements ActionListener {
                         /* If the create was successful, empty the fields and display a success message.
                         reinitialize the account components in the application. */
                         this.profileManager.initializeProfileComboBoxes(ui);
+                        this.accountManager.initializeAccountComponents(ui);
                         this.ui.getCbAddProfileToSelectedAccount().setSelectedItem(null);
                         this.ui.getTxtProfileName().setText(null);
                         this.ui.getjDPdateOfBirth().setDate(null);
