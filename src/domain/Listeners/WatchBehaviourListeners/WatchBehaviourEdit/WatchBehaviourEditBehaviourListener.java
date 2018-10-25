@@ -3,11 +3,7 @@ package domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit;
 import application.MovieManagerImpl;
 import application.ProfileManagerImpl;
 import application.WatchBehaviourManagerImpl;
-import domain.Episode;
-import domain.ErrorHandling;
-import domain.Listeners.WatchBehaviourListeners.EpisodeComboBoxItem;
-import domain.Listeners.WatchBehaviourListeners.MovieComboBoxItem;
-import domain.Movie;
+import domain.*;
 import presentation.GUI;
 
 import javax.swing.*;
@@ -53,11 +49,11 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
                 int newTimeWatched = Integer.parseInt(ui.getTxtEditWatchedMediaDuration().getText());
                 // Check if the time entered wasn't greater than the duration of the selected media.
                 if (!(newTimeWatched > Integer.parseInt(ui.getLblEditWatchedMediaDuration().getText()))) {
-                    if (comboBoxItem instanceof MovieComboBoxItem) {
+                    if (comboBoxItem instanceof WatchedMovie) {
                         /* If the selected media is a movie, create a new movie object
                         with the new timeWatched and new watchDateAndTime value.
                          */
-                        MovieComboBoxItem movieComboBoxItem = (MovieComboBoxItem) comboBoxItem;
+                        WatchedMovie movieComboBoxItem = (WatchedMovie) comboBoxItem;
                         Movie movie = new Movie();
                         movie.setId(movieComboBoxItem.getId());
                         movie.setTitle(movieComboBoxItem.getTitle());
@@ -66,11 +62,11 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
                         // Update the watched movie.
                         updated = watchBehaviourManager.updateWatchedMovie(movie, profileId);
 
-                    } else if (comboBoxItem instanceof EpisodeComboBoxItem) {
+                    } else if (comboBoxItem instanceof WatchedEpisode) {
                         /* If the selected media is an episode, create a new episode object
                         with the new timeWatched and new watchDateAndTime value.
                          */
-                        EpisodeComboBoxItem episodeComboBoxItem = (EpisodeComboBoxItem) comboBoxItem;
+                        WatchedEpisode episodeComboBoxItem = (WatchedEpisode) comboBoxItem;
                         Episode episode = new Episode();
                         episode.setWatchedDuration(newTimeWatched);
                         episode.setWatchedOn(newWatchDateAndTime);

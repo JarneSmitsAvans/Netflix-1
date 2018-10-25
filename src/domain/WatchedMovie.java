@@ -1,15 +1,13 @@
-package domain.Listeners.WatchBehaviourListeners;
-
-import domain.Movie;
+package domain;
 
 /**
- * MovieComboBoxItem.java
+ * WatchedMovie.java
  * This class takes an object of type Movie in a visualises it as a ComboBox item.
  * <p>
  * Author: Dylan ten Böhmer
  */
 
-public class MovieComboBoxItem extends Movie {
+public class WatchedMovie extends Movie {
     private int id;
     private int watchedDuration;
     private int totalDuration;
@@ -17,7 +15,7 @@ public class MovieComboBoxItem extends Movie {
     private String title;
 
     // Constructor
-    public MovieComboBoxItem(int watchedDuration, String watchDateAndTime, String title, int totalDuration, int id) {
+    public WatchedMovie(int watchedDuration, String watchDateAndTime, String title, int totalDuration, int id) {
         this.watchedDuration = watchedDuration;
         this.watchDateAndTime = watchDateAndTime;
         this.title = title;
@@ -54,7 +52,7 @@ public class MovieComboBoxItem extends Movie {
         this.id = id;
     }
 
-    // Prints the MovieComboBoxItem object.
+    // Prints the WatchedMovie object.
     @Override
     // TODO Enter in comboboxitem bij kijkgedrag
     public String toString() {

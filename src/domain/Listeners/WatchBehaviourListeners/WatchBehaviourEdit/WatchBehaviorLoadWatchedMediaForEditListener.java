@@ -3,9 +3,9 @@ package domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit;
 import application.ProfileManagerImpl;
 import application.WatchBehaviourManagerImpl;
 import domain.Episode;
-import domain.Listeners.WatchBehaviourListeners.EpisodeComboBoxItem;
-import domain.Listeners.WatchBehaviourListeners.MovieComboBoxItem;
 import domain.Movie;
+import domain.WatchedEpisode;
+import domain.WatchedMovie;
 import presentation.GUI;
 
 import java.awt.event.ActionEvent;
@@ -44,13 +44,13 @@ public class WatchBehaviorLoadWatchedMediaForEditListener implements ActionListe
                 profileID = profileManager.getIdOfProfile(ui.getCbEditWatchedMediaProfile().getSelectedItem().toString(), ui.getCbEditWatchedMediaAccount().getSelectedItem().toString());
                 ArrayList<Movie> watchedMovies = watchBehaviourManager.getWatchedMovies(profileID);
                 ArrayList<Episode> watchedEpisodes = watchBehaviourManager.getWatchedEpisodes(profileID);
-                // For each watched movie, create a new object of MovieComboBoxItem type and place it into the watchedMedia comboBox.
+                // For each watched movie, create a new object of WatchedMovie type and place it into the watchedMedia comboBox.
                 for (Movie movie : watchedMovies) {
-                    ui.getCbEditWatchedMediaTitle().addItem(new MovieComboBoxItem(movie.getWatchedDuration(), movie.getWatchedOn(), movie.getTitle(), movie.getDuration(), movie.getId()));
+                    ui.getCbEditWatchedMediaTitle().addItem(new WatchedMovie(movie.getWatchedDuration(), movie.getWatchedOn(), movie.getTitle(), movie.getDuration(), movie.getId()));
                 }
-                // For each watched episode, create a new object of EpisodeComboBoxItem type and place it into the watchedMedia comboBox.
+                // For each watched episode, create a new object of WatchedEpisode type and place it into the watchedMedia comboBox.
                 for (Episode episode : watchedEpisodes) {
-                    ui.getCbEditWatchedMediaTitle().addItem(new EpisodeComboBoxItem(episode.getId(), episode.getWatchedDuration(), episode.getWatchedOn(), episode.getTitle(), episode.getSerieTitle(), episode.getDuration()));
+                    ui.getCbEditWatchedMediaTitle().addItem(new WatchedEpisode(episode.getId(), episode.getWatchedDuration(), episode.getWatchedOn(), episode.getTitle(), episode.getSerieTitle(), episode.getDuration()));
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();

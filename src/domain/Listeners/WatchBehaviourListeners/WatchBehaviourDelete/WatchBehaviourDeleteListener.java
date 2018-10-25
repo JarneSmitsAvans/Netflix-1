@@ -4,8 +4,8 @@ import application.MovieManagerImpl;
 import application.ProfileManagerImpl;
 import application.WatchBehaviourManagerImpl;
 import domain.ErrorHandling;
-import domain.Listeners.WatchBehaviourListeners.EpisodeComboBoxItem;
-import domain.Listeners.WatchBehaviourListeners.MovieComboBoxItem;
+import domain.WatchedEpisode;
+import domain.WatchedMovie;
 import presentation.GUI;
 
 import javax.swing.*;
@@ -47,11 +47,11 @@ public class WatchBehaviourDeleteListener implements ActionListener {
                 int profileId = profileManager.getIdOfProfile(strSelectedProfile, strSelectedAccount);
                 Object comboBoxItem = ui.getCbDeleteWatchedMediaTitle().getSelectedItem();
                 // If the selected program is of type Movie, get the movie id.
-                if (comboBoxItem instanceof MovieComboBoxItem) {
-                    deletionId = ((MovieComboBoxItem) comboBoxItem).getId();
+                if (comboBoxItem instanceof WatchedMovie) {
+                    deletionId = ((WatchedMovie) comboBoxItem).getId();
                     // else if the selected program is of type Episode, get the episode id.
-                } else if (comboBoxItem instanceof EpisodeComboBoxItem) {
-                    deletionId = ((EpisodeComboBoxItem) comboBoxItem).getEpisodeId();
+                } else if (comboBoxItem instanceof WatchedEpisode) {
+                    deletionId = ((WatchedEpisode) comboBoxItem).getEpisodeId();
                 }
                 // Delete the watched media.
                 boolean deleted = watchBehaviourManager.delete(deletionId, profileId);

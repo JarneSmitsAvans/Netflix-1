@@ -1,15 +1,13 @@
-package domain.Listeners.WatchBehaviourListeners;
-
-import domain.Episode;
+package domain;
 
 /**
- * EpisodeComboBoxItem.java
+ * WatchedEpisode.java
  * This class takes an object of type Episode in a visualises it as a ComboBox item.
  * <p>
  * Author: Dylan ten Böhmer
  */
 
-public class EpisodeComboBoxItem extends Episode {
+public class WatchedEpisode extends Episode {
     private int episodeId;
     private int watchedDuration;
     private String watchDateAndTime;
@@ -18,7 +16,7 @@ public class EpisodeComboBoxItem extends Episode {
     private int totalDuration;
 
     // Constructor
-    public EpisodeComboBoxItem(int episodeId, int watchedDuration, String watchDateAndTime, String title, String serieTitle, int totalDuration) {
+    public WatchedEpisode(int episodeId, int watchedDuration, String watchDateAndTime, String title, String serieTitle, int totalDuration) {
         this.episodeId = episodeId;
         this.watchedDuration = watchedDuration;
         this.watchDateAndTime = watchDateAndTime;

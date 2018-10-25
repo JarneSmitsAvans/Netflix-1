@@ -1,7 +1,7 @@
 package domain.Listeners.WatchBehaviourListeners.WatchBehaviourEdit;
 
-import domain.Listeners.WatchBehaviourListeners.EpisodeComboBoxItem;
-import domain.Listeners.WatchBehaviourListeners.MovieComboBoxItem;
+import domain.WatchedEpisode;
+import domain.WatchedMovie;
 import presentation.GUI;
 
 import java.awt.event.ActionEvent;
@@ -29,15 +29,15 @@ public class WatchBehaviourLoadDurationListener implements ActionListener {
         // Check if input wasn't empty
         if (ui.getCbEditWatchedMediaTitle().getSelectedItem() != null && ui.getCbEditWatchedMediaAccount().getSelectedItem() != null) {
             Object comboBoxItem = ui.getCbEditWatchedMediaTitle().getSelectedItem();
-            if (comboBoxItem instanceof MovieComboBoxItem) {
-                MovieComboBoxItem movieComboBoxItem = (MovieComboBoxItem) comboBoxItem;
+            if (comboBoxItem instanceof WatchedMovie) {
+                WatchedMovie movieComboBoxItem = (WatchedMovie) comboBoxItem;
                 watchedDuration = movieComboBoxItem.getWatchedDuration();
                 ui.getLblEditWatchedMediaDuration().setText(Integer.toString(movieComboBoxItem.getTotalDuration()));
                 ui.getTxtEditWatchedMediaDuration().setText((Integer.toString(watchedDuration)));
 
             }
-            if (comboBoxItem instanceof EpisodeComboBoxItem) {
-                EpisodeComboBoxItem episodeComboBoxItem = (EpisodeComboBoxItem) comboBoxItem;
+            if (comboBoxItem instanceof WatchedEpisode) {
+                WatchedEpisode episodeComboBoxItem = (WatchedEpisode) comboBoxItem;
                 watchedDuration = episodeComboBoxItem.getWatchedDuration();
                 ui.getLblEditWatchedMediaDuration().setText(Integer.toString(episodeComboBoxItem.getTotalDuration()));
                 ui.getTxtEditWatchedMediaDuration().setText((Integer.toString(watchedDuration)));
