@@ -9,8 +9,9 @@ import domain.Listeners.AccountListeners.AccountOverview.AccountOverviewLoadList
 import domain.Listeners.AccountListeners.AccountUpdateComboBoxListener;
 import domain.Listeners.AccountListeners.AccountUpdateListener;
 import domain.Listeners.EpisodeListeners.*;
-import domain.Listeners.GeneralListeners.IntFilter;
 import domain.Listeners.MovieListeners.*;
+import domain.Listeners.PresentationListeners.IntFilter;
+import domain.Listeners.PresentationListeners.JTextFieldLimit;
 import domain.Listeners.ProfileListeners.*;
 import domain.Listeners.ProfileListeners.ProfileOverview.ProfileOverviewLoadProfilesForSelectedAccountListener;
 import domain.Listeners.ProfileListeners.ProfileOverview.ProfilesOverviewLoadListener;

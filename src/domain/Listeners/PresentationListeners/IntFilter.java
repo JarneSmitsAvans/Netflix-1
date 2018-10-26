@@ -1,9 +1,5 @@
-package domain.Listeners.GeneralListeners;
+package domain.Listeners.PresentationListeners;
 
-import javax.swing.*;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.DocumentFilter;
-import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
