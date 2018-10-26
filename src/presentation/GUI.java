@@ -29,8 +29,6 @@ import domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews.WatchBeh
 import javax.swing.*;
 import java.awt.*;
 
-//import domain.TabListener;
-
 public class GUI implements Runnable {
     // Class variables
     private int width;
@@ -726,7 +724,6 @@ public class GUI implements Runnable {
         this.movieManager = new MovieManagerImpl();
         this.episodeManager = new EpisodeManagerlmpl(this);
         this.serieManager = new SerieManagerImpl(this);
-//        this.jTabbedPaneBase.addChangeListener(new TabListener(jTabbedPaneBase));
 //        UIManager.put("TabbedPane.selected", Color.red);
     }
 
@@ -927,18 +924,58 @@ public class GUI implements Runnable {
             accountManager.initializeAccountComponents(this);
             accountManager.initializeAccountComboBoxes(this);
 
+            //Account Create
+            txtAccountName.setDocument(new JTextFieldLimit(50));
+            txtAccountAddress.setDocument(new JTextFieldLimit(50));
+            txtAccountResidence.setDocument(new JTextFieldLimit(50));
+
+            //Account Edit
+            txtUpdateAccountName.setDocument(new JTextFieldLimit(50));
+            txtUpdateAccountAdres.setDocument(new JTextFieldLimit(50));
+            txtUpdateAccountResidence.setDocument(new JTextFieldLimit(50));
+
             //Profile
             profileManager.initializeProfileComboBoxes(this);
 
+            //Profile Create
+            txtProfileName.setDocument(new JTextFieldLimit(50));
+
+            //Profile Edit
+            txtUpdateProfileName.setDocument(new JTextFieldLimit(50));
+
             // Movie
             movieManager.initializeMovieComponents(this);
+
+            // Movie Create
+            txtMovieTitle.setDocument(new JTextFieldLimit(50));
+            txtMovieGenre.setDocument(new JTextFieldLimit(50));
+            txtMovieLanguage.setDocument(new JTextFieldLimit(50));
+
+            // Move Edit
+            txtUpdateMovieTitle.setDocument(new JTextFieldLimit(50));
+            txtUpdateMovieGenre.setDocument(new JTextFieldLimit(50));
+            txtUpdateMovieLanguage.setDocument(new JTextFieldLimit(50));
 
             // Serie
             serieManager.fillAllSerieCbx();
             serieManager.hideSerieLabels();
 
+            // Serie Create
+            txtSerieCreateTitle.setDocument(new JTextFieldLimit(50));
+            txtSerieCreateGenre.setDocument(new JTextFieldLimit(50));
+            txtSerieCreateLanguage.setDocument(new JTextFieldLimit(50));
+
+            // Serie Edit
+            txtUpdateSerieTitle.setDocument(new JTextFieldLimit(50));
+            txtUpdateSerieGenre.setDocument(new JTextFieldLimit(50));
+            txtUpdateSerieLanguage.setDocument(new JTextFieldLimit(50));
+
             // Episode
             episodeManager.hideEpisodeLabels();
+            // Episode Create
+            txtCreateEpisodeTitle.setDocument(new JTextFieldLimit(50));
+            // Episode Edit
+            txtUpdateEpisodeTitle.setDocument(new JTextFieldLimit(50));
 
         } catch (Exception e) {
             System.out.println(e);

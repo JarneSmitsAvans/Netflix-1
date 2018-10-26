@@ -20,7 +20,6 @@ class DatabaseTest {
         // Arrange
         boolean hasConnection;
         DatabaseConnection databaseConnection = new DatabaseConnection();
-
         // Act
         databaseConnection.OpenConnection();
         Connection connected = databaseConnection.getConnection();
@@ -30,6 +29,7 @@ class DatabaseTest {
             hasConnection = false;
         }
         // Assert
-        Assertions.assertTrue(hasConnection);
+        Assertions.assertTrue(hasConnection, "Database connection could not be established.");
+        databaseConnection.CloseConnection();
     }
 }

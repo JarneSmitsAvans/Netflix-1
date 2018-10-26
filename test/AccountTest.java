@@ -21,7 +21,7 @@ class AccountTest {
         // Test if the singleProfile method returns an ArrayList filled with all accounts that only have one profile assigned to them.
     void testSingleProfiles() throws SQLException, ClassNotFoundException {
         // Arrange
-        int amountOfProfiles = 0;
+        int amountOfProfiles;
         AccountDAO accountDAO = new AccountDAO();
         ProfileDAO profileDAO = new ProfileDAO();
         // Act
@@ -32,9 +32,8 @@ class AccountTest {
                 ArrayList<Profile> profileArrayList = profileDAO.getMatchingProfiles(acc.getId());
                 amountOfProfiles = profileArrayList.size();
                 // Assert
-                Assertions.assertEquals(1, amountOfProfiles);
+                Assertions.assertEquals(1, amountOfProfiles, "More than one profile was returned per account, expected only one.");
             }
-
         }else{
             // There are no accounts with single profiles, so just return true. (It's technically not incorrect)
             Assertions.assertTrue(true);
@@ -51,10 +50,11 @@ class AccountTest {
         account.setResidence("TestResidence");
         // Act
         boolean created = accountManager.create(account);
+        // Retrieve the ID of the created Account
         Account testedAccount = accountManager.getAccountByName(account.getName());
         accountManager.delete(testedAccount.getId());
         // Assert
-        Assertions.assertTrue(created);
+        Assertions.assertTrue(created, "Account could not be created.");
     }
 
     // Test if accounts can be updated (and deleted)
@@ -68,6 +68,7 @@ class AccountTest {
         account.setResidence("TestResidence");
         // Act
         accountManager.create(account);
+        // Retrieve the ID of the created Account
         Account testedAccount = accountManager.getAccountByName(account.getName());
         Account newValuesAccount = new Account();
         newValuesAccount.setName("newTestAccount");
@@ -76,6 +77,6 @@ class AccountTest {
         boolean updatedAccount = accountManager.update(testedAccount.getId(), newValuesAccount);
         accountManager.delete(testedAccount.getId());
         // Assert
-        Assertions.assertTrue(updatedAccount);
+        Assertions.assertTrue(updatedAccount, "Account could not be updated.");
     }
 }
