@@ -725,7 +725,6 @@ public class GUI implements Runnable {
         this.movieManager = new MovieManagerImpl();
         this.episodeManager = new EpisodeManagerlmpl(this);
         this.serieManager = new SerieManagerImpl(this);
-//        UIManager.put("TabbedPane.selected", Color.red);
     }
 
     @Override

@@ -17,11 +17,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * MovieTest.java
+ * This class contains methods to test the functionality
+ * <p>
+ * Author: Kim van den Berg
+ */
+
 class MovieTest {
 
     // CRUD
     @Test
-    // Test to create en delete movie
+    // Test to create and delete movie
     void testAddAndDeleteMovie() throws SQLException, ClassNotFoundException {
         // Arrange
         MovieManagerImpl movieManager = new MovieManagerImpl();
@@ -44,7 +51,7 @@ class MovieTest {
     }
 
     @Test
-    //
+    // Test to update movie
     void testUpdateMovie() throws SQLException, ClassNotFoundException {
         // Arrange
         MovieManagerImpl movieManager = new MovieManagerImpl();
