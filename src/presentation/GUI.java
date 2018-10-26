@@ -71,10 +71,6 @@ public class GUI implements Runnable {
     private JPanel moviesPanel;
     private JPanel watchBehaviourPanel;
 
-    // Account-------------------------------------------------
-    // Overviews
-    private JPanel accountsWithOneProfilePanel;
-    private JTextPane txtAccountsWithOneProfile;
     private JComboBox cbRecommendedSerieForAccount;
 
     // View
@@ -330,7 +326,8 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
     private JButton btnDeleteWatchBehaviour;
-
+    private JPanel accountsWithOneProfilePanel;
+    private JTextPane txtAccountsWithOneProfile;
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
