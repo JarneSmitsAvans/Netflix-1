@@ -43,6 +43,37 @@ class MovieTest {
         Assertions.assertTrue(deleteMovie);
     }
 
+    @Test
+    //
+    void testUpdateMovie() throws SQLException, ClassNotFoundException {
+        // Arrange
+        MovieManagerImpl movieManager = new MovieManagerImpl();
+        Movie movie = new Movie();
+        movie.setTitle("12 Years A Slave");
+        movie.setDuration(134);
+        movie.setGenre("Drama");
+        movie.setLanguage("Engels");
+        movie.setMinAge(16);
+
+        // Act
+        // Create movie
+        movieManager.create(movie);
+        // Place new values
+        Movie newMovie = new Movie();
+        newMovie.setTitle("12 Years A Slave");
+        newMovie.setDuration(104);
+        newMovie.setGenre("Historie");
+        newMovie.setLanguage("Engels");
+        newMovie.setMinAge(16);
+        // Update movie
+        boolean updateMovie = movieManager.update(newMovie);
+        // Delete movie. If we don't delete the movie here, the next test will fail.
+        movieManager.delete(newMovie);
+
+        // Assert
+        Assertions.assertTrue(updateMovie);
+    }
+
     // Overviews
     @Test
     // Test if the returned movie is the movie with the longest duration and is below 16 years
