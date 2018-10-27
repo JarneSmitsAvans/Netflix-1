@@ -332,6 +332,7 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
     private JButton btnDeleteWatchBehaviour;
+    private JTextField textField1;
 
 
 
