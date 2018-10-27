@@ -15,6 +15,12 @@ import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * EpisodeTest.java
+ * This class contains methods to test the functionality for episodes
+ * Author: Marc Verwijmeren
+ */
+
 class EpisodeTest {
     private GUI ui = new GUI();
     private SerieManagerImpl serieManager = new SerieManagerImpl(ui);

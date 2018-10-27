@@ -129,9 +129,15 @@ public class SerieManagerImpl {
         return serieDelete;
     }
 
-    // Returns al boolean if a new serie has been deleted or not
+    // Checked if the title of the serie already exits
     public Serie checkSerieTitle(String serieTitle, int serieId) throws SQLException, ClassNotFoundException {
         Serie checkedSerie = serieDAO.checkSerieTitle(serieTitle,serieId);
+        return checkedSerie;
+    }
+
+    // Returns al boolean if a new serie has been deleted or not
+    public Serie serieGetAvg(int serieId) throws SQLException, ClassNotFoundException {
+        Serie checkedSerie = serieDAO.getSerieByIdForAvg(serieId);
         return checkedSerie;
     }
 

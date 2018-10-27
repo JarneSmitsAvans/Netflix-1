@@ -219,6 +219,7 @@ public class GUI implements Runnable {
     private JTextField txtCreateEpisodeDuration;
     private JTextField txtCreateEpisodeNumber;
     private JButton btnCreateEpisode;
+    private JLabel lblEpisodeLastNumber;
 
     // Edit
     private JPanel editEpisodePanel;
@@ -331,6 +332,7 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
     private JButton btnDeleteWatchBehaviour;
+
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -699,6 +701,7 @@ public class GUI implements Runnable {
     public JTextField getTxtCreateEpisodeTitle(){ return txtCreateEpisodeTitle; }
     public JTextField getTxtCreateEpisodeDuration(){ return txtCreateEpisodeDuration; }
     public JTextField getTxtCreateEpisodeNumber(){ return txtCreateEpisodeNumber; }
+    public JLabel getLblEpisodeLastNumber() { return lblEpisodeLastNumber; }
 
     // Edit
     public JComboBox getCbUpdateEpisodeForSerie() { return cbUpdateEpisodeForSerie; }
@@ -844,6 +847,7 @@ public class GUI implements Runnable {
         // Episode------------------------------------------
         // Overviews
         cbEpisodeAvgWatchedByEpisode.addActionListener(new EpisodeGetAvgOfWatchedEpisodes(this, cbEpisodeAvgWatchedByEpisode));
+        cbCreateEpisodeForSerie.addActionListener(new EpisodeShowLastEpisodeNumber(this, cbCreateEpisodeForSerie));
 
         // View
         cbReadSerieForEpisode.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbReadSerieForEpisode,cbReadEpisode));

@@ -95,6 +95,27 @@ public class EpisodeDAO {
         return episode;
     }
 
+    public Episode getEpisodebySerieID(int serieID) throws SQLException, ClassNotFoundException{
+        // Open database connection
+        databaseConnection.OpenConnection();
+
+        // Bind values to the ?'s in the preparedStatement.
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT sum(episode.duration) as epid FROM Episode WHERE fk_serie = ?");
+        preparedStatement.setInt(1, serieID);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+
+        Episode episode = new Episode();
+        while (resultSet.next()) {
+            episode.setEpisodeNumber(resultSet.getInt("epid"));
+        }
+
+        // Close database connection
+        databaseConnection.CloseConnection();
+
+        // Returns an episode
+        return episode;
+    }
+
     // Create a new episode
     public boolean create(Episode episode) throws SQLException, ClassNotFoundException {
         // Open database connection

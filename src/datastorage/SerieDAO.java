@@ -105,6 +105,29 @@ public class SerieDAO {
         return serie;
     }
 
+    // Get the data form watched series based on the serieID
+    public Serie getSerieByIdForAvg(int id) throws SQLException, ClassNotFoundException {
+        Serie serie = new Serie();
+        // Open database connection
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT  count(DISTINCT ProfileName) as profiles, sum(Watched_Media.TimeWatched) as watched FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id inner JOIN Episode on Episode.Id = Watched_Media.Episode_Id JOIN Serie on Serie.id = Episode.Fk_Serie WHERE Serie.id = ? group by Serie.Id");
+
+        // Bind values to the ?'s in the preparedStatement.
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+
+        while (resultSet.next()) {
+            serie.setDuration(resultSet.getInt("profiles"));
+            serie.setWatchedDuration(resultSet.getInt("watched"));
+        }
+
+        // Close database connection
+        databaseConnection.CloseConnection();
+
+        // Returns a serie
+        return serie;
+    }
+
     // Create a new serie
     public boolean create(Serie serie) throws SQLException, ClassNotFoundException{
         // Open database connection

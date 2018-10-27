@@ -1,5 +1,6 @@
 package domain.Listeners.SerieListeners;
 
+import application.*;
 import domain.Account;
 import domain.Episode;
 import domain.Listeners.EpisodeListeners.EpisodeGetAvg;
@@ -10,6 +11,7 @@ import presentation.GUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -18,13 +20,29 @@ import java.util.ArrayList;
  * Author: Marc Verwijmeren
  */
 
-public class SerieGetAvgOfSerie extends EpisodeGetAvg implements ActionListener {
+public class SerieGetAvgOfSerie implements ActionListener {
+    private GUI ui;
+    private SerieManagerImpl serieManager ;
+    private EpisodeManagerlmpl episodeManager ;
+    private ProfileManagerImpl profileManager;
+    private AccountManagerImpl accountManager;
+    private WatchBehaviourManagerImpl watchBehaviourManager;
+    private int percent;
+    private int watchamount;
     private JComboBox cbSelectedSerie;
+    private int totalPercent;
+    private int totaalEpisodes;
 
-    //Constructor
-    public SerieGetAvgOfSerie(GUI ui, JComboBox cbSelectedSerie) {
-        super(ui);
+    // Constructor
+    public SerieGetAvgOfSerie(GUI ui,JComboBox cbSelectedSerie) {
+        this.ui = ui;
+        this.serieManager = new SerieManagerImpl(ui);
+        this.episodeManager = new EpisodeManagerlmpl(ui);
+        this.profileManager = new ProfileManagerImpl();
+        this.accountManager = new AccountManagerImpl();
+        this.watchBehaviourManager = new WatchBehaviourManagerImpl();
         this.cbSelectedSerie = cbSelectedSerie;
+
     }
 
     @Override
@@ -36,49 +54,37 @@ public class SerieGetAvgOfSerie extends EpisodeGetAvg implements ActionListener 
                 // Get te selected serie
                 Serie selectedSerie = (Serie)cbSelectedSerie.getSelectedItem();
 
-                // Returned a list with all the episodes from a serie
-                getEpisodeManager().setEpisodeList(selectedSerie.getId());
-                ArrayList<Episode> episodeList = getEpisodeManager().getEpisode();
+                // Get the all te duractions from episodes from the selected serie
+                Episode episode = episodeManager.getEpisodeBySerieID(selectedSerie.getId());
 
-                // Create a arrayList with all the profiles
-                ArrayList<Profile> profileList = getProfileManager().getProfiles();
+                // Get all te watchedDuratins from the selected serie
+                Serie avgSerie = serieManager.serieGetAvg(selectedSerie.getId());
 
-                // Create a sringbuilder
-                StringBuilder sb = new StringBuilder();
-
-                // Set a buffer
-                int bufferSerieTime = 0;
-
-                // Set the average to 0
-                setPercent(0);
-                setWatchamount(0);
-
-                // Get the average from all the episodes
-                for (Episode episode : episodeList)
-                {
-                    getWatchedAvgOfEpisodes(episode,profileList,sb);
+                // Check if someone has watched the serie
+                if(avgSerie.getDuration() > 0) {
+                    percent = (avgSerie.getWatchedDuration() * 100) / (episode.getEpisodeNumber() * avgSerie.getDuration());
+                }
+                else{
+                    percent = 0;
                 }
 
-                // Empty the pane
-                sb.setLength(0);
+                // Create a stringbuilder
+                StringBuilder sb = new StringBuilder();
 
-                // Calculate the total percent of a serie
-                int totalPercent = getPercent() / getWatchamount();
-
-                // Checked if someone has watched the serie
-                if(totalPercent > 0){
-                    sb.append("De gemiddelde kijktijd van de serie " + selectedSerie.getTitle() + " is:  " + totalPercent + "%.");
+                // Checked if someone has watched the serie with the average
+                if(percent > 0){
+                    sb.append("De gemiddelde kijktijd van de serie " + selectedSerie.getTitle() + " is:  " + percent + "%.");
                 }
                 else{
                     sb.append("Nog niemand heeft de serie " + selectedSerie.getTitle() + " gekeken.");
                 }
 
                 // Fill the average form a serie in the pane
-                getUi().getTxtGetAvgOfSerie().setText(sb.toString());
+                ui.getTxtGetAvgOfSerie().setText(sb.toString());
             }
         }
         catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
+   }
 }

@@ -19,6 +19,13 @@ import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * SerieTest.java
+ * This class contains methods to test the functionality for series
+ * Author: Marc Verwijmeren
+ */
+
+
 class SerieTest {
     private GUI ui = new GUI();
     private SerieManagerImpl serieManager = new SerieManagerImpl(ui);
@@ -407,16 +414,12 @@ class SerieTest {
         profileList.add(profile3);
         profileList.add(profile4);
 
-        ArrayList<Profile> profileList2 = new ArrayList<>();
+        Episode episodedruation = episodeManager.getEpisodeBySerieID(getSerie.getId());
 
-        StringBuilder sb = new StringBuilder();
-        for (Episode episodes : episodeArrayList){
-            // Get avg of an episode
-            serieGetAvgOfSerie.getWatchedAvgOfEpisodes(episodes, profileList,sb);
-        }
+        System.out.println(episode.getEpisodeNumber());
 
-        int totalPercent = serieGetAvgOfSerie.getPercent() / episodeArrayList.size();
-
+        Serie avgSerie = serieManager.serieGetAvg(getSerie.getId());
+        int totalPercent =  (avgSerie.getWatchedDuration()*100) / (episodedruation.getEpisodeNumber() * avgSerie.getDuration() );
 
         // Assert
         // Delete accounts and serie
@@ -424,8 +427,6 @@ class SerieTest {
         accountManager.delete(getAccount2.getId());
         serieManager.delete(getSerie.getId());
 
-        Assertions.assertEquals(75,totalPercent,"Aflevering 1: Pilot\n" +
-                "Deze aflevering is in totaal 4 keer bekeken. \n" +
-                "Met een gemiddelde kijktijd van 75%.");
+        Assertions.assertEquals(37,totalPercent,37);
     }
 }

@@ -50,6 +50,8 @@ public class EpisodeManagerlmpl {
         ui.getLblEpisodeTitleLabel().setVisible(false);
         ui.getLblEpisodeNumberLabel().setVisible(false);
         ui.getLblEpisodeDurationLabel().setVisible(false);
+
+        ui.getLblEpisodeLastNumber().setVisible(false);
     }
 
     //Returns a list with episodes
@@ -94,6 +96,12 @@ public class EpisodeManagerlmpl {
     // Returns a episode based on the serienumber and title
     public Episode getEpisodeByNameAndSerieID(String episodeTitle, int serieID) throws SQLException, ClassNotFoundException{
         Episode getEpisode = episodeDAO.getEpisodeByNameAndSerieID(episodeTitle,serieID);
+        return getEpisode;
+    }
+
+    // Get all of the durations from epicodes with the selected serieID
+    public Episode getEpisodeBySerieID(int serieID)throws SQLException, ClassNotFoundException{
+        Episode getEpisode = episodeDAO.getEpisodebySerieID(serieID);
         return getEpisode;
     }
 

@@ -56,6 +56,14 @@ public class SerieGetRecommendedSerieFromProfileListener implements ActionListen
 
                 // Checked it thar are watched series
                 if(!watchedSeries.isEmpty()){
+                    String serieTitle = "";
+                    for(Serie watchedSerie : watchedSeries) {
+                        serieTitle = watchedSerie.getTitle();
+                    }
+
+                    sb.append("Omdat u naar " + serieTitle + " hebt gekeken.\n \n");
+                    sb.append("Bevelen wij u de volgende serie aan: \n");
+
                     for(Serie watchedSerie : watchedSeries) {
                         Serie serie = serieManager.getSerieById(watchedSerie.getRecommendedSerie());
                         sb.append(serie.getTitle() + " \n");
