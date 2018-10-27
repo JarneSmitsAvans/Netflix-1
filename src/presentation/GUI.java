@@ -71,6 +71,11 @@ public class GUI implements Runnable {
     private JPanel moviesPanel;
     private JPanel watchBehaviourPanel;
 
+    // Account-------------------------------------------------
+    // Overviews
+    private JPanel accountsWithOneProfilePanel;
+    private JTextPane txtAccountsWithOneProfile;
+
     private JComboBox cbRecommendedSerieForAccount;
 
     // View
@@ -326,8 +331,6 @@ public class GUI implements Runnable {
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
     private JButton btnDeleteWatchBehaviour;
-    private JPanel accountsWithOneProfilePanel;
-    private JTextPane txtAccountsWithOneProfile;
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -730,9 +733,9 @@ public class GUI implements Runnable {
         frame.setContentPane(mainPanel);
         ImageIcon icon = new ImageIcon(getClass().getResource("/presentation/images/Netflix.png"));
         frame.setIconImage(icon.getImage());
-//        frame.setPreferredSize(new Dimension(1800, 1020));
-        frame.setMinimumSize(new Dimension(1550, 970));
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setPreferredSize(new Dimension(1750, 1020));
+        frame.setMinimumSize(new Dimension(1600, 970));
+//        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         createComponents(frame.getContentPane());
         frame.pack();
