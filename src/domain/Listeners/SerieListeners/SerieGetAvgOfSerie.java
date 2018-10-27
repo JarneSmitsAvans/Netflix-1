@@ -51,6 +51,7 @@ public class SerieGetAvgOfSerie extends EpisodeGetAvg implements ActionListener 
 
                 // Set the average to 0
                 setPercent(0);
+                setWatchamount(0);
 
                 // Get the average from all the episodes
                 for (Episode episode : episodeList)
@@ -62,7 +63,7 @@ public class SerieGetAvgOfSerie extends EpisodeGetAvg implements ActionListener 
                 sb.setLength(0);
 
                 // Calculate the total percent of a serie
-                int totalPercent = getPercent() / episodeList.size();
+                int totalPercent = getPercent() / getWatchamount();
 
                 // Checked if someone has watched the serie
                 if(totalPercent > 0){
@@ -72,7 +73,7 @@ public class SerieGetAvgOfSerie extends EpisodeGetAvg implements ActionListener 
                     sb.append("Nog niemand heeft de serie " + selectedSerie.getTitle() + " gekeken.");
                 }
 
-                // Fill the average form a serie in the pan
+                // Fill the average form a serie in the pane
                 getUi().getTxtGetAvgOfSerie().setText(sb.toString());
             }
         }

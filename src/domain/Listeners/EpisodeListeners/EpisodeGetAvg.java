@@ -24,6 +24,7 @@ public abstract class EpisodeGetAvg {
     private AccountManagerImpl accountManager;
     private WatchBehaviourManagerImpl watchBehaviourManager;
     private int percent;
+    private int watchamount;
 
     // Constructor
     public EpisodeGetAvg(GUI ui) {
@@ -72,10 +73,12 @@ public abstract class EpisodeGetAvg {
                 sb.append("Deze aflevering is in totaal " + bufferTimesWatched + " keer bekeken. \n") ;
                 sb.append("Met een gemiddelde kijktijd van " + percentViewed + "%.") ;
                 percent += percentViewed;
+                watchamount +=bufferTimesWatched;
             }
             else{
                 // Show a massage that no one had watched the episode
                 sb.append("Nog niemand heeft de aflevering '" + episode.getTitle() + "' gekeken" );
+                watchamount = 1;
             }
             sb.append("\n \n");
 
@@ -124,5 +127,13 @@ public abstract class EpisodeGetAvg {
     // Set the episode average of an episode
     public void setPercent(int percent) {
         this.percent = percent;
+    }
+
+    public int getWatchamount() {
+        return watchamount;
+    }
+
+    public void setWatchamount(int watchamount) {
+        this.watchamount = watchamount;
     }
 }

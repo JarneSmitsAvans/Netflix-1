@@ -1,6 +1,8 @@
 package domain.Listeners.SerieListeners;
 
+import application.EpisodeManagerlmpl;
 import application.SerieManagerImpl;
+import domain.Episode;
 import domain.Serie;
 import presentation.GUI;
 
@@ -17,6 +19,8 @@ import java.awt.event.ActionListener;
 public class SerieCreateListener implements ActionListener {
     private GUI ui;
     private SerieManagerImpl serieManager ;
+    private Episode episode = new Episode();
+    private EpisodeManagerlmpl episodeManager = new EpisodeManagerlmpl(ui);
 
     //Constructor
     public SerieCreateListener(GUI ui) {
@@ -53,15 +57,34 @@ public class SerieCreateListener implements ActionListener {
 
                     // Checks if the seire has bin created
                     if (created) {
-                        // Shows a MessageDialog with the succes message that the serie has bin created with the created serie in it
-                        JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + newSerie.getTitle() + " is succesvol aangemaakt.", "Serie is aangemaakt", JOptionPane.INFORMATION_MESSAGE);
 
-                        //Empty all the textfields and combobox
-                        serieManager.fillAllSerieCbx();
-                        ui.getTxtSerieCreateTitle().setText(null);
-                        ui.getTxtSerieCreateGenre().setText(null);
-                        ui.getTxtSerieCreateLanguage().setText(null);
-                        ui.getTxtSerieCreateAge().setText(null);
+                        episode.setTitle("pilot");
+                        episode.setEpisodeNumber(1);
+                        episode.setDuration(45);
+                        Serie serie = serieManager.getSerieByName(newSerie.getTitle());
+                        episode.setSerieNumber(serie.getId());
+
+                        boolean createdEpisode = episodeManager.create(episode);
+
+                        if(createdEpisode){
+
+                            // Shows a MessageDialog with the succes message that the serie has bin created with the created serie in it
+                            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + newSerie.getTitle() + " is succesvol aangemaakt. \n Er is ook gelijk een pilot aangemaakt u kunt deze bewerken via aflververig bewerken.", "Serie is aangemaakt", JOptionPane.INFORMATION_MESSAGE);
+
+                            //Empty all the textfields and combobox
+                            serieManager.fillAllSerieCbx();
+                            ui.getTxtSerieCreateTitle().setText(null);
+                            ui.getTxtSerieCreateGenre().setText(null);
+                            ui.getTxtSerieCreateLanguage().setText(null);
+                            ui.getTxtSerieCreateAge().setText(null);
+
+                        }
+                        else{
+                            // Shows a MessageDialog with the error that the serie hasn't bin created
+                            JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Het was niet mogelijk om gelijk een pilot aan te maken. Dit kan je als nog doen via aflevering toevoegen.", "Serie niet aangemaakt", JOptionPane.ERROR_MESSAGE);
+                        }
+
+
                     } else {
                         // Shows a MessageDialog with the error that the serie hasn't bin created
                         JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het aanmaken van de serie" + newSerie.getTitle() + ". Probeer het nog eens.", "Serie niet aangemaakt", JOptionPane.ERROR_MESSAGE);
