@@ -27,10 +27,13 @@ public class EpisodeGetValuesToUpdate implements ActionListener {
     }
 
     @Override
+    // Get the values form the selected episode
     public void actionPerformed(ActionEvent e) {
         if(cbSelectedEpisode.getSelectedItem() != "Selecteer serie" && cbSelectedEpisode.getSelectedItem() != null){
+            // Get the selected episode
             Episode episode = (Episode) cbSelectedEpisode.getSelectedItem();
 
+            // Fill the textfields with data
             ui.getTxtUpdateEpisodeTitle().setText(episode.getTitle());
             String episodeNumber = Integer.toString(episode.getEpisodeNumber());
             ui.getTxtUpdateEpisodeNumber().setText(episodeNumber);
@@ -38,6 +41,7 @@ public class EpisodeGetValuesToUpdate implements ActionListener {
             ui.getTxtUpdateEpisodeDuration().setText(episodeDuration);
         }
         else{
+            // Empty the textfields
             ui.getTxtUpdateEpisodeTitle().setText(null);
             ui.getTxtUpdateEpisodeNumber().setText(null);
             ui.getTxtUpdateEpisodeDuration().setText(null);

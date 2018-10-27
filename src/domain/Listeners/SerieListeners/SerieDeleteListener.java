@@ -26,9 +26,10 @@ public class SerieDeleteListener implements ActionListener {
     }
 
     @Override
+    // Delete the selected serie
     public void actionPerformed(ActionEvent e) {
         try{
-            //Check if the combobox is empty or not
+            // Check if the combobox isn't empty
             if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null){
                 // Get the selected serie
                 Serie serie = (Serie)cbSelectedSerie.getSelectedItem();
@@ -38,18 +39,18 @@ public class SerieDeleteListener implements ActionListener {
 
                 // Checked if the serie has bin deleted
                 if(deleted){
-                    // Shows a popup with the error that the serie has bin deleted
+                    // Shows a MessageDialog with the error that the serie has bin deleted
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + serie.getTitle() + " is succesvol verwijderd.", "Serie is verwijderd", JOptionPane.INFORMATION_MESSAGE);
                     // Empty combobox
                     serieManager.fillAllSerieCbx();
                 }
                 else {
-                    // Shows a popup with the error that the serie hasn't bin deleted
+                    // Shows a MessageDialog with the error that the serie hasn't bin deleted
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het verwijderen van de serie" + serie.getTitle() + ". Probeer het nog eens.", "Serie niet verwijderd", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                // Shows a popup with the error that the serie hasn't bin deleted
+                // Shows a MessageDialog with the error that the serie hasn't bin deleted
                 JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "U heeft nog geen serie geselecteerd. Selecteer eerst een serie en probeer het dan opnieuw.", "Serie niet verwijderd", JOptionPane.ERROR_MESSAGE);
             }
 

@@ -71,7 +71,7 @@ public class WatchBehaviourLoadWatchedMediaListener implements ActionListener {
                         styledDocument.insertString(0, string + "\n", null);
                     }
                 } else {
-                    styledDocument.insertString(0, "Geselecteerd profiel heeft nog geen programma's volledig (100%) bekeken." + "\n", null);
+                    styledDocument.insertString(0, "Geselecteerd profiel heeft nog geen programma volledig (100%) bekeken." + "\n", null);
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();

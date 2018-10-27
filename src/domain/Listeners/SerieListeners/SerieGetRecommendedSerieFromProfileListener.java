@@ -33,31 +33,39 @@ public class SerieGetRecommendedSerieFromProfileListener implements ActionListen
     }
 
     @Override
+    // Show the recommended serie form watchbehaviour
     public void actionPerformed(ActionEvent e) {
         try {
+            // Check if the comboboxe's aren't empty
             if (ui.getCbRecommendedSerieForAccount() != null  && ui.getCbRecommendedSerieForProfile().getItemCount() > 0) {
 
+                // Create strings from the selected comboboxe's
                 String profileName = ui.getCbRecommendedSerieForProfile().getSelectedItem().toString();
                 String accountName = ui.getCbRecommendedSerieForAccount().getSelectedItem().toString();
 
+                // Get the profileID
                 int profileID = profileManager.getIdOfProfile(profileName, accountName);
-                HashSet<Serie> serie = watchBehaviourManager.getWatchedSerie(profileID);
 
+                // Create a hashset with all tht watched series based on the profileID
+                HashSet<Serie> watchedSeries = watchBehaviourManager.getWatchedSerie(profileID);
+
+                // Create a stringbuilder
                 StringBuilder sb = new StringBuilder();
 
                 sb.append("Aanbevolen series: \n");
-                sb.append("Bevelen wij u de volgende serie aan: \n");
 
-                if(!serie.isEmpty()){
-                    for(Serie getRecommendedSerie : serie) {
-                        //sb.append("Omdat u als laatste naar " + getRecommendedSerie.getTitle() + " hebt gekeken.\n \n");
-                        sb.append(getRecommendedSerie.getTitle() + " \n");
+                // Checked it thar are watched series
+                if(!watchedSeries.isEmpty()){
+                    for(Serie watchedSerie : watchedSeries) {
+                        Serie serie = serieManager.getSerieById(watchedSerie.getRecommendedSerie());
+                        sb.append(serie.getTitle() + " \n");
                     }
                 }
                 else{
                     sb.append("U heeft nog geen serie bekeken");
                 }
 
+                // Fill the pane with the average from a serie
                 ui.getTxtRecommendedSerie().setText(sb.toString());
             }
 

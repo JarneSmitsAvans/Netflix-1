@@ -26,9 +26,11 @@ public class SerieGetSelectedSerieForEpisodeListener implements ActionListener {
         this.episodeCbToFill = episodeCbToFill;
     }
     @Override
+    // Fill de combobox with episodes based on the selected serie
     public void actionPerformed(ActionEvent e) {
-        //Get the selected serie
+        // Check if the combobox isn't empty
         if(cbSelectedSerie.getSelectedItem() != "Selecteer serie"  && cbSelectedSerie.getSelectedItem() != null){
+            // Get the selected serie
             Serie serie = (Serie)cbSelectedSerie.getSelectedItem();
 
             // Fill the combobox

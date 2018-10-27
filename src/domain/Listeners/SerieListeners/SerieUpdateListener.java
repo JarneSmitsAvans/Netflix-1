@@ -29,6 +29,7 @@ public class SerieUpdateListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
+            // Check if the combobox isn't empty
             if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null){
                Serie serie = (Serie) cbSelectedSerie.getSelectedItem();
                String serieTitle = ui.getTxtUpdateSerieTitle().getText();

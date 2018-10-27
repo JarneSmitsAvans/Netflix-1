@@ -24,9 +24,9 @@ public class EpisodeDAO {
         ArrayList<Episode> EpisodeList = new ArrayList<Episode>();
         // Open database connection
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Episode WHERE fk_serie = ?");
 
         // Bind values to the ?'s in the preparedStatement.
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Episode WHERE fk_serie = ?");
         preparedStatement.setInt(1, serie_id);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
 
@@ -40,6 +40,7 @@ public class EpisodeDAO {
             EpisodeList.add(newEpisode);
         }
 
+        // Close database connection
         databaseConnection.CloseConnection();
         return EpisodeList;
     }
@@ -62,8 +63,36 @@ public class EpisodeDAO {
             EpisodeList.add(newEpisode);
         }
 
+        // Close database connection
         databaseConnection.CloseConnection();
         return EpisodeList;
+    }
+
+    // Returns a episode based on the episode title and serie id
+    public Episode getEpisodeByNameAndSerieID(String episodeTitle, int serieID) throws SQLException, ClassNotFoundException{
+        // Open database connection
+        databaseConnection.OpenConnection();
+
+        // Bind values to the ?'s in the preparedStatement.
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Episode WHERE title = ? AND fk_serie = ?");
+        preparedStatement.setString(1, episodeTitle);
+        preparedStatement.setInt(2, serieID);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+
+        Episode episode = new Episode();
+        while (resultSet.next()) {
+            episode.setId(resultSet.getInt("id"));
+            episode.setTitle(resultSet.getString("title"));
+            episode.setDuration(resultSet.getInt("duration"));
+            episode.setEpisodeNumber(resultSet.getInt("episodenumber"));
+            episode.setSerieNumber(resultSet.getInt("fk_serie"));
+        }
+
+        // Close database connection
+        databaseConnection.CloseConnection();
+
+        // Returns an episode
+        return episode;
     }
 
     // Create a new episode
@@ -88,6 +117,7 @@ public class EpisodeDAO {
         return inserted;
     }
 
+    // Update an episode
     public boolean update(Episode episode) throws SQLException, ClassNotFoundException {
         // Open database connection
         databaseConnection.OpenConnection();

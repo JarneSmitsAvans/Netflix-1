@@ -32,11 +32,14 @@ public class SerieGetValuesToUpdateListener implements ActionListener {
     }
 
     @Override
+    // Get the values that need to be updated
     public void actionPerformed(ActionEvent e) {
-        //Get the selected serie
-        if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null && cbSelectedSerie.getItemCount() >0){
+        // Check if the combobox isn't empty
+        if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null && cbSelectedSerie.getItemCount() > 0){
+            // Get the selected serie
             Serie serie = (Serie)cbSelectedSerie.getSelectedItem();
 
+            // Fill the textfields and combobox with data
             ui.getTxtUpdateSerieTitle().setText(serie.getTitle());
             ui.getTxtUpdateSerieGenre().setText(serie.getGenre());
             ui.getTxtUpdateSerieLanguage().setText(serie.getLanguage());
@@ -45,10 +48,13 @@ public class SerieGetValuesToUpdateListener implements ActionListener {
 
 
             try {
+                // Create a arrayList with series
                 ArrayList<Serie> serieList = serieDAO.getSeries();
+                // Empty the combobox
                 ui.getCbUpdateSerieRecomendedSerie().removeAllItems();
                 serieManager.appendComboBox(ui.getCbUpdateSerieRecomendedSerie(),serieList);
 
+                // Checked for all of the series if the serieID equals recommende serie
                 for(Serie serie1 : serieList){
                     if(serie1.getId() == serie.getRecommendedSerie()){
                         ui.getCbUpdateSerieRecomendedSerie().setSelectedItem(serie1);
@@ -63,6 +69,7 @@ public class SerieGetValuesToUpdateListener implements ActionListener {
 
         }
         else {
+            // Empty combobox and textfields
             ui.getTxtUpdateSerieTitle().setText(null);
             ui.getTxtUpdateSerieGenre().setText(null);
             ui.getTxtUpdateSerieLanguage().setText(null);

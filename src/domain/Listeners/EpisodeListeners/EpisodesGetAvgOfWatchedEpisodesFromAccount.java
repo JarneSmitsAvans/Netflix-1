@@ -29,25 +29,35 @@ public class EpisodesGetAvgOfWatchedEpisodesFromAccount extends EpisodeGetAvg im
     }
 
     @Override
+    // Get the average based on an account
     public void actionPerformed(ActionEvent e) {
         try{
+            // check if the combobox isn't empty
             if(cbSelectedSerie.getSelectedItem() != "Selecteer serie" && cbSelectedSerie.getSelectedItem() != null && cbSelectedSerie.getItemCount() > 0){
                 // Get te selected serie
                 Serie selectedSerie = (Serie)cbSelectedSerie.getSelectedItem();
+
                 // Returned a list with all the episodes from a serie
                 getEpisodeManager().setEpisodeList(selectedSerie.getId());
                 ArrayList<Episode> episodeList = getEpisodeManager().getEpisode();
 
+                // Get the selected account
                 String selectedAccountName = getUi().getCbAccountAvgWatchedBySerie().getSelectedItem().toString();
                 Account selectedAccount = getAccountManager().getAccountByName(selectedAccountName);
+
+                //Create an arrysList with all the profiles form the selected account
                 ArrayList<Profile> profileList = getProfileManager().getMatchingProfiles(selectedAccount.getId());
 
+                // Creat a stringbuilder
                 StringBuilder sb = new StringBuilder();
+
+                // Get te average from every episode
                 for (Episode episode : episodeList)
                 {
                     getWatchedAvgOfEpisodes(episode,profileList,sb);
                 }
 
+                // Fill the pane with te average
                 getUi().getTxtAvgWatchedSeries().setText(sb.toString());
             }
         }

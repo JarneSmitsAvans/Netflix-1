@@ -155,13 +155,13 @@ public class WatchBehaviourDAO {
         databaseConnection.OpenConnection();
         HashSet<Serie> serieHashSet = new HashSet<Serie>();
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(
-                "SELECT * FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id JOIN Episode on Episode.Id = Watched_Media.Episode_Id JOIN Serie on Serie.id = Episode.Fk_Serie WHERE Watched_Media.Profile_Id = ?");
+                "SELECT Serie.Title as title, RecommendedSerie FROM Watched_Media JOIN Profile ON Profile.Id = Watched_Media.Profile_Id JOIN Episode on Episode.Id = Watched_Media.Episode_Id JOIN Serie on Serie.id = Episode.Fk_Serie WHERE Watched_Media.Profile_Id = ? group by Serie.Title, RecommendedSerie");
         preparedStatement.setInt(1, profileID);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
             Serie serie = new Serie();
-            serie.setId(resultSet.getInt("Id"));
-            serie.setTitle(resultSet.getString(17));
+            //serie.setId(resultSet.getInt("Id"));
+            serie.setTitle(resultSet.getString("title"));
             serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
             serieHashSet.add(serie);
         }

@@ -1,6 +1,8 @@
 package datastorage;
 
+import application.SerieManagerImpl;
 import domain.Serie;
+import presentation.GUI;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,12 +19,15 @@ import java.util.ArrayList;
 
 public class SerieDAO {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
+    private GUI ui;
 
     // Returns an ArrayList filled with all series in the database.
     public ArrayList<Serie> getSeries() throws SQLException, ClassNotFoundException {
         ArrayList<Serie> serieList = new ArrayList<Serie>();
+
         // Open database connection
         databaseConnection.OpenConnection();
+
         PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie");
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
 
@@ -40,17 +45,19 @@ public class SerieDAO {
         // Close database connection
         databaseConnection.CloseConnection();
 
+        // Returns a arrayList with series
         return serieList;
     }
 
     // Returns the serie with the selected name
     public Serie getSerieByName(String name) throws SQLException, ClassNotFoundException {
         Serie serie = new Serie();
+
         // Open database connection
         databaseConnection.OpenConnection();
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie WHERE Title = ?");
 
         // Bind values to the ?'s in the preparedStatement.
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie WHERE Title = ?");
         preparedStatement.setString(1, name);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
 
@@ -66,6 +73,8 @@ public class SerieDAO {
 
         // Close database connection
         databaseConnection.CloseConnection();
+
+        // Returns a serie
         return serie;
     }
 
@@ -91,6 +100,8 @@ public class SerieDAO {
 
         // Close database connection
         databaseConnection.CloseConnection();
+
+        // Returns a serie
         return serie;
     }
 
@@ -107,12 +118,17 @@ public class SerieDAO {
         preparedStatement.setInt(4, serie.getMinAge());
         preparedStatement.setInt(5, serie.getRecommendedSerie());
 
-        boolean inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
+        // Checked if the serie title already exists.
+        boolean inserted = false;
+        String st = getSerieByName(serie.getTitle()).getTitle();
+        if(st == null) {
+            inserted = databaseConnection.ExecuteInsertStatement(preparedStatement);
+        }
 
         // Close database connection
         databaseConnection.CloseConnection();
 
-        // Retuned a boolean if the episode has bin inserted
+        // Returns a boolean if the episode has bin inserted
         return inserted;
     }
 
@@ -130,12 +146,19 @@ public class SerieDAO {
         preparedStatement.setInt(5, serie.getRecommendedSerie());
         preparedStatement.setInt(6, serie.getId());
 
-        boolean updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
+        // Checked if the serie already exists
+        boolean updated = false;
+        Serie getSerie = getSerieByName(serie.getTitle());
+        Serie checkSerie = checkSerieTitle(getSerie.getTitle(), serie.getId());
+        if (checkSerie.getTitle() == null) {
+            // Update the serie
+            updated = databaseConnection.ExecuteUpdateStatement(preparedStatement);
+        }
 
         // Close database connection
         databaseConnection.CloseConnection();
 
-        // Retuned a boolean if the episode has bin updated
+        // Returns a boolean if the episode has bin updated
         return updated;
     }
 
@@ -148,12 +171,13 @@ public class SerieDAO {
         // Bind values to the ?'s in the preparedStatement.
         preparedStatement.setInt(1, id);
 
+        // Delete the serie
         boolean deleted = databaseConnection.ExecuteDeleteStatement(preparedStatement);
 
         // Close database connection
         databaseConnection.CloseConnection();
 
-        // Retuned a boolean if the episode has bin deleted
+        // Returns a boolean if the episode has bin deleted
         return deleted;
     }
 
@@ -180,6 +204,8 @@ public class SerieDAO {
 
         // Close database connection
         databaseConnection.CloseConnection();
+
+        // Returns a serie
         return serie;
     }
 }

@@ -42,6 +42,7 @@ public class Episode extends Program {
     }
 
     @Override
+    // Returned the title of an episode
     public String toString() {
         return getTitle();
     }
