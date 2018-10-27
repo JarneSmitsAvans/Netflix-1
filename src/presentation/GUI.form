@@ -89,13 +89,27 @@
               </vspacer>
               <component id="47fc1" class="javax.swing.JLabel" binding="lblDesignerInfo6">
                 <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
                   <foreground color="-1"/>
                   <horizontalAlignment value="4"/>
                   <text value="Label"/>
+                </properties>
+              </component>
+              <component id="50d43" class="javax.swing.JTextPane" binding="txtAccountsWithOneProfile">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                  <enabled value="true"/>
+                  <font size="16"/>
                 </properties>
               </component>
               <component id="40e25" class="javax.swing.JLabel">
@@ -106,20 +120,6 @@
                   <font size="20"/>
                   <foreground color="-1"/>
                   <text value="Accounts met maar één profiel"/>
-                </properties>
-              </component>
-              <component id="50d43" class="javax.swing.JTextPane" binding="txtAccountsWithOneProfile">
-                <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <editable value="false"/>
-                  <enabled value="true"/>
-                  <font size="16"/>
                 </properties>
               </component>
             </children>
@@ -797,7 +797,8 @@
                     <children>
                       <tabbedpane id="46047" binding="crudAccountsAndProfiles">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="1" use-parent-layout="false">
+                            <minimum-size width="200" height="0"/>
                             <preferred-size width="200" height="200"/>
                           </grid>
                         </constraints>
@@ -1547,6 +1548,7 @@
                       <tabbedpane id="11b6a" binding="crudSeriesAndEpisodes">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <minimum-size width="200" height="0"/>
                             <preferred-size width="200" height="200"/>
                           </grid>
                         </constraints>
@@ -2487,6 +2489,7 @@
                       <tabbedpane id="8defa" binding="crudMovie">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <minimum-size width="200" height="0"/>
                             <preferred-size width="200" height="200"/>
                           </grid>
                         </constraints>
@@ -2998,6 +3001,7 @@
                       <tabbedpane id="3288" binding="crudWatchBehaviour">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <minimum-size width="200" height="0"/>
                             <preferred-size width="200" height="200"/>
                           </grid>
                         </constraints>
