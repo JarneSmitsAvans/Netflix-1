@@ -79,7 +79,7 @@ public class WatchBehaviourEditBehaviourListener implements ActionListener {
                         After that, reinitialize the movie components in the application.
                          */
                         this.ui.getTxtEditWatchedMediaDuration().setText(null);
-                        this.ui.getLblEditWatchedMediaDuration().setText(null);
+                        this.ui.getLblEditWatchedMediaDuration().setText("0");
                         this.ui.getCbEditWatchedMediaTitle().setSelectedItem(null);
                         this.ui.getCbEditWatchedMediaProfile().removeAllItems();
                         this.ui.getCbEditWatchedMediaAccount().setSelectedItem(null);
