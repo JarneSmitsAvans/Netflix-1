@@ -100,13 +100,13 @@ public class EpisodeDAO {
         databaseConnection.OpenConnection();
 
         // Bind values to the ?'s in the preparedStatement.
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT sum(episode.duration) as epid FROM Episode WHERE fk_serie = ?");
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT sum(episode.duration) as epDuration FROM Episode WHERE fk_serie = ?");
         preparedStatement.setInt(1, serieID);
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
 
         Episode episode = new Episode();
         while (resultSet.next()) {
-            episode.setEpisodeNumber(resultSet.getInt("epid"));
+            episode.setDuration(resultSet.getInt("epDuration"));
         }
 
         // Close database connection
