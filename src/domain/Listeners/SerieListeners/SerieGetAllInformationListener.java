@@ -29,9 +29,12 @@ public class SerieGetAllInformationListener implements ActionListener {
     // OnActionPerformed: Show and fill all the labels with the data from a serie
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Check if the combobox isn't empty
         if(selectedSerie.getSelectedItem() != "Selecteer serie" && selectedSerie.getSelectedItem() != null){
+            // Get the selected serie
             Serie serie = (Serie)selectedSerie.getSelectedItem();
 
+            // Fill the labels with data
             ui.getLblSerieViewTitlelb().setText(serie.getTitle());
             ui.getLblSerieGenre().setText(serie.getGenre());
             ui.getLblSerieLanguage().setText(serie.getLanguage());
@@ -41,6 +44,7 @@ public class SerieGetAllInformationListener implements ActionListener {
             Serie recommendedSerie = serieManager.getSerieById(serie.getRecommendedSerie());
             ui.getLblSerieRecommended().setText(recommendedSerie.toString());
 
+            // Make all the lables visible
             ui.getLblSerieViewTitlelb().setVisible(true);
             ui.getLblSerieGenre().setVisible(true);
             ui.getLblSerieLanguage().setVisible(true);
@@ -54,6 +58,7 @@ public class SerieGetAllInformationListener implements ActionListener {
             ui.getLblSerieRecommendedLabel().setVisible(true);
         }
         else{
+            // Make all the labels invisible
             serieManager.hideSerieLabels();
         }
     }

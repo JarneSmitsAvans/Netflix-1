@@ -74,8 +74,7 @@ public class EpisodeManagerlmpl {
     }
 
     //Creates a arraylist with all the comboboxes that need to be filed with episodes and starts filling them
-    public void fillAllEpisodesCbx(int id,JComboBox episodeCbToFill)
-    {
+    public void fillAllEpisodesCbx(int id,JComboBox episodeCbToFill) {
         setEpisodeList(id);
 
         episodeCbToFill.removeAllItems();
@@ -85,12 +84,17 @@ public class EpisodeManagerlmpl {
     }
 
     //Fill al the comboboxes With episodes
-    public void appendComboBox(JComboBox comboBox, ArrayList<Episode> episodes)
-    {
+    public void appendComboBox(JComboBox comboBox, ArrayList<Episode> episodes) {
         for ( Episode episode : episodes)
         {
             comboBox.addItem(episode);
         }
+    }
+
+    // Returns a episode based on the serienumber and title
+    public Episode getEpisodeByNameAndSerieID(String episodeTitle, int serieID) throws SQLException, ClassNotFoundException{
+        Episode getEpisode = episodeDAO.getEpisodeByNameAndSerieID(episodeTitle,serieID);
+        return getEpisode;
     }
 
     // Returns al boolean if a new serie has been created or not

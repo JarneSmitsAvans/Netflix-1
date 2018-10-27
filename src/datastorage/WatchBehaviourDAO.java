@@ -160,7 +160,7 @@ public class WatchBehaviourDAO {
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
         while (resultSet.next()) {
             Serie serie = new Serie();
-            serie.setId(resultSet.getInt("Id"));
+            //serie.setId(resultSet.getInt("Id"));
             serie.setTitle(resultSet.getString(17));
             serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
             serieHashSet.add(serie);

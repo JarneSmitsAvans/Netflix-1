@@ -21,6 +21,7 @@ public class EpisodeGetAllInformationListener implements ActionListener {
     private EpisodeManagerlmpl episodeManager;
     private JComboBox selectedcb;
 
+    // Constructor
     public EpisodeGetAllInformationListener(GUI ui,JComboBox selectedcb) {
         this.ui = ui;
         this.episodeManager = new EpisodeManagerlmpl(ui);
@@ -28,16 +29,21 @@ public class EpisodeGetAllInformationListener implements ActionListener {
     }
 
     @Override
+    // Fill all the labels with the right data from a episode
     public void actionPerformed(ActionEvent e) {
+        // Check if the combobox isn't empty
         if(selectedcb != null && selectedcb.getItemCount() > 0){
+            // Get the selected item
             Episode episode = (Episode)selectedcb.getSelectedItem();
 
+            // Fill the labels with data
             ui.getLblEpisodeTitle().setText(episode.getTitle());
             String episodeNumber = Integer.toString(episode.getEpisodeNumber());
             ui.getLblEpisodeNumber().setText(episodeNumber);
             String episodeDuration = Integer.toString(episode.getDuration());
             ui.getLblEpisodeDuration().setText(episodeDuration);
 
+            // Make the lables visible
             ui.getLblEpisodeTitle().setVisible(true);
             ui.getLblEpisodeNumber().setVisible(true);
             ui.getLblEpisodeDuration().setVisible(true);
@@ -47,6 +53,7 @@ public class EpisodeGetAllInformationListener implements ActionListener {
             ui.getLblEpisodeDurationLabel().setVisible(true);
         }
         else{
+            // Make the labels invisible
             ui.getLblEpisodeTitle().setVisible(false);
             ui.getLblEpisodeNumber().setVisible(false);
             ui.getLblEpisodeDuration().setVisible(false);

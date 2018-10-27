@@ -25,6 +25,7 @@ public class SerieCreateListener implements ActionListener {
     }
 
     @Override
+    // Create a new serie
     public void actionPerformed(ActionEvent e) {
         try{
             // Get the values of the textfields
@@ -52,7 +53,7 @@ public class SerieCreateListener implements ActionListener {
 
                     // Checks if the seire has bin created
                     if (created) {
-                        // Shows a popup with the succes message that the serie has bin created with the created serie in it
+                        // Shows a MessageDialog with the succes message that the serie has bin created with the created serie in it
                         JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "De serie " + newSerie.getTitle() + " is succesvol aangemaakt.", "Serie is aangemaakt", JOptionPane.INFORMATION_MESSAGE);
 
                         //Empty all the textfields and combobox
@@ -62,17 +63,17 @@ public class SerieCreateListener implements ActionListener {
                         ui.getTxtSerieCreateLanguage().setText(null);
                         ui.getTxtSerieCreateAge().setText(null);
                     } else {
-                        // Shows a popup with the error that the serie hasn't bin created
+                        // Shows a MessageDialog with the error that the serie hasn't bin created
                         JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is iets fout gegaan tijdens het aanmaken van de serie" + newSerie.getTitle() + ". Probeer het nog eens.", "Serie niet aangemaakt", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else{
-                    // Shows a popup with the error that the serie hasn't bin created
+                    // Shows a MessageDialog with the error that the serie hasn't bin created
                     JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Er is al een serie met deze titel.", "Serie niet aangemaakt", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else{
-                // Shows a popup that not all the fields have been completed
+                // Shows a MessageDialog that not all the fields have been completed
                 JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Niet alle velden zijn ingevuld. Vul eerst alle velden in en probeer het dan opnieuw.", "Serie niet aangemaakt", JOptionPane.ERROR_MESSAGE);
             }
         }

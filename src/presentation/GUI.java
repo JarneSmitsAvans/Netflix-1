@@ -819,7 +819,7 @@ public class GUI implements Runnable {
         cbSerieAvgWatchedByEpisode.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbSerieAvgWatchedByEpisode,cbEpisodeAvgWatchedByEpisode));
         cbUpdateEpisodeOfSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this, cbUpdateEpisodeOfSerie,cbUpdateEpisodeForSerie));
         cbDeleteEpisodeFromSerie.addActionListener(new SerieGetSelectedSerieForEpisodeListener(this,cbDeleteEpisodeFromSerie,cbDeleteEpisode));
-        cbSerieAvgOfSerie.addActionListener(new EpisodeGetAvgOfSerie(this, cbSerieAvgOfSerie));
+        cbSerieAvgOfSerie.addActionListener(new SerieGetAvgOfSerie(this, cbSerieAvgOfSerie));
         cbRecommendedSerieForProfile.addActionListener(new SerieGetRecommendedSerieFromProfileListener(this));
 
         // View
