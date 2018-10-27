@@ -47,6 +47,7 @@ public class WatchBehaviorLoadProfilesForSelectedAccountEditListener implements 
                 // Place all profiles that belong to the variable account into the comboBox.
                 profileManager.addProfilesToComboBox(this.ui.getCbEditWatchedMediaProfile(), profileManager.getMatchingProfiles(id));
                 this.ui.getCbEditWatchedMediaProfile().setSelectedItem(null);
+                this.ui.getCbEditWatchedMediaTitle().removeAllItems();
             } else {
                 return;
             }

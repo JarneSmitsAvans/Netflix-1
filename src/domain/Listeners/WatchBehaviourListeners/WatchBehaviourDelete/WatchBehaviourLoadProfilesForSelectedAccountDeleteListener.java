@@ -48,6 +48,7 @@ public class WatchBehaviourLoadProfilesForSelectedAccountDeleteListener implemen
                 // Place all profiles that belong to the variable account into the comboBox.
                 profileManager.addProfilesToComboBox(this.ui.getCbDeleteWatchedMediaProfile(), profileManager.getMatchingProfiles(id));
                 this.ui.getCbDeleteWatchedMediaProfile().setSelectedItem(null);
+                ui.getCbDeleteWatchedMediaTitle().removeAllItems();
             } else {
                 return;
             }
