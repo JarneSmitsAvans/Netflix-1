@@ -907,7 +907,9 @@
                               </vspacer>
                               <component id="fd0ab" class="javax.swing.JComboBox" binding="cbAccountOverviewSelectAccount">
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="550" height="-1"/>
+                                  </grid>
                                 </constraints>
                                 <properties>
                                   <font size="16"/>
@@ -915,7 +917,7 @@
                               </component>
                             </children>
                           </grid>
-                          <grid id="c81fc" binding="addAccountPanel" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                          <grid id="c81fc" binding="addAccountPanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="20" left="20" bottom="20" right="20"/>
                             <constraints>
                               <tabbedpane title="&lt;html&gt;&lt;br&gt;Account toevoegen&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -946,10 +948,8 @@
                               </vspacer>
                               <component id="4f70a" class="javax.swing.JTextField" binding="txtAccountName">
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
-                                    <minimum-size width="-1" height="30"/>
-                                    <preferred-size width="150" height="30"/>
-                                    <maximum-size width="-1" height="30"/>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="500" height="-1"/>
                                   </grid>
                                 </constraints>
                                 <properties>
@@ -968,10 +968,8 @@
                               </component>
                               <component id="b4f6c" class="javax.swing.JTextField" binding="txtAccountAddress">
                                 <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
-                                    <minimum-size width="-1" height="30"/>
-                                    <preferred-size width="150" height="30"/>
-                                    <maximum-size width="-1" height="30"/>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="500" height="-1"/>
                                   </grid>
                                 </constraints>
                                 <properties>
@@ -990,10 +988,8 @@
                               </component>
                               <component id="eb5be" class="javax.swing.JTextField" binding="txtAccountResidence">
                                 <constraints>
-                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
-                                    <minimum-size width="-1" height="30"/>
-                                    <preferred-size width="150" height="30"/>
-                                    <maximum-size width="-1" height="30"/>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="500" height="-1"/>
                                   </grid>
                                 </constraints>
                                 <properties>
@@ -1002,7 +998,7 @@
                               </component>
                               <component id="3491c" class="javax.swing.JButton" binding="btnAddAccount">
                                 <constraints>
-                                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <text value="Toevoegen"/>
