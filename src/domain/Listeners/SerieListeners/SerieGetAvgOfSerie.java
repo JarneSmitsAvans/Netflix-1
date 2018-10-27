@@ -62,7 +62,7 @@ public class SerieGetAvgOfSerie implements ActionListener {
 
                 // Check if someone has watched the serie
                 if(avgSerie.getDuration() > 0) {
-                    percent = (avgSerie.getWatchedDuration() * 100) / (episode.getEpisodeNumber() * avgSerie.getDuration());
+                    percent = (avgSerie.getWatchedDuration() * 100) / (episode.getDuration() * avgSerie.getDuration());
                 }
                 else{
                     percent = 0;
