@@ -56,7 +56,7 @@ public class WatchBehaviourLoadWatchedMediaListener implements ActionListener {
                     // Round to 2 decimals
                     float roundedPercentage = GeneralManager.round(percent, 2);
                     // Add it to the watched programs ArrayList
-                    watchedPrograms.add(episode.getSerieTitle() + ":  " + episode.getTitle() + " bekeken voor: " + roundedPercentage + "%" + " en laatst bekeken op: " + episode.getWatchedOn());
+                    watchedPrograms.add(episode.getSerieTitle() + ":  " + episode.getTitle() + " bekeken voor: " + roundedPercentage + "%" + " en laatst bekeken op: " + episode.getWatchedOn() + "\n");
                 }
                 for (Movie movie : watchedMovies) {
                     float watchedMovieDuration = movie.getWatchedDuration();
@@ -66,7 +66,7 @@ public class WatchBehaviourLoadWatchedMediaListener implements ActionListener {
                     // Round to 2 decimals
                     float roundedPercentage = GeneralManager.round(percent, 2);
                     // Add it to the watched programs ArrayList
-                    watchedPrograms.add(movie.getTitle() + " bekeken voor: " + roundedPercentage + "%" + " en laatst bekeken op: " + movie.getWatchedOn());
+                    watchedPrograms.add(movie.getTitle() + " bekeken voor: " + roundedPercentage + "%" + " en laatst bekeken op: " + movie.getWatchedOn() + "\n");
                 }
                 // For each watched title, add it to the textPane.
                 StyledDocument styledDocument = ui.getTxtWatchedProgramsBySelectedProfile().getStyledDocument();
