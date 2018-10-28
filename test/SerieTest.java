@@ -197,11 +197,11 @@ class SerieTest {
     }
 
     @Test
-    void testRecommendedSerieReturnTheShannaraCronicles() throws SQLException, ClassNotFoundException, ParseException {
+    void testRecommendedSerieReturnBreakingBad() throws SQLException, ClassNotFoundException, ParseException {
         // Arrange
         // Set values for a new serie
         Serie serie = new Serie();
-        serie.setTitle("The Shannara Cronicles");
+        serie.setTitle("Breaking Bad");
         serie.setGenre("Sciencefiction");
         serie.setLanguage("Amerikaans");
         serie.setMinAge(16);
@@ -285,7 +285,7 @@ class SerieTest {
         serieManager.delete(getSerie.getId());
         serieManager.delete(getSerie2.getId());
 
-        Assertions.assertEquals("The Shannara Cronicles",serieRecommended.getTitle());
+        Assertions.assertEquals("Breaking Bad",serieRecommended.getTitle());
 
 
     }
@@ -415,8 +415,6 @@ class SerieTest {
         profileList.add(profile4);
 
         Episode episodedruation = episodeManager.getEpisodeBySerieID(getSerie.getId());
-
-        System.out.println(episode.getEpisodeNumber());
 
         Serie avgSerie = serieManager.serieGetAvg(getSerie.getId());
         int totalPercent;
