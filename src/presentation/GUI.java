@@ -31,9 +31,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUI implements Runnable {
-    // Class variables
-    private int width;
-    private int height;
 
 //    Components ------------------------------------------------------------------------------------------------------------------
 
@@ -75,8 +72,6 @@ public class GUI implements Runnable {
     // Overviews
     private JPanel accountsWithOneProfilePanel;
     private JTextPane txtAccountsWithOneProfile;
-
-    private JComboBox cbRecommendedSerieForAccount;
 
     // View
     private JComboBox cbAccountOverviewSelectAccount;
@@ -154,6 +149,7 @@ public class GUI implements Runnable {
     private JPanel avgWatchedSeriePanel;
     private JComboBox cbSerieAvgOfSerie;
     private JPanel recommendedSeriesByProfilePanel;
+    private JComboBox cbRecommendedSerieForAccount;
     private JTextPane txtRecommendedSerie;
 
     // View
@@ -200,6 +196,7 @@ public class GUI implements Runnable {
     private JComboBox cbSerieAvgWatchedByEpisode;
     private JComboBox cbEpisodeAvgWatchedByEpisode;
     private JTextPane txtAvgWatchedEpisode;
+    private JTextField textField1;
 
     // View
     private JPanel readEpisodePanel;
@@ -295,7 +292,6 @@ public class GUI implements Runnable {
     // Watched media-----------------------------------------------
     // Overviews
     private JPanel watchedProgramsByProfilePanel;
-
     private JTextPane txtWatchedProgramsBySelectedProfile;
 
     // Add
@@ -327,13 +323,10 @@ public class GUI implements Runnable {
 
     // Delete
     private JPanel deleteWatchBehaviourPanel;
-
     private JComboBox cbDeleteWatchedMediaAccount;
     private JComboBox cbDeleteWatchedMediaProfile;
     private JComboBox cbDeleteWatchedMediaTitle;
     private JButton btnDeleteWatchBehaviour;
-    private JTextField textField1;
-
 
 
 //    Getters ------------------------------------------------------------------------------------------------------------------
@@ -750,7 +743,7 @@ public class GUI implements Runnable {
     private void createComponents(Container container) {
         container = mainPanel;
         String designInfo = "Informatica | 2018-2019 | 23IVK1 | Dylan ten Böhmer (2137867), Marc Verwijmeren (2139166) en Kim van den Berg (2137853)";
-        lblDesignerInfo.setText(designInfo);
+        lblDesignerInfo.setText(designInfo + "              ");
         lblDesignerInfo2.setText(designInfo);
         lblDesignerInfo3.setText(designInfo);
         lblDesignerInfo4.setText(designInfo);

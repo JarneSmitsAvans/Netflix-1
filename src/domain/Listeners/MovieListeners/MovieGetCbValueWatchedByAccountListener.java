@@ -50,6 +50,7 @@ public class MovieGetCbValueWatchedByAccountListener implements ActionListener {
                 if(!watchedMoviesList.isEmpty()) {
                     // Get all unique movies from the list.
                     Set<String> uniqueMovies = new HashSet<String>(watchedMoviesList);
+                    watchedMovies += "Dit account heeft de volgende films (deels of volledig) bekeken:\n";
                     for (String movie : uniqueMovies) {
                         // Get frequency of current movie
                         int howManyTimes = Collections.frequency(watchedMoviesList, movie);
