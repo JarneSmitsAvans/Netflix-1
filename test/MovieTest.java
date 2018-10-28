@@ -286,8 +286,8 @@ class MovieTest {
         }
 
         // Assert
-        // Test if the output from the method is equal to 2
-        Assertions.assertEquals(amountOfViewersFromDatabase, "2");
+        // Test if the output from the method is equal to 1
+        Assertions.assertEquals(amountOfViewersFromDatabase, "1");
     }
 
     @Test
@@ -382,8 +382,8 @@ class MovieTest {
 
         // Assert
         // Check if output from method is equal to what is supposed to be.
-        Assertions.assertEquals(amountOfViewersFromDatabase, "12 Years A Slave\n" +
-                "De film is 2x bekeken.\n" +
-                "1 van de 2 (50.0%) kijkers hebben de film '12 Years A Slave' volledig bekeken.");
+        Assertions.assertEquals(amountOfViewersFromDatabase, "12 Years A Slave\n\n" +
+                "Deze film is in totaal 2x bekeken.\n" +
+                "1 van de 2 (50.0%) kijkers heeft de film '12 Years A Slave' volledig bekeken.");
     }
 }
