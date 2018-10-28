@@ -38,7 +38,7 @@ public class MovieLoadAmountOfViewsListener implements ActionListener {
                 String textInPane = "";
                 // If amount of viewers is not 0, textInPane is this.
                 if(!amountOfViewers.equals("0")) {
-                    textInPane = "De film '" + strSelectedMovie + "' is in totaal (deels of volledig) " + amountOfViewers + " keer bekeken.";
+                    textInPane = "De film '" + strSelectedMovie + "' is in totaal " + amountOfViewers + " keer volledig bekeken.";
                 } else {
                     // If amount of viewers is 0, textInPane is this. (Movie isn't watched)
                     textInPane = "De film '" + strSelectedMovie + "' is nog niet bekeken.";
