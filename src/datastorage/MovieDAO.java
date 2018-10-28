@@ -142,17 +142,22 @@ public class MovieDAO {
     // Returns String which contains the amount of viewers.
     public String getAmountOfViewers(Movie movie) throws SQLException, ClassNotFoundException {
         databaseConnection.OpenConnection();
-        // Count records from the table Watched_Media where the movieTitle is the title of the selected movie.
-        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT count(*) AS viewers from Watched_Media where Movie_Title = ?");
+        // Get records from Watched_media table with the title of the parameter movie.
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * from Watched_Media where Movie_Title = ?");
         preparedStatement.setString(1, movie.getTitle());
         ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
-        int amount = 0;
+        // Get duration of movie
+        int maxDurationOfMovie = movie.getDuration();
+        int watchedWholeMovie = 0;
         while (resultSet.next()) {
-            // Get amount of viewers
-            amount = resultSet.getInt("viewers");
+
+            if(resultSet.getInt("TimeWatched") == maxDurationOfMovie) {
+                // Add one value to the amount of viewers who watched the whole movie.
+                watchedWholeMovie++;
+            }
         }
         // Convert int to string
-        String strAmount = Integer.toString(amount);
+        String strAmount = Integer.toString(watchedWholeMovie);
         databaseConnection.CloseConnection();
         return strAmount;
     }
@@ -190,13 +195,17 @@ public class MovieDAO {
             String amountOfViewerWhoWatchedWholeMovie = "";
             // If the movie has been watched more than once call viewers: 'kijkers'.
             if(watchedMovie > 1) {
-                amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " (" + percentage + "%) kijkers hebben de film ";
+                if(watchedWholeMovie > 1) {
+                    amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " (" + percentage + "%) kijkers hebben de film ";
+                } else {
+                    amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " (" + percentage + "%) kijkers heeft de film ";
+                }
             }
             // If the movie has been watched one time call viewer: 'kijker'.
             else {
                 amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " (" + percentage + "%) kijker heeft de film ";
             }
-            strViewers = movieTitle + "\nDe film is " + watchedMovie + "x bekeken.\n" + amountOfViewerWhoWatchedWholeMovie + "'" + movieTitle + "' volledig bekeken.";
+            strViewers = movieTitle + "\n\nDeze film is in totaal " + watchedMovie + "x bekeken.\n" + amountOfViewerWhoWatchedWholeMovie + "'" + movieTitle + "' volledig bekeken.";
         }
 
         databaseConnection.CloseConnection();

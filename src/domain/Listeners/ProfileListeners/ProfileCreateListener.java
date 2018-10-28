@@ -9,6 +9,7 @@ import presentation.GUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * ProfileCreateListener.java
@@ -42,6 +43,12 @@ public class ProfileCreateListener implements ActionListener {
                 java.sql.Date convertedDate = new java.sql.Date(oldDate.getTime());
                 // Get the selected account as an object
                 Account account = accountManager.getAccountByName(strSelectedAccount);
+                ArrayList<Profile> profileArrayList = profileManager.getMatchingProfiles(account.getId());
+                // Check if account has not exceeded the maximum amount of profiles allowed per account
+                if (profileArrayList.size() >= 5) {
+                    JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Dit account heeft het maximum aantal profielen bereikt. (5)", "Profiel niet aangemaakt", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 // Set values for the to-be created profile.
                 profile.setProfileName(this.ui.getTxtProfileName().getText());
                 profile.setDateOfBirth(convertedDate);

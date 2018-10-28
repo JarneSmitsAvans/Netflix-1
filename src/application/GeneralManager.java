@@ -3,6 +3,7 @@ package application;
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -35,6 +36,13 @@ public class GeneralManager {
                 e.printStackTrace();
             }
         }
+    }
+
+    // Round a float to 2 decimals
+    public static float round(float number, int decimalPlace) {
+        BigDecimal bigDecimal = new BigDecimal(number);
+        bigDecimal = bigDecimal.setScale(decimalPlace, BigDecimal.ROUND_UP);
+        return bigDecimal.floatValue();
     }
 
     // Returns the age of a person

@@ -61,7 +61,7 @@
               </component>
             </children>
           </grid>
-          <grid id="51658" binding="accountsWithOneProfilePanel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="51658" binding="accountsWithOneProfilePanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Accounts met 1 profiel&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -74,7 +74,7 @@
             <children>
               <component id="bd014" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -84,12 +84,12 @@
               </component>
               <vspacer id="48eb1">
                 <constraints>
-                  <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="47fc1" class="javax.swing.JLabel" binding="lblDesignerInfo6">
                 <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -98,22 +98,12 @@
                   <text value="Label"/>
                 </properties>
               </component>
-              <component id="40e25" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <font size="20"/>
-                  <foreground color="-1"/>
-                  <text value="Accounts met maar één profiel"/>
-                </properties>
-              </component>
               <component id="50d43" class="javax.swing.JTextPane" binding="txtAccountsWithOneProfile">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -122,9 +112,39 @@
                   <font size="16"/>
                 </properties>
               </component>
+              <component id="40e25" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="Accounts met maar één profiel"/>
+                </properties>
+              </component>
+              <component id="e986d" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <vspacer id="1b221">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
-          <grid id="e2ee7" binding="watchedMoviesByAccountPanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="e2ee7" binding="watchedMoviesByAccountPanel" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Bekeken films door Account&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -138,7 +158,7 @@
             <children>
               <component id="28952" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -148,12 +168,16 @@
               </component>
               <vspacer id="f5dfb">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="a4ba7" class="javax.swing.JComboBox" binding="cbWatchedMoviesByAccount">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -162,10 +186,10 @@
               </component>
               <component id="a8768" class="javax.swing.JTextPane" binding="txtMoviesWatchedByAccount">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -176,7 +200,7 @@
               </component>
               <component id="77c13" class="javax.swing.JLabel" binding="lblDesignerInfo4">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="1" use-parent-layout="false"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="1" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -185,9 +209,38 @@
                   <text value="Label"/>
                 </properties>
               </component>
+              <component id="8118e" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <text value="              "/>
+                </properties>
+              </component>
+              <component id="2fc1a" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <vspacer id="ec8a3">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
-          <grid id="aace6" binding="movieWithLongestDurationAndMinAgeBelow16Panel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="aace6" binding="movieWithLongestDurationAndMinAgeBelow16Panel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Film met langste tijdsduur&lt;br&gt; voor kijkers onder de 16 jaar&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -200,7 +253,7 @@
             <children>
               <component id="8dc58" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -210,12 +263,12 @@
               </component>
               <vspacer id="f2df6">
                 <constraints>
-                  <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="3e18a" class="javax.swing.JLabel" binding="lblDesignerInfo5">
                 <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -226,7 +279,7 @@
               </component>
               <component id="6d09f" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -236,10 +289,10 @@
               </component>
               <component id="46509" class="javax.swing.JTextPane" binding="txtLongestDurationOfMovieBelow16">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -248,12 +301,32 @@
                   <font size="16"/>
                 </properties>
               </component>
+              <component id="9f657" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <vspacer id="64b72">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
-          <grid id="7e287" binding="amountOfViewerByMoviePanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="7e287" binding="amountOfViewerByMoviePanel" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
-              <tabbedpane title="&lt;html&gt;&lt;br&gt;Aantal kijkers per film&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
+              <tabbedpane title="&lt;html&gt;&lt;br&gt;Aantal volledige kijkers per film&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
             </constraints>
             <properties>
               <background color="-16777216"/>
@@ -264,7 +337,7 @@
             <children>
               <component id="5ffe4" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -274,12 +347,16 @@
               </component>
               <vspacer id="60d9f">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="d109a" class="javax.swing.JComboBox" binding="cbAmountOfViewsOfMovie">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -287,10 +364,10 @@
               </component>
               <component id="115c2" class="javax.swing.JTextPane" binding="txtAmountOfViewersForMovie">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -301,7 +378,7 @@
               </component>
               <component id="2815c" class="javax.swing.JLabel" binding="lblDesignerInfo7">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="1" use-parent-layout="false"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="1" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -310,9 +387,39 @@
                   <text value="Label"/>
                 </properties>
               </component>
+              <component id="36aa8" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="           "/>
+                </properties>
+              </component>
+              <vspacer id="b1f6e">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <component id="28536" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
             </children>
           </grid>
-          <grid id="df8d9" binding="amountOfViewersWhoWatchedWholeMoviePanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="df8d9" binding="amountOfViewersWhoWatchedWholeMoviePanel" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Aantal kijkers die geselecteerde&lt;br&gt;film helemaal hebben gezien (%)&lt;br&gt;&lt;br&gt;&lt;/html&gt;&#10;"/>
@@ -326,7 +433,7 @@
             <children>
               <component id="94a6d" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -336,12 +443,16 @@
               </component>
               <vspacer id="e1360">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="a0ecd" class="javax.swing.JComboBox" binding="cbAmountOfViewerWholeMovie">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -349,10 +460,10 @@
               </component>
               <component id="9f51b" class="javax.swing.JTextPane" binding="txtAmountOfViewersWholeMovie">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -363,7 +474,7 @@
               </component>
               <component id="3080d" class="javax.swing.JLabel" binding="lblDesignerInfo10">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -372,9 +483,39 @@
                   <text value="Label"/>
                 </properties>
               </component>
+              <component id="cb3c0" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="          "/>
+                </properties>
+              </component>
+              <component id="d3b59" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <vspacer id="948e6">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
-          <grid id="1ecbc" binding="avgWatchedSerieByAccountPanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="1ecbc" binding="avgWatchedSerieByAccountPanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Gemiddeld bekeken tijdsduur&lt;br&gt; aflevering per account &amp; serie (%)&lt;br&gt;&lt;br&gt;&lt;/html"/>
@@ -387,22 +528,26 @@
             <children>
               <component id="74d6b" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
                   <foreground color="-1"/>
-                  <text value="Account"/>
+                  <text value="Account  "/>
                 </properties>
               </component>
               <vspacer id="6c20c">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="925d9" class="javax.swing.JComboBox" binding="cbAccountAvgWatchedBySerie">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -410,7 +555,7 @@
               </component>
               <component id="11e89" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -420,7 +565,11 @@
               </component>
               <component id="2fb47" class="javax.swing.JComboBox" binding="cbSerieAvgWatchedBySerie">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -428,10 +577,10 @@
               </component>
               <component id="9e00b" class="javax.swing.JTextPane" binding="txtAvgWatchedSeries">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -442,7 +591,7 @@
               </component>
               <component id="1568d" class="javax.swing.JLabel" binding="lblDesignerInfo3">
                 <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -451,9 +600,39 @@
                   <text value="Label"/>
                 </properties>
               </component>
+              <component id="54edf" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="    "/>
+                </properties>
+              </component>
+              <component id="35f8a" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <vspacer id="aa48d">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
-          <grid id="7359c" binding="avgWatchedEpisodeBySeriePanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="7359c" binding="avgWatchedEpisodeBySeriePanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Gemiddeld bekeken tijdsduur&lt;br&gt; aflevering per serie (%)&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -466,7 +645,7 @@
             <children>
               <component id="20ee8" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -476,12 +655,12 @@
               </component>
               <vspacer id="f2ac5">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="649d0" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -491,7 +670,7 @@
               </component>
               <component id="1532e" class="javax.swing.JLabel" binding="lblDesignerInfo2">
                 <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -502,7 +681,11 @@
               </component>
               <component id="5c79d" class="javax.swing.JComboBox" binding="cbSerieAvgWatchedByEpisode">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -510,10 +693,10 @@
               </component>
               <component id="16117" class="javax.swing.JTextPane" binding="txtAvgWatchedEpisode">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -524,16 +707,50 @@
               </component>
               <component id="da871" class="javax.swing.JComboBox" binding="cbEpisodeAvgWatchedByEpisode">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <enabled value="false"/>
                   <font size="20"/>
                 </properties>
               </component>
+              <component id="31ba4" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="     "/>
+                </properties>
+              </component>
+              <component id="b26ee" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <vspacer id="4fb0b">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
-          <grid id="30064" binding="avgWatchedSeriePanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="30064" binding="avgWatchedSeriePanel" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Gemiddeld bekeken tijdsduur serie (%)&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -547,22 +764,26 @@
             <children>
               <component id="32fbb" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
                   <foreground color="-1"/>
-                  <text value="Serie         "/>
+                  <text value="Serie        "/>
                 </properties>
               </component>
               <vspacer id="a0614">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="e62f7" class="javax.swing.JComboBox" binding="cbSerieAvgOfSerie">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -570,10 +791,10 @@
               </component>
               <component id="4c9e2" class="javax.swing.JTextPane" binding="txtGetAvgOfSerie">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -584,7 +805,7 @@
               </component>
               <component id="16e65" class="javax.swing.JLabel" binding="lblDesignerInfo11">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -593,9 +814,39 @@
                   <text value="Label"/>
                 </properties>
               </component>
+              <component id="f9862" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="    "/>
+                </properties>
+              </component>
+              <component id="1c5a7" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <vspacer id="9747f">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
-          <grid id="68aa7" binding="recommendedSeriesByProfilePanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="68aa7" binding="recommendedSeriesByProfilePanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Aanbevolen serie voor profiel&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -608,22 +859,26 @@
             <children>
               <component id="7102c" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
                   <foreground color="-1"/>
-                  <text value="Profiel       "/>
+                  <text value="Profiel"/>
                 </properties>
               </component>
               <vspacer id="a37bf">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="48b69" class="javax.swing.JComboBox" binding="cbRecommendedSerieForProfile">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -631,7 +886,7 @@
               </component>
               <component id="db87a" class="javax.swing.JLabel" binding="lblDesignerInfo12">
                 <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -642,7 +897,11 @@
               </component>
               <component id="caf09" class="javax.swing.JComboBox" binding="cbRecommendedSerieForAccount">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -650,20 +909,20 @@
               </component>
               <component id="5b7cf" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
                   <foreground color="-1"/>
-                  <text value="Account"/>
+                  <text value="Account   "/>
                 </properties>
               </component>
               <component id="ed691" class="javax.swing.JTextPane" binding="txtRecommendedSerie">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -672,9 +931,39 @@
                   <font size="16"/>
                 </properties>
               </component>
+              <component id="b4986" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="    "/>
+                </properties>
+              </component>
+              <component id="6ec8" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <vspacer id="e1b46">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
-          <grid id="49d27" binding="watchedProgramsByProfilePanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="49d27" binding="watchedProgramsByProfilePanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="100" left="100" bottom="0" right="100"/>
             <constraints>
               <tabbedpane title="&lt;html&gt;&lt;br&gt;Bekeken programma's &lt;br&gt; door profiel&lt;br&gt;&lt;br&gt;&lt;/html&gt;"/>
@@ -687,22 +976,26 @@
             <children>
               <component id="50ad6" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
                   <foreground color="-1"/>
-                  <text value="Profile       "/>
+                  <text value="Profiel"/>
                 </properties>
               </component>
               <vspacer id="698a4">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="1b773" class="javax.swing.JComboBox" binding="cbWatchedProgramsBySelectedProfile">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -710,7 +1003,7 @@
               </component>
               <component id="1b443" class="javax.swing.JLabel" binding="lblDesignerInfo9">
                 <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
@@ -721,7 +1014,11 @@
               </component>
               <component id="462f9" class="javax.swing.JComboBox" binding="cbWatchedProgramsBySelectedAccount">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="-1"/>
+                    <preferred-size width="500" height="-1"/>
+                    <maximum-size width="800" height="-1"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <font size="20"/>
@@ -729,20 +1026,20 @@
               </component>
               <component id="d9a9c" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="20"/>
                   <foreground color="-1"/>
-                  <text value="Account"/>
+                  <text value="Account   "/>
                 </properties>
               </component>
               <component id="3189c" class="javax.swing.JTextPane" binding="txtWatchedProgramsBySelectedProfile">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="500"/>
-                    <preferred-size width="150" height="500"/>
-                    <maximum-size width="-1" height="500"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="500" height="500"/>
+                    <preferred-size width="500" height="500"/>
+                    <maximum-size width="800" height="500"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -751,6 +1048,36 @@
                   <font size="16"/>
                 </properties>
               </component>
+              <component id="a6b2d" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="20"/>
+                  <foreground color="-1"/>
+                  <text value="    "/>
+                </properties>
+              </component>
+              <component id="9240e" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <icon value="presentation/images/Netflix_statistics_small.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <vspacer id="f3407">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="25"/>
+                    <preferred-size width="-1" height="25"/>
+                    <maximum-size width="-1" height="25"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
           <grid id="34e2e" binding="netflixManagement" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -797,7 +1124,8 @@
                     <children>
                       <tabbedpane id="46047" binding="crudAccountsAndProfiles">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="1" use-parent-layout="false">
+                            <minimum-size width="200" height="0"/>
                             <preferred-size width="200" height="200"/>
                           </grid>
                         </constraints>
@@ -1547,6 +1875,7 @@
                       <tabbedpane id="11b6a" binding="crudSeriesAndEpisodes">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <minimum-size width="200" height="0"/>
                             <preferred-size width="200" height="200"/>
                           </grid>
                         </constraints>
@@ -2487,6 +2816,7 @@
                       <tabbedpane id="8defa" binding="crudMovie">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <minimum-size width="200" height="0"/>
                             <preferred-size width="200" height="200"/>
                           </grid>
                         </constraints>
@@ -2998,6 +3328,7 @@
                       <tabbedpane id="3288" binding="crudWatchBehaviour">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <minimum-size width="200" height="0"/>
                             <preferred-size width="200" height="200"/>
                           </grid>
                         </constraints>

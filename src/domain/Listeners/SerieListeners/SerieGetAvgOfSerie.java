@@ -73,7 +73,7 @@ public class SerieGetAvgOfSerie implements ActionListener {
 
                 // Checked if someone has watched the serie with the average
                 if(percent > 0){
-                    sb.append("De gemiddelde kijktijd van de serie " + selectedSerie.getTitle() + " is:  " + percent + "%.");
+                    sb.append("De gemiddelde kijktijd van de serie " + selectedSerie.getTitle() + " is: " + percent + "%.");
                 }
                 else{
                     sb.append("Nog niemand heeft de serie " + selectedSerie.getTitle() + " gekeken.");
