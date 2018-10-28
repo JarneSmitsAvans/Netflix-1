@@ -69,6 +69,7 @@
             <properties>
               <background color="-16777216"/>
               <foreground color="-1"/>
+              <minimumSize width="1600" height="788"/>
             </properties>
             <border type="none"/>
             <children>
@@ -2128,7 +2129,7 @@
                                 <properties>
                                   <enabled value="false"/>
                                   <font size="16"/>
-                                  <text value="Leeftijd"/>
+                                  <text value="Min. leeftijd"/>
                                 </properties>
                               </component>
                               <component id="d88f7" class="javax.swing.JLabel">
@@ -2270,7 +2271,7 @@
                                 <properties>
                                   <enabled value="false"/>
                                   <font size="16"/>
-                                  <text value="Leeftijd"/>
+                                  <text value="Min. leeftijd"/>
                                 </properties>
                               </component>
                               <component id="8413d" class="javax.swing.JComboBox" binding="cbGetUpdateSerie">

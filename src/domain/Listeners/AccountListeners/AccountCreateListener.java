@@ -53,7 +53,7 @@ public class AccountCreateListener implements ActionListener {
                         this.ui.getTxtAccountName().setText(null);
                         this.ui.getTxtAccountAddress().setText(null);
                         this.ui.getTxtAccountResidence().setText(null);
-                        this.accountManager.initializeAccountComboBoxes(ui);
+
 
                         // Create the first profile for the created account
                         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -69,6 +69,7 @@ public class AccountCreateListener implements ActionListener {
                         boolean profileCreated = profileManager.create(profile);
                         if (profileCreated) {
                             this.profileManager.initializeProfileComboBoxes(ui);
+                            this.accountManager.initializeAccountComboBoxes(ui);
                             JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "Account is aangemaakt. Er is ook een profiel aangemaakt voor dit account.", "Account aangemaakt", JOptionPane.INFORMATION_MESSAGE);
                         }
                     } else {
