@@ -190,13 +190,17 @@ public class MovieDAO {
             String amountOfViewerWhoWatchedWholeMovie = "";
             // If the movie has been watched more than once call viewers: 'kijkers'.
             if(watchedMovie > 1) {
-                amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " (" + percentage + "%) kijkers hebben de film ";
+                if(watchedWholeMovie > 1) {
+                    amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " (" + percentage + "%) kijkers hebben de film ";
+                } else {
+                    amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " (" + percentage + "%) kijkers heeft de film ";
+                }
             }
             // If the movie has been watched one time call viewer: 'kijker'.
             else {
                 amountOfViewerWhoWatchedWholeMovie = Integer.toString(watchedWholeMovie) + " van de " + watchedMovie + " (" + percentage + "%) kijker heeft de film ";
             }
-            strViewers = movieTitle + "\nDe film is " + watchedMovie + "x bekeken.\n" + amountOfViewerWhoWatchedWholeMovie + "'" + movieTitle + "' volledig bekeken.";
+            strViewers = movieTitle + "\n\nDeze film is in totaal " + watchedMovie + "x bekeken.\n" + amountOfViewerWhoWatchedWholeMovie + "'" + movieTitle + "' volledig bekeken.";
         }
 
         databaseConnection.CloseConnection();
