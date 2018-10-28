@@ -35,8 +35,8 @@ class AccountTest {
                 Assertions.assertEquals(1, amountOfProfiles, "More than one profile was returned per account, expected only one.");
             }
         }else{
-            // There are no accounts with single profiles, so just return true. (It's technically not incorrect)
-            Assertions.assertTrue(true);
+            // There are no accounts with single profiles found, which is wrong since an account is always assigned a starters profile.
+            Assertions.assertTrue(false);
         }
     }
     // Test if accounts can be created (and deleted)

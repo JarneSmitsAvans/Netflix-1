@@ -1,5 +1,6 @@
 package domain.Listeners.WatchBehaviourListeners.WatchBehaviourOverviews;
 
+import application.GeneralManager;
 import application.ProfileManagerImpl;
 import application.WatchBehaviourManagerImpl;
 import domain.Episode;
@@ -12,13 +13,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
+
 
 /**
  * WatchBehaviourLoadWatchedMediaListener.java
- * This ActionListener gets all the watched programs on actionPerformed and adds the program to the matching ArrayList of the object type.
- * It then checks if it was fully watched, and if it was fully watched, it adds it to the fullyWatchedTitels hashset.
- * Finally, it adds it to the watchedPrograms textPane.
+ * This ActionListener gets all the watched programs on actionPerformed and adds the program to the ArrayList of that object type.
+ * It then displays that watched program, together with how long it was watched for and when.
  * <p>
  * Author: Dylan ten Böhmer
  */
@@ -46,42 +46,44 @@ public class WatchBehaviourLoadWatchedMediaListener implements ActionListener {
                 int profileID = profileManager.getIdOfProfile(ui.getCbWatchedProgramsBySelectedProfile().getSelectedItem().toString(), ui.getCbWatchedProgramsBySelectedAccount().getSelectedItem().toString());
                 ArrayList<Movie> watchedMovies = watchBehaviourManager.getWatchedMovies(profileID);
                 ArrayList<Episode> watchedEpisodes = watchBehaviourManager.getWatchedEpisodes(profileID);
-                HashSet<String> fullyWatchedTitles = new HashSet<>();
+                ArrayList<String> watchedPrograms = new ArrayList<>();
 
-                // For each movie, check if it was fully watched, if so, add it to the fully watched titles HashSet.
-                for (Movie movie : watchedMovies) {
-                    int watchedDuration = movie.getWatchedDuration();
-                    int totalDuration = movie.getDuration();
-                    if (watchedDuration == totalDuration) {
-                        fullyWatchedTitles.add(movie.getTitle());
-                    }
-                }
-                // For each episode, check if it was fully watched, if so, add it to the fully watched titels HashSet.
                 for (Episode episode : watchedEpisodes) {
-                    int watchedDuration = episode.getWatchedDuration();
-                    int totalDuration = episode.getDuration();
-                    if (watchedDuration == totalDuration) {
-                        fullyWatchedTitles.add(episode.getSerieTitle() + " : " + episode.getTitle());
-                    }
+                    float watchedEpisodeDuration = episode.getWatchedDuration();
+                    float episodeTotalDuration = episode.getDuration();
+                    // Calculate how much was watched
+                    float percent = watchedEpisodeDuration / episodeTotalDuration * 100;
+                    // Round to 2 decimals
+                    float roundedPercentage = GeneralManager.round(percent, 2);
+                    // Add it to the watched programs ArrayList
+                    watchedPrograms.add(episode.getSerieTitle() + ":  " + episode.getTitle() + " bekeken voor: " + roundedPercentage + "%" + " en laatst bekeken op: " + episode.getWatchedOn());
                 }
-                // For each fully watched title, add it to the textPane.
+                for (Movie movie : watchedMovies) {
+                    float watchedMovieDuration = movie.getWatchedDuration();
+                    float movieTotalDuration = movie.getDuration();
+                    // Calculate how much was watched
+                    float percent = watchedMovieDuration / movieTotalDuration * 100;
+                    // Round to 2 decimals
+                    float roundedPercentage = GeneralManager.round(percent, 2);
+                    // Add it to the watched programs ArrayList
+                    watchedPrograms.add(movie.getTitle() + " bekeken voor: " + roundedPercentage + "%" + " en laatst bekeken op: " + movie.getWatchedOn());
+                }
+                // For each watched title, add it to the textPane.
                 StyledDocument styledDocument = ui.getTxtWatchedProgramsBySelectedProfile().getStyledDocument();
-                if (!fullyWatchedTitles.isEmpty()) {
-                    for (String string : fullyWatchedTitles) {
+                if (!watchedPrograms.isEmpty()) {
+                    for (String string : watchedPrograms) {
                         styledDocument.insertString(0, string + "\n", null);
                     }
                 } else {
-                    styledDocument.insertString(0, "Geselecteerd profiel heeft nog geen programma volledig (100%) bekeken." + "\n", null);
+                    styledDocument.insertString(0, "Geselecteerd profiel heeft nog geen programma's bekeken." + "\n", null);
                 }
-            } catch (SQLException e1) {
-                e1.printStackTrace();
             } catch (ClassNotFoundException e1) {
+                e1.printStackTrace();
+            } catch (SQLException e1) {
                 e1.printStackTrace();
             } catch (BadLocationException e1) {
                 e1.printStackTrace();
             }
-        }else{
-            return;
         }
     }
 }
