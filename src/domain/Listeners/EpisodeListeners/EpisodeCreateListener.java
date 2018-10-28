@@ -33,12 +33,14 @@ public class EpisodeCreateListener implements ActionListener {
         try{
             // Create variables for the values from textfields
             String episodeTitle = ui.getTxtCreateEpisodeTitle().getText();
-            int episodeNumber = Integer.valueOf(ui.getTxtCreateEpisodeNumber().getText());
-            int episodeDuration = Integer.valueOf(ui.getTxtCreateEpisodeDuration().getText());
+            String episodeNumberST = ui.getTxtCreateEpisodeNumber().getText();
+            String episodeDurationST = ui.getTxtCreateEpisodeDuration().getText();
+
 
             // Check if the combobox and textfields aren't empty
-            if(ui.getCbCreateEpisodeForSerie().getSelectedItem() != "Selecteer serie" && ui.getCbCreateEpisodeForSerie().getSelectedItem() != null && !episodeTitle.isEmpty() && episodeDuration != 0 && episodeNumber != 0) {
-
+            if(ui.getCbCreateEpisodeForSerie().getSelectedItem() != "Selecteer serie" && ui.getCbCreateEpisodeForSerie().getSelectedItem() != null && !episodeTitle.isEmpty() && !episodeNumberST.isEmpty() && !episodeDurationST.isEmpty()) {
+                int episodeNumber = Integer.valueOf(ui.getTxtCreateEpisodeNumber().getText());
+                int episodeDuration = Integer.valueOf(ui.getTxtCreateEpisodeDuration().getText());
                 //Set values for a episode
                 Episode newEpisode = new Episode();
                 newEpisode.setTitle(episodeTitle);

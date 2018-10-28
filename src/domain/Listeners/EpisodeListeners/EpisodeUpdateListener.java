@@ -37,11 +37,13 @@ public class EpisodeUpdateListener implements ActionListener {
             if(ui.getCbUpdateEpisodeOfSerie().getSelectedItem() != "Selecteer serie" && ui.getCbUpdateEpisodeOfSerie().getSelectedItem() != null && ui.getCbUpdateEpisodeOfSerie().getItemCount() > 0){
                 // Create variables the from the fields
                 String episodeTitle = ui.getTxtUpdateEpisodeTitle().getText();
-                int episodeNumber = Integer.valueOf(ui.getTxtUpdateEpisodeNumber().getText());
-                int episodeDuration = Integer.valueOf(ui.getTxtUpdateEpisodeDuration().getText());
+                String episodeNumberST = ui.getTxtUpdateEpisodeNumber().getText();
+                String episodeDurationST = ui.getTxtUpdateEpisodeDuration().getText();
 
                 // Check if the combobox and textfields aren't empty
-                if(cbSelectedEpisode.getSelectedItem() != "Selecteer serie" && cbSelectedEpisode.getSelectedItem() != null && !episodeTitle.isEmpty() && episodeNumber != 0 && episodeDuration !=0) {
+                if(cbSelectedEpisode.getSelectedItem() != "Selecteer serie" && cbSelectedEpisode.getSelectedItem() != null && !episodeTitle.isEmpty() && !episodeNumberST.isEmpty() && !episodeDurationST.isEmpty()) {
+                    int episodeNumber = Integer.parseInt(ui.getTxtUpdateEpisodeNumber().getText());
+                    int episodeDuration = Integer.parseInt(ui.getTxtUpdateEpisodeDuration().getText());
                     // Get the selected episode
                     Episode episode = (Episode)cbSelectedEpisode.getSelectedItem();
 
@@ -76,7 +78,7 @@ public class EpisodeUpdateListener implements ActionListener {
             }
             else{
                 // Shows an info MessageDialog that you haven't selected a serie
-                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "U heeft nog geen serie geselecteerd. Selecteer eerst een serie en probeer het dan opnieuw.", "Serie niet geupdate", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showInternalMessageDialog(ui.getMainPanel(), "U heeft nog geen serie geselecteerd. Selecteer eerst een serie en probeer het dan opnieuw.", "Serie niet geupdate", JOptionPane.ERROR_MESSAGE);
             }
 
         }
