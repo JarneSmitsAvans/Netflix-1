@@ -55,7 +55,7 @@ public class SerieGetAvgOfSerie implements ActionListener {
                 Serie selectedSerie = (Serie)cbSelectedSerie.getSelectedItem();
 
                 // Get the all te duractions from episodes from the selected serie
-                Episode episode = episodeManager.getEpisodeBySerieID(selectedSerie.getId());
+                Episode episode = episodeManager.getTotalDurationEpisodebySerieID(selectedSerie.getId());
 
                 // Get all te watchedDuratins from the selected serie
                 Serie avgSerie = serieManager.serieGetAvg(selectedSerie.getId());

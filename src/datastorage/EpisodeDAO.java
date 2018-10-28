@@ -95,7 +95,8 @@ public class EpisodeDAO {
         return episode;
     }
 
-    public Episode getEpisodebySerieID(int serieID) throws SQLException, ClassNotFoundException{
+    // Get the total duration of the episodes from a serie
+    public Episode getTotalDurationEpisodebySerieID(int serieID) throws SQLException, ClassNotFoundException{
         // Open database connection
         databaseConnection.OpenConnection();
 
@@ -107,6 +108,31 @@ public class EpisodeDAO {
         Episode episode = new Episode();
         while (resultSet.next()) {
             episode.setDuration(resultSet.getInt("epDuration"));
+        }
+
+        // Close database connection
+        databaseConnection.CloseConnection();
+
+        // Returns an episode
+        return episode;
+    }
+
+    public Episode getEpisodebySerieID(int serieID) throws SQLException, ClassNotFoundException{
+        // Open database connection
+        databaseConnection.OpenConnection();
+
+        // Bind values to the ?'s in the preparedStatement.
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Episode WHERE fk_serie = ?");
+        preparedStatement.setInt(1, serieID);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+
+        Episode episode = new Episode();
+        while (resultSet.next()) {
+            episode.setId(resultSet.getInt("id"));
+            episode.setTitle(resultSet.getString("title"));
+            episode.setDuration(resultSet.getInt("duration"));
+            episode.setEpisodeNumber(resultSet.getInt("episodenumber"));
+            episode.setSerieNumber(resultSet.getInt("fk_serie"));
         }
 
         // Close database connection

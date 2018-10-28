@@ -100,6 +100,12 @@ public class EpisodeManagerlmpl {
     }
 
     // Get all of the durations from epicodes with the selected serieID
+    public Episode getTotalDurationEpisodebySerieID(int serieID)throws SQLException, ClassNotFoundException{
+        Episode getEpisode = episodeDAO.getTotalDurationEpisodebySerieID(serieID);
+        return getEpisode;
+    }
+
+    // Get all of the durations from epicodes with the selected serieID
     public Episode getEpisodeBySerieID(int serieID)throws SQLException, ClassNotFoundException{
         Episode getEpisode = episodeDAO.getEpisodebySerieID(serieID);
         return getEpisode;

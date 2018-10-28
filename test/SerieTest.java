@@ -272,7 +272,7 @@ class SerieTest {
 
         HashSet<Serie> watchedSeries = watchBehaviourManager.getWatchedSerie(profileID);
 
-        Serie serieRecommended = null;
+        Serie serieRecommended = new Serie();
 
         if(!watchedSeries.isEmpty()){
             for(Serie watchedSerie : watchedSeries) {
@@ -291,7 +291,7 @@ class SerieTest {
     }
 
     @Test
-    void testAvgOfWatchedSeriesRetur75() throws SQLException, ClassNotFoundException, ParseException {
+    void testAvgOfWatchedSeriesReturn75() throws SQLException, ClassNotFoundException, ParseException {
         // Arrange
         // Set values for a new serie
         Serie serie = new Serie();
@@ -419,7 +419,13 @@ class SerieTest {
         System.out.println(episode.getEpisodeNumber());
 
         Serie avgSerie = serieManager.serieGetAvg(getSerie.getId());
-        int totalPercent =  (avgSerie.getWatchedDuration()*100) / (episodedruation.getEpisodeNumber() * avgSerie.getDuration() );
+        int totalPercent;
+        if(avgSerie.getDuration() > 0) {
+            totalPercent = (avgSerie.getWatchedDuration() * 100) / (episode.getDuration() * avgSerie.getDuration());
+        }
+        else{
+            totalPercent = 0;
+        }
 
         // Assert
         // Delete accounts and serie
@@ -427,6 +433,6 @@ class SerieTest {
         accountManager.delete(getAccount2.getId());
         serieManager.delete(getSerie.getId());
 
-        Assertions.assertEquals(37,totalPercent,37);
+        Assertions.assertEquals(75,totalPercent,37);
     }
 }

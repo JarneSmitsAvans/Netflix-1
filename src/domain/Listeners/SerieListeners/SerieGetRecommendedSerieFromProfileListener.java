@@ -6,6 +6,7 @@ import presentation.GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -55,18 +56,29 @@ public class SerieGetRecommendedSerieFromProfileListener implements ActionListen
                 sb.append("Aanbevolen series: \n");
 
                 // Checked it thar are watched series
-                if(!watchedSeries.isEmpty()){
-                    String serieTitle = "";
-                    for(Serie watchedSerie : watchedSeries) {
-                        serieTitle = watchedSerie.getTitle();
-                    }
-
-                    sb.append("Omdat u naar " + serieTitle + " hebt gekeken.\n \n");
-                    sb.append("Bevelen wij u de volgende serie aan: \n");
-
-                    for(Serie watchedSerie : watchedSeries) {
+                if(!watchedSeries.isEmpty())
+                {
+                    for(Serie watchedSerie : watchedSeries)
+                    {
                         Serie serie = serieManager.getSerieById(watchedSerie.getRecommendedSerie());
-                        sb.append(serie.getTitle() + " \n");
+                        ArrayList<Serie> serieArrayList = serieManager.getSerieByRecommendedNumber(watchedSerie.getRecommendedSerie());
+
+                        int buffer = 0;
+                        String bufferTitles = "";
+
+                        for (Serie serie1 : serieArrayList){
+                            if(buffer == 0){
+                                bufferTitles += serie1.getTitle();
+                            }
+                            else {
+                                bufferTitles += " en " + serie1.getTitle();
+                            }
+                            buffer++;
+                        }
+
+                        sb.append("Omdat u naar " + bufferTitles + " hebt gekeken.\n");
+                        sb.append("Bevelen wij u de volgende serie aan: " + serie.getTitle() + " \n \n");
+
                     }
                 }
                 else{

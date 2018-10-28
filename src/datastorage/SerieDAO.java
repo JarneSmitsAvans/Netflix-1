@@ -105,6 +105,35 @@ public class SerieDAO {
         return serie;
     }
 
+    // Returns an arraylist with
+    public ArrayList<Serie> getSerieByRecommendedNumber(int recommendedNumber) throws SQLException, ClassNotFoundException {
+        // Open database connection
+        databaseConnection.OpenConnection();
+        PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement("SELECT * FROM Serie WHERE RecommendedSerie = ?");
+
+        // Bind values to the ?'s in the preparedStatement.
+        preparedStatement.setInt(1, recommendedNumber);
+        ResultSet resultSet = databaseConnection.ExecuteSelectStatement(preparedStatement);
+
+        ArrayList<Serie> serieArrayList = new ArrayList<Serie>();
+        while (resultSet.next()) {
+            Serie serie = new Serie();
+            serie.setId(resultSet.getInt("id"));
+            serie.setTitle(resultSet.getString("title"));
+            serie.setGenre(resultSet.getString("genre"));
+            serie.setLanguage(resultSet.getString("language"));
+            serie.setMinAge(resultSet.getInt("minimumage"));
+            serie.setRecommendedSerie(resultSet.getInt("RecommendedSerie"));
+            serieArrayList.add(serie);
+        }
+
+        // Close database connection
+        databaseConnection.CloseConnection();
+
+        // Returns a serie
+        return serieArrayList;
+    }
+
     // Get the data form watched series based on the serieID
     public Serie getSerieByIdForAvg(int id) throws SQLException, ClassNotFoundException {
         Serie serie = new Serie();

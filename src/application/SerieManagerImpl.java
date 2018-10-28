@@ -5,6 +5,7 @@ import domain.Serie;
 import presentation.GUI;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -83,8 +84,11 @@ public class SerieManagerImpl {
             allSerieCb[i].addItem("Selecteer serie");
             appendComboBox(allSerieCb[i],serieList);
         }
+    }
 
-
+    public ArrayList<Serie> getSerieByRecommendedNumber(int recommendedID) throws SQLException, ClassNotFoundException{
+        ArrayList<Serie> serieArrayList = serieDAO.getSerieByRecommendedNumber(recommendedID);
+        return serieArrayList;
     }
 
     // Fill al the comboboxes With series
