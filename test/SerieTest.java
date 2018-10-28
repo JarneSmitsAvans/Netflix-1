@@ -197,7 +197,7 @@ class SerieTest {
     }
 
     @Test
-    void testRecommendedSerieReturnBreakingBad() throws SQLException, ClassNotFoundException, ParseException {
+    void testRecommendedSerieReturndTheShannaraCronicles() throws SQLException, ClassNotFoundException, ParseException {
         // Arrange
         // Set values for a new serie
         Serie serie = new Serie();
